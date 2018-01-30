@@ -1,0 +1,67 @@
+===========================================
+Version 0.6.0 Release Notes
+===========================================
+* Healing option default changed to OFF.
+* Draw double-sided drawing when not doing healing.
+
+===========================================
+Version 0.5.5 Release Notes
+===========================================
+* Importing assembly data in STEP is improved. In previous versions, parts location were failed when the parts' names were UNSETs.
+* Importing complex entities in STEP is improved.
+* Tessellation is improved. Edge curves are approximated to polylines with higher precision than surfaces.
+
+===========================================
+Version 0.5.4 Release Notes
+===========================================
+Fixed bug where loading assembly structure was failed when some part names were empty or duplicated.
+Healing process got faster.
+
+===========================================
+Version 0.5.3 Release Notes
+===========================================
+Fixed bug where trimming cone surfaces with loops may be failed in particular cases.
+
+===========================================
+Version 0.5.2 Release Notes
+===========================================
+Fixed bug where colors were not reflected in some assembly infomations after loading a STEP file
+Add switch of healing feature
+
+===========================================
+Version 0.5.1 Release Notes
+===========================================
+Fixed bug where colors were not reflected in an assembly with multiple colors after loading a STEP file
+Changed some of the words displayed in the CAD Importer window
+
+===========================================
+ Version 0.5 Release Notes
+===========================================
+Support for STEP and STL files added
+
+===========================================
+ Version 0.3 Release Notes
+===========================================
+Debug information is now output
+
+===========================================
+ Version 0.2 Release Notes
+===========================================
+
+[New Features]
+"Quick Settings" added
+Normal vectors in curved surfaces are smoother
+Speed increased through multithreading
+Meshes are shared when used by different assemblies
+Added a feature to ignore any meshes smaller than a specified size
+
+[Fixed Bugs]
+Fixed bug where holes in models were incorrectly filled
+Fixed bug where some hierarchical structures were not reproduced in the output from the CAD file
+Fixed bug where cylinders were sometimes not exported
+
+===========================================
+ Version 0.1 Release Notes
+===========================================
+
+Unity CAD Importer trial version released

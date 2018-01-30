@@ -1,0 +1,17 @@
+aJyAbW4jxCQSOKugsPLGVq79+/EY3wkYe8mtxgYJX9JsXcB3tSjzyAVSgqEj9TkHyJPlgyVPbbtcKS2ye98fvMdgFMzT2gf+1ZiXRCMDYlRp6e9pJ4NmTVs+6tpLCATcruiP5P697Qj92sltwo9wdOGjqYUUPeCVgmnucCHhC5g=
+<?xml version="1.0" encoding="utf-8"?>
+<objects main="1">
+  <object name="2" type="UnityMoNoLic.LicenseRequest" ver="0">
+    <Target>3b3244fe-1ce7-4261-8b50-96b3e865f262</Target>
+    <Licensee>T3-2SF2-EVQ4-46J4-USBE-9XKR</Licensee>
+    <Extra>
+      <count>0</count>
+    </Extra>
+  </object>
+  <object name="1" type="UnityMoNoLic.License" ver="0">
+    <Request ref="2" />
+    <PublishDate>2018/01/15</PublishDate>
+    <PublishTime>14:04:31</PublishTime>
+    <Expiration>2018/02/28</Expiration>
+  </object>
+</objects>
