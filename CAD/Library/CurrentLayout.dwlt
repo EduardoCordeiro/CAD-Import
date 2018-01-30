@@ -358,13 +358,13 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Eduardo\Desktop\CAD
+  m_LastProjectPath: C:\Users\Eduardo\Desktop\CAD-Import\CAD
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 7a290000
-    m_LastClickedID: 10618
-    m_ExpandedIDs: 0000000092270000
+    m_SelectedIDs: 90280000
+    m_LastClickedID: 10384
+    m_ExpandedIDs: 0000000092270000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -417,8 +417,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 14500000
-    m_LastClickedInstanceID: 20500
+    m_SelectedInstanceIDs: 7e2e0000
+    m_LastClickedInstanceID: 11902
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300007a250000aa25000000000000f2350000722900008e7bffff344effff72280000
     m_RenameOverlay:
@@ -509,24 +509,24 @@ MonoBehaviour:
     height: 592
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 36.500015}
-    m_SelectedIDs: 663c0000
-    m_LastClickedID: 15462
-    m_ExpandedIDs: 9efbffff00000000ca2a0000d230000060320000663c0000
+    scrollPos: {x: 0, y: 1329}
+    m_SelectedIDs: aa2b0000
+    m_LastClickedID: 11178
+    m_ExpandedIDs: 9efbffff00000000922a0000ca2a0000d230000018330000663c0000ec3c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: WeirdBox
+      m_OriginalName: WeirdBox
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 15462
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -563,14 +563,14 @@ MonoBehaviour:
     height: 592
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 4951.318180252748
+  lastFramingTime: 1504.9299117008352
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.18, y: 0.26250002, z: 0}
+    m_Target: {x: 0.3418222, y: -0.3449226, z: 0.27490187}
     speed: 2
-    m_Value: {x: 0.18, y: 0.26250002, z: 0}
+    m_Value: {x: 0.3418222, y: -0.3449226, z: 0.27490187}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -594,13 +594,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.15972678, y: 0.51927835, z: -0.09949582, w: -0.8336295}
+    m_Target: {x: -0.34685993, y: -0.32795396, z: 0.13091685, w: -0.8689046}
     speed: 2
-    m_Value: {x: -0.15972677, y: 0.5192783, z: -0.099495806, w: -0.83362937}
+    m_Value: {x: -0.34685993, y: -0.32795396, z: 0.13091685, w: -0.8689046}
   m_Size:
-    m_Target: 1.0855885
+    m_Target: 1.4716964
     speed: 2
-    m_Value: 1.0855885
+    m_Value: 1.4716964
   m_Ortho:
     m_Target: 0
     speed: 2

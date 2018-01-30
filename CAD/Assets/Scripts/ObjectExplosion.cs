@@ -24,7 +24,9 @@ public class ObjectExplosion : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        if(Input.GetKeyDown(KeyCode.F))
+            Explosion();
 	}
 
     void StartingPositions(Dictionary<string, GameObject> partList) {
@@ -44,6 +46,7 @@ public class ObjectExplosion : MonoBehaviour {
             partList.Add(child.name + i, child.gameObject);
 
             // Adding Grand children if Depth Level > 0
+            // Add Recursiveness here for the new depth levels (maybe change the function itself)
             if(depthLevel > 0 && child.childCount > 1)
                 for(int j = 0; j < child.childCount; j++)
                     partList.Add(child.GetChild(j).name + i.ToString() + j.ToString(), child.GetChild(j).gameObject);
@@ -52,10 +55,22 @@ public class ObjectExplosion : MonoBehaviour {
         return partList;
     }
 
-    void createSphere() {
+    void Explosion() {
 
         Vector3 center = this.transform.position;
 
         float radius = 5.0f;
+
+        foreach(GameObject part in partLists[0].Values) {
+
+            float angle = 360 / initialPositions.Count * Mathf.Deg2Rad;
+
+            float x = center.x + radius * Mathf.Cos(angle);
+            float y = center.y + radius * Mathf.Sin(angle);
+
+            Vector3 newPosition = new Vector3(x, y, 0);
+
+            part.transform.position = newPosition;
+        }
     }
 }
