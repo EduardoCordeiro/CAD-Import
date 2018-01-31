@@ -6,7 +6,7 @@ public class ObjectExplosion : MonoBehaviour {
 
     private List<Dictionary<string, GameObject>> partLists;
 
-    private List<Transform> initialPositions;
+    private List<Vector3> initialPositions;
 
     public int depthLevel = 0;
 
@@ -17,22 +17,28 @@ public class ObjectExplosion : MonoBehaviour {
 
         partLists.Add(CreatePartList(depthLevel));
 
-        initialPositions = new List<Transform>();
+        initialPositions = new List<Vector3>();
 
-        StartingPositions(partLists[0]);
+        SaveStartingPositions(partLists[0]);
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         if(Input.GetKeyDown(KeyCode.F))
-            Explosion();
+            Explosion(2.0f, partLists[0]);
+
+        if(Input.GetKeyDown(KeyCode.G))
+            CircleExplosion(2.0f, partLists[0]);
+
+        if(Input.GetKeyDown(KeyCode.R))
+            ReverseExplosion(partLists[0]);
 	}
 
-    void StartingPositions(Dictionary<string, GameObject> partList) {
+    void SaveStartingPositions(Dictionary<string, GameObject> partList) {
 
         foreach(GameObject part in partList.Values)
-            initialPositions.Add(part.transform);
+            initialPositions.Add(part.transform.position);
     }
 
     Dictionary<string, GameObject> CreatePartList(int depthLevel) {
@@ -55,22 +61,70 @@ public class ObjectExplosion : MonoBehaviour {
         return partList;
     }
 
-    void Explosion() {
+   /// <summary>
+   /// Sphere Explosion
+   /// </summary>
+   /// <param name="radius"></param>
+   /// <param name="partList"></param>
+    void Explosion(float radius, Dictionary<string, GameObject> partList) {
 
-        Vector3 center = this.transform.position;
+        Vector3 center = transform.position;
 
-        float radius = 5.0f;
+        int numberOfParts = partList.Values.Count;
 
-        foreach(GameObject part in partLists[0].Values) {
+        int counter = 0;
 
-            float angle = 360 / initialPositions.Count * Mathf.Deg2Rad;
+        foreach(GameObject part in partList.Values) {
 
-            float x = center.x + radius * Mathf.Cos(angle);
-            float y = center.y + radius * Mathf.Sin(angle);
+            float x = center.x + radius * Mathf.Cos(2 * Mathf.PI * counter / numberOfParts) * Mathf.Sin(Mathf.PI * counter / numberOfParts);
+            float y = center.y + radius * Mathf.Sin(2 * Mathf.PI * counter / numberOfParts) * Mathf.Sin(Mathf.PI * counter / numberOfParts);
+            float z = center.z + radius * Mathf.Sin(Mathf.PI * counter / numberOfParts);
 
-            Vector3 newPosition = new Vector3(x, y, 0);
+        /*
+        x=origin.x+radius*cos(rotation.y)*cos(rotation.x)
+        y=origin.y+radius*sin(rotation.x)
+        z=origin.z+radius*sin(rotation.y)*cos(rotation.x)
+        */
 
-            part.transform.position = newPosition;
+            part.transform.position = new Vector3(x, y, z);
+
+            counter++;
         }
+    }
+
+    /// <summary>
+    /// Circle Explosion
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <param name="partList"></param>
+    void CircleExplosion(float radius, Dictionary<string, GameObject> partList) {
+
+        Vector3 center = transform.position;
+
+        int numberOfParts = partList.Values.Count;
+
+        int counter = 0;
+
+        foreach(GameObject part in partList.Values) {
+
+            float x = center.x + radius * Mathf.Cos(2 * Mathf.PI * counter / numberOfParts);
+            float y = center.y + radius * Mathf.Sin(2 * Mathf.PI * counter / numberOfParts);
+
+            part.transform.position = new Vector3(x, y, 0.0f);
+
+            counter++;
+        }
+    }
+
+    void ReverseExplosion(Dictionary<string, GameObject> partList) {
+
+        int counter = 0;
+
+        foreach(GameObject part in partList.Values) {
+
+            part.transform.position = initialPositions[counter];
+
+            counter++;
+        }            
     }
 }
