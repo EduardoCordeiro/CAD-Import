@@ -37,6 +37,7 @@ public class CADImporterWizard : ScriptableWizard {
         if (cadManager.CheckLicense() == false) {
 
             Debug.Log("License check NG.");
+
             licenseWizard = DisplayWizard<LicenseWizard>("License Installer", "Cancel", "Install");
             licenseWizard.CadManager = cadManager;
             licenseWizard.ShowPopup();
@@ -46,7 +47,8 @@ public class CADImporterWizard : ScriptableWizard {
             Debug.Log("License check OK.");
 
             // Version check
-            var sVer = cadManager.CheckVersion();
+            string sVer = cadManager.CheckVersion();
+
             if (sVer != m_sRequiredAssembyVersion) {
 
                 Debug.Log("Version Check Failed: " + sVer);
@@ -57,64 +59,75 @@ public class CADImporterWizard : ScriptableWizard {
         }
     }
 
+    void ReadFilePaths() {
+
+        filePaths = Directory.GetFiles(importAssetPath);
+
+        numberOfFiles = filePaths.Length;
+
+        firstPass = false;
+    }
+
     // Import Button
     void OnWizardOtherButton() {
 
         bool directoryExists = Directory.Exists(importAssetPath);
 
-        if(directoryExists && firstPass) {
+        if(directoryExists && firstPass)
+            ReadFilePaths();
 
-            filePaths = Directory.GetFiles(importAssetPath);
+        string filePath = filePaths[counter];
 
-            numberOfFiles = filePaths.Length;
-
-            firstPass = false;
-        }
-
-        Debug.Log(counter);
-        bool fileExists = File.Exists(filePaths[counter]);
+        bool fileExists = File.Exists(filePath);
 
         if(fileExists) {
 
             statusText = "Import processing...";
 
-            if (cadManager.Import(filePaths[counter], m_tessParam)) {
+            if (cadManager.Import(filePath, m_tessParam)) {
 
                 var startTime = DateTime.Now;
 
-                // エディタ上で進捗更新をチェック
                 EditorApplication.CallbackFunction update = null;
+
                 update = () => {
 
                     if (cadManager.isDone() == false) {
-
-                        // 毎フレームチェック
+                        
                         int progress = cadManager.GetProgress();
                         var sPercent = string.Format("{0:0}%", progress);
-                        //Debug.Log("Progress: " + sPercent);
+
                         if (EditorUtility.DisplayCancelableProgressBar("Importing progress", "import processing..." + sPercent, progress / 100.0f) != false) {
 
                             // インポート処理中断
                             cadManager.Close();
+
                             EditorUtility.ClearProgressBar();
+
                             EditorApplication.update -= update;
+
                             if (cadManager.GetExitCode() != 0) {
+
                                 statusText = "Canceled";
                                 Debug.Log(statusText);
                             }
                         }
                     }
                     else {
-                    // インポート処理終了
+                        
                         cadManager.Close();
+
                         EditorUtility.ClearProgressBar();
+
                         EditorApplication.update -= update;
+
                         if (cadManager.GetExitCode() != 0) {
 
                             statusText = "Failed";
                             Debug.Log(statusText);
-                            // cache ディレクトリにある "Debug.txt"を開いて先頭行にある例外名を取得し、そのメッセージを表示する
-                            var sErrorMessage = cadManager.GetErrorMessage();
+
+                            string sErrorMessage = cadManager.GetErrorMessage();
+
                             if (!string.IsNullOrEmpty(sErrorMessage)) {
 
                                 Debug.LogError(sErrorMessage);
@@ -124,20 +137,21 @@ public class CADImporterWizard : ScriptableWizard {
                             }
                     }
                     else {
-                        // メッシュデータを復元する
+                            
                         int nVertices, nFacets;
+
                         if (cadManager.GetMesh(out nVertices, out nFacets) == false) {
 
                             statusText = "Failed";
                             Debug.LogWarning(statusText);
-                            Debug.LogWarning("Can't import file:" + filePaths[counter]);
+                            Debug.LogWarning("Can't import file:" + filePath);
                         }
                         else {
 
-                            statusText = "Succeeded";
+                            statusText = "File : " + filePath + "was imported sucessfully";
                             Debug.Log(statusText);
 
-                            var duration = DateTime.Now - startTime;
+                            TimeSpan duration = DateTime.Now - startTime;
                             Debug.Log("Duration: " + duration.ToString());
                             Debug.Log(string.Format("Vertices: {0}, Facets: {1}", nVertices, nFacets));
 
@@ -152,16 +166,19 @@ public class CADImporterWizard : ScriptableWizard {
                     }
                     }
                 };
+
                 EditorApplication.update += update;
             }
             else {
+
                 statusText = "Failed";
-                Debug.LogWarning("Can't import file:" + filePaths[counter]);
+                Debug.LogWarning("Can't import file:" + filePath);
             }
         }
         else {
+
             statusText = "Failed";
-            Debug.LogWarning("Can't read file:" + filePaths[counter]);
+            Debug.LogWarning("Can't read file:" + filePath);
         }
     }
 

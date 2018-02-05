@@ -109,8 +109,10 @@ namespace CAD.Actions {
 
             foreach(GameObject part in partList.Values) {
 
-                float x = center.x + radius * Mathf.Cos(2 * Mathf.PI * counter / numberOfParts);
-                float y = center.y + radius * Mathf.Sin(2 * Mathf.PI * counter / numberOfParts);
+                float angle = 2 * Mathf.PI * counter / numberOfParts;
+
+                float x = center.x + radius * Mathf.Cos(angle);
+                float y = center.y + radius * Mathf.Sin(angle);
 
                 part.transform.position = new Vector3(x, y, 0.0f);
 
