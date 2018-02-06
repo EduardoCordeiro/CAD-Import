@@ -19,32 +19,46 @@ namespace CAD.Managers {
 
         GameObject sphere;
 
-        List<GameObject> placeholders;
+        Dictionary<string, GameObject> placeholders;
 
-        float scaleFactor;
+        string directoryPath = "Assets/Resources/Caracteristic Files/";
+
+        //public float scaleFactor; // 1 for testing
+
+        public int numberOfFiles; // 2 for testing
 
         // Use this for initialization
         void Start() {
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
-            placeholders = new List<GameObject>();
+            placeholders = new Dictionary<string, GameObject>();
 
-            scaleFactor = 1.0f;
-
-            PopulateScene();
+            CollectPlaceholderData(numberOfFiles);
         }
 
-        void PopulateScene() {
+        void CollectPlaceholderData(int numberOfFiles) {
 
-            Instantiate(sphere, new Vector3(0.5f, 0.1f, 0.9f), Quaternion.identity);
+            for(int i = 0; i < numberOfFiles; i++) {
 
-            Instantiate(sphere, new Vector3(0.1f, 0.7f, 0.2f), Quaternion.identity);
+                string fileName = i.ToString();
+
+                StreamReader reader = new StreamReader(directoryPath + fileName + ".txt");
+
+                string[] values = reader.ReadLine().Split('-');
+
+                PopulateScene(sphere, CalculatePosition(values));
+            }            
         }
 
-        Vector3 CalculatePosition(float shape, float position, float joint) {
+        void PopulateScene(GameObject gameObject, Vector3 position) {
 
-            return new Vector3(shape, position, joint) * scaleFactor;
+            Instantiate(gameObject, position, Quaternion.identity);
+        }
+
+        Vector3 CalculatePosition(string[] values) {
+
+            return new Vector3(float.Parse(values[0]), float.Parse(values[1]), float.Parse(values[2]));
         }
 
         // Update is called once per frame
