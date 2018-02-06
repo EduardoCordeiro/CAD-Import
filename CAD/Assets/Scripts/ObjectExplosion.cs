@@ -4,60 +4,57 @@ using UnityEngine;
 
 namespace CAD.Actions {
 
-    public class ObjectExplosion : MonoBehaviour {
-
-        private List<Dictionary<string, GameObject>> partLists;
-
-        private List<Vector3> initialPositions;
+    public class ObjectExplosion : Action {
 
         public int depthLevel = 0;
 
         // Use this for initialization
         void Start() {
 
-            partLists = new List<Dictionary<string, GameObject>>();
+            partList = new List<GameObject>();
 
-            partLists.Add(CreatePartList(depthLevel));
+            // Rework part Lists afer meeting
+            partList = CreatePartList(depthLevel);
 
             initialPositions = new List<Vector3>();
 
-            SaveStartingPositions(partLists[0]);
+            SaveStartingPositions(partList);
         }
 
         // Update is called once per frame
         void Update() {
 
             if(Input.GetKeyDown(KeyCode.F))
-                Explosion(2.0f, partLists[0]);
+                Explosion(2.0f, partList);
 
             if(Input.GetKeyDown(KeyCode.G))
-                CircleExplosion(2.0f, partLists[0]);
+                CircleExplosion(2.0f, partList);
 
             if(Input.GetKeyDown(KeyCode.R))
-                ReverseExplosion(partLists[0]);
+                ReverseExplosion(partList);
         }
 
-        void SaveStartingPositions(Dictionary<string, GameObject> partList) {
+        void SaveStartingPositions(List<GameObject> partList) {
 
-            foreach(GameObject part in partList.Values)
+            foreach(GameObject part in partList)
                 initialPositions.Add(part.transform.position);
         }
 
-        Dictionary<string, GameObject> CreatePartList(int depthLevel) {
+        List<GameObject> CreatePartList(int depthLevel) {
 
-            Dictionary<string, GameObject> partList = new Dictionary<string, GameObject>();
+            List<GameObject> partList = new List<GameObject>();
 
             for(int i = 0; i < transform.childCount; i++) {
 
                 Transform child = transform.GetChild(i);
 
-                partList.Add(child.name + i, child.gameObject);
+                partList.Add(child.gameObject);
 
                 // Adding Grand children if Depth Level > 0
                 // Add Recursiveness here for the new depth levels (maybe change the function itself)
                 if(depthLevel > 0 && child.childCount > 1)
                     for(int j = 0; j < child.childCount; j++)
-                        partList.Add(child.GetChild(j).name + i.ToString() + j.ToString(), child.GetChild(j).gameObject);
+                        partList.Add(child.GetChild(j).gameObject);
             }
 
             return partList;
@@ -68,15 +65,15 @@ namespace CAD.Actions {
         /// </summary>
         /// <param name="radius"></param>
         /// <param name="partList"></param>
-        void Explosion(float radius, Dictionary<string, GameObject> partList) {
+        void Explosion(float radius, List<GameObject> partList) {
 
             Vector3 center = transform.position;
 
-            int numberOfParts = partList.Values.Count;
+            int numberOfParts = partList.Count;
 
             int counter = 0;
 
-            foreach(GameObject part in partList.Values) {
+            foreach(GameObject part in partList) {
 
                 float x = center.x + radius * Mathf.Cos(2 * Mathf.PI * counter / numberOfParts) * Mathf.Sin(Mathf.PI * counter / numberOfParts);
                 float y = center.y + radius * Mathf.Sin(2 * Mathf.PI * counter / numberOfParts) * Mathf.Sin(Mathf.PI * counter / numberOfParts);
@@ -99,15 +96,15 @@ namespace CAD.Actions {
         /// </summary>
         /// <param name="radius"></param>
         /// <param name="partList"></param>
-        void CircleExplosion(float radius, Dictionary<string, GameObject> partList) {
+        void CircleExplosion(float radius, List<GameObject> partList) {
 
             Vector3 center = transform.position;
 
-            int numberOfParts = partList.Values.Count;
+            int numberOfParts = partList.Count;
 
             int counter = 0;
 
-            foreach(GameObject part in partList.Values) {
+            foreach(GameObject part in partList) {
 
                 float angle = 2 * Mathf.PI * counter / numberOfParts;
 
@@ -120,11 +117,11 @@ namespace CAD.Actions {
             }
         }
 
-        void ReverseExplosion(Dictionary<string, GameObject> partList) {
+        void ReverseExplosion(List<GameObject> partList) {
 
             int counter = 0;
 
-            foreach(GameObject part in partList.Values) {
+            foreach(GameObject part in partList) {
 
                 part.transform.position = initialPositions[counter];
 
