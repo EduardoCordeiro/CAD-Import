@@ -3828,3 +3828,43 @@ exported_mesh 1
 assembly_num 1
 cad_format STL
 ------------------
+imported_datetime 2/7/2018 10:54:07 AM
+imported_file flange-coupling-15_strutturaModificata.STEP
+imported_hash 7d1a232ab27080593cee874ab3cff54f
+imported_span 00:00:11.4028387
+imported_size 445,431B (0.42MB)
+exported_vtx 8580
+exported_mesh 9
+assembly_num 43
+cad_format STEP
+------------------
+imported_datetime 2/7/2018 10:54:17 AM
+imported_file flange-coupling-15_strutturaModificata.STEP
+imported_hash 7d1a232ab27080593cee874ab3cff54f
+imported_span 00:00:09.4153544
+imported_size 445,431B (0.42MB)
+exported_vtx 8580
+exported_mesh 9
+assembly_num 43
+cad_format STEP
+------------------
+imported_datetime 2/7/2018 10:55:23 AM
+imported_file flange-coupling-15_struttura.STEP
+imported_hash fa6bc43a24d9c05184acf99de1b49519
+imported_span 00:00:09.4420878
+imported_size 430,698B (0.41MB)
+exported_vtx 8571
+exported_mesh 9
+assembly_num 39
+cad_format STEP
+------------------
+imported_datetime 2/7/2018 10:55:33 AM
+imported_file flange-coupling-15_struttura.STEP
+imported_hash fa6bc43a24d9c05184acf99de1b49519
+imported_span 00:00:09.5637723
+imported_size 430,698B (0.41MB)
+exported_vtx 8571
+exported_mesh 9
+assembly_num 39
+cad_format STEP
+------------------
