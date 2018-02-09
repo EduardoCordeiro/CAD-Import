@@ -10,10 +10,12 @@ namespace CAD.Utility {
 
         public static HierarchyCreator instance { get; private set; }
 
+        //public string rootName;
+
         // Use this for initialization
         void Start() {
 
-            HierarchyCreator.instance = this;
+            instance = this;
         }
 
         // Update is called once per frame
@@ -21,7 +23,7 @@ namespace CAD.Utility {
 
         }
 
-        private void CreateHierarchy() {
+        public void CreateHierarchy() {
 
             ClearDuplicateGameObjects();
 
@@ -78,7 +80,7 @@ namespace CAD.Utility {
 
             string[] split = rootName.Split('/');
 
-            this.name = split[split.Length - 2];
+            this.name = split[split.Length - 3];
         }
     }
 }

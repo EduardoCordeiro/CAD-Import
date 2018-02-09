@@ -30,7 +30,12 @@ public class CADImporterWizard : ScriptableWizard {
 
     CADImporterWizard() {
 
-        hierarchyCreator = FindObjectOfType<HierarchyCreator>().GetComponent<HierarchyCreator>();
+    }
+
+    private void OnEnable() {
+        Debug.Log("when does this run");
+
+        hierarchyCreator = GameObject.FindObjectOfType<HierarchyCreator>();
     }
 
     [MenuItem("Assets/CAD Importer")]
@@ -38,7 +43,6 @@ public class CADImporterWizard : ScriptableWizard {
 
         DisplayWizard<CADImporterWizard>("CAD Importer", "Done", "Import");
 
-        // ライセンス認証（ライセンスファイルの有無とライセンスの一致を確認する）
         if (cadManager.CheckLicense() == false) {
 
             Debug.Log("License check NG.");
@@ -81,8 +85,7 @@ public class CADImporterWizard : ScriptableWizard {
         if(directoryExists && firstPass)
             ReadFilePaths();
 
-        // Update the name of the Root of the Hierarchy
-        HierarchyCreator.instance.AssignRootName(importAssetPath);
+        hierarchyCreator.AssignRootName(importAssetPath);
 
         string filePath = filePaths[counter];
 
@@ -107,7 +110,6 @@ public class CADImporterWizard : ScriptableWizard {
 
                         if (EditorUtility.DisplayCancelableProgressBar("Importing progress", "import processing..." + sPercent, progress / 100.0f) != false) {
 
-                            // インポート処理中断
                             cadManager.Close();
 
                             EditorUtility.ClearProgressBar();
@@ -157,7 +159,6 @@ public class CADImporterWizard : ScriptableWizard {
                         else {
 
                             statusText = "File : " + filePath + "was imported sucessfully ";
-                            Debug.Log(statusText);
 
                             TimeSpan duration = DateTime.Now - startTime;
                             Debug.Log("Duration: " + duration.ToString());

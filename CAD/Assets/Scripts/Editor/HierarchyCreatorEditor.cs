@@ -14,7 +14,7 @@ public class HierarchyCreatorEditor : Editor {
 
         HierarchyCreator hierarchyCreator = (HierarchyCreator)target;
 
-        if(GUILayout.Button("Create Hierarchy"))
+        if(GUILayout.Button("Create Hierarchy!"))
             hierarchyCreator.CreateHierarchy();
     }
 }
