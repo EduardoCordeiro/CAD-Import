@@ -34,6 +34,8 @@ namespace CAD.Managers {
 
             placeholders = new Dictionary<string, GameObject>();
 
+            numberOfFiles = this.GetComponentsInChildren<Transform>().Length;
+
             CollectPlaceholderData(numberOfFiles);
         }
 
@@ -41,13 +43,17 @@ namespace CAD.Managers {
 
             for(int i = 0; i < numberOfFiles; i++) {
 
-                string fileName = i.ToString();
+                /*string fileName = i.ToString();
 
                 StreamReader reader = new StreamReader(directoryPath + fileName + ".txt");
 
                 string[] values = reader.ReadLine().Split('-');
 
-                PopulateScene(sphere, CalculatePosition(values));
+                PopulateScene(sphere, CalculatePosition(values));*/
+
+                Vector3 position = new Vector3(UnityEngine.Random.Range(0.0f, 5.0f), UnityEngine.Random.Range(0.0f, 5.0f), UnityEngine.Random.Range(0.0f, 5.0f));
+
+                PopulateScene(sphere, position);
             }            
         }
 

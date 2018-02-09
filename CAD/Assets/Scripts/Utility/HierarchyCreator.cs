@@ -74,6 +74,7 @@ namespace CAD.Utility {
                         DestroyImmediate(transform.GetChild(j).gameObject);
         }
 
+        // Really bad implementation until we decide on folder structure
         public void AssignRootName(string rootName) {
 
             //C:/ Users / Eduardo / Desktop / flange - coupling - 15_strutturaModificata / STLforX3D /
