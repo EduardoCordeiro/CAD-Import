@@ -5,6 +5,8 @@ using Microsoft.FSharp.Core;
 using System;
 using System.IO;
 
+using CAD.Utility;
+
 public class CADImporterWizard : ScriptableWizard { 
 
     const string m_sRequiredAssembyVersion = "0.6.0.0"; // バージョンチェック用。MonoRAILProxy, MoNoImporter の FileVersionアセンブリ情報文字列と合わせること。
@@ -24,8 +26,11 @@ public class CADImporterWizard : ScriptableWizard {
 
     int numberOfFiles;
 
+    HierarchyCreator hierarchyCreator;
+
     CADImporterWizard() {
 
+        hierarchyCreator = FindObjectOfType<HierarchyCreator>().GetComponent<HierarchyCreator>();
     }
 
     [MenuItem("Assets/CAD Importer")]
@@ -75,6 +80,9 @@ public class CADImporterWizard : ScriptableWizard {
 
         if(directoryExists && firstPass)
             ReadFilePaths();
+
+        // Update the name of the Root of the Hierarchy
+        HierarchyCreator.instance.AssignRootName(importAssetPath);
 
         string filePath = filePaths[counter];
 
@@ -148,7 +156,7 @@ public class CADImporterWizard : ScriptableWizard {
                         }
                         else {
 
-                            statusText = "File : " + filePath + "was imported sucessfully";
+                            statusText = "File : " + filePath + "was imported sucessfully ";
                             Debug.Log(statusText);
 
                             TimeSpan duration = DateTime.Now - startTime;
