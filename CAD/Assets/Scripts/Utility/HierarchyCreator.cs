@@ -39,7 +39,7 @@ namespace CAD.Utility {
 
             foreach(Transform c in children) {
 
-                List<string> name = c.name.Split(new char[0]).ToList();
+                List<string> name = c.name.Split('.').ToList();
 
                 GameObject currentObject = c.gameObject;
 
