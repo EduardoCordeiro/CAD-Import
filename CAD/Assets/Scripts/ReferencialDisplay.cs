@@ -56,7 +56,7 @@ namespace CAD.Managers {
 
                 PopulateScene(sphere, CalculatePosition(values));*/
 
-                Vector3 position = new Vector3(UnityEngine.Random.Range(0.0f, 5.0f), UnityEngine.Random.Range(0.0f, 5.0f), UnityEngine.Random.Range(0.0f, 5.0f));
+                Vector3 position = new Vector3(UnityEngine.Random.Range(0.0f, 2.0f), UnityEngine.Random.Range(1.5f, 3.5f), UnityEngine.Random.Range(0.0f, 2.0f));
 
                 PopulateScene(sphere, position);
             }
