@@ -19,7 +19,7 @@ namespace CAD.Managers {
 
         GameObject sphere;
 
-        Dictionary<string, GameObject> placeholders;
+        List<GameObject> placeholders;
 
         string directoryPath = "Assets/Resources/Caracteristic Files/";
 
@@ -32,11 +32,16 @@ namespace CAD.Managers {
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
-            placeholders = new Dictionary<string, GameObject>();
+            placeholders = new List<GameObject>();
 
             numberOfFiles = this.GetComponentsInChildren<Transform>().Length;
 
             CollectPlaceholderData(numberOfFiles);
+        }
+
+        // Update is called once per frame
+        void Update() {
+
         }
 
         void CollectPlaceholderData(int numberOfFiles) {
@@ -54,12 +59,32 @@ namespace CAD.Managers {
                 Vector3 position = new Vector3(UnityEngine.Random.Range(0.0f, 5.0f), UnityEngine.Random.Range(0.0f, 5.0f), UnityEngine.Random.Range(0.0f, 5.0f));
 
                 PopulateScene(sphere, position);
-            }            
+            }
+
+            // Add some fake spheres to hightlit the referencial
+            PopulateScene(sphere, new Vector3(5.0f, 0.0f, 0.0f));
+            ColorGameObject(Color.red, placeholders[placeholders.Count - 1]);
+
+            PopulateScene(sphere, new Vector3(0.0f, 5.0f, 0.0f));
+            ColorGameObject(Color.green, placeholders[placeholders.Count - 1]);
+
+            PopulateScene(sphere, new Vector3(0.0f, 0.0f, 5.0f));
+            ColorGameObject(Color.blue, placeholders[placeholders.Count - 1]);
+
+            PopulateScene(sphere, new Vector3(5.0f, 5.0f, 5.0f));
+            ColorGameObject(Color.black, placeholders[placeholders.Count - 1]);
         }
 
         void PopulateScene(GameObject gameObject, Vector3 position) {
 
-            Instantiate(gameObject, position, Quaternion.identity);
+            GameObject placeholder = Instantiate(gameObject, position, Quaternion.identity);
+
+            placeholders.Add(placeholder);
+        }
+
+        void ColorGameObject(Color color, GameObject gameObject) {
+
+            gameObject.GetComponent<Renderer>().material.color = color;
         }
 
         Vector3 CalculatePosition(string[] values) {
@@ -67,20 +92,15 @@ namespace CAD.Managers {
             return new Vector3(float.Parse(values[0]), float.Parse(values[1]), float.Parse(values[2]));
         }
 
-        // Update is called once per frame
-        void Update() {
-            
-        }
-
         void OnDrawGizmos() {
-
-            Gizmos.color = Color.green;
-
-            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 10.0f, 0.0f));
 
             Gizmos.color = Color.red;
 
             Gizmos.DrawLine(Vector3.zero, new Vector3(10.0f, 0.0f, 0.0f));
+
+            Gizmos.color = Color.green;
+
+            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 10.0f, 0.0f));
 
             Gizmos.color = Color.blue;
 
