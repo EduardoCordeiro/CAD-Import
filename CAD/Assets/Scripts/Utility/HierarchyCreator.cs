@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using System.Linq;
 
@@ -25,6 +26,10 @@ namespace CAD.Utility {
         }
 
         public void CreateHierarchy() {
+
+            Debug.Log("CreateHierarchy()");
+
+            MakeChild();
 
             ClearDuplicateGameObjects();
 
@@ -73,6 +78,16 @@ namespace CAD.Utility {
                 for(int j = i + 1; j < transform.childCount; j++)
                     if(transform.GetChild(i).name == transform.GetChild(j).name)
                         DestroyImmediate(transform.GetChild(j).gameObject);
+        }
+
+        private void MakeChild() {
+
+            List<GameObject> rootObjects = new List<GameObject>();
+            SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
+
+            foreach(GameObject go in rootObjects)
+                if(go.GetComponent<MeshRenderer>() != null)
+                    go.transform.parent = this.transform;
         }
 
         // Really bad implementation until we decide on folder structure

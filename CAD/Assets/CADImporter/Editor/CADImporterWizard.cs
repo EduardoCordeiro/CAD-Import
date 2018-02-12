@@ -6,6 +6,7 @@ using System;
 using System.IO;
 
 using CAD.Utility;
+using CAD.Managers;
 
 public class CADImporterWizard : ScriptableWizard { 
 
@@ -26,6 +27,8 @@ public class CADImporterWizard : ScriptableWizard {
 
     int numberOfFiles;
 
+    GameObject rootObject;
+
     HierarchyCreator hierarchyCreator;
 
     CADImporterWizard() {
@@ -33,15 +36,20 @@ public class CADImporterWizard : ScriptableWizard {
     }
 
     private void OnEnable() {
-        Debug.Log("when does this run");
 
-        hierarchyCreator = GameObject.FindObjectOfType<HierarchyCreator>();
+        Debug.Log("OnEnable");
+
+        /*rootObject = new GameObject();
+        rootObject.AddComponent<HierarchyCreator>();
+        rootObject.AddComponent<ReferencialDisplay>();
+
+        hierarchyCreator = rootObject.GetComponent<HierarchyCreator>();*/
     }
 
     [MenuItem("Assets/CAD Importer")]
     static void OpenWizard() {
 
-        DisplayWizard<CADImporterWizard>("CAD Importer", "Done", "Import");
+        DisplayWizard<CADImporterWizard>("CAD Importer", "Exit", "Import");
 
         if (cadManager.CheckLicense() == false) {
 
@@ -74,7 +82,19 @@ public class CADImporterWizard : ScriptableWizard {
 
         numberOfFiles = filePaths.Length;
 
+        // this is ridiculous, make it better
+        DoIt();
+
         firstPass = false;
+    }
+
+    void DoIt() {
+
+        rootObject = new GameObject();
+        rootObject.AddComponent<HierarchyCreator>();
+        rootObject.AddComponent<ReferencialDisplay>();
+
+        hierarchyCreator = rootObject.GetComponent<HierarchyCreator>();
     }
 
     // Import Button
@@ -85,7 +105,10 @@ public class CADImporterWizard : ScriptableWizard {
         if(directoryExists && firstPass)
             ReadFilePaths();
 
-        hierarchyCreator.AssignRootName(importAssetPath);
+        //hierarchyCreator.AssignRootName(importAssetPath);
+        string[] split = importAssetPath.Split('/');
+
+        rootObject.name = split[split.Length - 3];
 
         string filePath = filePaths[counter];
 
@@ -193,6 +216,8 @@ public class CADImporterWizard : ScriptableWizard {
 
     // Done Button
     void OnWizardCreate() {
+        
+        hierarchyCreator.CreateHierarchy();
 
         if (licenseWizard != null)
             licenseWizard.Close();

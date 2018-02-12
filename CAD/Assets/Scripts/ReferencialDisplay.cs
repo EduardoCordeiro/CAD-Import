@@ -62,16 +62,16 @@ namespace CAD.Managers {
             }
 
             // Add some fake spheres to hightlit the referencial
-            PopulateScene(sphere, new Vector3(5.0f, 0.0f, 0.0f));
+            PopulateScene(sphere, new Vector3(2.0f, 0.0f, 0.0f));
             ColorGameObject(Color.red, placeholders[placeholders.Count - 1]);
 
-            PopulateScene(sphere, new Vector3(0.0f, 5.0f, 0.0f));
+            PopulateScene(sphere, new Vector3(0.0f, 2.0f, 0.0f));
             ColorGameObject(Color.green, placeholders[placeholders.Count - 1]);
 
-            PopulateScene(sphere, new Vector3(0.0f, 0.0f, 5.0f));
+            PopulateScene(sphere, new Vector3(0.0f, 0.0f, 2.0f));
             ColorGameObject(Color.blue, placeholders[placeholders.Count - 1]);
 
-            PopulateScene(sphere, new Vector3(5.0f, 5.0f, 5.0f));
+            PopulateScene(sphere, new Vector3(2.0f, 2.0f, 2.0f));
             ColorGameObject(Color.black, placeholders[placeholders.Count - 1]);
         }
 
@@ -96,15 +96,15 @@ namespace CAD.Managers {
 
             Gizmos.color = Color.red;
 
-            Gizmos.DrawLine(Vector3.zero, new Vector3(10.0f, 0.0f, 0.0f));
+            Gizmos.DrawLine(Vector3.zero, new Vector3(2.0f, 0.0f, 0.0f));
 
             Gizmos.color = Color.green;
 
-            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 10.0f, 0.0f));
+            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 2.0f, 0.0f));
 
             Gizmos.color = Color.blue;
 
-            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 0.0f, 10.0f));
+            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 0.0f, 2.0f));
         }
     }
 }
