@@ -11,9 +11,6 @@ namespace CAD.Utility {
 
         public static HierarchyCreator instance { get; private set; }
 
-        //public string rootName;
-
-
         // Use this for initialization
         void Start() {
 
@@ -29,13 +26,19 @@ namespace CAD.Utility {
 
             Debug.Log("CreateHierarchy()");
 
+            // Virtual Children are the best
             MakeChild();
 
+            // Name is clear
             ClearDuplicateGameObjects();
 
+            // idem idem
             Hierarchy();
         }
 
+        /// <summary>
+        /// Create the object hierarchy
+        /// </summary>
         private void Hierarchy() {
 
             List<Transform> children = new List<Transform>();
@@ -72,6 +75,9 @@ namespace CAD.Utility {
             }
         }       
 
+        /// <summary>
+        /// Clear the duplicate that comes from the import software
+        /// </summary>
         private void ClearDuplicateGameObjects() {
 
             for(int i = 0; i < transform.childCount; i++)
@@ -80,6 +86,9 @@ namespace CAD.Utility {
                         DestroyImmediate(transform.GetChild(j).gameObject);
         }
 
+        /// <summary>
+        /// Make all parts be children of the root object
+        /// </summary>
         private void MakeChild() {
 
             List<GameObject> rootObjects = new List<GameObject>();
@@ -88,16 +97,6 @@ namespace CAD.Utility {
             foreach(GameObject go in rootObjects)
                 if(go.GetComponent<MeshRenderer>() != null)
                     go.transform.parent = this.transform;
-        }
-
-        // Really bad implementation until we decide on folder structure
-        public void AssignRootName(string rootName) {
-
-            //C:/ Users / Eduardo / Desktop / flange - coupling - 15_strutturaModificata / STLforX3D /
-
-            string[] split = rootName.Split('/');
-
-            this.name = split[split.Length - 3];
         }
     }
 }

@@ -37,13 +37,11 @@ public class CADImporterWizard : ScriptableWizard {
 
     private void OnEnable() {
 
-        Debug.Log("OnEnable");
-
-        /*rootObject = new GameObject();
+        rootObject = new GameObject();
         rootObject.AddComponent<HierarchyCreator>();
         rootObject.AddComponent<ReferencialDisplay>();
 
-        hierarchyCreator = rootObject.GetComponent<HierarchyCreator>();*/
+        hierarchyCreator = rootObject.GetComponent<HierarchyCreator>();
     }
 
     [MenuItem("Assets/CAD Importer")]
@@ -76,25 +74,18 @@ public class CADImporterWizard : ScriptableWizard {
         }
     }
 
-    void ReadFilePaths() {
+    void FirstPass() {
 
         filePaths = Directory.GetFiles(importAssetPath);
 
         numberOfFiles = filePaths.Length;
 
-        // this is ridiculous, make it better
-        DoIt();
+        // Update rootObject name
+        string[] split = importAssetPath.Split('/');
+        // folder structure matters here
+        rootObject.name = split[split.Length - 3];
 
         firstPass = false;
-    }
-
-    void DoIt() {
-
-        rootObject = new GameObject();
-        rootObject.AddComponent<HierarchyCreator>();
-        rootObject.AddComponent<ReferencialDisplay>();
-
-        hierarchyCreator = rootObject.GetComponent<HierarchyCreator>();
     }
 
     // Import Button
@@ -103,12 +94,7 @@ public class CADImporterWizard : ScriptableWizard {
         bool directoryExists = Directory.Exists(importAssetPath);
 
         if(directoryExists && firstPass)
-            ReadFilePaths();
-
-        //hierarchyCreator.AssignRootName(importAssetPath);
-        string[] split = importAssetPath.Split('/');
-
-        rootObject.name = split[split.Length - 3];
+            FirstPass();
 
         string filePath = filePaths[counter];
 
