@@ -42,12 +42,25 @@ namespace CAD.Managers {
             MakeChild();
 
             //
-            CollectPlaceholderData();
+            CollectAssemblyData();
             
             // distance between two sphere is < threshshold
             CheckSphereThresholdDistance();
 
             UpdateObjectLists();
+
+            // Add some fake spheres to hightlight the referencial
+            CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
+            ColorGameObject(placeholders[placeholders.Count - 1], Color.red);
+
+            CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
+            ColorGameObject(placeholders[placeholders.Count - 1], Color.green);
+
+            CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
+            ColorGameObject(placeholders[placeholders.Count - 1], Color.blue);
+
+            CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
+            ColorGameObject(placeholders[placeholders.Count - 1], Color.black);
         }
 
         // Update is called once per frame
@@ -70,9 +83,9 @@ namespace CAD.Managers {
 
 
         /// <summary>
-        /// Read data from file eventually, current dummy randoms
+        /// Read data from json files
         /// </summary>
-        void CollectPlaceholderData() {
+        void CollectAssemblyData() {
 
             // JSON parsing
             // change from 0 --> i, when we have all the objects
@@ -85,25 +98,13 @@ namespace CAD.Managers {
 
             // Order the List
             List<Caracteristic> sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
+            // add this list to a list of lists that stores all the data
 
             // Save the highest local measure
             Caracteristic highestLocalMeasure = sortedCaracteristics[0];
 
             // Instanciate the sphere
             CreateGameObject(sphere, new Vector3(highestLocalMeasure.mustruct, highestLocalMeasure.muPos, highestLocalMeasure.mujoint));
-
-            // Add some fake spheres to hightlit the referencial
-            CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.red);
-
-            CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.green);
-
-            CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.blue);
-
-            CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.black);
         }
 
         /// <summary>
@@ -155,6 +156,28 @@ namespace CAD.Managers {
 
                 // here I have a list of all objects that are close to the one I started with
                 // which seems pointless, because the problem of > 2 still occurs and this does not detect it
+            }
+        }
+
+        void CalculateDistanceTable() {
+
+            float[][] distances = new float[placeholders.Count][];
+
+            for(int i = 0; i < placeholders.Count; i++) {
+
+                for(int j = 0; j < placeholders.Count; j++) {
+
+                    if(placeholders[i].name == placeholders[j].name)
+                        distances[i][j] = 0.0f;
+                    else {
+
+                        float distance = Vector3.Distance(placeholders[i].transform.position, placeholders[j].transform.position);
+
+                        if(distance < threshhold) {
+                            distances[i][j] = Vector3.Distance(placeholders[i].transform.position, placeholders[j].transform.position);
+                        }
+                    }                        
+                }
             }
         }
 
