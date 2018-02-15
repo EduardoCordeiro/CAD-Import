@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 
 using System.IO;
@@ -21,9 +22,7 @@ namespace CAD.Managers {
 
         string directoryPath = "Assets/Resources/Caracteristic Files/";
 
-        public int numberOfFiles;
-
-        public float distanceThreshold;
+        public float threshhold;
 
         // Use this for initialization
         void Start() {
@@ -36,12 +35,13 @@ namespace CAD.Managers {
 
             assemblyList = new List<GameObject>();
 
-            // this will be changed to different objects
-            numberOfFiles = this.GetComponentsInChildren<Transform>().Length;
+            threshhold = 0.1f;
 
-            distanceThreshold = 0.5f;
+            // Add all assemblies as children of this object
+            MakeChild();
 
-            CollectPlaceholderData(numberOfFiles);
+            //
+            CollectPlaceholderData();
             
             // distance between two sphere is < threshshold
             CheckSphereThresholdDistance();
@@ -52,6 +52,55 @@ namespace CAD.Managers {
         // Update is called once per frame
         void Update() {
 
+        }
+
+        /// <summary>
+        /// Make all assemblies be children of this object
+        /// </summary>
+        private void MakeChild() {
+
+            List<GameObject> rootObjects = new List<GameObject>();
+            SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
+
+            foreach(GameObject go in rootObjects)
+                if(go.GetComponent<HierarchyCreator>() != null)
+                    go.transform.parent = this.transform;
+        }
+
+        /// <summary>
+        /// Read data from file eventually, current dummy randoms
+        /// </summary>
+        void CollectPlaceholderData() {
+
+            // JSON parsing
+            // change from 0 --> i, when we have all the objects
+            StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Caracteristic Files/" + this.transform.GetChild(0).name + ".json");
+            string jsonString = sr.ReadToEnd();
+            jsonString = Utility.Utility.FixJson(jsonString);
+
+            Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
+
+            foreach(Caracteristic c in caracteristics) {
+
+                //CreateGameObject(sphere, new Vector3(carateristic.struct, carateristic.position, carateristic.joint));         
+
+                Vector3 position = new Vector3(float.Parse(c.mustruct), float.Parse(c.muPos), float.Parse(c.mujoint));
+
+                CreateGameObject(sphere, position);
+            }
+
+            // Add some fake spheres to hightlit the referencial
+            CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
+            ColorGameObject(placeholders[placeholders.Count - 1], Color.red);
+
+            CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
+            ColorGameObject(placeholders[placeholders.Count - 1], Color.green);
+
+            CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
+            ColorGameObject(placeholders[placeholders.Count - 1], Color.blue);
+
+            CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
+            ColorGameObject(placeholders[placeholders.Count - 1], Color.black);
         }
 
         /// <summary>
@@ -74,7 +123,7 @@ namespace CAD.Managers {
 
                     Vector3 otherPlaceholderPostion = otherPlaceholder.transform.position;
 
-                    if(Vector3.Distance(placeholderPosition, otherPlaceholderPostion) < distanceThreshold) {
+                    if(Vector3.Distance(placeholderPosition, otherPlaceholderPostion) < threshhold) {
 
                         // Collapse the spheres that are in the vicinity
                         similarObjects.Add(otherPlaceholder);
@@ -117,42 +166,6 @@ namespace CAD.Managers {
                 //temporary.SetActive(false);
                 temporary.GetComponent<Renderer>().material.color = Color.yellow;
             }
-        }
-
-        /// <summary>
-        /// Read data from file eventually, current dummy randoms
-        /// </summary>
-        /// <param name="numberOfFiles"></param>
-        void CollectPlaceholderData(int numberOfFiles) {
-
-            for(int i = 0; i < numberOfFiles; i++) {
-
-                // JSON parsing
-                /*string fileName = "dummy";
-
-                Caracteristic carateristic = JsonUtility.FromJson<Caracteristic>(directoryPath + fileName + ".json");
-                
-                CreateGameObject(sphere, new Vector3(carateristic.shape, carateristic.position, carateristic.joint));
-
-                */
-
-                Vector3 position = new Vector3(Random.Range(0.0f, 2.0f), Random.Range(1.5f, 3.5f), Random.Range(0.0f, 2.0f));
-
-                CreateGameObject(sphere, position);
-            }
-
-            // Add some fake spheres to hightlit the referencial
-            CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.red);
-
-            CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.green);
-
-            CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.blue);
-
-            CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.black);
         }
 
         GameObject CreateGameObject(GameObject gameObject, Vector3 position) {

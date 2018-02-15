@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 48734774}
   m_Layer: 0
-  m_Name: CopiadiAssieme8Assieme9flangecoupling15strutturaModificata-1
+  m_Name: CopiadiAssieme8Assieme9flangecoupling15struttura-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 79401246}
   m_Layer: 0
-  m_Name: CopiadiAssieme7Assieme9flangecoupling15strutturaModificata-1
+  m_Name: CopiadiAssieme7Assieme9flangecoupling15struttura-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 259101299}
   m_Layer: 0
-  m_Name: Assieme9flangecoupling15strutturaModificata-1
+  m_Name: Assieme9flangecoupling15struttura-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,7 +526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412348258}
   m_Layer: 0
-  m_Name: Assieme10flangecoupling15strutturaModificata-1
+  m_Name: Assieme10flangecoupling15struttura-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,7 +1135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1148737025}
   m_Layer: 0
-  m_Name: CopiadiAssieme5Assieme9flangecoupling15strutturaModificata-1
+  m_Name: CopiadiAssieme5Assieme9flangecoupling15struttura-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1236,26 +1236,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1207188255}
   - component: {fileID: 1207188254}
-  - component: {fileID: 1207188253}
   m_Layer: 0
-  m_Name: flange-coupling-15_strutturaModificata
+  m_Name: flange-coupling-15_struttura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1207188253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1207188252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e633a4791ec07554496701e6bdbf143e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfFiles: 0
 --- !u!114 &1207188254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1273,7 +1260,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1207188252}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1356,6 +1343,47 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1458286836}
   m_Mesh: {fileID: 4300000, guid: 461af426e2ef41349996b718ddc9d7c0, type: 2}
+--- !u!1 &1517756782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1517756783}
+  - component: {fileID: 1517756784}
+  m_Layer: 0
+  m_Name: Assemblies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517756783
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1517756782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.59212065, y: 1.4381514, z: 1.7691606}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1517756784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1517756782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e633a4791ec07554496701e6bdbf143e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshhold: 0
 --- !u!1 &1677002467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,7 +1393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1677002468}
   m_Layer: 0
-  m_Name: CopiadiAssieme6Assieme9flangecoupling15strutturaModificata-1
+  m_Name: CopiadiAssieme6Assieme9flangecoupling15struttura-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

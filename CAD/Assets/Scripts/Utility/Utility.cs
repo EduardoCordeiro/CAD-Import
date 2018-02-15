@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace CAD.Utility {
 
-    public class Utility : MonoBehaviour {
+    public static class Utility {
 
-        
+        public static string FixJson(string json) {
+
+            return json = "{\"Items\":" + json + "}";
+        }
     }
 }
