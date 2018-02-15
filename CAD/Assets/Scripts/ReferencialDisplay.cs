@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 
 using System.IO;
+using System.Linq;
 
 using CAD.Utility;
 
@@ -67,6 +68,7 @@ namespace CAD.Managers {
                     go.transform.parent = this.transform;
         }
 
+
         /// <summary>
         /// Read data from file eventually, current dummy randoms
         /// </summary>
@@ -78,16 +80,17 @@ namespace CAD.Managers {
             string jsonString = sr.ReadToEnd();
             jsonString = Utility.Utility.FixJson(jsonString);
 
+            // Read From Json
             Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
 
-            foreach(Caracteristic c in caracteristics) {
+            // Order the List
+            List<Caracteristic> sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
 
-                //CreateGameObject(sphere, new Vector3(carateristic.struct, carateristic.position, carateristic.joint));         
+            // Save the highest local measure
+            Caracteristic highestLocalMeasure = sortedCaracteristics[0];
 
-                Vector3 position = new Vector3(float.Parse(c.mustruct), float.Parse(c.muPos), float.Parse(c.mujoint));
-
-                CreateGameObject(sphere, position);
-            }
+            // Instanciate the sphere
+            CreateGameObject(sphere, new Vector3(highestLocalMeasure.mustruct, highestLocalMeasure.muPos, highestLocalMeasure.mujoint));
 
             // Add some fake spheres to hightlit the referencial
             CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
