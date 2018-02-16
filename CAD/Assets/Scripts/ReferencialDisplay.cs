@@ -22,11 +22,11 @@ namespace CAD.Managers {
         // List of all the assemblies in the scene
         List<GameObject> assemblyList;
 
-        Dictionary<GameObject, Dictionary<GameObject, float>> distanceIssues = new Dictionary<GameObject, Dictionary<GameObject, float>>();
+        Dictionary<GameObject, List<GameObject>> distanceIssues = new Dictionary<GameObject, List<GameObject>>();
 
         string directoryPath = "Assets/Resources/Caracteristic Files/";
 
-        public float threshhold = 2.0f;
+        public float threshhold;
 
         // Use this for initialization
         void Start() {
@@ -36,6 +36,8 @@ namespace CAD.Managers {
             sphereRepresentationList = new List<GameObject>();
 
             assemblyList = new List<GameObject>();
+
+            threshhold = 0.7f;
 
             // Add all assemblies as children of this object
             MakeChild();
@@ -59,12 +61,18 @@ namespace CAD.Managers {
             CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
             ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);
 
+            // Dummy sphere for Debug
+            CreateGameObject(sphere, new Vector3(0.6f, 1.2f, 1.2f));
+            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.white);
+
+            CreateGameObject(sphere, new Vector3(0.8f, 1.1f, 0.99f));
+            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.white);
+
             // Calculate the distances between the assemblies
             CalculateDistancesTable();
 
+            // Resolve Distance problems that arise
             ResolveDistanceProblems();
-
-            UpdateObjectLists();
         }
 
         // Update is called once per frame
@@ -112,66 +120,55 @@ namespace CAD.Managers {
         }
 
         /// <summary>
-        /// As the name suggests
-        /// </summary>
-        void CheckSphereThresholdDistance() {
-
-            foreach(GameObject placeholder in sphereRepresentationList) {
-
-                Vector3 placeholderPosition = placeholder.transform.position;
-
-                // Temp list to store tempoerary objects
-                List<GameObject> similarObjects = new List<GameObject>();
-
-                foreach(GameObject otherPlaceholder in sphereRepresentationList) {
-
-                    // No self comparisons
-                    if(otherPlaceholder.name == placeholder.name)
-                        continue;
-
-                    Vector3 otherPlaceholderPostion = otherPlaceholder.transform.position;
-
-                    if(Vector3.Distance(placeholderPosition, otherPlaceholderPostion) < threshhold) {
-
-                        // Collapse the spheres that are in the vicinity
-                        similarObjects.Add(otherPlaceholder);
-
-                        // Create a new Sphere in the mid point between the two spheres
-                        // Hide the 2 placeholders
-                        // add them as children of the new object
-                        // add to assembly list
-                        // remove from placeholder list
-
-                        /*GameObject midwayObjet = CreateGameObject(  sphere, 
-                                                                    new Vector3((placeholderPosition.x + otherPlaceholderPostion.x) / 2,
-                                                                                (placeholderPosition.y + otherPlaceholderPostion.y) / 2,
-                                                                                (placeholderPosition.z + otherPlaceholderPostion.z) / 2));*/
-
-                        //placeholder.transform.parent = midwayObjet.transform;
-                        //placeholder.SetActive(false);
-
-                        //otherPlaceholder.transform.parent = midwayObjet.transform;
-                        //otherPlaceholder.SetActive(false);
-                        
-                    }
-                }
-
-                // here I have a list of all objects that are close to the one I started with
-                // which seems pointless, because the problem of > 2 still occurs and this does not detect it
-            }
-        }
-
-        /// <summary>
         /// This can be change to not store the distance at all, just a Dict<GameObject, List<GameObject>>
         /// </summary>
         void CalculateDistancesTable() {
-            
-            for(int i = 0; i < sphereRepresentationList.Count; i++) {
 
-                Dictionary<GameObject, float> distances = new Dictionary<GameObject, float>();
+            List<GameObject> temporaryList = new List<GameObject>();
+
+            foreach(GameObject go in sphereRepresentationList)
+                temporaryList.Add(go);
+
+            GameObject currentSphere;
+            int counter = 0;
+
+            while(temporaryList.Count >= 0) {
+
+                currentSphere = sphereRepresentationList[counter];
+
+                List<GameObject> distances = new List<GameObject>();
+
+                for(int i = 0; i < sphereRepresentationList.Count; i++) {
+
+                    if(currentSphere.name != sphereRepresentationList[i].name) {
+
+                        Debug.Log("Distance between" + currentSphere.name + " and " + sphereRepresentationList[i].name);
+
+                        float distance = Vector3.Distance(currentSphere.transform.position, sphereRepresentationList[i].transform.position);
+
+                        // Only add problematic objects
+                        if(distance < threshhold) {
+
+                            distances.Add(sphereRepresentationList[i]);
+
+                            temporaryList.Remove(temporaryList[i]);
+
+                            Debug.Log(sphereRepresentationList[i].name + "how many removes am i doing");
+                        }                            
+                    }
+                }
+
+                distanceIssues.Add(currentSphere, distances);
+
+                counter++;
+            }
+            
+            /*for(int i = 0; i < sphereRepresentationList.Count; i++) {
+
+                List<GameObject> distances = new List<GameObject>();
 
                 // Start in i + 1, as i == j
-                for(int j = i + 1; j < sphereRepresentationList.Count; j++) {
+                for(int j = 0; j < sphereRepresentationList.Count; j++) {
 
                     // Only calculate distances for different objects
                     if(sphereRepresentationList[i].name != sphereRepresentationList[j].name) { 
@@ -180,50 +177,58 @@ namespace CAD.Managers {
 
                         // Only add problematic objects
                         if(distance < threshhold)
-                            distances.Add(sphereRepresentationList[j], distance);
+                            distances.Add(sphereRepresentationList[j]);
                     }
                 }
                 distanceIssues.Add(sphereRepresentationList[i], distances);
-            }
-
-            Debug.Log("Testing Distance Table" + sphereRepresentationList.Count);
-
-            foreach(KeyValuePair<GameObject, Dictionary<GameObject, float>> issues in distanceIssues) {
-
-                Debug.Log("Game Object Name = " + issues.Key);
-
-                foreach(KeyValuePair<GameObject, float> distances in issues.Value) {
-
-                    Debug.Log("Game Object = " + distances.Key + " :: distance = " + distances.Value);
-                }
-            }
+            }*/
         }
 
         void ResolveDistanceProblems() {
 
-            foreach(KeyValuePair<GameObject, Dictionary<GameObject, float>> issues in distanceIssues) {
+            Vector3 newSpherePosition = Vector3.zero; 
+            
+            // Color the principal gameObject too
+            distanceIssues.Keys.First().GetComponent<Renderer>().material.color = Color.magenta;
 
-                if(issues.Value.Count == 0)
+            Vector3 centroid = Vector3.zero;
+
+            foreach(List<GameObject> issues in distanceIssues.Values) {
+
+                if(issues.Count == 0)
                     continue;
 
-                foreach(Dictionary<GameObject, float> issue in distanceIssues.Values) {
+                Debug.Log("and here");
 
+                Vector3 minPoint = distanceIssues.Keys.First().transform.position;
+                Vector3 maxPoint = distanceIssues.Keys.First().transform.position;
 
+                foreach(GameObject issue in issues) {
+                    Debug.Log(issue.name + "twice and then once");
+                    Vector3 pos = issue.transform.position;
+
+                    if(pos.x < minPoint.x)
+                        minPoint.x = pos.x;
+                    if(pos.x > maxPoint.x)
+                        maxPoint.x = pos.x;
+                    if(pos.y < minPoint.y)
+                        minPoint.y = pos.y;
+                    if(pos.y > maxPoint.y)
+                        maxPoint.y = pos.y;
+                    if(pos.z < minPoint.z)
+                        minPoint.z = pos.z;
+                    if(pos.z > maxPoint.z)
+                        maxPoint.z = pos.z;                    
+
+                    centroid = minPoint + 0.5f * (maxPoint - minPoint);
+
+                    issue.GetComponent<Renderer>().material.color = Color.magenta;
                 }
-            }
-        }
 
-        /// <summary>
-        /// Simple function to encapsulate the change from list -> list
-        /// </summary>
-        /// <param name="placeholder"></param>
-        void UpdateObjectLists() {
+                newSpherePosition = centroid;
 
-            foreach(GameObject temporary in distanceIssues.Keys) {
-
-                //temporary.SetActive(false);
-                temporary.GetComponent<Renderer>().material.color = Color.yellow;
-            }
+                CreateGameObject(sphere, newSpherePosition);
+            }            
         }
 
         GameObject CreateGameObject(GameObject gameObject, Vector3 position) {
@@ -233,19 +238,12 @@ namespace CAD.Managers {
 
             sphereRepresentationList.Add(placeholder);
 
-            assemblyList.Add(placeholder);
-
             return placeholder;
         }
 
         void ColorGameObject(GameObject gameObject, Color color) {
 
             gameObject.GetComponent<Renderer>().material.color = color;
-        }
-
-        Vector3 CalculatePosition(string[] values) {
-
-            return new Vector3(float.Parse(values[0]), float.Parse(values[1]), float.Parse(values[2]));
         }
 
         // Substitute the code in OnDrawGizmos here
