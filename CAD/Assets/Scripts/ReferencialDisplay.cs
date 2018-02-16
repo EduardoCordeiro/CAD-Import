@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 
 using CAD.Utility;
+using System;
 
 namespace CAD.Managers {
 
@@ -15,52 +16,55 @@ namespace CAD.Managers {
 
         GameObject sphere;
 
-        List<GameObject> placeholders;
+        // placeholder for input
+        List<GameObject> sphereRepresentationList;
 
-        List<GameObject> temporaryGrouping;
-
+        // List of all the assemblies in the scene
         List<GameObject> assemblyList;
+
+        Dictionary<GameObject, Dictionary<GameObject, float>> distanceIssues = new Dictionary<GameObject, Dictionary<GameObject, float>>();
 
         string directoryPath = "Assets/Resources/Caracteristic Files/";
 
-        public float threshhold;
+        public float threshhold = 2.0f;
 
         // Use this for initialization
         void Start() {
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
-            placeholders = new List<GameObject>();
-
-            temporaryGrouping = new List<GameObject>();
+            sphereRepresentationList = new List<GameObject>();
 
             assemblyList = new List<GameObject>();
-
-            threshhold = 0.1f;
 
             // Add all assemblies as children of this object
             MakeChild();
 
-            //
+            // Read the data from json for each assembly
             CollectAssemblyData();
             
             // distance between two sphere is < threshshold
-            CheckSphereThresholdDistance();
-
-            UpdateObjectLists();
+            //CheckSphereThresholdDistance();
 
             // Add some fake spheres to hightlight the referencial
             CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.red);
+            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.red);
 
             CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.green);
+            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.green);
 
             CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.blue);
+            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.blue);
 
             CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
-            ColorGameObject(placeholders[placeholders.Count - 1], Color.black);
+            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);
+
+            // Calculate the distances between the assemblies
+            CalculateDistancesTable();
+
+            ResolveDistanceProblems();
+
+            UpdateObjectLists();
         }
 
         // Update is called once per frame
@@ -93,7 +97,7 @@ namespace CAD.Managers {
             string jsonString = sr.ReadToEnd();
             jsonString = Utility.Utility.FixJson(jsonString);
 
-            // Read From Json
+            // Deserialize Json file
             Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
 
             // Order the List
@@ -112,14 +116,14 @@ namespace CAD.Managers {
         /// </summary>
         void CheckSphereThresholdDistance() {
 
-            foreach(GameObject placeholder in placeholders) {
+            foreach(GameObject placeholder in sphereRepresentationList) {
 
                 Vector3 placeholderPosition = placeholder.transform.position;
 
                 // Temp list to store tempoerary objects
                 List<GameObject> similarObjects = new List<GameObject>();
 
-                foreach(GameObject otherPlaceholder in placeholders) {
+                foreach(GameObject otherPlaceholder in sphereRepresentationList) {
 
                     // No self comparisons
                     if(otherPlaceholder.name == placeholder.name)
@@ -148,9 +152,7 @@ namespace CAD.Managers {
 
                         //otherPlaceholder.transform.parent = midwayObjet.transform;
                         //otherPlaceholder.SetActive(false);
-
-                        temporaryGrouping.Add(placeholder);
-                        temporaryGrouping.Add(otherPlaceholder);
+                        
                     }
                 }
 
@@ -159,24 +161,54 @@ namespace CAD.Managers {
             }
         }
 
-        void CalculateDistanceTable() {
+        /// <summary>
+        /// This can be change to not store the distance at all, just a Dict<GameObject, List<GameObject>>
+        /// </summary>
+        void CalculateDistancesTable() {
+            
+            for(int i = 0; i < sphereRepresentationList.Count; i++) {
 
-            float[][] distances = new float[placeholders.Count][];
+                Dictionary<GameObject, float> distances = new Dictionary<GameObject, float>();
 
-            for(int i = 0; i < placeholders.Count; i++) {
+                // Start in i + 1, as i == j
+                for(int j = i + 1; j < sphereRepresentationList.Count; j++) {
 
-                for(int j = 0; j < placeholders.Count; j++) {
+                    // Only calculate distances for different objects
+                    if(sphereRepresentationList[i].name != sphereRepresentationList[j].name) { 
 
-                    if(placeholders[i].name == placeholders[j].name)
-                        distances[i][j] = 0.0f;
-                    else {
+                        float distance = Vector3.Distance(sphereRepresentationList[i].transform.position, sphereRepresentationList[j].transform.position);
 
-                        float distance = Vector3.Distance(placeholders[i].transform.position, placeholders[j].transform.position);
+                        // Only add problematic objects
+                        if(distance < threshhold)
+                            distances.Add(sphereRepresentationList[j], distance);
+                    }
+                }
+                distanceIssues.Add(sphereRepresentationList[i], distances);
+            }
 
-                        if(distance < threshhold) {
-                            distances[i][j] = Vector3.Distance(placeholders[i].transform.position, placeholders[j].transform.position);
-                        }
-                    }                        
+            Debug.Log("Testing Distance Table" + sphereRepresentationList.Count);
+
+            foreach(KeyValuePair<GameObject, Dictionary<GameObject, float>> issues in distanceIssues) {
+
+                Debug.Log("Game Object Name = " + issues.Key);
+
+                foreach(KeyValuePair<GameObject, float> distances in issues.Value) {
+
+                    Debug.Log("Game Object = " + distances.Key + " :: distance = " + distances.Value);
+                }
+            }
+        }
+
+        void ResolveDistanceProblems() {
+
+            foreach(KeyValuePair<GameObject, Dictionary<GameObject, float>> issues in distanceIssues) {
+
+                if(issues.Value.Count == 0)
+                    continue;
+
+                foreach(Dictionary<GameObject, float> issue in distanceIssues.Values) {
+
+
                 }
             }
         }
@@ -187,7 +219,7 @@ namespace CAD.Managers {
         /// <param name="placeholder"></param>
         void UpdateObjectLists() {
 
-            foreach(GameObject temporary in temporaryGrouping) {
+            foreach(GameObject temporary in distanceIssues.Keys) {
 
                 //temporary.SetActive(false);
                 temporary.GetComponent<Renderer>().material.color = Color.yellow;
@@ -199,7 +231,9 @@ namespace CAD.Managers {
             GameObject placeholder = Instantiate(gameObject, position, Quaternion.identity);
             placeholder.name = gameObject.name + position.ToString();
 
-            placeholders.Add(placeholder);
+            sphereRepresentationList.Add(placeholder);
+
+            assemblyList.Add(placeholder);
 
             return placeholder;
         }
