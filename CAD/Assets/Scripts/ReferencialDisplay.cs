@@ -37,7 +37,7 @@ namespace CAD.Managers {
 
             assemblyList = new List<GameObject>();
 
-            threshhold = 0.7f;
+            threshhold = 0.4f;
 
             // Add all assemblies as children of this object
             MakeChild();
@@ -63,10 +63,16 @@ namespace CAD.Managers {
 
             // Dummy sphere for Debug
             CreateGameObject(sphere, new Vector3(0.6f, 1.2f, 1.2f));
-            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.white);
 
-            CreateGameObject(sphere, new Vector3(0.8f, 1.1f, 0.99f));
-            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.white);
+            CreateGameObject(sphere, new Vector3(0.8f, 1.1f, 1.0f));
+
+            // More Dummies
+
+            CreateGameObject(sphere, new Vector3(1.0f, 0.2f, 0.1f));
+
+            CreateGameObject(sphere, new Vector3(1.1f, 0.3f, 0.2f));
+
+            CreateGameObject(sphere, new Vector3(0.8f, 0.5f, 0.1f));
 
             // Calculate the distances between the assemblies
             CalculateDistancesTable();
@@ -177,7 +183,7 @@ namespace CAD.Managers {
             Vector3 newSpherePosition = Vector3.zero; 
             
             // Color the principal gameObject too
-            distanceIssues.Keys.First().GetComponent<Renderer>().material.color = Color.magenta;
+            ColorGameObject(distanceIssues.Keys.First(), Color.magenta);
 
             Vector3 centroid = Vector3.zero;
 
@@ -197,18 +203,20 @@ namespace CAD.Managers {
                         minPoint.x = pos.x;
                     if(pos.x > maxPoint.x)
                         maxPoint.x = pos.x;
+
                     if(pos.y < minPoint.y)
                         minPoint.y = pos.y;
                     if(pos.y > maxPoint.y)
                         maxPoint.y = pos.y;
+
                     if(pos.z < minPoint.z)
                         minPoint.z = pos.z;
                     if(pos.z > maxPoint.z)
                         maxPoint.z = pos.z;                    
 
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
-
-                    issue.GetComponent<Renderer>().material.color = Color.magenta;
+                    
+                    ColorGameObject(issue, Color.magenta);
                 }
 
                 newSpherePosition = centroid;
