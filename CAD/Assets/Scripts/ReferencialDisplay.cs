@@ -125,6 +125,7 @@ namespace CAD.Managers {
         void CalculateDistancesTable() {
 
             List<GameObject> temporaryList = new List<GameObject>();
+            List<GameObject> removalList = new List<GameObject>();
 
             foreach(GameObject go in sphereRepresentationList)
                 temporaryList.Add(go);
@@ -132,56 +133,43 @@ namespace CAD.Managers {
             GameObject currentSphere;
             int counter = 0;
 
-            while(temporaryList.Count >= 0) {
+            while(temporaryList.Count > 0) {
 
-                currentSphere = sphereRepresentationList[counter];
+                currentSphere = temporaryList[0];
 
-                List<GameObject> distances = new List<GameObject>();
+                List<GameObject> issues = new List<GameObject>();
 
-                for(int i = 0; i < sphereRepresentationList.Count; i++) {
+                for(int i = 0; i < temporaryList.Count; i++) {
 
-                    if(currentSphere.name != sphereRepresentationList[i].name) {
+                    if(currentSphere.name != temporaryList[i].name) {
 
-                        Debug.Log("Distance between" + currentSphere.name + " and " + sphereRepresentationList[i].name);
-
-                        float distance = Vector3.Distance(currentSphere.transform.position, sphereRepresentationList[i].transform.position);
+                        float distance = Vector3.Distance(currentSphere.transform.position, temporaryList[i].transform.position);
 
                         // Only add problematic objects
                         if(distance < threshhold) {
 
-                            distances.Add(sphereRepresentationList[i]);
+                            issues.Add(temporaryList[i]);
 
-                            temporaryList.Remove(temporaryList[i]);
-
-                            Debug.Log(sphereRepresentationList[i].name + "how many removes am i doing");
+                            removalList.Add(temporaryList[i]);
                         }                            
                     }
                 }
 
-                distanceIssues.Add(currentSphere, distances);
+                // Add gameobject to issue list
+                distanceIssues.Add(currentSphere, issues);
+
+                // remove current object from temp list
+                temporaryList.Remove(currentSphere);
+
+                // remove all problematic objects from temp
+                foreach(GameObject r in removalList)
+                    temporaryList.Remove(r);
+
+                // safe clear, not needed
+                removalList.Clear();
 
                 counter++;
             }
-            
-            /*for(int i = 0; i < sphereRepresentationList.Count; i++) {
-
-                List<GameObject> distances = new List<GameObject>();
-
-                // Start in i + 1, as i == j
-                for(int j = 0; j < sphereRepresentationList.Count; j++) {
-
-                    // Only calculate distances for different objects
-                    if(sphereRepresentationList[i].name != sphereRepresentationList[j].name) { 
-
-                        float distance = Vector3.Distance(sphereRepresentationList[i].transform.position, sphereRepresentationList[j].transform.position);
-
-                        // Only add problematic objects
-                        if(distance < threshhold)
-                            distances.Add(sphereRepresentationList[j]);
-                    }
-                }
-                distanceIssues.Add(sphereRepresentationList[i], distances);
-            }*/
         }
 
         void ResolveDistanceProblems() {
@@ -198,13 +186,11 @@ namespace CAD.Managers {
                 if(issues.Count == 0)
                     continue;
 
-                Debug.Log("and here");
-
                 Vector3 minPoint = distanceIssues.Keys.First().transform.position;
                 Vector3 maxPoint = distanceIssues.Keys.First().transform.position;
 
                 foreach(GameObject issue in issues) {
-                    Debug.Log(issue.name + "twice and then once");
+
                     Vector3 pos = issue.transform.position;
 
                     if(pos.x < minPoint.x)
