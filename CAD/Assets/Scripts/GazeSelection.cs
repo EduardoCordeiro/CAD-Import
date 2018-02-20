@@ -50,9 +50,9 @@ public class GazeSelection : MonoBehaviour {
 
     public void SelectSphere() {
 
-        selection = currentHit.collider.gameObject;
+        //selection = currentHit.collider.gameObject;
 
-        selection.GetComponent<DisplayAssembly>().DisplayAssemblies();
+        //selection.GetComponent<DisplayAssembly>().DisplayAssemblies();
     }
 
     IEnumerator GazeConfirmation() {

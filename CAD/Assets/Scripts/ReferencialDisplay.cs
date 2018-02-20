@@ -28,7 +28,7 @@ namespace CAD.Managers {
 
         string directoryPath = "Assets/Resources/Caracteristic Files/";
 
-        public float threshhold;
+        private float threshhold;
 
         public bool debug;
 
@@ -43,7 +43,7 @@ namespace CAD.Managers {
 
             caracteristicLists = new List<List<Caracteristic>>();
 
-            threshhold = 0.5f;
+            threshhold = 0.2f;
 
             // Add all assemblies as children of this object
             MakeChild();
@@ -53,27 +53,27 @@ namespace CAD.Managers {
 
             // Dummy sphere for Debug
             if(debug) {
-
+                
                 // Add some fake spheres to hightlight the referencial
-                CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
+                CreateGameObject(sphere, new Vector3(1.0f, 0.0f, 0.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.red);
 
-                CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
+                CreateGameObject(sphere, new Vector3(0.0f, 1.0f, 0.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.green);
 
-                CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
+                CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 1.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.blue);
 
-                CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
+                CreateGameObject(sphere, new Vector3(1.0f, 1.0f, 1.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);
 
-                CreateGameObject(sphere, new Vector3(0.6f, 1.2f, 1.2f));
+                CreateGameObject(sphere, new Vector3(0.6f, .2f, .2f));
 
-                CreateGameObject(sphere, new Vector3(0.8f, 1.1f, 1.0f));
+                CreateGameObject(sphere, new Vector3(0.3f, 0.0f, 1.0f));
 
                 CreateGameObject(sphere, new Vector3(1.0f, 0.2f, 0.1f));
 
-                CreateGameObject(sphere, new Vector3(1.1f, 0.3f, 0.2f));
+                CreateGameObject(sphere, new Vector3(0.1f, 0.3f, 0.2f));
 
                 CreateGameObject(sphere, new Vector3(0.8f, 0.5f, 0.1f));
             }
@@ -82,7 +82,7 @@ namespace CAD.Managers {
             CalculateDistancesTable();
 
             // Resolve Distance problems
-            ResolveDistanceProblems();
+            //ResolveDistanceProblems();
         }
 
         // Update is called once per frame
@@ -200,10 +200,8 @@ namespace CAD.Managers {
                 if(issues.Count == 0)
                     continue;
 
-                Vector3 currentSpherePosition = distanceIssues.Keys.First().transform.position;
-
-                Vector3 minPoint = currentSpherePosition;
-                Vector3 maxPoint = currentSpherePosition;
+                Vector3 minPoint = distanceIssues.Keys.First().transform.position;
+                Vector3 maxPoint = distanceIssues.Keys.First().transform.position;
 
                 foreach(GameObject issue in issues) {
 
@@ -225,6 +223,8 @@ namespace CAD.Managers {
                         maxPoint.z = pos.z;                    
 
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
+
+                    ColorGameObject(issue, Color.magenta);
                 }
 
                 // using centroid as the new position
@@ -245,6 +245,8 @@ namespace CAD.Managers {
             placeholder.name = gameObject.name + position.ToString();
 
             sphereRepresentationList.Add(placeholder);
+
+            ColorGameObject(placeholder, Color.yellow);
 
             return placeholder;
         }
