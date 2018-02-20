@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 using System.IO;
 using System.Linq;
 
 using CAD.Utility;
-using System;
 
 namespace CAD.Managers {
 
@@ -22,11 +20,17 @@ namespace CAD.Managers {
         // List of all the assemblies in the scene
         List<GameObject> assemblyList;
 
+        // Storing the data for the assemblies that are too close to eachother
         Dictionary<GameObject, List<GameObject>> distanceIssues = new Dictionary<GameObject, List<GameObject>>();
+
+        // List of Json Data
+        List<List<Caracteristic>> caracteristicLists;
 
         string directoryPath = "Assets/Resources/Caracteristic Files/";
 
         public float threshhold;
+
+        public bool debug;
 
         // Use this for initialization
         void Start() {
@@ -37,47 +41,47 @@ namespace CAD.Managers {
 
             assemblyList = new List<GameObject>();
 
-            threshhold = 0.4f;
+            caracteristicLists = new List<List<Caracteristic>>();
+
+            threshhold = 0.5f;
 
             // Add all assemblies as children of this object
             MakeChild();
 
             // Read the data from json for each assembly
             CollectAssemblyData();
-            
-            // distance between two sphere is < threshshold
-            //CheckSphereThresholdDistance();
-
-            // Add some fake spheres to hightlight the referencial
-            CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
-            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.red);
-
-            CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
-            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.green);
-
-            CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
-            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.blue);
-
-            CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
-            ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);
 
             // Dummy sphere for Debug
-            CreateGameObject(sphere, new Vector3(0.6f, 1.2f, 1.2f));
+            if(debug) {
 
-            CreateGameObject(sphere, new Vector3(0.8f, 1.1f, 1.0f));
+                // Add some fake spheres to hightlight the referencial
+                CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
+                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.red);
 
-            // More Dummies
+                CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
+                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.green);
 
-            CreateGameObject(sphere, new Vector3(1.0f, 0.2f, 0.1f));
+                CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
+                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.blue);
 
-            CreateGameObject(sphere, new Vector3(1.1f, 0.3f, 0.2f));
+                CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
+                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);
 
-            CreateGameObject(sphere, new Vector3(0.8f, 0.5f, 0.1f));
+                CreateGameObject(sphere, new Vector3(0.6f, 1.2f, 1.2f));
+
+                CreateGameObject(sphere, new Vector3(0.8f, 1.1f, 1.0f));
+
+                CreateGameObject(sphere, new Vector3(1.0f, 0.2f, 0.1f));
+
+                CreateGameObject(sphere, new Vector3(1.1f, 0.3f, 0.2f));
+
+                CreateGameObject(sphere, new Vector3(0.8f, 0.5f, 0.1f));
+            }
 
             // Calculate the distances between the assemblies
             CalculateDistancesTable();
 
-            // Resolve Distance problems that arise
+            // Resolve Distance problems
             ResolveDistanceProblems();
         }
 
@@ -99,30 +103,36 @@ namespace CAD.Managers {
                     go.transform.parent = this.transform;
         }
 
-
         /// <summary>
         /// Read data from json files
         /// </summary>
         void CollectAssemblyData() {
 
-            // JSON parsing
-            // change from 0 --> i, when we have all the objects
-            StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Caracteristic Files/" + this.transform.GetChild(0).name + ".json");
-            string jsonString = sr.ReadToEnd();
-            jsonString = Utility.Utility.FixJson(jsonString);
+            for(int i = 0; i < transform.childCount; i++) {
 
-            // Deserialize Json file
-            Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
+                string objectName = this.transform.GetChild(i).name;
 
-            // Order the List
-            List<Caracteristic> sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
-            // add this list to a list of lists that stores all the data
+                // JSON parsing
+                StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Caracteristic Files/" + objectName + ".json");
 
-            // Save the highest local measure
-            Caracteristic highestLocalMeasure = sortedCaracteristics[0];
+                string jsonString = sr.ReadToEnd();
+                jsonString = JsonHelper.FixJson(jsonString);
 
-            // Instanciate the sphere
-            CreateGameObject(sphere, new Vector3(highestLocalMeasure.mustruct, highestLocalMeasure.muPos, highestLocalMeasure.mujoint));
+                // Deserialize Json file
+                Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
+
+                // Order the List
+                List<Caracteristic> sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
+
+                // add this list to a list of lists to store all the data
+                caracteristicLists.Add(sortedCaracteristics);
+
+                // Save the highest local measure
+                Caracteristic highestLocalMeasure = sortedCaracteristics[0];
+
+                // Instanciate the sphere
+                CreateGameObject(sphere, new Vector3(highestLocalMeasure.mustruct, highestLocalMeasure.muPos, highestLocalMeasure.mujoint), objectName);
+            }
         }
 
         /// <summary>
@@ -178,12 +188,10 @@ namespace CAD.Managers {
             }
         }
 
+        /// <summary>
+        /// Generic function that for all the close assemblies calculates the new position for the sphere
+        /// </summary>
         void ResolveDistanceProblems() {
-
-            Vector3 newSpherePosition = Vector3.zero; 
-            
-            // Color the principal gameObject too
-            ColorGameObject(distanceIssues.Keys.First(), Color.magenta);
 
             Vector3 centroid = Vector3.zero;
 
@@ -192,8 +200,10 @@ namespace CAD.Managers {
                 if(issues.Count == 0)
                     continue;
 
-                Vector3 minPoint = distanceIssues.Keys.First().transform.position;
-                Vector3 maxPoint = distanceIssues.Keys.First().transform.position;
+                Vector3 currentSpherePosition = distanceIssues.Keys.First().transform.position;
+
+                Vector3 minPoint = currentSpherePosition;
+                Vector3 maxPoint = currentSpherePosition;
 
                 foreach(GameObject issue in issues) {
 
@@ -215,20 +225,60 @@ namespace CAD.Managers {
                         maxPoint.z = pos.z;                    
 
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
-                    
-                    ColorGameObject(issue, Color.magenta);
                 }
 
-                newSpherePosition = centroid;
-
-                CreateGameObject(sphere, newSpherePosition);
+                // using centroid as the new position
+                CreateGameObject(sphere, centroid, issues);
             }            
         }
 
+        /// <summary>
+        /// Used for Dummy GameObjects
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="position"></param>
+        /// <returns></returns>
         GameObject CreateGameObject(GameObject gameObject, Vector3 position) {
 
             GameObject placeholder = Instantiate(gameObject, position, Quaternion.identity);
+
             placeholder.name = gameObject.name + position.ToString();
+
+            sphereRepresentationList.Add(placeholder);
+
+            return placeholder;
+        }
+
+        /// <summary>
+        /// Used for the initialization, when parsing the Json files of all the assemblies
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="position"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        GameObject CreateGameObject(GameObject gameObject, Vector3 position, string name) {
+
+            GameObject placeholder = Instantiate(gameObject, position, Quaternion.identity);
+            
+            placeholder.name = name;
+
+            // Script that will display the assemblies
+            placeholder.AddComponent<DisplayAssembly>();
+
+            sphereRepresentationList.Add(placeholder);
+
+            return placeholder;
+        }
+
+        GameObject CreateGameObject(GameObject gameObject, Vector3 position, List<GameObject> assemblies) {
+
+            GameObject placeholder = Instantiate(gameObject, position, Quaternion.identity);
+
+            placeholder.name = gameObject.name + position.ToString();
+
+            // Script that will display the assemblies
+            placeholder.AddComponent<DisplayAssembly>();
+            placeholder.GetComponent<DisplayAssembly>().StoreAssemblies(assemblies);
 
             sphereRepresentationList.Add(placeholder);
 
