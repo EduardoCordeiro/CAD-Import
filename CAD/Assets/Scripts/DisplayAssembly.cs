@@ -9,20 +9,16 @@ public class DisplayAssembly : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        assembliesList = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        print(assembliesList.Count);
 	}
 
     public void StoreAssemblies(List<GameObject> assemblies) {
 
-        this.assembliesList = assemblies;
-
-        print("inside" + assemblies.Count + "   " + assembliesList.Count);
+        this.assembliesList = new List<GameObject>(assemblies);
     }
 
     public void DisplayAssemblies() {

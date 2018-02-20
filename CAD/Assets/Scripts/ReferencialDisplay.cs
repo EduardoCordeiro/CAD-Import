@@ -12,6 +12,8 @@ namespace CAD.Managers {
 
     public class ReferencialDisplay : MonoBehaviour {
 
+        Vector3 referencialPosition;
+
         GameObject sphere;
 
         // placeholder for input
@@ -34,6 +36,8 @@ namespace CAD.Managers {
 
         // Use this for initialization
         void Start() {
+
+            referencialPosition = Camera.main.transform.position - Vector3.zero / 2;
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
@@ -73,7 +77,7 @@ namespace CAD.Managers {
 
                 CreateGameObject(sphere, new Vector3(1.0f, 0.2f, 0.1f));
 
-                CreateGameObject(sphere, new Vector3(0.1f, 0.3f, 0.2f));
+                CreateGameObject(sphere, new Vector3(1.0f, 0.3f, 0.1f));
 
                 CreateGameObject(sphere, new Vector3(0.8f, 0.5f, 0.1f));
             }
@@ -82,7 +86,7 @@ namespace CAD.Managers {
             CalculateDistancesTable();
 
             // Resolve Distance problems
-            //ResolveDistanceProblems();
+            ResolveDistanceProblems();
         }
 
         // Update is called once per frame
@@ -195,15 +199,16 @@ namespace CAD.Managers {
 
             Vector3 centroid = Vector3.zero;
 
-            foreach(List<GameObject> issues in distanceIssues.Values) {
 
-                if(issues.Count == 0)
+            foreach(KeyValuePair<GameObject, List<GameObject>> issues in distanceIssues) {
+
+                if(issues.Value.Count == 0)
                     continue;
 
-                Vector3 minPoint = distanceIssues.Keys.First().transform.position;
-                Vector3 maxPoint = distanceIssues.Keys.First().transform.position;
+                Vector3 minPoint = issues.Key.transform.position;
+                Vector3 maxPoint = issues.Key.transform.position;
 
-                foreach(GameObject issue in issues) {
+                foreach(GameObject issue in issues.Value) {
 
                     Vector3 pos = issue.transform.position;
 
@@ -220,16 +225,16 @@ namespace CAD.Managers {
                     if(pos.z < minPoint.z)
                         minPoint.z = pos.z;
                     if(pos.z > maxPoint.z)
-                        maxPoint.z = pos.z;                    
+                        maxPoint.z = pos.z;
 
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
-
-                    ColorGameObject(issue, Color.magenta);
+                    print(issue.name);
+                    print(centroid);
                 }
 
                 // using centroid as the new position
-                CreateGameObject(sphere, centroid, issues);
-            }            
+                CreateGameObject(sphere, centroid, issues.Value);
+            }
         }
 
         /// <summary>
@@ -245,8 +250,6 @@ namespace CAD.Managers {
             placeholder.name = gameObject.name + position.ToString();
 
             sphereRepresentationList.Add(placeholder);
-
-            ColorGameObject(placeholder, Color.yellow);
 
             return placeholder;
         }
@@ -290,27 +293,6 @@ namespace CAD.Managers {
         void ColorGameObject(GameObject gameObject, Color color) {
 
             gameObject.GetComponent<Renderer>().material.color = color;
-        }
-
-        // Substitute the code in OnDrawGizmos here
-        void DrawReferencial() {
-            
-        }
-
-        // Refactor this code to DrawReferencial
-        void OnDrawGizmos() {
-
-            Gizmos.color = Color.red;
-
-            Gizmos.DrawLine(Vector3.zero, new Vector3(2.0f, 0.0f, 0.0f));
-
-            Gizmos.color = Color.green;
-
-            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 2.0f, 0.0f));
-
-            Gizmos.color = Color.blue;
-
-            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 0.0f, 2.0f));
         }
     }
 }
