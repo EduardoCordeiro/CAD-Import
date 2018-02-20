@@ -12,6 +12,8 @@ namespace CAD.Managers {
 
     public class ReferencialDisplay : MonoBehaviour {
 
+        Vector3 referencialPosition;
+
         GameObject sphere;
 
         // placeholder for input
@@ -28,12 +30,14 @@ namespace CAD.Managers {
 
         string directoryPath = "Assets/Resources/Caracteristic Files/";
 
-        public float threshhold;
+        private float threshhold;
 
         public bool debug;
 
         // Use this for initialization
         void Start() {
+
+            referencialPosition = Camera.main.transform.position - Vector3.zero / 2;
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
@@ -43,7 +47,7 @@ namespace CAD.Managers {
 
             caracteristicLists = new List<List<Caracteristic>>();
 
-            threshhold = 0.5f;
+            threshhold = 0.2f;
 
             // Add all assemblies as children of this object
             MakeChild();
@@ -53,27 +57,27 @@ namespace CAD.Managers {
 
             // Dummy sphere for Debug
             if(debug) {
-
+                
                 // Add some fake spheres to hightlight the referencial
-                CreateGameObject(sphere, new Vector3(2.0f, 0.0f, 0.0f));
+                CreateGameObject(sphere, new Vector3(1.0f, 0.0f, 0.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.red);
 
-                CreateGameObject(sphere, new Vector3(0.0f, 2.0f, 0.0f));
+                CreateGameObject(sphere, new Vector3(0.0f, 1.0f, 0.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.green);
 
-                CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 2.0f));
+                CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 1.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.blue);
 
-                CreateGameObject(sphere, new Vector3(2.0f, 2.0f, 2.0f));
+                CreateGameObject(sphere, new Vector3(1.0f, 1.0f, 1.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);
 
-                CreateGameObject(sphere, new Vector3(0.6f, 1.2f, 1.2f));
+                CreateGameObject(sphere, new Vector3(0.6f, .2f, .2f));
 
-                CreateGameObject(sphere, new Vector3(0.8f, 1.1f, 1.0f));
+                CreateGameObject(sphere, new Vector3(0.3f, 0.0f, 1.0f));
 
                 CreateGameObject(sphere, new Vector3(1.0f, 0.2f, 0.1f));
 
-                CreateGameObject(sphere, new Vector3(1.1f, 0.3f, 0.2f));
+                CreateGameObject(sphere, new Vector3(1.0f, 0.3f, 0.1f));
 
                 CreateGameObject(sphere, new Vector3(0.8f, 0.5f, 0.1f));
             }
@@ -195,17 +199,16 @@ namespace CAD.Managers {
 
             Vector3 centroid = Vector3.zero;
 
-            foreach(List<GameObject> issues in distanceIssues.Values) {
 
-                if(issues.Count == 0)
+            foreach(KeyValuePair<GameObject, List<GameObject>> issues in distanceIssues) {
+
+                if(issues.Value.Count == 0)
                     continue;
 
-                Vector3 currentSpherePosition = distanceIssues.Keys.First().transform.position;
+                Vector3 minPoint = issues.Key.transform.position;
+                Vector3 maxPoint = issues.Key.transform.position;
 
-                Vector3 minPoint = currentSpherePosition;
-                Vector3 maxPoint = currentSpherePosition;
-
-                foreach(GameObject issue in issues) {
+                foreach(GameObject issue in issues.Value) {
 
                     Vector3 pos = issue.transform.position;
 
@@ -222,14 +225,16 @@ namespace CAD.Managers {
                     if(pos.z < minPoint.z)
                         minPoint.z = pos.z;
                     if(pos.z > maxPoint.z)
-                        maxPoint.z = pos.z;                    
+                        maxPoint.z = pos.z;
 
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
+                    print(issue.name);
+                    print(centroid);
                 }
 
                 // using centroid as the new position
-                CreateGameObject(sphere, centroid, issues);
-            }            
+                CreateGameObject(sphere, centroid, issues.Value);
+            }
         }
 
         /// <summary>
@@ -288,27 +293,6 @@ namespace CAD.Managers {
         void ColorGameObject(GameObject gameObject, Color color) {
 
             gameObject.GetComponent<Renderer>().material.color = color;
-        }
-
-        // Substitute the code in OnDrawGizmos here
-        void DrawReferencial() {
-            
-        }
-
-        // Refactor this code to DrawReferencial
-        void OnDrawGizmos() {
-
-            Gizmos.color = Color.red;
-
-            Gizmos.DrawLine(Vector3.zero, new Vector3(2.0f, 0.0f, 0.0f));
-
-            Gizmos.color = Color.green;
-
-            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 2.0f, 0.0f));
-
-            Gizmos.color = Color.blue;
-
-            Gizmos.DrawLine(Vector3.zero, new Vector3(0.0f, 0.0f, 2.0f));
         }
     }
 }
