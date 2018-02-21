@@ -21,10 +21,17 @@ public class DisplayAssembly : MonoBehaviour {
         this.assembliesList = new List<GameObject>(assemblies);
     }
 
-    public void DisplayAssemblies() {
+    public void DisplayAssemblies(Vector3 hitPosition) {
 
-        print("I will display these assemblies");
-        foreach(GameObject assembly in assembliesList)
-            print(assembly.name);
+        Vector3 offset = new Vector3(0.3f, 0.0f, 0.0f);
+
+        foreach(GameObject assembly in assembliesList) {
+
+            assembly.SetActive(true);
+
+            assembly.transform.position = hitPosition;
+
+            hitPosition += offset;
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GazeSelection : MonoBehaviour {
 
@@ -61,7 +63,11 @@ public class GazeSelection : MonoBehaviour {
 
             selection = currentHit.collider.gameObject;
 
-            selection.GetComponent<DisplayAssembly>().DisplayAssemblies();
+            // Call the DispayAssembly Script
+            currentHit.collider.GetComponent<DisplayAssembly>().DisplayAssemblies(currentHit.point);
+
+            // Disable the Spheres
+            ToggleSphere(false);
 
             print("selection is correct?");
         } else
@@ -73,5 +79,20 @@ public class GazeSelection : MonoBehaviour {
         yield return new WaitForSeconds(2);
 
         SelectSphere();
+    }
+
+
+    void ToggleSphere(bool value) {
+
+        List<GameObject> rootObjects = new List<GameObject>();
+        SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
+
+        foreach(GameObject go in rootObjects)
+            if(go.GetComponent<DisplayAssembly>() != null) {
+                if(value)
+                    go.SetActive(true);
+                else
+                    go.SetActive(false);
+            }
     }
 }

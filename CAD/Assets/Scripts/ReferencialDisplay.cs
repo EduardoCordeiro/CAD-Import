@@ -212,6 +212,8 @@ namespace CAD.Managers {
                 Vector3 minPoint = issues.Key.transform.position;
                 Vector3 maxPoint = issues.Key.transform.position;
 
+                List<GameObject> assembliesList = new List<GameObject>();
+
                 foreach(GameObject issue in issues.Value) {
 
                     Vector3 pos = issue.transform.position;
@@ -232,10 +234,13 @@ namespace CAD.Managers {
                         maxPoint.z = pos.z;
 
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
+                    
+                    // Get the Actual assembly, and not the sphere
+                    assembliesList.Add(GameObject.Find("Assemblies").transform.Find(issue.name).gameObject);
                 }
 
-                List<GameObject> assembliesList = new List<GameObject>(issues.Value);
-                assembliesList.Add(issues.Key);
+                // Get the Actual assembly, and not the sphere, for the object we are comparing to
+                assembliesList.Add(GameObject.Find("Assemblies").transform.Find(issues.Key.name).gameObject);
 
                 // using centroid as the new position
                 CreateGameObject(sphere, centroid, assembliesList);
