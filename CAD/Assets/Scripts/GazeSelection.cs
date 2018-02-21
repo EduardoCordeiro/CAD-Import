@@ -28,6 +28,8 @@ public class GazeSelection : MonoBehaviour {
 
         if(DebugDrawRay)
             Debug.DrawRay(this.transform.position, this.transform.forward, Color.cyan);
+
+        
     }
 
     public void Gaze() {
@@ -50,9 +52,9 @@ public class GazeSelection : MonoBehaviour {
 
     public void SelectSphere() {
 
-        //selection = currentHit.collider.gameObject;
+        selection = currentHit.collider.gameObject;
 
-        //selection.GetComponent<DisplayAssembly>().DisplayAssemblies();
+        selection.GetComponent<DisplayAssembly>().DisplayAssemblies();
     }
 
     IEnumerator GazeConfirmation() {

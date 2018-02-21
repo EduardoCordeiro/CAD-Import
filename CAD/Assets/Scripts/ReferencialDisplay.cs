@@ -59,7 +59,7 @@ namespace CAD.Managers {
             if(debug) {
                 
                 // Add some fake spheres to hightlight the referencial
-                CreateGameObject(sphere, new Vector3(1.0f, 0.0f, 0.0f));
+                /*CreateGameObject(sphere, new Vector3(1.0f, 0.0f, 0.0f));
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.red);
 
                 CreateGameObject(sphere, new Vector3(0.0f, 1.0f, 0.0f));
@@ -69,7 +69,7 @@ namespace CAD.Managers {
                 ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.blue);
 
                 CreateGameObject(sphere, new Vector3(1.0f, 1.0f, 1.0f));
-                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);
+                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);*/
 
                 CreateGameObject(sphere, new Vector3(0.6f, .2f, .2f));
 
@@ -199,7 +199,6 @@ namespace CAD.Managers {
 
             Vector3 centroid = Vector3.zero;
 
-
             foreach(KeyValuePair<GameObject, List<GameObject>> issues in distanceIssues) {
 
                 if(issues.Value.Count == 0)
@@ -228,8 +227,6 @@ namespace CAD.Managers {
                         maxPoint.z = pos.z;
 
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
-                    print(issue.name);
-                    print(centroid);
                 }
 
                 // using centroid as the new position
@@ -286,7 +283,7 @@ namespace CAD.Managers {
             placeholder.GetComponent<DisplayAssembly>().StoreAssemblies(assemblies);
 
             sphereRepresentationList.Add(placeholder);
-
+            ColorGameObject(placeholder, Color.magenta);
             return placeholder;
         }
 
