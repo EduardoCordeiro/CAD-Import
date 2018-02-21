@@ -13,6 +13,8 @@ public class GazeSelection : MonoBehaviour {
 
     public RaycastHit oldHit { get; private set; }
 
+    public bool hittingObject { get; private set; }
+
     /// <summary>
     /// Draw the Gaze ray
     /// </summary>
@@ -43,6 +45,8 @@ public class GazeSelection : MonoBehaviour {
         // hitInfo's collider GameObject represents the assembly being gazed at
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20.0f, Physics.DefaultRaycastLayers)) {
 
+            hittingObject = true;
+
             currentHit = hitInfo;
 
             print("I hit something!" + currentHit.collider.name);
@@ -55,11 +59,13 @@ public class GazeSelection : MonoBehaviour {
             // Old Hit Information
             oldHit = hitInfo;
         }
+        else
+            hittingObject = false;
     }
 
     public void SelectSphere() {
 
-        if(currentHit.collider == oldHit.collider) {
+        if(currentHit.collider == oldHit.collider && hittingObject) {
 
             selection = currentHit.collider.gameObject;
 
