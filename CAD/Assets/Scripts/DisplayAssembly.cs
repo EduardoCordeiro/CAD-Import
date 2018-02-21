@@ -23,6 +23,8 @@ public class DisplayAssembly : MonoBehaviour {
 
     public void DisplayAssemblies() {
 
-
+        print("I will display these assemblies");
+        foreach(GameObject assembly in assembliesList)
+            print(assembly.name);
     }
 }

@@ -135,7 +135,12 @@ namespace CAD.Managers {
                 Caracteristic highestLocalMeasure = sortedCaracteristics[0];
 
                 // Instanciate the sphere
-                CreateGameObject(sphere, new Vector3(highestLocalMeasure.mushape, highestLocalMeasure.muPos, highestLocalMeasure.mujoint), objectName);
+                CreateGameObject(   sphere, 
+                                    new Vector3(highestLocalMeasure.mushape, 
+                                                highestLocalMeasure.muPos, 
+                                                highestLocalMeasure.mujoint), 
+                                    objectName, 
+                                    new List<GameObject>() { this.transform.GetChild(i).gameObject });
             }
         }
 
@@ -229,8 +234,11 @@ namespace CAD.Managers {
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
                 }
 
+                List<GameObject> assembliesList = new List<GameObject>(issues.Value);
+                assembliesList.Add(issues.Key);
+
                 // using centroid as the new position
-                CreateGameObject(sphere, centroid, issues.Value);
+                CreateGameObject(sphere, centroid, assembliesList);
             }
         }
 
@@ -258,7 +266,7 @@ namespace CAD.Managers {
         /// <param name="position"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        GameObject CreateGameObject(GameObject gameObject, Vector3 position, string name) {
+        GameObject CreateGameObject(GameObject gameObject, Vector3 position, string name, List<GameObject> assemblies) {
 
             GameObject placeholder = Instantiate(gameObject, position, Quaternion.identity);
             
@@ -266,6 +274,7 @@ namespace CAD.Managers {
 
             // Script that will display the assemblies
             placeholder.AddComponent<DisplayAssembly>();
+            placeholder.GetComponent<DisplayAssembly>().StoreAssemblies(assemblies);
 
             sphereRepresentationList.Add(placeholder);
 
@@ -283,7 +292,10 @@ namespace CAD.Managers {
             placeholder.GetComponent<DisplayAssembly>().StoreAssemblies(assemblies);
 
             sphereRepresentationList.Add(placeholder);
+
+            // Coloring for now
             ColorGameObject(placeholder, Color.magenta);
+
             return placeholder;
         }
 

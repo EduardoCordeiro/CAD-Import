@@ -9,6 +9,8 @@ public class GazeSelection : MonoBehaviour {
     /// </summary>
     public RaycastHit currentHit { get; private set; }
 
+    public RaycastHit oldHit { get; private set; }
+
     /// <summary>
     /// Draw the Gaze ray
     /// </summary>
@@ -27,40 +29,49 @@ public class GazeSelection : MonoBehaviour {
         Gaze();
 
         if(DebugDrawRay)
-            Debug.DrawRay(this.transform.position, this.transform.forward, Color.cyan);
-
-        
+            Debug.DrawRay(this.transform.position, this.transform.forward, Color.cyan);        
     }
 
     public void Gaze() {
 
         RaycastHit hitInfo;
 
+        // If the Raycast has succeeded and hit a sphere
+        // hitInfo's point represents the position being gazed at
+        // hitInfo's collider GameObject represents the assembly being gazed at
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20.0f, Physics.DefaultRaycastLayers)) {
 
             currentHit = hitInfo;
 
-            // If the Raycast has succeeded and hit a sphere
-            // hitInfo's point represents the position being gazed at
-            // hitInfo's collider GameObject represents the assembly being gazed at
+            print("I hit something!" + currentHit.collider.name);
 
+            // Timer > 2 seconds, select Object
             // here we will wait for 1-2 seconds and then select the object
             //StartCoroutine(GazeConfirmation());
-            SelectSphere();
+            StartCoroutine(GazeConfirmation());
+
+            // Old Hit Information
+            oldHit = hitInfo;
         }
     }
 
     public void SelectSphere() {
 
-        selection = currentHit.collider.gameObject;
+        if(currentHit.collider == oldHit.collider) {
 
-        selection.GetComponent<DisplayAssembly>().DisplayAssemblies();
+            selection = currentHit.collider.gameObject;
+
+            selection.GetComponent<DisplayAssembly>().DisplayAssemblies();
+
+            print("selection is correct?");
+        } else
+            print("Collider has changed");
     }
 
     IEnumerator GazeConfirmation() {
         
         yield return new WaitForSeconds(2);
 
-        //currentHit.transform.name == 
+        SelectSphere();
     }
 }
