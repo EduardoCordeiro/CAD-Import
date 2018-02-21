@@ -9058,3 +9058,903 @@ exported_mesh 1
 assembly_num 1
 cad_format STL
 ------------------
+imported_datetime 2/21/2018 11:36:10 AM
+imported_file BOLT11-1.STL
+imported_hash dbcdd2ad4c7395949f666a49811a02fd
+imported_span 00:00:05.1156729
+imported_size 358,284B (0.34MB)
+exported_vtx 7190
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:36:16 AM
+imported_file BOLT11-1.STL
+imported_hash dbcdd2ad4c7395949f666a49811a02fd
+imported_span 00:00:04.8254256
+imported_size 358,284B (0.34MB)
+exported_vtx 7190
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:36:21 AM
+imported_file BOLT111-1.STL
+imported_hash 3effe403a96079cb115fb0ddd8aa409f
+imported_span 00:00:04.8059496
+imported_size 358,284B (0.34MB)
+exported_vtx 7190
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:36:27 AM
+imported_file BOLT211-1.STL
+imported_hash cc954c86473fde850894f336a0f09c47
+imported_span 00:00:05.0712321
+imported_size 358,284B (0.34MB)
+exported_vtx 7190
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:36:33 AM
+imported_file BOLT311-1.STL
+imported_hash 04bfe11621bbf9252d9caa6d5285bb85
+imported_span 00:00:04.7050112
+imported_size 358,284B (0.34MB)
+exported_vtx 7190
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:36:38 AM
+imported_file FLANGEHUB11-1.STL
+imported_hash 2e9037b0daca37dc3957d4008142f5ea
+imported_span 00:00:04.4027607
+imported_size 69,884B (0.07MB)
+exported_vtx 1388
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:36:43 AM
+imported_file FLANGEHUB111-1.STL
+imported_hash 3c8cb6dda525681746f3173a38db2df4
+imported_span 00:00:04.5161897
+imported_size 69,884B (0.07MB)
+exported_vtx 1388
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:36:49 AM
+imported_file KEY11-1.STL
+imported_hash 4e834893eb93e9df0246ecdf92b6747e
+imported_span 00:00:04.5018994
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:36:54 AM
+imported_file KEY111-1.STL
+imported_hash ac452bf96ba08e3ca7b0257e8bae3286
+imported_span 00:00:04.4971165
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:37:00 AM
+imported_file NUT11-1.STL
+imported_hash e98deb49e18c66cbe958511763ce761d
+imported_span 00:00:04.8597829
+imported_size 276,584B (0.26MB)
+exported_vtx 5550
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:37:06 AM
+imported_file NUT111-1.STL
+imported_hash 897c0e9baf90826518122b0049d8f983
+imported_span 00:00:04.7620513
+imported_size 276,584B (0.26MB)
+exported_vtx 5550
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:37:11 AM
+imported_file NUT211-1.STL
+imported_hash 8baf5d16a7d89f688b8ef5d2ecfdcf52
+imported_span 00:00:04.6721051
+imported_size 276,584B (0.26MB)
+exported_vtx 5554
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:37:17 AM
+imported_file NUT311-1.STL
+imported_hash 4ac5215c0b379597c9cbbdcce2a89f0e
+imported_span 00:00:04.8231197
+imported_size 276,584B (0.26MB)
+exported_vtx 5554
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:37:23 AM
+imported_file SOLID11-1.STL
+imported_hash e68c33d5a0330587f2912c37c3c7294b
+imported_span 00:00:04.5822007
+imported_size 9,984B (0.01MB)
+exported_vtx 209
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:37:28 AM
+imported_file SOLID111-1.STL
+imported_hash 10c676cae655033a74ccfc6f0f42da86
+imported_span 00:00:04.4182374
+imported_size 9,984B (0.01MB)
+exported_vtx 209
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:37:52 AM
+imported_file Bolt-1.STL
+imported_hash 1cbed7624af9189de90621b8ee3700a8
+imported_span 00:00:04.8074411
+imported_size 744,884B (0.71MB)
+exported_vtx 14944
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:37:58 AM
+imported_file Bolt-1.STL
+imported_hash 1cbed7624af9189de90621b8ee3700a8
+imported_span 00:00:05.0701387
+imported_size 744,884B (0.71MB)
+exported_vtx 14944
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:05 AM
+imported_file Bolt-2.STL
+imported_hash d8a2fe44ea3c3c27d1cae787e8736bee
+imported_span 00:00:05.1738406
+imported_size 744,884B (0.71MB)
+exported_vtx 14944
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:11 AM
+imported_file Bolt-3.STL
+imported_hash 67bd445eaa97ae947bb6117297e684a8
+imported_span 00:00:05.1137413
+imported_size 744,884B (0.71MB)
+exported_vtx 14944
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:17 AM
+imported_file Bolt-4.STL
+imported_hash 51ec16e3cc79e090474c9cb5468cb631
+imported_span 00:00:05.7649519
+imported_size 744,884B (0.71MB)
+exported_vtx 14944
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:23 AM
+imported_file Flange1-1.STL
+imported_hash 3dbbfc647be9bcad7f416866168365d0
+imported_span 00:00:04.6180013
+imported_size 299,984B (0.29MB)
+exported_vtx 3626
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:29 AM
+imported_file Flange2-1.STL
+imported_hash 5d39b73a02efaa94993be29b2fa4ff4d
+imported_span 00:00:04.7803103
+imported_size 297,084B (0.28MB)
+exported_vtx 3596
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:34 AM
+imported_file Key-1.STL
+imported_hash 4d6372d88b2cd2fb31b541b1a4e078b3
+imported_span 00:00:04.5552565
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:39 AM
+imported_file Key-2.STL
+imported_hash 9075d9ab10d31bda7682bf9288d2d5d6
+imported_span 00:00:04.3754747
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:45 AM
+imported_file Nut-1.STL
+imported_hash ad2a8e98adaef6e9650d58261a2cfab8
+imported_span 00:00:04.9404834
+imported_size 243,784B (0.23MB)
+exported_vtx 4916
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:51 AM
+imported_file Nut-2.STL
+imported_hash 6fd7983e4004b136867049edc270f2d0
+imported_span 00:00:04.6866157
+imported_size 243,784B (0.23MB)
+exported_vtx 4916
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:38:57 AM
+imported_file Nut-3.STL
+imported_hash 826559c7389b65d378d42f9b0c078d2b
+imported_span 00:00:04.8834237
+imported_size 243,784B (0.23MB)
+exported_vtx 4916
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:02 AM
+imported_file Nut-4.STL
+imported_hash c5524491726975912ddf245b17ad3a7b
+imported_span 00:00:04.7576553
+imported_size 243,784B (0.23MB)
+exported_vtx 4916
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:08 AM
+imported_file Shaft-1.STL
+imported_hash 8aabc1bb2e8a4046e4c30347061c49d3
+imported_span 00:00:04.5498745
+imported_size 7,984B (0.01MB)
+exported_vtx 169
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:14 AM
+imported_file Shaft-2.STL
+imported_hash 3db7736e41c766114810adaa2fd82b9c
+imported_span 00:00:04.6706162
+imported_size 7,984B (0.01MB)
+exported_vtx 169
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:32 AM
+imported_file bolt4-1.STL
+imported_hash 132346231b6793052722fc10dd9cd0a1
+imported_span 00:00:04.3980074
+imported_size 20,384B (0.02MB)
+exported_vtx 433
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:37 AM
+imported_file bolt4-1.STL
+imported_hash 132346231b6793052722fc10dd9cd0a1
+imported_span 00:00:04.3994252
+imported_size 20,384B (0.02MB)
+exported_vtx 433
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:43 AM
+imported_file bolt4-2.STL
+imported_hash 4a6152967539334077d3bad74915d9ca
+imported_span 00:00:04.5598203
+imported_size 20,384B (0.02MB)
+exported_vtx 433
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:48 AM
+imported_file bolt4-3.STL
+imported_hash c5a91bced5ef42f638d092156b43dfdb
+imported_span 00:00:04.4858876
+imported_size 20,384B (0.02MB)
+exported_vtx 433
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:54 AM
+imported_file bolt4-4.STL
+imported_hash 3717d93d2d25a36af333175501f1ab78
+imported_span 00:00:04.5884524
+imported_size 20,384B (0.02MB)
+exported_vtx 433
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:39:59 AM
+imported_file flange-1.STL
+imported_hash d1dbe109ecb7fd395c7bfbae9685326d
+imported_span 00:00:04.4583483
+imported_size 78,484B (0.07MB)
+exported_vtx 1560
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:04 AM
+imported_file flange2-1.STL
+imported_hash f4fa6965e3c1a18e6fbfd70252cb2fdd
+imported_span 00:00:04.5244519
+imported_size 78,484B (0.07MB)
+exported_vtx 1560
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:10 AM
+imported_file key-1.STL
+imported_hash 2722baf2358dcf0210f2ff5a5bbff668
+imported_span 00:00:04.3645787
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:15 AM
+imported_file key-2.STL
+imported_hash db1a19a948acb4097fd8b36870f515df
+imported_span 00:00:04.5566465
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:21 AM
+imported_file nut-1.STL
+imported_hash 590340baf4dec2fe61441ba727ffa01d
+imported_span 00:00:04.4054052
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:26 AM
+imported_file nut-2.STL
+imported_hash e5fca31d9eb9ef700431c4a70b235ca0
+imported_span 00:00:04.5514852
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:32 AM
+imported_file nut-3.STL
+imported_hash 523289e352eb8d595f4cdc5c33d43312
+imported_span 00:00:04.6629566
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:37 AM
+imported_file nut-4.STL
+imported_hash 1a01f8931242612f8a9380fd5c9aa681
+imported_span 00:00:04.4406225
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:43 AM
+imported_file shaft-1.STL
+imported_hash e3cf1eb355442d6491180072575c7af3
+imported_span 00:00:04.6249408
+imported_size 14,784B (0.01MB)
+exported_vtx 301
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:40:48 AM
+imported_file shaft2-1.STL
+imported_hash cbc681165d9c8a3b0538fd2d1543c4b3
+imported_span 00:00:04.6231911
+imported_size 14,784B (0.01MB)
+exported_vtx 301
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:14 AM
+imported_file Assieme5flangecoupling15-1 bolt4-1.STL
+imported_hash d9cbdf3665c4426faa064e36c0286a40
+imported_span 00:00:04.3726446
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:19 AM
+imported_file Assieme5flangecoupling15-1 bolt4-1.STL
+imported_hash d9cbdf3665c4426faa064e36c0286a40
+imported_span 00:00:04.4476626
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:25 AM
+imported_file Assieme5flangecoupling15-1 bolt4-2.STL
+imported_hash 1a382ca845713828f926b94ab3f188a5
+imported_span 00:00:04.6122268
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:30 AM
+imported_file Assieme5flangecoupling15-1 bolt4-3.STL
+imported_hash 5728560e66c9d7e858148e408755547f
+imported_span 00:00:04.5328125
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:36 AM
+imported_file Assieme5flangecoupling15-1 bolt4-4.STL
+imported_hash 6ab6bd410872cc35a0e5f4c70d1ae6b6
+imported_span 00:00:04.5950182
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:41 AM
+imported_file Assieme6flangecoupling15-1 nut-1.STL
+imported_hash 72a3076ab7f55cf30e455310d0a9a569
+imported_span 00:00:04.6832569
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:47 AM
+imported_file Assieme6flangecoupling15-1 nut-2.STL
+imported_hash e756884153c7496cf7e09647b813e7aa
+imported_span 00:00:04.4469447
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:53 AM
+imported_file Assieme6flangecoupling15-1 nut-3.STL
+imported_hash 90119347cf6d74f9045f82cd0c096c21
+imported_span 00:00:04.9135257
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:42:58 AM
+imported_file Assieme6flangecoupling15-1 nut-4.STL
+imported_hash e349987ee1f67ad3112354c4307e0083
+imported_span 00:00:04.7423960
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:43:04 AM
+imported_file flange-1.STL
+imported_hash 84812c745bd86e4d601add610e8ed076
+imported_span 00:00:04.7273903
+imported_size 78,484B (0.07MB)
+exported_vtx 1560
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:43:10 AM
+imported_file flange2-1.STL
+imported_hash b879bb5e2994c80355e46897a730bc0a
+imported_span 00:00:04.6089688
+imported_size 78,484B (0.07MB)
+exported_vtx 1560
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:43:15 AM
+imported_file key-1.STL
+imported_hash d42088f36397cd01da14650ccde80389
+imported_span 00:00:04.6220549
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:43:21 AM
+imported_file key-2.STL
+imported_hash f439e5261c715fbbd4d466bd1a8fa677
+imported_span 00:00:04.6503423
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:43:26 AM
+imported_file shaft-1.STL
+imported_hash 9961bfea53dc503710a91d86356269d7
+imported_span 00:00:04.4754145
+imported_size 14,784B (0.01MB)
+exported_vtx 301
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:43:32 AM
+imported_file shaft2-1.STL
+imported_hash 4685798f20beef5e924c17caca08bb78
+imported_span 00:00:04.6914471
+imported_size 14,784B (0.01MB)
+exported_vtx 301
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:09 AM
+imported_file Assieme10flangecoupling15strutturaModificata-1 flange-1.STL
+imported_hash ec8696b25d70bb1e9ca46f99b1535259
+imported_span 00:00:04.3483281
+imported_size 78,484B (0.07MB)
+exported_vtx 1560
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:15 AM
+imported_file Assieme10flangecoupling15strutturaModificata-1 flange-1.STL
+imported_hash ec8696b25d70bb1e9ca46f99b1535259
+imported_span 00:00:04.7332392
+imported_size 78,484B (0.07MB)
+exported_vtx 1560
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:21 AM
+imported_file Assieme10flangecoupling15strutturaModificata-1 key-1.STL
+imported_hash 1a4fad9414beb7a705e522922e9f3954
+imported_span 00:00:04.6854549
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:26 AM
+imported_file Assieme10flangecoupling15strutturaModificata-1 shaft-1.STL
+imported_hash 6099aaa43970127601fab985b2c1028f
+imported_span 00:00:04.6610937
+imported_size 14,784B (0.01MB)
+exported_vtx 301
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:32 AM
+imported_file Assieme9flangecoupling15strutturaModificata-1 CopiadiAssieme5Assieme9flangecoupling15strutturaModificata-1 bolt4-1.STL
+imported_hash ff8f9160a6757053d3866057a807b5f2
+imported_span 00:00:04.6648531
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:38 AM
+imported_file Assieme9flangecoupling15strutturaModificata-1 CopiadiAssieme5Assieme9flangecoupling15strutturaModificata-1 nut-1.STL
+imported_hash 09e739bb8fa5710c86fe62dc23155e5e
+imported_span 00:00:04.6236362
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:43 AM
+imported_file Assieme9flangecoupling15strutturaModificata-1 CopiadiAssieme6Assieme9flangecoupling15strutturaModificata-1 bolt4-1.STL
+imported_hash 0e3714a506677648c716258ecdd74887
+imported_span 00:00:04.4852646
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:49 AM
+imported_file Assieme9flangecoupling15strutturaModificata-1 CopiadiAssieme6Assieme9flangecoupling15strutturaModificata-1 nut-1.STL
+imported_hash 81716b79551d2feaaaccce3961584d4c
+imported_span 00:00:04.6996648
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:44:54 AM
+imported_file Assieme9flangecoupling15strutturaModificata-1 CopiadiAssieme7Assieme9flangecoupling15strutturaModificata-1 bolt4-1.STL
+imported_hash 8801155df2c761c06bcfa334fb1c1305
+imported_span 00:00:04.5050616
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:45:00 AM
+imported_file Assieme9flangecoupling15strutturaModificata-1 CopiadiAssieme7Assieme9flangecoupling15strutturaModificata-1 nut-1.STL
+imported_hash 68acf90d13c7dbf877d8554123ad66a8
+imported_span 00:00:04.5832080
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:45:05 AM
+imported_file Assieme9flangecoupling15strutturaModificata-1 CopiadiAssieme8Assieme9flangecoupling15strutturaModificata-1 bolt4-1.STL
+imported_hash 58c0dccfadbe8f0c5d01b83dc7ec59c4
+imported_span 00:00:04.4661495
+imported_size 20,484B (0.02MB)
+exported_vtx 435
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:45:11 AM
+imported_file Assieme9flangecoupling15strutturaModificata-1 CopiadiAssieme8Assieme9flangecoupling15strutturaModificata-1 nut-1.STL
+imported_hash 4994978cfb96bcefc9acf8bca6dbc30d
+imported_span 00:00:04.7404938
+imported_size 22,484B (0.02MB)
+exported_vtx 472
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:45:17 AM
+imported_file flange2-1.STL
+imported_hash b74b54a0dacdf23ffc59096d26a6d601
+imported_span 00:00:04.5431449
+imported_size 78,484B (0.07MB)
+exported_vtx 1560
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:45:22 AM
+imported_file key-1.STL
+imported_hash 0086c2475f2ffa0c02e553ca467223e5
+imported_span 00:00:04.4107979
+imported_size 684B (0MB)
+exported_vtx 24
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:45:27 AM
+imported_file shaft2-1.STL
+imported_hash 9f789691827dc7afcd404f4c196a2661
+imported_span 00:00:04.3979713
+imported_size 14,784B (0.01MB)
+exported_vtx 301
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:45:51 AM
+imported_file bolt-1.STL
+imported_hash 5e5474d08b4c5da9a0879e558975373b
+imported_span 00:00:04.3809886
+imported_size 24,184B (0.02MB)
+exported_vtx 521
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:45:57 AM
+imported_file bolt-1.STL
+imported_hash 5e5474d08b4c5da9a0879e558975373b
+imported_span 00:00:04.7242855
+imported_size 24,184B (0.02MB)
+exported_vtx 521
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:02 AM
+imported_file bolt-2.STL
+imported_hash 2be465a6f79520e40b3283ee897d2acf
+imported_span 00:00:04.6987968
+imported_size 24,184B (0.02MB)
+exported_vtx 521
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:08 AM
+imported_file bolt-3.STL
+imported_hash f60a0a3de475eec53afdd176896d99ab
+imported_span 00:00:04.6109769
+imported_size 24,184B (0.02MB)
+exported_vtx 521
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:14 AM
+imported_file bolt-4.STL
+imported_hash 7df56404c3a2afc314fac61db5421dfe
+imported_span 00:00:04.6668560
+imported_size 24,184B (0.02MB)
+exported_vtx 521
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:19 AM
+imported_file bolt-5.STL
+imported_hash a44e3ae277a532e02e541b81295585c5
+imported_span 00:00:04.6108457
+imported_size 24,184B (0.02MB)
+exported_vtx 521
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:25 AM
+imported_file bolt-6.STL
+imported_hash 8159c5291e223ba1b3fb62d93fb02a83
+imported_span 00:00:04.5627497
+imported_size 24,184B (0.02MB)
+exported_vtx 521
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:31 AM
+imported_file flange-1.STL
+imported_hash 7a7af22380b8598875137059dda79e32
+imported_span 00:00:05.0302648
+imported_size 82,684B (0.08MB)
+exported_vtx 1590
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:37 AM
+imported_file flange-2.STL
+imported_hash fe7482074f9cf86430a9f8705ef04c31
+imported_span 00:00:04.8219768
+imported_size 82,684B (0.08MB)
+exported_vtx 1590
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:42 AM
+imported_file nut-1.STL
+imported_hash a0a992dd1282af5acbae44b423974db4
+imported_span 00:00:04.6372450
+imported_size 37,084B (0.04MB)
+exported_vtx 766
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:48 AM
+imported_file nut-2.STL
+imported_hash 59ef29ca5a047fac30ca7f3f1db0288a
+imported_span 00:00:04.6113541
+imported_size 37,084B (0.04MB)
+exported_vtx 766
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:54 AM
+imported_file nut-3.STL
+imported_hash bf9f25212fe1c7eeced795513709ca06
+imported_span 00:00:04.6816694
+imported_size 37,084B (0.04MB)
+exported_vtx 766
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:46:59 AM
+imported_file nut-4.STL
+imported_hash 8d7bf7009df6126c37190db9bcfe9f9b
+imported_span 00:00:04.5464209
+imported_size 37,084B (0.04MB)
+exported_vtx 766
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:47:05 AM
+imported_file nut-5.STL
+imported_hash fafd31b2c5bdf2fe256a8dbf0f5a69e5
+imported_span 00:00:04.6991839
+imported_size 37,084B (0.04MB)
+exported_vtx 766
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
+imported_datetime 2/21/2018 11:47:10 AM
+imported_file nut-6.STL
+imported_hash 6cb0ef9edcf415352cc3a693a5937129
+imported_span 00:00:04.5939562
+imported_size 37,084B (0.04MB)
+exported_vtx 766
+exported_mesh 1
+assembly_num 1
+cad_format STL
+------------------
