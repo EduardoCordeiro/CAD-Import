@@ -12,6 +12,9 @@ namespace CAD.Managers {
 
     public class ReferencialDisplay : MonoBehaviour {
 
+        public static ReferencialDisplay instance;
+
+        // TODO
         Vector3 referencialPosition;
 
         GameObject sphere;
@@ -19,16 +22,11 @@ namespace CAD.Managers {
         // placeholder for input
         List<GameObject> sphereRepresentationList;
 
-        // List of all the assemblies in the scene
-        List<GameObject> assemblyList;
-
         // Storing the data for the assemblies that are too close to eachother
         Dictionary<GameObject, List<GameObject>> distanceIssues = new Dictionary<GameObject, List<GameObject>>();
 
         // List of Json Data
-        List<List<Caracteristic>> caracteristicLists;
-
-        string directoryPath = "Assets/Resources/Caracteristic Files/";
+        public KeyValuePair<GameObject, List<Caracteristic>> caracteristicsList { get; private set; }
 
         private float threshhold;
 
@@ -37,15 +35,13 @@ namespace CAD.Managers {
         // Use this for initialization
         void Start() {
 
+            ReferencialDisplay.instance = this;
+
             referencialPosition = Camera.main.transform.position - Vector3.zero / 2;
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
             sphereRepresentationList = new List<GameObject>();
-
-            assemblyList = new List<GameObject>();
-
-            caracteristicLists = new List<List<Caracteristic>>();
 
             threshhold = 0.05f;
 
@@ -128,8 +124,8 @@ namespace CAD.Managers {
                 // Order the List
                 List<Caracteristic> sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
 
-                // add this list to a list of lists to store all the data
-                caracteristicLists.Add(sortedCaracteristics);
+                // add this list to a dictionary of lists to store all the data
+                caracteristicsList = new KeyValuePair<GameObject, List<Caracteristic>>(this.transform.GetChild(i).gameObject, sortedCaracteristics);
 
                 // Save the highest local measure
                 Caracteristic highestLocalMeasure = sortedCaracteristics[0];
