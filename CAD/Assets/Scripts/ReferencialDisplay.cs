@@ -47,7 +47,7 @@ namespace CAD.Managers {
 
             caracteristicLists = new List<List<Caracteristic>>();
 
-            threshhold = 0.2f;
+            threshhold = 0.05f;
 
             // Add all assemblies as children of this object
             MakeChild();
@@ -135,7 +135,7 @@ namespace CAD.Managers {
                 Caracteristic highestLocalMeasure = sortedCaracteristics[0];
 
                 // Instanciate the sphere
-                CreateGameObject(sphere, new Vector3(highestLocalMeasure.mustruct, highestLocalMeasure.muPos, highestLocalMeasure.mujoint), objectName);
+                CreateGameObject(sphere, new Vector3(highestLocalMeasure.mushape, highestLocalMeasure.muPos, highestLocalMeasure.mujoint), objectName);
             }
         }
 

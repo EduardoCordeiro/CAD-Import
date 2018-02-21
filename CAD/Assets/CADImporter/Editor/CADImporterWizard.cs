@@ -39,7 +39,6 @@ public class CADImporterWizard : ScriptableWizard {
 
         rootObject = new GameObject();
         rootObject.AddComponent<HierarchyCreator>();
-        rootObject.AddComponent<ReferencialDisplay>();
 
         hierarchyCreator = rootObject.GetComponent<HierarchyCreator>();
     }
