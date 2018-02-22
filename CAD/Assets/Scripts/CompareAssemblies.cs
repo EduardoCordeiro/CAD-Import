@@ -65,9 +65,11 @@ namespace CAD.Actions {
                 string queryPart = parts[0].Trim();
                 string otherPart = parts[1].Trim();
 
-                Color partColor = new Color((1 - 1 / numberOfParts) * counter, (1 - 1 / numberOfParts) * counter, (1 - 1 / numberOfParts) * counter);
+                Color partColor = new Color(counter / numberOfParts, 1 - counter / numberOfParts, 0);
 
                 ColorAssemblyParts(queryPart, otherPart, partColor);
+
+                counter++;
             }
         }
 
