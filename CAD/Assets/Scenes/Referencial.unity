@@ -2442,8 +2442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfcf4e8c2f7575644bf5f1507fd2dffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  queryAssembly: {fileID: 97817420}
   DebugDrawRay: 1
-  selection: {fileID: 0}
 --- !u!1 &773496849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4737,6 +4737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe27945b7652bed47a1cbce509bea17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  queryAssembly: {fileID: 97817420}
 --- !u!1 &1552219940
 GameObject:
   m_ObjectHideFlags: 0

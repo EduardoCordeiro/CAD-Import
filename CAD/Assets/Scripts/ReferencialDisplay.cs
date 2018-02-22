@@ -26,7 +26,7 @@ namespace CAD.Managers {
         Dictionary<GameObject, List<GameObject>> distanceIssues = new Dictionary<GameObject, List<GameObject>>();
 
         // List of Json Data
-        public KeyValuePair<GameObject, List<Caracteristic>> caracteristicsList { get; private set; }
+        public Dictionary<GameObject, List<Caracteristic>> caracteristicsList { get; private set; }
 
         private float threshhold;
 
@@ -42,6 +42,8 @@ namespace CAD.Managers {
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
             sphereRepresentationList = new List<GameObject>();
+
+            caracteristicsList = new Dictionary<GameObject, List<Caracteristic>>();
 
             threshhold = 0.05f;
 
@@ -125,10 +127,13 @@ namespace CAD.Managers {
                 List<Caracteristic> sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
 
                 // add this list to a dictionary of lists to store all the data
-                caracteristicsList = new KeyValuePair<GameObject, List<Caracteristic>>(this.transform.GetChild(i).gameObject, sortedCaracteristics);
+                //caracteristicsList = new KeyValuePair<GameObject, List<Caracteristic>>(this.transform.GetChild(i).gameObject, sortedCaracteristics);
+                caracteristicsList.Add(this.transform.GetChild(i).gameObject, sortedCaracteristics);
 
                 // Save the highest local measure
                 Caracteristic highestLocalMeasure = sortedCaracteristics[0];
+
+                List<Caracteristic> v = caracteristicsList[this.transform.GetChild(i).gameObject];
 
                 // Instanciate the sphere
                 CreateGameObject(   sphere, 
@@ -200,6 +205,8 @@ namespace CAD.Managers {
 
             Vector3 centroid = Vector3.zero;
 
+            Transform assembliesTranform = GameObject.Find("Assemblies").transform;
+
             foreach(KeyValuePair<GameObject, List<GameObject>> issues in distanceIssues) {
 
                 if(issues.Value.Count == 0)
@@ -232,11 +239,11 @@ namespace CAD.Managers {
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
                     
                     // Get the Actual assembly, and not the sphere
-                    assembliesList.Add(GameObject.Find("Assemblies").transform.Find(issue.name).gameObject);
+                    assembliesList.Add(assembliesTranform.Find(issue.name).gameObject);
                 }
 
                 // Get the Actual assembly, and not the sphere, for the object we are comparing to
-                assembliesList.Add(GameObject.Find("Assemblies").transform.Find(issues.Key.name).gameObject);
+                assembliesList.Add(assembliesTranform.Find(issues.Key.name).gameObject);
 
                 // using centroid as the new position
                 CreateGameObject(sphere, centroid, assembliesList);

@@ -13,11 +13,8 @@ namespace CAD.Actions {
 
         public static CompareAssemblies instance;
 
-        // Access to the parsed Caracteristics
-        ReferencialDisplay referencialDisplay;
-
         // For now it is always flange-coupling-15
-        GameObject queryAssembly;
+        public GameObject queryAssembly;
 
         string queryLabel;
 
@@ -29,12 +26,7 @@ namespace CAD.Actions {
         // Use this for initialization
         void Start() {
 
-            CompareAssemblies.instance = this;
-
-            referencialDisplay = GameObject.Find("Assemblies").GetComponent<ReferencialDisplay>();
-
-            queryAssembly = GameObject.Find("flange-coupling-15");
-            
+            CompareAssemblies.instance = this;    
         }
 
         // Update is called once per frame
@@ -42,7 +34,9 @@ namespace CAD.Actions {
 
         }
 
-        public void ParseLabels() {
+        public void ParseLabels(string otherObject) {
+
+            otherAssembly = transform.Find(otherObject).gameObject;
 
             // Label Example
             // "nut-4, NUT311-1|flange2-1, FLANGEHUB111-1|flange-1, FLANGEHUB11-1|nut-2, NUT211-1|bolt4-4, BOLT311-1|bolt4-2, BOLT211-1|shaft2-1, SOLID111-1|shaft-1, SOLID11-1
@@ -50,23 +44,57 @@ namespace CAD.Actions {
 
             // Split query label
             // Get the label from the highest local measure [0]
-            queryLabel = referencialDisplay.caracteristicsList.Value[0].labels;
+            queryLabel = ReferencialDisplay.instance.caracteristicsList[otherAssembly][0].labels;
 
             // Split the '|' first
             string[] verticalBarSplit = queryLabel.Split('|');
 
+            int numberOfParts = verticalBarSplit.Length;
+            int counter = 0;
+
             // Split on ','
             foreach(string correspondence in verticalBarSplit) {
+
+                // ignoring the last white space
+                if(correspondence == "")
+                    continue;
 
                 // Both parts are here now
                 string[] parts = correspondence.Split(',');
 
-                foreach(string part in parts) {
+                string queryPart = parts[0].Trim();
+                string otherPart = parts[1].Trim();
 
-                    part.Trim();
-                    print(part);
-                }
+                Color partColor = new Color((1 - 1 / numberOfParts) * counter, (1 - 1 / numberOfParts) * counter, (1 - 1 / numberOfParts) * counter);
+
+                ColorAssemblyParts(queryPart, otherPart, partColor);
             }
+        }
+
+        public void ColorAssemblyParts(string queryPart, string otherPart, Color color) {
+
+            GameObject queryAssemblyPart = SearchChild(queryAssembly.transform, queryPart);
+
+            GameObject otherAssemblyPart = SearchChild(otherAssembly.transform, otherPart);
+
+            queryAssemblyPart.GetComponent<Renderer>().material.color = color;
+
+            otherAssemblyPart.GetComponent<Renderer>().material.color = color;
+        }
+
+        GameObject SearchChild(Transform parent, string name) {
+
+            GameObject missingChild = null;
+
+            foreach(Transform child in parent) {
+
+                if(child.name == name)
+                    return child.gameObject;
+                else
+                    missingChild = SearchChild(child, name);
+            }
+
+            return missingChild;
         }
     }
 }

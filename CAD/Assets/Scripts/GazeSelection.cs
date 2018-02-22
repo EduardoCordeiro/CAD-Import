@@ -4,7 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using CAD.Utility;
+
 namespace CAD.Actions {
+
+    public enum Phase {
+
+        None,
+        SphereSelection,
+        AssemblyComparision
+    }
 
     public class GazeSelection : MonoBehaviour {
 
@@ -13,26 +22,48 @@ namespace CAD.Actions {
         /// </summary>
         public RaycastHit currentHit { get; private set; }
 
+        /// <summary>
+        /// Hit from previous frame
+        /// </summary>
         public RaycastHit oldHit { get; private set; }
 
+        /// <summary>
+        /// Boolean for determining if we are hitting an object or not
+        /// </summary>
         public bool hittingObject { get; private set; }
+
+        /// <summary>
+        /// Query Object. Right now its flange-15
+        /// </summary>
+        public GameObject queryAssembly;
 
         /// <summary>
         /// Draw the Gaze ray
         /// </summary>
         public bool DebugDrawRay;
 
-        public GameObject selection;
+        private Phase phase;
 
         // Use this for initialization
         void Start() {
 
+            phase = Phase.None;
         }
 
         // Update is called once per frame
         void Update() {
 
-            Gaze();
+            if(phase == Phase.None || phase == Phase.SphereSelection) {
+
+                Gaze();
+            }
+            else if(phase == Phase.AssemblyComparision) {
+
+                // other stuff
+                AssemblyComparision();
+            }
+
+            print("Phase = " + phase);
 
             if(DebugDrawRay)
                 Debug.DrawRay(this.transform.position, this.transform.forward, Color.cyan);
@@ -55,7 +86,6 @@ namespace CAD.Actions {
 
                 // Timer > 2 seconds, select Object
                 // here we will wait for 1-2 seconds and then select the object
-                //StartCoroutine(GazeConfirmation());
                 StartCoroutine(GazeConfirmation());
 
                 // Old Hit Information
@@ -68,28 +98,43 @@ namespace CAD.Actions {
 
             if(currentHit.collider == oldHit.collider && hittingObject) {
 
-                selection = currentHit.collider.gameObject;
-
                 // Call the DispayAssembly Script
-                currentHit.collider.GetComponent<DisplayAssembly>().DisplayAssemblies(currentHit.point);
-
-                CompareAssemblies.instance.ParseLabels();
+                int numberOfAssemblies = currentHit.collider.GetComponent<DisplayAssembly>().DisplayAssemblies(currentHit.point);
 
                 // Disable the Spheres
                 ToggleSphere(false);
 
-                print("selection is correct?");
-            } else
-                print("Collider has changed");
+                // If only one assembly was hit, we are ready to compare the two [returned and query]
+                if(numberOfAssemblies == 1)
+                    phase = Phase.AssemblyComparision;
+                else
+                    phase = Phase.SphereSelection;
+            }
+        }
+
+        void AssemblyComparision() {
+
+            // Display the query assembly next to the one we want. With an offset in X for now
+            queryAssembly.transform.position = currentHit.collider.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
+
+            // Disable all the other assemblies
+            ToggleAssemblies(false);
+
+            // Parse the labels and color the objects and COLOR the Assemblies [not the best method]
+            CompareAssemblies.instance.ParseLabels(currentHit.collider.name);
+
+            phase = Phase.None;
         }
 
         IEnumerator GazeConfirmation() {
 
             yield return new WaitForSeconds(2);
 
-            SelectSphere();
+            if(phase == Phase.None)
+                SelectSphere();
+            else if(phase == Phase.SphereSelection)
+                AssemblyComparision();
         }
-
 
         void ToggleSphere(bool value) {
 
@@ -98,6 +143,20 @@ namespace CAD.Actions {
 
             foreach(GameObject go in rootObjects)
                 if(go.GetComponent<DisplayAssembly>() != null) {
+                    if(value)
+                        go.SetActive(true);
+                    else
+                        go.SetActive(false);
+                }
+        }
+
+        void ToggleAssemblies(bool value) {
+
+            List<GameObject> rootObjects = new List<GameObject>();
+            SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
+
+            foreach(GameObject go in rootObjects)
+                if(go.GetComponent<HierarchyCreator>() != null) {
                     if(value)
                         go.SetActive(true);
                     else

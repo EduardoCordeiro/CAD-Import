@@ -21,7 +21,7 @@ public class DisplayAssembly : MonoBehaviour {
         this.assembliesList = new List<GameObject>(assemblies);
     }
 
-    public void DisplayAssemblies(Vector3 hitPosition) {
+    public int DisplayAssemblies(Vector3 hitPosition) {
 
         Vector3 offset = new Vector3(0.3f, 0.0f, 0.0f);
 
@@ -33,5 +33,7 @@ public class DisplayAssembly : MonoBehaviour {
 
             hitPosition += offset;
         }
+
+        return assembliesList.Count;
     }
 }
