@@ -12,7 +12,8 @@ namespace CAD.Actions {
 
         None,
         AssemblySelection,
-        AssemblyComparision
+        AssemblyComparision,
+        Done
     }
 
     public class GazeSelection : MonoBehaviour {
@@ -82,7 +83,7 @@ namespace CAD.Actions {
 
                 currentHit = hitInfo;
 
-                print("I hit something!" + currentHit.collider.name);
+                print("Ratcast Hit == " + currentHit.collider.name);
 
                 // Timer > 2 seconds, select Object
                 // here we will wait for 1-2 seconds and then select the object
@@ -122,11 +123,14 @@ namespace CAD.Actions {
 
             if(currentHit.collider == oldHit.collider && hittingObject) {
 
-                ToggleAssemblies(false);
+                //ToggleAssemblies(false);
+                print("Hitting object" + currentHit.collider.name);
+
+                // do more with the active/inactive
 
                 currentHit.collider.gameObject.SetActive(true);
 
-
+                phase = Phase.AssemblyComparision;
             }
         }
 
@@ -141,7 +145,7 @@ namespace CAD.Actions {
             // Parse the labels and color the objects and COLOR the Assemblies [not the best method]
             CompareAssemblies.instance.ParseLabels(currentHit.collider.name);
 
-            phase = Phase.None;
+            phase = Phase.Done;
         }
 
         IEnumerator GazeConfirmation() {
