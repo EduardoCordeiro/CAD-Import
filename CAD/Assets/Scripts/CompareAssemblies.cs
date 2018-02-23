@@ -84,18 +84,30 @@ namespace CAD.Actions {
             otherAssemblyPart.GetComponent<Renderer>().material.color = color;
         }
 
-        GameObject SearchChild(Transform parent, string name) {
-
+        GameObject SearchChild(Transform parent, string name)
+        {
             GameObject missingChild = null;
+            name.Replace("\\", string.Empty);
+            print(name);
+            var parentList = name.Split('/').ToList();
 
-            foreach(Transform child in parent) {
+            Transform currentParent = null;
 
-                if(child.name == name)
-                    return child.gameObject;
-                else
-                    missingChild = SearchChild(child, name);
+            while (parentList.Any())
+            {
+                foreach (Transform child in parent)
+                {
+                    if (child.name == parentList.First())
+                    {
+                        parentList.Remove(parentList.First());
+                        currentParent = child;
+                        break;
+                    }
+                }
+                parent = currentParent;
             }
 
+            missingChild = currentParent.gameObject;
             return missingChild;
         }
     }
