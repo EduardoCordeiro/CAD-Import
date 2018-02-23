@@ -11,7 +11,7 @@ namespace CAD.Actions {
     public enum Phase {
 
         None,
-        SphereSelection,
+        AssemblySelection,
         AssemblyComparision
     }
 
@@ -53,7 +53,7 @@ namespace CAD.Actions {
         // Update is called once per frame
         void Update() {
 
-            if(phase == Phase.None || phase == Phase.SphereSelection) {
+            if(phase == Phase.None || phase == Phase.AssemblySelection) {
 
                 Gaze();
             }
@@ -94,7 +94,10 @@ namespace CAD.Actions {
                 hittingObject = false;
         }
 
-        public void SelectSphere() {
+        /// <summary>
+        /// First Phase of the selection process
+        /// </summary>
+        public void SphereCollision() {
 
             if(currentHit.collider == oldHit.collider && hittingObject) {
 
@@ -108,7 +111,20 @@ namespace CAD.Actions {
                 if(numberOfAssemblies == 1)
                     phase = Phase.AssemblyComparision;
                 else
-                    phase = Phase.SphereSelection;
+                    phase = Phase.AssemblySelection;
+            }
+        }
+
+        /// <summary>
+        /// Second phase of the selection process
+        /// </summary>
+        void AssemblyCollision() {
+
+            if(currentHit.collider == oldHit.collider && hittingObject) {
+
+                ToggleAssemblies(false);
+
+                currentHit.collider.gameObject.SetActive(true);
             }
         }
 
@@ -131,9 +147,9 @@ namespace CAD.Actions {
             yield return new WaitForSeconds(2);
 
             if(phase == Phase.None)
-                SelectSphere();
-            else if(phase == Phase.SphereSelection)
-                AssemblyComparision();
+                SphereCollision();
+            else if(phase == Phase.AssemblySelection)
+                AssemblyCollision();
         }
 
         void ToggleSphere(bool value) {

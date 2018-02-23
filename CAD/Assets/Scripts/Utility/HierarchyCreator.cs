@@ -15,11 +15,32 @@ namespace CAD.Utility {
         void Start() {
 
             instance = this;
+
+            CalculateBoudingBox();
         }
 
         // Update is called once per frame
         void Update() {
 
+        }
+
+        private void CalculateBoudingBox() {
+
+            Vector3 maxPoint = Vector3.negativeInfinity;
+            Vector3 minPoint = Vector3.positiveInfinity;
+
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+
+            foreach(Renderer m in renderers) {
+
+                maxPoint = Vector3.Max(m.bounds.max, maxPoint);
+                minPoint = Vector3.Min(m.bounds.min, minPoint);
+            }
+
+            BoxCollider box = this.gameObject.AddComponent<BoxCollider>();
+            box.size = maxPoint - minPoint;
+            // center NOT WORKING
+            box.center = this.transform.position;
         }
 
         public void CreateHierarchy() {
