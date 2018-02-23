@@ -125,6 +125,8 @@ namespace CAD.Actions {
                 ToggleAssemblies(false);
 
                 currentHit.collider.gameObject.SetActive(true);
+
+
             }
         }
 

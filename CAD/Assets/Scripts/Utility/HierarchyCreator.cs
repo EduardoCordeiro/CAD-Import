@@ -31,16 +31,20 @@ namespace CAD.Utility {
 
             MeshFilter[] renderers = GetComponentsInChildren<MeshFilter>();
 
+            Vector3 average = Vector3.zero;
+
             foreach(MeshFilter m in renderers) {
 
                 maxPoint = Vector3.Max(m.mesh.bounds.max, maxPoint);
                 minPoint = Vector3.Min(m.mesh.bounds.min, minPoint);
+
+                average += m.transform.localPosition;
             }
 
             BoxCollider box = this.gameObject.AddComponent<BoxCollider>();
             box.size = maxPoint - minPoint;
             // center NOT WORKING
-            box.center = this.transform.position;
+            box.center = average;
         }
 
         public void CreateHierarchy() {
