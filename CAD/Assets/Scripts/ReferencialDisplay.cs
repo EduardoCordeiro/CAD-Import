@@ -240,13 +240,7 @@ namespace CAD.Managers {
                     
                     // Get the Actual assembly, and not the sphere
                     assembliesList.Add(assembliesTranform.Find(issue.name).gameObject);
-
-                    // Hide the spheres with problems
-                    issue.SetActive(false);
                 }
-
-                // Hide the object we were comparing too
-                issues.Key.SetActive(false);
 
                 // Get the Actual assembly, and not the sphere, for the object we are comparing to
                 assembliesList.Add(assembliesTranform.Find(issues.Key.name).gameObject);
