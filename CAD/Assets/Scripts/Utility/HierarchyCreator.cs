@@ -29,12 +29,12 @@ namespace CAD.Utility {
             Vector3 maxPoint = Vector3.negativeInfinity;
             Vector3 minPoint = Vector3.positiveInfinity;
 
-            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            MeshFilter[] renderers = GetComponentsInChildren<MeshFilter>();
 
-            foreach(Renderer m in renderers) {
+            foreach(MeshFilter m in renderers) {
 
-                maxPoint = Vector3.Max(m.bounds.max, maxPoint);
-                minPoint = Vector3.Min(m.bounds.min, minPoint);
+                maxPoint = Vector3.Max(m.mesh.bounds.max, maxPoint);
+                minPoint = Vector3.Min(m.mesh.bounds.min, minPoint);
             }
 
             BoxCollider box = this.gameObject.AddComponent<BoxCollider>();
