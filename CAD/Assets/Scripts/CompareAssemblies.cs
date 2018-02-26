@@ -42,10 +42,6 @@ namespace CAD.Actions {
 
             otherAssembly = transform.Find(otherObject).gameObject;
 
-            // Label Example
-            // "nut-4, NUT311-1|flange2-1, FLANGEHUB111-1|flange-1, FLANGEHUB11-1|nut-2, NUT211-1|bolt4-4, BOLT311-1|bolt4-2, BOLT211-1|shaft2-1, SOLID111-1|shaft-1, SOLID11-1
-            //|key-2, KEY11-1|key-1, KEY111-1|nut-1, NUT11-1|nut-3, NUT111-1|bolt4-1, BOLT11-1|bolt4-3, BOLT111-1|"
-
             // Split query label
             // Get the label from the highest local measure [0]
             queryLabel = ReferencialDisplay.instance.caracteristicsList[otherAssembly][0].labels;
@@ -69,7 +65,8 @@ namespace CAD.Actions {
                 string queryPart = parts[0].Trim();
                 string otherPart = parts[1].Trim();
 
-                Color partColor = new Color(counter / numberOfParts, 1 - counter / numberOfParts, 0);
+                // casts are required
+                Color partColor = new Color((float)((float)counter / (float)numberOfParts), ((float)1 - (float)counter / (float)numberOfParts), 0);
 
                 ColorAssemblyParts(queryPart, otherPart, partColor);
 
