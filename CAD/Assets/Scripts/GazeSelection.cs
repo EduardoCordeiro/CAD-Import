@@ -107,6 +107,8 @@ namespace CAD.Actions {
                 // Disable the Spheres
                 ToggleSpheres(false);
 
+                queryAssembly.SetActive(true);
+
                 // If only one assembly was hit, we are ready to compare the two [returned and query]
                 if(numberOfAssemblies == 1)
                     phase = Phase.AssemblyComparision;
