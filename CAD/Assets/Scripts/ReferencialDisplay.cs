@@ -240,10 +240,16 @@ namespace CAD.Managers {
                         maxPoint.z = pos.z;
 
                     centroid = minPoint + 0.5f * (maxPoint - minPoint);
+
+                    // Set the sphere as false, as we are not intersecting it
+                    issue.SetActive(false);
                     
                     // Get the Actual assembly, and not the sphere
                     assembliesList.Add(assembliesTranform.Find(issue.name).gameObject);
                 }
+
+                // Set the sphere as false, as we are not intersecting it
+                issues.Key.SetActive(false);
 
                 // Get the Actual assembly, and not the sphere, for the object we are comparing to
                 assembliesList.Add(assembliesTranform.Find(issues.Key.name).gameObject);

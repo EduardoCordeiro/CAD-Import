@@ -25,13 +25,13 @@ public class DisplayAssembly : MonoBehaviour {
 
         print("Number of assemblies to display: " + assembliesList.Count);
 
-        Vector3 offset = new Vector3(0.3f, 0.0f, 0.0f);
+        Vector3 offset = new Vector3(0.4f, 0.0f, 0.0f);
 
         foreach(GameObject assembly in assembliesList) {
 
             assembly.SetActive(true);
 
-            assembly.transform.position = hitPosition;
+            assembly.transform.position = hitPosition + offset;
 
             hitPosition += offset;
         }

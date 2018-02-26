@@ -12,7 +12,8 @@ namespace CAD.Actions {
 
         None,
         AssemblySelection,
-        AssemblyComparision
+        AssemblyComparision,
+        Done
     }
 
     public class GazeSelection : MonoBehaviour {
@@ -59,7 +60,6 @@ namespace CAD.Actions {
             }
             else if(phase == Phase.AssemblyComparision) {
 
-                // other stuff
                 AssemblyComparision();
             }
 
@@ -82,7 +82,7 @@ namespace CAD.Actions {
 
                 currentHit = hitInfo;
 
-                print("I hit something!" + currentHit.collider.name);
+                print("I hit == " + currentHit.collider.name);
 
                 // Timer > 2 seconds, select Object
                 // here we will wait for 1-2 seconds and then select the object
@@ -105,7 +105,7 @@ namespace CAD.Actions {
                 int numberOfAssemblies = currentHit.collider.GetComponent<DisplayAssembly>().DisplayAssemblies(currentHit.point);
 
                 // Disable the Spheres
-                ToggleSphere(false);
+                ToggleSpheres(false);
 
                 // If only one assembly was hit, we are ready to compare the two [returned and query]
                 if(numberOfAssemblies == 1)
@@ -124,9 +124,11 @@ namespace CAD.Actions {
 
                 ToggleAssemblies(false);
 
+                // Re-enable the assemblie we want
                 currentHit.collider.gameObject.SetActive(true);
+                queryAssembly.SetActive(true);
 
-
+                phase = Phase.AssemblyComparision;
             }
         }
 
@@ -135,13 +137,10 @@ namespace CAD.Actions {
             // Display the query assembly next to the one we want. With an offset in X for now
             queryAssembly.transform.position = currentHit.collider.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
 
-            // Disable all the other assemblies
-            ToggleAssemblies(false);
-
             // Parse the labels and color the objects and COLOR the Assemblies [not the best method]
             CompareAssemblies.instance.ParseLabels(currentHit.collider.name);
 
-            phase = Phase.None;
+            phase = Phase.Done;
         }
 
         IEnumerator GazeConfirmation() {
@@ -154,7 +153,7 @@ namespace CAD.Actions {
                 AssemblyCollision();
         }
 
-        void ToggleSphere(bool value) {
+        void ToggleSpheres(bool value) {
 
             List<GameObject> rootObjects = new List<GameObject>();
             SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
@@ -170,16 +169,20 @@ namespace CAD.Actions {
 
         void ToggleAssemblies(bool value) {
 
-            List<GameObject> rootObjects = new List<GameObject>();
-            SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
+            Transform assemblies = FindObjectOfType<CompareAssemblies>().transform;
 
-            foreach(GameObject go in rootObjects)
-                if(go.GetComponent<HierarchyCreator>() != null) {
+            foreach(Transform child in assemblies) {
+
+                if(child.GetComponent<HierarchyCreator>() != null) {
+
+                    // Only Display the comparison object and the query
+                    // Can be change to setActive(false) all and setActive(true) those two
                     if(value)
-                        go.SetActive(true);
+                        child.gameObject.SetActive(true);
                     else
-                        go.SetActive(false);
+                        child.gameObject.SetActive(false);
                 }
+            }
         }
     }
 }

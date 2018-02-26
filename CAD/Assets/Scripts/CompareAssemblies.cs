@@ -89,7 +89,7 @@ namespace CAD.Actions {
         {
             GameObject missingChild = null;
             name.Replace("\\", string.Empty);
-            print(name);
+
             var parentList = name.Split('/').ToList();
 
             Transform currentParent = null;
