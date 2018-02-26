@@ -11,10 +11,13 @@ namespace CAD.Utility {
 
         public static HierarchyCreator instance { get; private set; }
 
-        // Use this for initialization
-        void Start() {
+        private void Awake() {
 
             instance = this;
+        }
+
+        // Use this for initialization
+        void Start() {
 
             CalculateBoudingBox();
         }

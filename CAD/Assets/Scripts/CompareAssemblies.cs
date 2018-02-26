@@ -23,10 +23,14 @@ namespace CAD.Actions {
 
         string otherLabel;
 
+        private void Awake() {
+
+            instance = this;
+        }
+
         // Use this for initialization
         void Start() {
 
-            CompareAssemblies.instance = this;    
         }
 
         // Update is called once per frame

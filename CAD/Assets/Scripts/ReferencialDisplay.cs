@@ -32,10 +32,13 @@ namespace CAD.Managers {
 
         public bool debug;
 
+        private void Awake() {
+
+            instance = this;
+        }
+
         // Use this for initialization
         void Start() {
-
-            ReferencialDisplay.instance = this;
 
             referencialPosition = Camera.main.transform.position - Vector3.zero / 2;
 
