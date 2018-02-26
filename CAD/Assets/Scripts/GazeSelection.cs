@@ -49,6 +49,8 @@ namespace CAD.Actions {
         void Start() {
 
             phase = Phase.None;
+
+            ToggleAssemblies(false);
         }
 
         // Update is called once per frame
@@ -106,7 +108,7 @@ namespace CAD.Actions {
 
                 // Disable the Spheres
                 ToggleSpheres(false);
-
+                    
                 queryAssembly.SetActive(true);
 
                 // If only one assembly was hit, we are ready to compare the two [returned and query]
