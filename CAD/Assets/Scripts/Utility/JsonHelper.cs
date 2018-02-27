@@ -1,38 +1,41 @@
 ﻿using UnityEngine;
 
-public static class JsonHelper {
+namespace CAD.Utility {
 
-    public static T[] FromJson<T>(string json) {
+    public static class JsonHelper {
 
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
+        public static T[] FromJson<T>(string json) {
 
-        return wrapper.Items;
-    }
+            Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
 
-    public static string ToJson<T>(T[] array) {
+            return wrapper.Items;
+        }
 
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
+        public static string ToJson<T>(T[] array) {
 
-        return JsonUtility.ToJson(wrapper);
-    }
+            Wrapper<T> wrapper = new Wrapper<T>();
+            wrapper.Items = array;
 
-    public static string ToJson<T>(T[] array, bool prettyPrint) {
+            return JsonUtility.ToJson(wrapper);
+        }
 
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
+        public static string ToJson<T>(T[] array, bool prettyPrint) {
 
-        return JsonUtility.ToJson(wrapper, prettyPrint);
-    }
+            Wrapper<T> wrapper = new Wrapper<T>();
+            wrapper.Items = array;
 
-    [System.Serializable]
-    private class Wrapper<T> {
+            return JsonUtility.ToJson(wrapper, prettyPrint);
+        }
 
-        public T[] Items;
-    }
+        [System.Serializable]
+        private class Wrapper<T> {
 
-    public static string FixJson(string json) {
+            public T[] Items;
+        }
 
-        return json = "{\"Items\":" + json + "}";
+        public static string FixJson(string json) {
+
+            return json = "{\"Items\":" + json + "}";
+        }
     }
 }

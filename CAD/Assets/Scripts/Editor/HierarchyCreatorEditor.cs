@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-using CAD.Utility;
+using CAD.Support;
 
 [CustomEditor(typeof(HierarchyCreator))]
 public class HierarchyCreatorEditor : Editor {

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace CAD.Utility {
+﻿namespace CAD.Utility {
 
     [System.Serializable]
     public class Caracteristic {

@@ -5,8 +5,7 @@ using Microsoft.FSharp.Core;
 using System;
 using System.IO;
 
-using CAD.Utility;
-using CAD.Managers;
+using CAD.Support;
 
 public class CADImporterWizard : ScriptableWizard { 
 
