@@ -2,23 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Leap;
-
 public class GestureInteraction : MonoBehaviour {
 
-    Controller controller;
 
-	// Use this for initialization
-	void Start () {
+    public void StartPrint() {
 
-        controller = new Controller();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        print("start");
+    }
 
-        Frame frame = controller.Frame();
+    public void StopPrint() {
 
-        
-	}
+        print("stop");
+    }
 }
