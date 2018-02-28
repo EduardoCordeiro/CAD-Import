@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class GestureInteraction : MonoBehaviour {
 
+    int counter = 0;
 
     public void StartPrint() {
 
-        print("start");
+
+        //while(true) {
+
+            print("My confidence is increasing :: " + counter++);
+        //}
     }
 
     public void StopPrint() {
 
-        print("stop");
+        //while(true) {
+
+            print("My confidence is decreasing :: " + counter--);
+        //}
     }
 }

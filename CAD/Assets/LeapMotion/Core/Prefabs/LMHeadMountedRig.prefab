@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 114000012615819676}
   - component: {fileID: 114407795036791050}
   - component: {fileID: 114667661103523504}
+  - component: {fileID: 114022823456709798}
   m_Layer: 0
   m_Name: CapsuleHand_R
   m_TagString: Untagged
@@ -369,6 +370,8 @@ GameObject:
   - component: {fileID: 114000013295834632}
   - component: {fileID: 114752112953337378}
   - component: {fileID: 114053543772837260}
+  - component: {fileID: 114269303754579288}
+  - component: {fileID: 114980896818363374}
   m_Layer: 0
   m_Name: CapsuleHand_L
   m_TagString: Untagged
@@ -798,6 +801,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   queryAssembly: {fileID: 0}
   DebugDrawRay: 1
+--- !u!114 &114022823456709798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011792446482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2474ece6beb54f10ac1437338b3cb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Detectors: []
+  AddAllSiblingDetectorsOnAwake: 1
+  GateType: 0
+  Negate: 0
 --- !u!114 &114053543772837260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -822,8 +850,8 @@ MonoBehaviour:
   Period: 0.1
   HandModel: {fileID: 114000011684287588}
   FingerName: 1
-  PointingType: 1
-  PointingDirection: {x: 0, y: 0, z: 1}
+  PointingType: 2
+  PointingDirection: {x: 0, y: 1, z: 0}
   TargetObject: {fileID: 0}
   OnAngle: 15
   OffAngle: 25
@@ -888,6 +916,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentHand: {fileID: 114146426563448236}
   attachmentPoint: 128
+--- !u!114 &114269303754579288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013537662586}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b77174815b904166ad047382f534c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Period: 0.1
+  HandModel: {fileID: 114000011684287588}
+  FingerName: 2
+  PointingType: 2
+  PointingDirection: {x: 0, y: 1, z: 0}
+  TargetObject: {fileID: 0}
+  OnAngle: 15
+  OffAngle: 25
+  ShowGizmos: 1
 --- !u!114 &114407795036791050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1060,23 +1118,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnActivate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: StartPrint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnDeactivate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: StopPrint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Period: 0.1
   HandModel: {fileID: 114000011684287588}
-  Thumb: 0
-  Index: 2
-  Middle: 2
+  Thumb: 2
+  Index: 0
+  Middle: 0
   Ring: 2
   Pinky: 2
-  MinimumExtendedCount: 1
-  MaximumExtendedCount: 3
+  MinimumExtendedCount: 3
+  MaximumExtendedCount: 2
   ShowGizmos: 1
 --- !u!114 &114853798139660880
 MonoBehaviour:
@@ -1091,6 +1171,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentHand: {fileID: 114146426563448236}
   attachmentPoint: 64
+--- !u!114 &114980896818363374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013537662586}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2474ece6beb54f10ac1437338b3cb89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: StartPrint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeactivate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: StopPrint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Detectors:
+  - {fileID: 114752112953337378}
+  AddAllSiblingDetectorsOnAwake: 0
+  GateType: 0
+  Negate: 0
 --- !u!114 &114997809399611906
 MonoBehaviour:
   m_ObjectHideFlags: 1
