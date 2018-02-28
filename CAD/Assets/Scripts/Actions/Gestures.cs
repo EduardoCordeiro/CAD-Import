@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Leap;
-
 public class GestureInteraction : MonoBehaviour {
 
-    Controller controller;
+    int counter = 0;
 
-	// Use this for initialization
-	void Start () {
+    public void StartPrint() {
 
-        controller = new Controller();
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
-        Frame frame = controller.Frame();
+        //while(true) {
 
-        
-	}
+            print("My confidence is increasing :: " + counter++);
+        //}
+    }
+
+    public void StopPrint() {
+
+        //while(true) {
+
+            print("My confidence is decreasing :: " + counter--);
+        //}
+    }
 }
