@@ -25,8 +25,6 @@ public class MeasureSelection : MonoBehaviour {
                 break;
         }
 
-        SceneManager.LoadScene("Referencial");
-
     }
 
     private void OnTriggerStay(Collider collider)
@@ -37,5 +35,6 @@ public class MeasureSelection : MonoBehaviour {
 
     private void OnTriggerExit(Collider collider)
     {
+        SceneManager.LoadScene("Referencial");
     }
 }
