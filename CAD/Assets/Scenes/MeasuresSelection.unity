@@ -374,6 +374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44143ff362762f34db0655cf1a4061ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+  selectedMeasure: 0
+>>>>>>> Adding_New_Scena
 --- !u!1 &950925402
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44143ff362762f34db0655cf1a4061ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+  selectedMeasure: 0
+>>>>>>> Adding_New_Scena
 --- !u!1 &1358752637
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,3 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44143ff362762f34db0655cf1a4061ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+  selectedMeasure: 0
+>>>>>>> Adding_New_Scena
