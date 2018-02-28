@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MeasureSelection : MonoBehaviour {
 
@@ -23,6 +24,8 @@ public class MeasureSelection : MonoBehaviour {
                 MeasureInformation.measureType = MeasureInformation.MeasureType.Global;
                 break;
         }
+
+        SceneManager.LoadScene("Referencial");
 
     }
 

@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MeasureSelection.unity
+    guid: 6b70d2e839f3af144bc00303487f3c09
+  - enabled: 1
+    path: Assets/Scenes/Referencial.unity
+    guid: 0eeafb3cde9e48844b6dcd2bc47050e2
