@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Commiting more meta files
+=======
+>>>>>>> tentative
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +26,7 @@ public static class MeasureInformation {
         set { _measureType = value; }
     }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 ﻿using System.Collections;
@@ -49,3 +53,5 @@ public static class MeasureInformation {
 >>>>>>> 16b4b237dad37d5af7d6d5976c001affb80ba436
 =======
 >>>>>>> Commiting more meta files
+=======
+>>>>>>> tentative

@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Commiting more meta files
+=======
+>>>>>>> tentative
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +45,7 @@ public class MeasureSelection : MonoBehaviour {
         SceneManager.LoadScene("Referencial");
     }
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 ﻿using System.Collections;
@@ -87,3 +91,5 @@ public class MeasureSelection : MonoBehaviour {
 >>>>>>> 16b4b237dad37d5af7d6d5976c001affb80ba436
 =======
 >>>>>>> Commiting more meta files
+=======
+>>>>>>> tentative

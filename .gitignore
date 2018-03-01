@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Commiting more meta files
+=======
+>>>>>>> tentative
 # ===================================== #
 # Unity generated                       #
 # ===================================== #
@@ -31,6 +34,7 @@ ExportedObj/
 *.suo
 *.sln
 *.user
+<<<<<<< HEAD
 <<<<<<< HEAD
 *.booproj
 =======
@@ -76,3 +80,6 @@ sysinfo.txt
 =======
 *.booproj
 >>>>>>> Commiting more meta files
+=======
+*.booproj
+>>>>>>> tentative
