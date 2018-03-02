@@ -25,17 +25,25 @@ namespace CAD.Support {
 
         public int DisplayAssemblies(Vector3 hitPosition) {
 
+            // Player
+            Vector3 playerPosition = new Vector3(0.0f, 1.0f, 0.0f);
+
+            // This assembly
+            Vector3 newPosition = playerPosition + transform.TransformDirection(Vector3.forward) * 0.7f;
+
+            this.transform.position = newPosition;
+
             print("Number of assemblies to display: " + assembliesList.Count);
 
-            Vector3 offset = new Vector3(0.4f, 0.0f, 0.0f);
+            Vector3 offset = new Vector3(0.5f, 0.0f, 0.0f);
 
             foreach(GameObject assembly in assembliesList) {
 
                 assembly.SetActive(true);
 
-                assembly.transform.position = hitPosition + offset;
+                assembly.transform.position = newPosition + offset;
 
-                hitPosition += offset;
+                newPosition += offset;
             }
 
             return assembliesList.Count;

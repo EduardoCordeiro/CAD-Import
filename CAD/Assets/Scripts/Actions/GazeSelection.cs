@@ -49,8 +49,6 @@ namespace CAD.Actions {
         void Start() {
 
             phase = Phase.None;
-
-            ToggleAssemblies(false);
         }
 
         // Update is called once per frame
@@ -68,7 +66,7 @@ namespace CAD.Actions {
             print("Phase = " + phase);
 
             if(DebugDrawRay)
-                Debug.DrawRay(this.transform.position, this.transform.forward, Color.cyan);
+                Debug.DrawRay(this.transform.position, this.transform.forward, Color.cyan);            
         }
 
         public void Gaze() {
@@ -78,7 +76,7 @@ namespace CAD.Actions {
             // If the Raycast has succeeded and hit a sphere
             // hitInfo's point represents the position being gazed at
             // hitInfo's collider GameObject represents the assembly being gazed at
-            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20.0f, Physics.DefaultRaycastLayers)) {
+            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20.0f, LayerMask.GetMask("Assemblies"))) {
 
                 hittingObject = true;
 

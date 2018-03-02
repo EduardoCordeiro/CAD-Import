@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Assembly
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ethan
+  - MazeWalls
+  - MazeTurret
+  - MazeTurretBullet
+  - Bg
+  - FPSWeapon
+  - Assemblies
   - 
   - 
   - 

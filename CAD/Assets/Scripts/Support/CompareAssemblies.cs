@@ -40,6 +40,9 @@ namespace CAD.Support {
 
         public void ParseLabels(string otherObject) {
 
+            // Making sure the object is active
+            //transform.Find(otherObject).gameObject.SetActive(true);
+
             otherAssembly = transform.Find(otherObject).gameObject;
 
             // Split query label

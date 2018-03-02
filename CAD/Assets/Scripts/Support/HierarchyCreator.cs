@@ -22,9 +22,8 @@ namespace CAD.Support {
 
         private void CalculateBoudingBox() {
 
-            foreach(Transform child in transform)
-                CreateBoxCollider(child);
-            
+            //foreach(Transform child in transform)
+                //CreateBoxCollider(child);            
         }
 
         private void CreateBoxCollider(Transform meshTransform) {

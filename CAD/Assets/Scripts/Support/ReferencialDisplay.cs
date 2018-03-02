@@ -271,6 +271,8 @@ namespace CAD.Support {
 
             placeholder.name = gameObject.name + position.ToString();
 
+            placeholder.layer = 14;
+
             sphereRepresentationList.Add(placeholder);
 
             return placeholder;
@@ -293,6 +295,8 @@ namespace CAD.Support {
             placeholder.AddComponent<DisplayAssembly>();
             placeholder.GetComponent<DisplayAssembly>().StoreAssemblies(assemblies);
 
+            placeholder.layer = 14;
+
             sphereRepresentationList.Add(placeholder);
 
             return placeholder;
@@ -307,6 +311,9 @@ namespace CAD.Support {
             // Script that will display the assemblies
             placeholder.AddComponent<DisplayAssembly>();
             placeholder.GetComponent<DisplayAssembly>().StoreAssemblies(assemblies);
+
+            // 14 is the Assemblies layer
+            placeholder.layer = 14;
 
             sphereRepresentationList.Add(placeholder);
 
