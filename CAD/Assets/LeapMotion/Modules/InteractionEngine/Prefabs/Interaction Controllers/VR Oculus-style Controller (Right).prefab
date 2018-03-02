@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 4911511504652324}
   - component: {fileID: 114252805458954098}
   - component: {fileID: 114624724585167906}
+  - component: {fileID: 114161136587110566}
   m_Layer: 0
   m_Name: VR Oculus-style Controller (Right)
   m_TagString: Untagged
@@ -435,6 +436,17 @@ MonoBehaviour:
     The OpenVR SDK provides a better controller mesh that can easily be imported into
     Unity and dragged into this controller's hierarchy.
   _isEditing: 0
+--- !u!114 &114161136587110566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1180994678239160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114252805458954098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -443,14 +455,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1180994678239160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55d3703de8ab5d418cb97104179cb49, type: 3}
+  m_Script: {fileID: 11500000, guid: bda53bfa53e1b5542a2e72ca5441aeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: oculus touch right
   _chirality: 1
   _hoverPoint: {fileID: 4806976238791452}
@@ -469,7 +481,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1180994678239160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64c3b6f9e7a282941977291a82b4e7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136082638146769576

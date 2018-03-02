@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 4077438134063014}
   - component: {fileID: 114876551195846980}
   - component: {fileID: 114953444178982414}
+  - component: {fileID: 114649587377466236}
   m_Layer: 0
   m_Name: VR Vive-style Controller (Right)
   m_TagString: Untagged
@@ -558,6 +559,7 @@ GameObject:
   - component: {fileID: 4351381574526172}
   - component: {fileID: 114056511293186408}
   - component: {fileID: 114970412125573162}
+  - component: {fileID: 114297686795045812}
   m_Layer: 0
   m_Name: VR Oculus-style Controller (Left)
   m_TagString: Untagged
@@ -719,6 +721,7 @@ GameObject:
   - component: {fileID: 4798761784830422}
   - component: {fileID: 114349848297365876}
   - component: {fileID: 114988720853765858}
+  - component: {fileID: 114351899691126554}
   m_Layer: 0
   m_Name: VR Oculus-style Controller (Right)
   m_TagString: Untagged
@@ -1749,14 +1752,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1739234805131538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55d3703de8ab5d418cb97104179cb49, type: 3}
+  m_Script: {fileID: 11500000, guid: bda53bfa53e1b5542a2e72ca5441aeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 114892109605653334}
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: oculus touch left
   _chirality: 0
   _hoverPoint: {fileID: 4124005749955138}
@@ -1767,6 +1770,17 @@ MonoBehaviour:
   maxGraspDistance: 0.06
   graspButtonAxis: LeftVRTriggerAxis
   graspTimingSlop: 0.1
+--- !u!114 &114297686795045812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739234805131538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114349848297365876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1775,14 +1789,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1929393175973778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55d3703de8ab5d418cb97104179cb49, type: 3}
+  m_Script: {fileID: 11500000, guid: bda53bfa53e1b5542a2e72ca5441aeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 114892109605653334}
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: oculus touch right
   _chirality: 1
   _hoverPoint: {fileID: 4048898786076064}
@@ -1793,6 +1807,17 @@ MonoBehaviour:
   maxGraspDistance: 0.06
   graspButtonAxis: RightVRTriggerAxis
   graspTimingSlop: 0.1
+--- !u!114 &114351899691126554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1929393175973778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114465421072682944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1801,7 +1826,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782540128818682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64c3b6f9e7a282941977291a82b4e7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114525434807315476
@@ -1827,7 +1852,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1218537825695938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29207d17cdd06e84d9fecbdef2401c1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 825606d5a29bfa54e8504b874a7a93c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 114892109605653334}
@@ -1851,6 +1876,17 @@ MonoBehaviour:
     The OpenVR SDK provides a much better mesh for a Vive controller that can easily
     be imported to Unity and dragged into this controller's hierarchy.
   _isEditing: 0
+--- !u!114 &114649587377466236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1282056070140124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114685367921167028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1859,10 +1895,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1148719034140820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d7eaf54dc14a5e4a89bc7fac55ca11a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fa2ad1a88a2ebb45a1dc2214dcd332e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionManager: {fileID: 114892109605653334}
+  interactionManager: {fileID: 0}
   leftHandControllers: []
   rightHandControllers: []
   OnLeftHandActive:
@@ -1967,14 +2003,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782540128818682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55d3703de8ab5d418cb97104179cb49, type: 3}
+  m_Script: {fileID: 11500000, guid: bda53bfa53e1b5542a2e72ca5441aeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 114892109605653334}
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: openvr controller left
   _chirality: 0
   _hoverPoint: {fileID: 4929993856360548}
@@ -1993,7 +2029,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221454274505522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29207d17cdd06e84d9fecbdef2401c1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 825606d5a29bfa54e8504b874a7a93c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 114892109605653334}
@@ -2010,14 +2046,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1282056070140124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55d3703de8ab5d418cb97104179cb49, type: 3}
+  m_Script: {fileID: 11500000, guid: bda53bfa53e1b5542a2e72ca5441aeaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 114892109605653334}
   _hoverEnabled: 1
   _contactEnabled: 1
   _graspingEnabled: 1
-  _trackingProviderType: Leap.Unity.Interaction.DefaultVRNodeTrackingProvider
+  _trackingProviderType: Leap.Unity.Interaction.DefaultXRNodeTrackingProvider
   _deviceJoystickTokens: openvr controller right
   _chirality: 1
   _hoverPoint: {fileID: 4646715249737296}
@@ -2036,7 +2072,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1148719034140820}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0625e574c0d47a241b7dfc7a8c67ca2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f31afaf8c6d66c499902f5d4eb9a506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionControllers:
@@ -2053,11 +2089,11 @@ MonoBehaviour:
   _templateLayer:
     layerIndex: 0
   _interactionLayer:
-    layerIndex: 8
-  _interactionNoContactLayer:
-    layerIndex: 9
-  _contactBoneLayer:
     layerIndex: 10
+  _interactionNoContactLayer:
+    layerIndex: 11
+  _contactBoneLayer:
+    layerIndex: 12
   _drawControllerRuntimeGizmos: 0
 --- !u!114 &114953444178982414
 MonoBehaviour:
@@ -2067,7 +2103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1282056070140124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64c3b6f9e7a282941977291a82b4e7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114970412125573162
@@ -2078,7 +2114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1739234805131538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64c3b6f9e7a282941977291a82b4e7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114988720853765858
@@ -2089,7 +2125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1929393175973778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64c3b6f9e7a282941977291a82b4e7f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136111468458218704
