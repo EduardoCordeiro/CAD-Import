@@ -19,8 +19,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4880444997913596}
+  - component: {fileID: 114673170388295208}
+  - component: {fileID: 114202350758255690}
+  - component: {fileID: 114569798049438758}
   - component: {fileID: 114069372544815134}
   - component: {fileID: 114253643009839772}
+  - component: {fileID: 114862375184682930}
   m_Layer: 0
   m_Name: Assemblies
   m_TagString: Untagged
@@ -53,6 +57,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+--- !u!114 &114202350758255690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034184965879328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114253643009839772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,3 +80,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queryAssembly: {fileID: 0}
+--- !u!114 &114569798049438758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034184965879328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f31afaf8c6d66c499902f5d4eb9a506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionControllers:
+    _values:
+    - {fileID: 114673170388295208}
+  hoverActivationRadius: 0.2
+  touchActivationRadius: 0.075
+  _autoGenerateLayers: 1
+  _templateLayer:
+    layerIndex: 0
+  _interactionLayer:
+    layerIndex: 14
+  _interactionNoContactLayer:
+    layerIndex: 15
+  _contactBoneLayer:
+    layerIndex: 16
+  _drawControllerRuntimeGizmos: 0
+--- !u!114 &114673170388295208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034184965879328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825606d5a29bfa54e8504b874a7a93c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 114569798049438758}
+  _hoverEnabled: 1
+  _contactEnabled: 1
+  _graspingEnabled: 1
+  _handDataMode: 0
+  enabledPrimaryHoverFingertips: 0101010000
+--- !u!114 &114862375184682930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034184965879328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49dace795860a3448b8a0d35bf45beec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionBehaviour: {fileID: 0}

@@ -112,6 +112,7 @@ Transform:
   - {fileID: 411020}
   - {fileID: 483344}
   - {fileID: 4517941441316978}
+  - {fileID: 4192438960954130}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -539,6 +540,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1870053308468716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4192438960954130}
+  - component: {fileID: 114633865491723686}
+  - component: {fileID: 114804717242601180}
+  - component: {fileID: 114262753215209254}
+  m_Layer: 0
+  m_Name: Interaction Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1956206119731294
 GameObject:
   m_ObjectHideFlags: 1
@@ -608,6 +627,19 @@ Transform:
   - {fileID: 4658147811670474}
   m_Father: {fileID: 4674738513441370}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4192438960954130
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870053308468716}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 414974}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4262940717675822
 Transform:
@@ -814,7 +846,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnActivate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnDeactivate:
@@ -822,7 +865,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  Detectors: []
+  Detectors:
+  - {fileID: 114667661103523504}
   AddAllSiblingDetectorsOnAwake: 1
   GateType: 0
   Negate: 0
@@ -903,6 +947,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachmentHand: {fileID: 114676943605607146}
   attachmentPoint: 256
+--- !u!114 &114262753215209254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870053308468716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a2d4cfb071cd04a81a4c03012fba83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114263574244344104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1028,13 +1083,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attachmentPoints: 960
+--- !u!114 &114633865491723686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870053308468716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f31afaf8c6d66c499902f5d4eb9a506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionControllers:
+    _values:
+    - {fileID: 114804717242601180}
+  hoverActivationRadius: 0.2
+  touchActivationRadius: 0.075
+  _autoGenerateLayers: 1
+  _templateLayer:
+    layerIndex: 0
+  _interactionLayer:
+    layerIndex: 14
+  _interactionNoContactLayer:
+    layerIndex: 15
+  _contactBoneLayer:
+    layerIndex: 16
+  _drawControllerRuntimeGizmos: 0
 --- !u!114 &114667661103523504
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011792446482}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b77174815b904166ad047382f534c36, type: 3}
   m_Name: 
@@ -1051,9 +1132,9 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   Period: 0.1
   HandModel: {fileID: 114000013187629126}
-  FingerName: 1
-  PointingType: 1
-  PointingDirection: {x: 0, y: 0, z: 1}
+  FingerName: 0
+  PointingType: 2
+  PointingDirection: {x: 0, y: 1, z: 0}
   TargetObject: {fileID: 0}
   OnAngle: 15
   OffAngle: 25
@@ -1158,6 +1239,23 @@ MonoBehaviour:
   MinimumExtendedCount: 3
   MaximumExtendedCount: 2
   ShowGizmos: 1
+--- !u!114 &114804717242601180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870053308468716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825606d5a29bfa54e8504b874a7a93c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 114633865491723686}
+  _hoverEnabled: 1
+  _contactEnabled: 1
+  _graspingEnabled: 1
+  _handDataMode: 0
+  enabledPrimaryHoverFingertips: 0101010000
 --- !u!114 &114853798139660880
 MonoBehaviour:
   m_ObjectHideFlags: 1

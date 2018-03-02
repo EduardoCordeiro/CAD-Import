@@ -9,13 +9,6 @@ namespace CAD.Support {
 
     public class HierarchyCreator : MonoBehaviour {
 
-        public static HierarchyCreator instance { get; private set; }
-
-        private void Awake() {
-
-            instance = this;
-        }
-
         // Use this for initialization
         void Start() {
 
@@ -29,25 +22,36 @@ namespace CAD.Support {
 
         private void CalculateBoudingBox() {
 
-            Vector3 maxPoint = Vector3.negativeInfinity;
-            Vector3 minPoint = Vector3.positiveInfinity;
+            foreach(Transform child in transform)
+                CreateBoxCollider(child);
+            
+        }
 
-            MeshFilter[] renderers = GetComponentsInChildren<MeshFilter>();
+        private void CreateBoxCollider(Transform meshTransform) {
 
-            Vector3 average = Vector3.zero;
+            MeshFilter meshFilter = meshTransform.GetComponent<MeshFilter>();
 
-            foreach(MeshFilter m in renderers) {
+            if(meshFilter == null) {
 
-                maxPoint = Vector3.Max(m.mesh.bounds.max, maxPoint);
-                minPoint = Vector3.Min(m.mesh.bounds.min, minPoint);
+                //Find new childs
+                foreach(Transform child in meshTransform)
+                    CreateBoxCollider(child);
+            }
+            else {
 
-                average += m.transform.localPosition;
+                Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+
+                BoxCollider box = meshTransform.gameObject.AddComponent<BoxCollider>();
+                bounds.Encapsulate(meshFilter.mesh.bounds);
+                bounds.center = Vector3.zero;
+
+                //box.size = bounds.size;
+                //box.center = bounds.center;
+                box.size = meshFilter.mesh.bounds.max - meshFilter.mesh.bounds.min;
+                // center NOT WORKING
+                //box.center = meshTransform.transform.position;
             }
 
-            BoxCollider box = this.gameObject.AddComponent<BoxCollider>();
-            box.size = maxPoint - minPoint;
-            // center NOT WORKING
-            box.center = average;
         }
 
         public void CreateHierarchy() {

@@ -28,7 +28,11 @@ namespace CAD.Support {
 
         }
 
-        public void ClosedFist() {
+        /// <summary>
+        /// Thumbs Up Gestures
+        /// Move this to another class that stores the state we are in
+        /// </summary>
+        public void PreviousState() {
 
             Debug.Log("ClosedFist()");
         }
@@ -53,8 +57,6 @@ namespace CAD.Support {
         public void GraspPart() {
 
             print("I began a grasp");
-
-
         }
 
         public void StopGrasp() {
