@@ -77,6 +77,7 @@ namespace CAD.Support {
             }
         }
 
+        // Color the matching parts of the objects
         public void ColorAssemblyParts(string queryPart, string otherPart, Color color) {
 
             GameObject queryAssemblyPart = SearchChild(queryAssembly.transform, queryPart);
@@ -88,6 +89,7 @@ namespace CAD.Support {
             otherAssemblyPart.GetComponent<Renderer>().material.color = color;
         }
 
+        // Search Iteratively in the hierarchy
         GameObject SearchChild(Transform parent, string name)
         {
             GameObject missingChild = null;

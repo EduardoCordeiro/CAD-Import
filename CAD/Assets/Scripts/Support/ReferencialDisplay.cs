@@ -302,6 +302,13 @@ namespace CAD.Support {
             return placeholder;
         }
 
+        /// <summary>
+        /// Used for sphere creation, no name is given
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="position"></param>
+        /// <param name="assemblies"></param>
+        /// <returns></returns>
         GameObject CreateGameObject(GameObject gameObject, Vector3 position, List<GameObject> assemblies) {
 
             GameObject placeholder = Instantiate(gameObject, position, Quaternion.identity);
@@ -323,6 +330,11 @@ namespace CAD.Support {
             return placeholder;
         }
 
+        /// <summary>
+        /// Simple wrapper to Color a gameObject
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="color"></param>
         void ColorGameObject(GameObject gameObject, Color color) {
 
             gameObject.GetComponent<Renderer>().material.color = color;

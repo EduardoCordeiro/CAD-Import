@@ -22,49 +22,81 @@ namespace CAD.Support {
 
         private void CalculateBoudingBox() {
 
-            //foreach(Transform child in transform)
-                //CreateBoxCollider(child);            
+            BoxCollider boxCollider = this.gameObject.AddComponent<BoxCollider>();
+
+            Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+            bounds.center = Vector3.zero;
+
+            Vector3 maxPoint = Vector3.negativeInfinity;
+            Vector3 minPoint = Vector3.positiveInfinity;
+                        
+            foreach(Transform child in this.transform) {
+
+                System.Tuple<Vector3, Vector3> boxSize = CreateBoxCollider(child, bounds);
+
+                if(boxSize == null)
+                    continue;
+
+                maxPoint = Vector3.Max(boxSize.Item1, maxPoint);
+                minPoint = Vector3.Min(boxSize.Item2, minPoint);
+            }
+
+            // TODO, center still has an offset compared to the object
+            boxCollider.center = Vector3.zero;
+            boxCollider.size = maxPoint - minPoint;
         }
 
-        private void CreateBoxCollider(Transform meshTransform) {
+        private System.Tuple<Vector3, Vector3> CreateBoxCollider(Transform meshTransform, Bounds bounds) {
 
-            MeshFilter meshFilter = meshTransform.GetComponent<MeshFilter>();
+            MeshFilter meshFilter = meshTransform.GetComponent<MeshFilter>();            
 
             if(meshFilter == null) {
 
                 //Find new childs
                 foreach(Transform child in meshTransform)
-                    CreateBoxCollider(child);
+                     return CreateBoxCollider(child, bounds);
+
+                return null;
             }
             else {
 
-                Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
-
-                BoxCollider box = meshTransform.gameObject.AddComponent<BoxCollider>();
                 bounds.Encapsulate(meshFilter.mesh.bounds);
-                bounds.center = Vector3.zero;
 
-                //box.size = bounds.size;
-                //box.center = bounds.center;
-                box.size = meshFilter.mesh.bounds.max - meshFilter.mesh.bounds.min;
-                // center NOT WORKING
-                //box.center = meshTransform.transform.position;
+                return new System.Tuple<Vector3, Vector3>(meshFilter.mesh.bounds.max, meshFilter.mesh.bounds.min);
             }
-
         }
 
         public void CreateHierarchy() {
 
-            Debug.Log("CreateHierarchy()");
-
-            // Virtual Children are the best
             MakeChild();
-
-            // Name is clear
+            
             ClearDuplicateGameObjects();
 
-            // idem idem
             Hierarchy();
+        }
+
+        /// <summary>
+        /// Make all parts be children of the root object
+        /// </summary>
+        private void MakeChild() {
+
+            List<GameObject> rootObjects = new List<GameObject>();
+            SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
+
+            foreach(GameObject go in rootObjects)
+                if(go.GetComponent<MeshRenderer>() != null)
+                    go.transform.parent = this.transform;
+        }
+
+        /// <summary>
+        /// Clear the duplicate that comes from the import software
+        /// </summary>
+        private void ClearDuplicateGameObjects() {
+
+            for(int i = 0; i < transform.childCount; i++)
+                for(int j = i + 1; j < transform.childCount; j++)
+                    if(transform.GetChild(i).name == transform.GetChild(j).name)
+                        DestroyImmediate(transform.GetChild(j).gameObject);
         }
 
         /// <summary>
@@ -104,30 +136,6 @@ namespace CAD.Support {
                     name.Remove(name.Last());
                 }
             }
-        }       
-
-        /// <summary>
-        /// Clear the duplicate that comes from the import software
-        /// </summary>
-        private void ClearDuplicateGameObjects() {
-
-            for(int i = 0; i < transform.childCount; i++)
-                for(int j = i + 1; j < transform.childCount; j++)
-                    if(transform.GetChild(i).name == transform.GetChild(j).name)
-                        DestroyImmediate(transform.GetChild(j).gameObject);
-        }
-
-        /// <summary>
-        /// Make all parts be children of the root object
-        /// </summary>
-        private void MakeChild() {
-
-            List<GameObject> rootObjects = new List<GameObject>();
-            SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
-
-            foreach(GameObject go in rootObjects)
-                if(go.GetComponent<MeshRenderer>() != null)
-                    go.transform.parent = this.transform;
         }
     }
 }

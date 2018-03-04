@@ -95,7 +95,7 @@ namespace CAD.Actions {
         }
 
         /// <summary>
-        /// First Phase of the selection process
+        /// Selecting a Sphere
         /// </summary>
         public void SphereCollision() {
 
@@ -118,7 +118,7 @@ namespace CAD.Actions {
         }
 
         /// <summary>
-        /// Second phase of the selection process
+        /// Selecting an assembly
         /// </summary>
         void AssemblyCollision() {
 
@@ -130,6 +130,8 @@ namespace CAD.Actions {
                 currentHit.collider.gameObject.SetActive(true);
                 queryAssembly.SetActive(true);
 
+                // TODO, change the query object, because when we want to compare the 15 to the 15, only 1 object will be shown
+
                 phase = Phase.AssemblyComparision;
             }
         }
@@ -137,7 +139,7 @@ namespace CAD.Actions {
         void AssemblyComparision() {
 
             // Display the query assembly next to the one we want. With an offset in X for now
-            queryAssembly.transform.position = currentHit.collider.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
+            queryAssembly.transform.position = currentHit.collider.transform.position + new Vector3(-0.5f, 0.0f, 0.0f);
 
             // Parse the labels and color the objects and COLOR the Assemblies [not the best method]
             CompareAssemblies.instance.ParseLabels(currentHit.collider.name);
