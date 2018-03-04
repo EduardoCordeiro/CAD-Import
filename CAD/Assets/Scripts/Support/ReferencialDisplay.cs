@@ -30,7 +30,10 @@ namespace CAD.Support {
 
         private float threshhold;
 
-        public bool debug;
+        public bool DisplayReferencial;
+
+        // Using an offset in Y to account for the height of the user
+        private float heightOffset = 0.5f;
 
         private void Awake() {
 
@@ -57,30 +60,14 @@ namespace CAD.Support {
             CollectAssemblyData();
 
             // Dummy sphere for Debug
-            if(debug) {
+            if(DisplayReferencial) {
                 
                 // Add some fake spheres to hightlight the referencial
-                /*CreateGameObject(sphere, new Vector3(1.0f, 0.0f, 0.0f));
-                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.red);
+                CreateGameObject(sphere, new Vector3(1.0f, 0.5f, 0.0f), Color.red);
 
-                CreateGameObject(sphere, new Vector3(0.0f, 1.0f, 0.0f));
-                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.green);
+                CreateGameObject(sphere, new Vector3(0.0f, 1.5f, 0.0f), Color.green);
 
-                CreateGameObject(sphere, new Vector3(0.0f, 0.0f, 1.0f));
-                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.blue);
-
-                CreateGameObject(sphere, new Vector3(1.0f, 1.0f, 1.0f));
-                ColorGameObject(sphereRepresentationList[sphereRepresentationList.Count - 1], Color.black);*/
-
-                CreateGameObject(sphere, new Vector3(0.6f, .2f, .2f));
-
-                CreateGameObject(sphere, new Vector3(0.3f, 0.0f, 1.0f));
-
-                CreateGameObject(sphere, new Vector3(1.0f, 0.2f, 0.1f));
-
-                CreateGameObject(sphere, new Vector3(1.0f, 0.3f, 0.1f));
-
-                CreateGameObject(sphere, new Vector3(0.8f, 0.5f, 0.1f));
+                CreateGameObject(sphere, new Vector3(0.0f, 0.5f, 1.0f), Color.blue);
             }
 
             // Calculate the distances between the assemblies
@@ -141,7 +128,7 @@ namespace CAD.Support {
                 // Instanciate the sphere
                 CreateGameObject(   sphere, 
                                     new Vector3(highestLocalMeasure.mushape, 
-                                                highestLocalMeasure.muPos, 
+                                                highestLocalMeasure.muPos + heightOffset, 
                                                 highestLocalMeasure.mujoint), 
                                     objectName, 
                                     new List<GameObject>() { this.transform.GetChild(i).gameObject });
@@ -265,15 +252,13 @@ namespace CAD.Support {
         /// <param name="gameObject"></param>
         /// <param name="position"></param>
         /// <returns></returns>
-        GameObject CreateGameObject(GameObject gameObject, Vector3 position) {
+        GameObject CreateGameObject(GameObject gameObject, Vector3 position, Color color) {
 
             GameObject placeholder = Instantiate(gameObject, position, Quaternion.identity);
 
             placeholder.name = gameObject.name + position.ToString();
 
-            placeholder.layer = 14;
-
-            sphereRepresentationList.Add(placeholder);
+            ColorGameObject(placeholder, color);
 
             return placeholder;
         }
