@@ -19,7 +19,7 @@ namespace CAD.Support {
         string queryLabel;
 
         // The other assembly we will compare to
-        GameObject otherAssembly;
+        public GameObject otherAssembly;
 
         string otherLabel;
 

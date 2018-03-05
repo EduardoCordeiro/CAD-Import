@@ -14,10 +14,7 @@ namespace CAD.Support {
 
         public static ReferencialDisplay instance;
 
-        // TODO
-        Vector3 referencialPosition;
-
-        GameObject sphere;
+       GameObject sphere;
 
         // placeholder for input
         List<GameObject> sphereRepresentationList;
@@ -42,8 +39,6 @@ namespace CAD.Support {
 
         // Use this for initialization
         void Start() {
-
-            referencialPosition = Camera.main.transform.position - Vector3.zero / 2;
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
