@@ -17,6 +17,7 @@ namespace Assets.Scripts.VoiceController
         [SerializeField]
         private string[] m_Keywords;
 
+        private List<Vector3> originalParts;
         private KeywordRecognizer m_Recognizer;
 
         void Start()
@@ -45,7 +46,10 @@ namespace Assets.Scripts.VoiceController
                 case "Next":
                     break;
                 case "Esplodi":
-                    GetComponent<ObjectExplosion>().CircleExplosion(0.3f, CompareAssemblies.instance.otherAssembly);
+                    originalParts = GetComponent<ObjectExplosion>().CircleExplosion(0.3f, CompareAssemblies.instance.otherAssembly);
+                    break;
+                case "Assembla":
+                    GetComponent<ObjectExplosion>().ReverseExplosion(CompareAssemblies.instance.otherAssembly, originalParts);
                     break;
             }
         }

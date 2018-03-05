@@ -7,7 +7,7 @@ namespace CAD.Actions {
     public class ObjectExplosion : Action {
 
         public int depthLevel = 0;
-
+        
         // Use this for initialization
         void Start() {
 
@@ -30,8 +30,8 @@ namespace CAD.Actions {
             //if(Input.GetKeyDown(KeyCode.G))
             //    CircleExplosion(2.0f, partList);
 
-            if(Input.GetKeyDown(KeyCode.R))
-                ReverseExplosion(partList);
+            //if(Input.GetKeyDown(KeyCode.R))
+            //    ReverseExplosion(partList);
         }
 
         void SaveStartingPositions(List<GameObject> partList) {
@@ -96,14 +96,17 @@ namespace CAD.Actions {
         /// </summary>
         /// <param name="radius"></param>
         /// <param name="partList"></param>
-        public void CircleExplosion(float radius, GameObject entireAssembly) {
+        public List<Vector3> CircleExplosion(float radius, GameObject entireAssembly) {
 
             Vector3 center = entireAssembly.transform.position;
+            var partsBeforeTranformation = new List<Vector3>();
 
             int numberOfParts = entireAssembly.transform.childCount;
             int counter = 0;
 
             foreach(Transform part in entireAssembly.transform) {
+
+                partsBeforeTranformation.Add(part.position);
 
                 float angle = 2 * Mathf.PI * counter / numberOfParts;
 
@@ -111,19 +114,17 @@ namespace CAD.Actions {
                 float y = center.y + radius * Mathf.Sin(angle);
 
                 part.transform.position = new Vector3(x, y, center.z);
-
                 counter++;
             }
+            return partsBeforeTranformation;
         }
 
-        void ReverseExplosion(List<GameObject> partList) {
+        public void ReverseExplosion(GameObject entireAssembly, List<Vector3> partsBeforeTranformation) {
 
             int counter = 0;
-
-            foreach(GameObject part in partList) {
-
-                part.transform.position = initialPositions[counter];
-
+            foreach (Transform part in entireAssembly.transform)
+            {   
+                part.transform.position = partsBeforeTranformation[counter];
                 counter++;
             }
         }

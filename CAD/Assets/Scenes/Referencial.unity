@@ -213,6 +213,7 @@ MonoBehaviour:
   - Decomponi
   - Next
   - Esplodi
+  - Assembla
 --- !u!114 &486610133
 MonoBehaviour:
   m_ObjectHideFlags: 0
