@@ -75,7 +75,6 @@ public class CADImporterWizard : ScriptableWizard {
     void FirstPass() {
 
         filePaths = Directory.GetFiles(importAssetPath);
-
         numberOfFiles = filePaths.Length;
 
         // Update rootObject name
