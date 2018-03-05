@@ -8,6 +8,7 @@ using CAD.Actions;
 using CAD.Support;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows.Speech;
 
 namespace Assets.Scripts.VoiceController
@@ -50,6 +51,56 @@ namespace Assets.Scripts.VoiceController
                     break;
                 case "Assembla":
                     GetComponent<ObjectExplosion>().ReverseExplosion(CompareAssemblies.instance.otherAssembly, originalParts);
+                    break;
+                case "Indietro":
+                    var gazeSelcetion = GameObject.Find("CenterEyeAnchor").GetComponent<GazeSelection>();
+                    switch (gazeSelcetion.phase)
+                    {
+                        case Phase.None:
+                            SceneManager.LoadScene("MeasureSelection");
+                            break;
+                        case Phase.AssemblySelection:
+                            Scene loadLevel = SceneManager.GetActiveScene();
+                            SceneManager.LoadScene(loadLevel.name);
+                            break;
+                        case Phase.AssemblyComparision:
+                            if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 2] == Phase.AssemblySelection)
+                            {
+                                gazeSelcetion.ToggleAssemblies(false);
+
+                                var spheres = ReferencialDisplay.instance.sphereRepresentationList;
+                                //var lastSphereGameObject = gazeSelcetion.oldHit.collider.name;
+                                var lastSphere = spheres.Find(s => s.GetComponent<DisplayAssembly>().assembliesList.Find(obj => obj.name == CompareAssemblies.instance.otherAssembly.name));
+                                Debug.Log("Vengo dalla sfera: " + lastSphere.gameObject.name);
+
+                                lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
+                                gazeSelcetion.phase = Phase.AssemblySelection;
+                            }
+                            else if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 2] == Phase.None)
+                            {
+                                Scene loadPreviousLevel = SceneManager.GetActiveScene();
+                                SceneManager.LoadScene(loadPreviousLevel.name);
+                            }
+                            break;
+                        case Phase.Done:
+                            if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 2] == Phase.AssemblySelection)
+                            {
+                                gazeSelcetion.ToggleAssemblies(false);
+
+                                var spheres = ReferencialDisplay.instance.sphereRepresentationList;
+                                //var lastSphereGameObject = gazeSelcetion.oldHit.collider.name;
+                                var lastSphere = spheres.Find(s => s.GetComponent<DisplayAssembly>().assembliesList.Find(obj => obj.name == CompareAssemblies.instance.otherAssembly.name));
+                                Debug.Log("Vengo dalla sfera: " + lastSphere.gameObject.name);
+                                lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
+                                gazeSelcetion.phase = Phase.AssemblySelection;
+                            }
+                            else if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 2] == Phase.None)
+                            {
+                                Scene loadPreviousLevel = SceneManager.GetActiveScene();
+                                SceneManager.LoadScene(loadPreviousLevel.name);
+                            }
+                            break;
+                    }
                     break;
             }
         }

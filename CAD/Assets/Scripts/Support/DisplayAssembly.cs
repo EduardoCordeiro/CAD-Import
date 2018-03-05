@@ -6,7 +6,7 @@ namespace CAD.Support {
 
     public class DisplayAssembly : MonoBehaviour {
 
-        private List<GameObject> assembliesList;
+        public List<GameObject> assembliesList;
 
         // Use this for initialization
         void Start() {
@@ -38,6 +38,34 @@ namespace CAD.Support {
             Vector3 offset = new Vector3(0.5f, 0.0f, 0.0f);
 
             foreach(GameObject assembly in assembliesList) {
+
+                assembly.SetActive(true);
+
+                assembly.transform.position = newPosition + offset;
+
+                newPosition += offset;
+            }
+
+            return assembliesList.Count;
+        }
+
+        public int DisplayAssemblies()
+        {
+
+            // Player
+            Vector3 playerPosition = new Vector3(0.0f, 1.0f, 0.0f);
+
+            // This assembly
+            Vector3 newPosition = playerPosition + transform.TransformDirection(Vector3.forward) * 0.7f;
+
+            this.transform.position = newPosition;
+
+            print("Number of assemblies to display: " + assembliesList.Count);
+
+            Vector3 offset = new Vector3(0.5f, 0.0f, 0.0f);
+
+            foreach (GameObject assembly in assembliesList)
+            {
 
                 assembly.SetActive(true);
 

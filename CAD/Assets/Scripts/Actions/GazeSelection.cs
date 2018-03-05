@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -43,18 +43,27 @@ namespace CAD.Actions {
         /// </summary>
         public bool DebugDrawRay;
 
-        private Phase phase;
+        public Phase phase;
+
+        public List<Phase> phaseHistory;
 
         // Use this for initialization
         void Start() {
 
             phase = Phase.None;
+            phaseHistory = new List<Phase>();
+            phaseHistory.Add(phase);
         }
 
         // Update is called once per frame
         void Update() {
 
-            if(phase == Phase.None || phase == Phase.AssemblySelection) {
+            if (phase != phaseHistory.Last())
+            {
+                phaseHistory.Add(phase);
+            }
+
+            if (phase == Phase.None || phase == Phase.AssemblySelection) {
 
                 Gaze();
             }
@@ -157,7 +166,7 @@ namespace CAD.Actions {
                 AssemblyCollision();
         }
 
-        void ToggleSpheres(bool value) {
+        public void ToggleSpheres(bool value) {
 
             List<GameObject> rootObjects = new List<GameObject>();
             SceneManager.GetActiveScene().GetRootGameObjects(rootObjects);
@@ -171,7 +180,7 @@ namespace CAD.Actions {
                 }
         }
 
-        void ToggleAssemblies(bool value) {
+        public void ToggleAssemblies(bool value) {
 
             Transform assemblies = FindObjectOfType<CompareAssemblies>().transform;
 
@@ -188,5 +197,6 @@ namespace CAD.Actions {
                 }
             }
         }
+        
     }
 }

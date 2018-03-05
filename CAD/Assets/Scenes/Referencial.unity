@@ -214,6 +214,7 @@ MonoBehaviour:
   - Next
   - Esplodi
   - Assembla
+  - Indietro
 --- !u!114 &486610133
 MonoBehaviour:
   m_ObjectHideFlags: 0

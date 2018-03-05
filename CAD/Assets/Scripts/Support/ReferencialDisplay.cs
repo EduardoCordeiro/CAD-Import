@@ -14,10 +14,10 @@ namespace CAD.Support {
 
         public static ReferencialDisplay instance;
 
-       GameObject sphere;
+        GameObject sphere;
 
         // placeholder for input
-        List<GameObject> sphereRepresentationList;
+        public List<GameObject> sphereRepresentationList;
 
         // Storing the data for the assemblies that are too close to eachother
         Dictionary<GameObject, List<GameObject>> distanceIssues = new Dictionary<GameObject, List<GameObject>>();
