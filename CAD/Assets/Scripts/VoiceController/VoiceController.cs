@@ -57,15 +57,23 @@ namespace Assets.Scripts.VoiceController
                     switch (gazeSelcetion.phase)
                     {
                         case Phase.None:
+                            Debug.Log("None");
+
                             SceneManager.LoadScene("MeasureSelection");
                             break;
                         case Phase.AssemblySelection:
+                            Debug.Log("Sono nell'ultima fase AssemblySelection");
+
                             Scene loadLevel = SceneManager.GetActiveScene();
                             SceneManager.LoadScene(loadLevel.name);
                             break;
                         case Phase.AssemblyComparision:
-                            if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 2] == Phase.AssemblySelection)
+                            Debug.Log("AssemblyComparision");
+
+                            if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 3] == Phase.AssemblySelection)
                             {
+                                Debug.Log("Sono nell'ultima fase IF");
+
                                 gazeSelcetion.ToggleAssemblies(false);
 
                                 var spheres = ReferencialDisplay.instance.sphereRepresentationList;
@@ -76,15 +84,27 @@ namespace Assets.Scripts.VoiceController
                                 lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
                                 gazeSelcetion.phase = Phase.AssemblySelection;
                             }
-                            else if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 2] == Phase.None)
+                            else if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 3] == Phase.None)
                             {
+                                Debug.Log("Sono nell'ultima fase ELSE");
+
                                 Scene loadPreviousLevel = SceneManager.GetActiveScene();
                                 SceneManager.LoadScene(loadPreviousLevel.name);
                             }
                             break;
                         case Phase.Done:
-                            if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 2] == Phase.AssemblySelection)
+
+                            var count = 0;
+                            foreach (Phase phase in gazeSelcetion.phaseHistory)
                             {
+                                Debug.Log(count + " " + phase.ToString());
+                                count++;
+                            }
+
+                            if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 3] == Phase.AssemblySelection)
+                            {
+                                Debug.Log("Sono nell'ultima fase di DONE -- IF");
+
                                 gazeSelcetion.ToggleAssemblies(false);
 
                                 var spheres = ReferencialDisplay.instance.sphereRepresentationList;
@@ -94,11 +114,17 @@ namespace Assets.Scripts.VoiceController
                                 lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
                                 gazeSelcetion.phase = Phase.AssemblySelection;
                             }
-                            else if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 2] == Phase.None)
+                            else if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 3] == Phase.None)
                             {
+                                Debug.Log("Sono nell'ultima fase di DONE -- ELSE");
+
                                 Scene loadPreviousLevel = SceneManager.GetActiveScene();
                                 SceneManager.LoadScene(loadPreviousLevel.name);
                             }
+                            break;
+
+                        default:
+                            Debug.Log(gazeSelcetion.phase);
                             break;
                     }
                     break;
