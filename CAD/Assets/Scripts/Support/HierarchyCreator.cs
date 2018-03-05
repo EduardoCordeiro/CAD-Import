@@ -7,10 +7,10 @@ using System.Linq;
 
 namespace CAD.Support {
 
-    public class HierarchyCreator : MonoBehaviour {
+    public class HierarchyCreator : MonoBehaviour { 
 
         // Use this for initialization
-        void Start() {
+        void Awake() {
 
             CalculateBoudingBox();
         }
