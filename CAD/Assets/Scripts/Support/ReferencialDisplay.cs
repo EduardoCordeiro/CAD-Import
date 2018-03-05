@@ -100,12 +100,14 @@ namespace CAD.Support {
         /// </summary>
         void CollectAssemblyData() {
 
-            for(int i = 0; i < transform.childCount; i++) {
+            for (int i = 0; i < transform.childCount; i++)
+            {
 
                 string objectName = this.transform.GetChild(i).name;
 
                 // JSON parsing
-                StreamReader sr = new StreamReader(Application.dataPath + "/Resources/Caracteristic Files/" + objectName + ".json");
+                StreamReader sr =
+                    new StreamReader(Application.dataPath + "/Resources/Caracteristic Files/" + objectName + ".json");
 
                 string jsonString = sr.ReadToEnd();
                 jsonString = JsonHelper.FixJson(jsonString);
@@ -114,7 +116,23 @@ namespace CAD.Support {
                 Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
 
                 // Order the List
-                List<Caracteristic> sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
+                List<Caracteristic> sortedCaracteristics = new List<Caracteristic>();
+
+                switch (MeasureInformation.measureType)
+                {
+                    case MeasureInformation.MeasureType.Global:
+                        sortedCaracteristics = caracteristics.OrderByDescending(o => o.globalMeasure).ToList();
+                        print("Ordino globale");
+                        break;
+                    case MeasureInformation.MeasureType.Partial:
+                        sortedCaracteristics = caracteristics.OrderByDescending(o => o.partialMeasure).ToList();
+                        print("Ordino parziale");
+                        break;
+                    case MeasureInformation.MeasureType.Local:
+                        sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
+                        print("Ordino local");
+                        break;
+                }
 
                 // add this list to a dictionary of lists to store all the data
                 //caracteristicsList = new KeyValuePair<GameObject, List<Caracteristic>>(this.transform.GetChild(i).gameObject, sortedCaracteristics);
@@ -126,12 +144,12 @@ namespace CAD.Support {
                 List<Caracteristic> v = caracteristicsList[this.transform.GetChild(i).gameObject];
 
                 // Instanciate the sphere
-                CreateGameObject(   sphere, 
-                                    new Vector3(highestLocalMeasure.mushape, 
-                                                highestLocalMeasure.muPos + heightOffset, 
-                                                highestLocalMeasure.mujoint), 
-                                    objectName, 
-                                    new List<GameObject>() { this.transform.GetChild(i).gameObject });
+                CreateGameObject(sphere,
+                    new Vector3(highestLocalMeasure.mushape,
+                        highestLocalMeasure.muPos + heightOffset,
+                        highestLocalMeasure.mujoint),
+                    objectName,
+                    new List<GameObject>() {this.transform.GetChild(i).gameObject});
             }
         }
 
