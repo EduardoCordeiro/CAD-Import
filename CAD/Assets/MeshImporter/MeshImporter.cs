@@ -49,6 +49,7 @@ namespace Assets
 
                 MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
                 MeshFilter filter = gameObject.AddComponent<MeshFilter>();
+               
                 filter.mesh = holderMesh;
 
                 Debug.Log("Mesh creata");

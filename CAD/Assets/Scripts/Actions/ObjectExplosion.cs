@@ -27,8 +27,8 @@ namespace CAD.Actions {
             if(Input.GetKeyDown(KeyCode.F))
                 Explosion(2.0f, partList);
 
-            if(Input.GetKeyDown(KeyCode.G))
-                CircleExplosion(2.0f, partList);
+            //if(Input.GetKeyDown(KeyCode.G))
+            //    CircleExplosion(2.0f, partList);
 
             if(Input.GetKeyDown(KeyCode.R))
                 ReverseExplosion(partList);
@@ -96,22 +96,21 @@ namespace CAD.Actions {
         /// </summary>
         /// <param name="radius"></param>
         /// <param name="partList"></param>
-        void CircleExplosion(float radius, List<GameObject> partList) {
+        public void CircleExplosion(float radius, GameObject entireAssembly) {
 
-            Vector3 center = transform.position;
+            Vector3 center = entireAssembly.transform.position;
 
-            int numberOfParts = partList.Count;
-
+            int numberOfParts = entireAssembly.transform.childCount;
             int counter = 0;
 
-            foreach(GameObject part in partList) {
+            foreach(Transform part in entireAssembly.transform) {
 
                 float angle = 2 * Mathf.PI * counter / numberOfParts;
 
                 float x = center.x + radius * Mathf.Cos(angle);
                 float y = center.y + radius * Mathf.Sin(angle);
 
-                part.transform.position = new Vector3(x, y, 0.0f);
+                part.transform.position = new Vector3(x, y, center.z);
 
                 counter++;
             }

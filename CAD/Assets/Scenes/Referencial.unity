@@ -191,6 +191,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &486610129 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1034184965879328, guid: be03c285a130c2d4797cd5ff1f21cf21,
+    type: 2}
+  m_PrefabInternal: {fileID: 1369283817}
+--- !u!114 &486610130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486610129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adaccb41e6af1a498364f9c62facf26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Keywords:
+  - Nascondi
+  - Mostra
+  - Decomponi
+  - Next
+  - Esplodi
+--- !u!114 &486610133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486610129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6baa421155c5a4faadbd84a52ae210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthLevel: 0
 --- !u!1001 &516693431
 Prefab:
   m_ObjectHideFlags: 0
