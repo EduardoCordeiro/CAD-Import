@@ -18,6 +18,7 @@ unityGenerated
 # ===================================== #
 
 ExportedObj/
+.vs/
 
 *.svd
 *.csproj
