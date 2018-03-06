@@ -44,7 +44,7 @@ namespace CAD.Support {
             }
 
             // TODO, center still has an offset compared to the object
-            boxCollider.center = Vector3.zero;
+            boxCollider.center = new Vector3(0.1f, 0.1f, -0.1f);
             boxCollider.size = maxPoint - minPoint;
         }
 
