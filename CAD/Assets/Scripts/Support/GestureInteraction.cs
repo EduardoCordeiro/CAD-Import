@@ -59,9 +59,12 @@ namespace CAD.Support {
             print("I began a grasp");
         }
 
-        public void StopGrasp() {
+        public void StopGrasp(GameObject gameObject) {
 
             print("Stopped grasp");
+
+            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
     }
 }
