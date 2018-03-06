@@ -13,6 +13,8 @@ namespace CAD.Support {
         void Awake() {
 
             CalculateBoudingBox();
+
+            this.gameObject.layer = 14;
         }
 
         // Update is called once per frame

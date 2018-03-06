@@ -330,6 +330,10 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1878726649194080, guid: 54d8905d56398ba4b94ac90408a4bc31, type: 2}
+      propertyPath: m_TagString
+      value: Assemblies
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54d8905d56398ba4b94ac90408a4bc31, type: 2}
   m_IsPrefabParent: 0
@@ -417,24 +421,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &516693435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 516693432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e554a7cca8c03164581e04e5b2cce472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useHover: 1
-  usePrimaryHover: 0
-  defaultColor: {r: 1, g: 0.88965523, b: 0, a: 1}
-  suspendedColor: {r: 0.3321799, g: 0.35294116, b: 0.20242214, a: 1}
-  hoverColor: {r: 1, g: 0.014705896, b: 0.93204874, a: 1}
-  primaryHoverColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &533671191
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +684,16 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.022379931
       objectReference: {fileID: 0}
+    - target: {fileID: 114793286422574744, guid: 18d6bf9063dcb1842be63f411fd9fc26,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114778180171929924, guid: 18d6bf9063dcb1842be63f411fd9fc26,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18d6bf9063dcb1842be63f411fd9fc26, type: 2}
   m_IsPrefabParent: 0
@@ -957,6 +953,10 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1858006619575460, guid: cb195b2baa8ec494facc219e3de7bd5c, type: 2}
+      propertyPath: m_TagString
+      value: Assemblies
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb195b2baa8ec494facc219e3de7bd5c, type: 2}
   m_IsPrefabParent: 0
@@ -1027,24 +1027,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1347974917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1347974914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e554a7cca8c03164581e04e5b2cce472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useHover: 1
-  usePrimaryHover: 0
-  defaultColor: {r: 1, g: 0.88965523, b: 0, a: 1}
-  suspendedColor: {r: 0.3321799, g: 0.35294116, b: 0.20242214, a: 1}
-  hoverColor: {r: 1, g: 0.014705896, b: 0.93204874, a: 1}
-  primaryHoverColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1361187281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1281,10 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1874429752628384, guid: 1c4cf89c28ef7144d842a92d366f5a86, type: 2}
+      propertyPath: m_TagString
+      value: Assemblies
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c4cf89c28ef7144d842a92d366f5a86, type: 2}
   m_IsPrefabParent: 0
@@ -1386,24 +1372,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1378606995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1378606992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e554a7cca8c03164581e04e5b2cce472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useHover: 1
-  usePrimaryHover: 0
-  defaultColor: {r: 1, g: 0.88965523, b: 0, a: 1}
-  suspendedColor: {r: 0.3321799, g: 0.35294116, b: 0.20242214, a: 1}
-  hoverColor: {r: 1, g: 0.014705896, b: 0.93204874, a: 1}
-  primaryHoverColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1408897847 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1712806705986584, guid: cb195b2baa8ec494facc219e3de7bd5c,
@@ -1637,6 +1605,10 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1521933930608958, guid: d769cc2190a62af4bb13d2313e39cebc, type: 2}
+      propertyPath: m_TagString
+      value: Assemblies
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d769cc2190a62af4bb13d2313e39cebc, type: 2}
   m_IsPrefabParent: 0
@@ -1707,24 +1679,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1834502615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1834502612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e554a7cca8c03164581e04e5b2cce472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useHover: 1
-  usePrimaryHover: 0
-  defaultColor: {r: 1, g: 0.88965523, b: 0, a: 1}
-  suspendedColor: {r: 0.3321799, g: 0.35294116, b: 0.20242214, a: 1}
-  hoverColor: {r: 1, g: 0.014705896, b: 0.93204874, a: 1}
-  primaryHoverColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1947864377
 Prefab:
   m_ObjectHideFlags: 0
@@ -1856,6 +1810,10 @@ Prefab:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1996445535615210, guid: 766252015aa8bf244b45a60cfb03785e, type: 2}
+      propertyPath: m_TagString
+      value: Assemblies
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766252015aa8bf244b45a60cfb03785e, type: 2}
   m_IsPrefabParent: 0
@@ -1943,24 +1901,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1947864381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1947864378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e554a7cca8c03164581e04e5b2cce472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useHover: 1
-  usePrimaryHover: 0
-  defaultColor: {r: 1, g: 0.88965523, b: 0, a: 1}
-  suspendedColor: {r: 0.3321799, g: 0.35294116, b: 0.20242214, a: 1}
-  hoverColor: {r: 1, g: 0.014705896, b: 0.93204874, a: 1}
-  primaryHoverColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2011438107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,6 +2162,10 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1406753221382940, guid: 052c0437e976f384aad33cb4101876c3, type: 2}
+      propertyPath: m_TagString
+      value: Assemblies
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 052c0437e976f384aad33cb4101876c3, type: 2}
   m_IsPrefabParent: 0
@@ -2309,24 +2253,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2030600751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2030600748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e554a7cca8c03164581e04e5b2cce472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useHover: 1
-  usePrimaryHover: 0
-  defaultColor: {r: 1, g: 0.88965523, b: 0, a: 1}
-  suspendedColor: {r: 0.3321799, g: 0.35294116, b: 0.20242214, a: 1}
-  hoverColor: {r: 1, g: 0.014705896, b: 0.93204874, a: 1}
-  primaryHoverColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2097879832 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1861484680762630, guid: cb195b2baa8ec494facc219e3de7bd5c,

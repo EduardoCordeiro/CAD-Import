@@ -294,6 +294,7 @@ namespace CAD.Support {
             placeholder.GetComponent<DisplayAssembly>().StoreAssemblies(assemblies);
 
             placeholder.layer = 14;
+            placeholder.tag = "Assemblies";
 
             sphereRepresentationList.Add(placeholder);
 
@@ -319,6 +320,7 @@ namespace CAD.Support {
 
             // 14 is the Assemblies layer
             placeholder.layer = 14;
+            placeholder.tag = "Assemblies";
 
             sphereRepresentationList.Add(placeholder);
 

@@ -58,6 +58,7 @@ namespace CAD.Actions {
         // Update is called once per frame
         void Update() {
 
+            // Update phase list
             if (phase != phaseHistory.Last())
             {
                 phaseHistory.Add(phase);
@@ -85,20 +86,25 @@ namespace CAD.Actions {
             // If the Raycast has succeeded and hit a sphere
             // hitInfo's point represents the position being gazed at
             // hitInfo's collider GameObject represents the assembly being gazed at
-            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20.0f, LayerMask.GetMask("Assemblies"))) {
+            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20.0f)) {
 
-                hittingObject = true;
+                if(hitInfo.collider.tag == "Assemblies") {
 
-                currentHit = hitInfo;
+                    hittingObject = true;
 
-                print("I hit == " + currentHit.collider.name);
+                    currentHit = hitInfo;
 
-                // Timer > 2 seconds, select Object
-                // here we will wait for 1-2 seconds and then select the object
-                StartCoroutine(GazeConfirmation());
+                    print("I hit == " + currentHit.collider.name);
 
-                // Old Hit Information
-                oldHit = hitInfo;
+                    // Timer > 2 seconds, select Object
+                    // here we will wait for 1-2 seconds and then select the object
+                    StartCoroutine(GazeConfirmation());
+
+                    // Old Hit Information
+                    oldHit = hitInfo;
+                }
+                // do not do anything if we are not hitting an assembly
+
             } else
                 hittingObject = false;
         }
