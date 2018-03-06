@@ -73,8 +73,6 @@ namespace CAD.Actions {
                 AssemblyComparision();
             }
 
-            print("Phase = " + phase);
-
             if(DebugDrawRay)
                 Debug.DrawRay(this.transform.position, this.transform.forward, Color.cyan);            
         }
@@ -93,8 +91,6 @@ namespace CAD.Actions {
                     hittingObject = true;
 
                     currentHit = hitInfo;
-
-                    print("I hit == " + currentHit.collider.name);
 
                     // Timer > 2 seconds, select Object
                     // here we will wait for 1-2 seconds and then select the object

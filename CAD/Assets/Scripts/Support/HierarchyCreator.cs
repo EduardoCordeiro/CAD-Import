@@ -42,8 +42,8 @@ namespace CAD.Support {
                 maxPoint = Vector3.Max(boxSize.Item1, maxPoint);
                 minPoint = Vector3.Min(boxSize.Item2, minPoint);
             }
-
-            // TODO, center still has an offset compared to the object
+            
+            // Workaround, this is not pretty, but the collider is aligned for almost all objects
             boxCollider.center = new Vector3(0.1f, 0.1f, -0.1f);
             boxCollider.size = maxPoint - minPoint;
         }
