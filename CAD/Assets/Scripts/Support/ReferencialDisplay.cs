@@ -13,11 +13,15 @@ namespace CAD.Support {
     public class ReferencialDisplay : MonoBehaviour {
 
         public static ReferencialDisplay instance;
-
+        
         GameObject sphere;
 
         // placeholder for input
         public List<GameObject> sphereRepresentationList;
+
+
+        // placeholder to be visualized
+        public List<GameObject> visibleSphereList;
 
         // Storing the data for the assemblies that are too close to eachother
         Dictionary<GameObject, List<GameObject>> distanceIssues = new Dictionary<GameObject, List<GameObject>>();
@@ -43,6 +47,8 @@ namespace CAD.Support {
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
             sphereRepresentationList = new List<GameObject>();
+
+            visibleSphereList = new List<GameObject>();
 
             caracteristicsList = new Dictionary<GameObject, List<Caracteristic>>();
 
@@ -255,7 +261,8 @@ namespace CAD.Support {
                 assembliesList.Add(assembliesTranform.Find(issues.Key.name).gameObject);
 
                 // using centroid as the new position
-                CreateGameObject(sphere, centroid, assembliesList);
+                var newSpere = CreateGameObject(sphere, centroid, assembliesList);
+                visibleSphereList.Add(newSpere);
             }
         }
 

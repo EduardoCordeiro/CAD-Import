@@ -64,14 +64,20 @@ namespace CAD.Support {
 
             Vector3 offset = new Vector3(0.5f, 0.0f, 0.0f);
 
+            Color greyColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
             foreach (GameObject assembly in assembliesList)
             {
-
                 assembly.SetActive(true);
 
                 assembly.transform.position = newPosition + offset;
 
                 newPosition += offset;
+
+                foreach (Renderer variableName in assembly.transform.GetComponentsInChildren<Renderer>())
+                {
+                    variableName.material.color = greyColor;
+                }
+                
             }
 
             return assembliesList.Count;

@@ -13,6 +13,8 @@ namespace CAD.Actions {
         None,
         AssemblySelection,
         AssemblyComparision,
+        AssemblyExplosion,
+        AssemblyDecomposition,
         Done
     }
 

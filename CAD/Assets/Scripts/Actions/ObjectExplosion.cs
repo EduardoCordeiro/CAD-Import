@@ -96,7 +96,8 @@ namespace CAD.Actions {
         /// </summary>
         /// <param name="radius"></param>
         /// <param name="partList"></param>
-        public List<Vector3> CircleExplosion(float radius, GameObject entireAssembly) {
+        /// <param name="zPlane"></param>
+        public List<Vector3> CircleExplosion(float radius, float zPlane, GameObject entireAssembly) {
 
             Vector3 center = entireAssembly.transform.position;
             var partsBeforeTranformation = new List<Vector3>();
@@ -113,7 +114,9 @@ namespace CAD.Actions {
                 float x = center.x + radius * Mathf.Cos(angle);
                 float y = center.y + radius * Mathf.Sin(angle);
 
-                part.transform.position = new Vector3(x, y, center.z);
+                part.gameObject.SetActive(true);
+                part.transform.position = new Vector3(x, y, zPlane);
+                Debug.Log("Piano frontale " + zPlane);
                 counter++;
             }
             return partsBeforeTranformation;
@@ -124,6 +127,7 @@ namespace CAD.Actions {
             int counter = 0;
             foreach (Transform part in entireAssembly.transform)
             {   
+                part.gameObject.SetActive(true);
                 part.transform.position = partsBeforeTranformation[counter];
                 counter++;
             }

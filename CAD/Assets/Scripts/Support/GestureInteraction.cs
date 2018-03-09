@@ -66,5 +66,7 @@ namespace CAD.Support {
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
+
+
     }
 }

@@ -42,9 +42,10 @@ namespace CAD.Support {
                 maxPoint = Vector3.Max(boxSize.Item1, maxPoint);
                 minPoint = Vector3.Min(boxSize.Item2, minPoint);
             }
-            
+
             // Workaround, this is not pretty, but the collider is aligned for almost all objects
-            boxCollider.center = new Vector3(0.1f, 0.1f, -0.1f);
+            //boxCollider.center = new Vector3(0.1f, 0.1f, -0.1f);
+            boxCollider.center = bounds.center;
             boxCollider.size = maxPoint - minPoint;
         }
 
@@ -62,6 +63,8 @@ namespace CAD.Support {
             }
             else {
 
+                if (bounds.extents == Vector3.zero)
+                    bounds = meshFilter.mesh.bounds;
                 bounds.Encapsulate(meshFilter.mesh.bounds);
 
                 return new System.Tuple<Vector3, Vector3>(meshFilter.mesh.bounds.max, meshFilter.mesh.bounds.min);
