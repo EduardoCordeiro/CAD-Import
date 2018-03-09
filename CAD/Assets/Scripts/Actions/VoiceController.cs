@@ -202,8 +202,6 @@ namespace Assets.Scripts.Actions
 
             boxCollider.center = bounds.center;
             boxCollider.size = bounds.size;
-            Debug.Log("Center " + bounds.center.x + " " + bounds.center.y + " " + bounds.center.z);
-            Debug.Log("Size " + bounds.size.x + " " + bounds.size.y + " " + bounds.size.z);
 
             // Add the leap motion script by code
             var interactionBehaviour = visibleSubAss.AddComponent<InteractionBehaviour>();

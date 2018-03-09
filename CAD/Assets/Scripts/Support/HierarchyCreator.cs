@@ -23,51 +23,57 @@ namespace CAD.Support {
         }
 
         private void CalculateBoudingBox() {
-
+            
             BoxCollider boxCollider = this.gameObject.AddComponent<BoxCollider>();
 
             Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
             bounds.center = Vector3.zero;
-
+            
             Vector3 maxPoint = Vector3.negativeInfinity;
             Vector3 minPoint = Vector3.positiveInfinity;
+            List<Vector3> centersList = new List<Vector3>();
                         
             foreach(Transform child in this.transform) {
 
-                System.Tuple<Vector3, Vector3> boxSize = CreateBoxCollider(child, bounds);
+                System.Tuple<Vector3, Vector3, Vector3> boxSize = CreateBoxCollider(child, bounds);
 
                 if(boxSize == null)
                     continue;
 
                 maxPoint = Vector3.Max(boxSize.Item1, maxPoint);
                 minPoint = Vector3.Min(boxSize.Item2, minPoint);
+                centersList.Add(boxSize.Item3);
             }
+
+           
+            var centerAveragePoint = new Vector3(centersList.Average(x => x.x), centersList.Average(x => x.y), centersList.Average(x => x.z));
 
             // Workaround, this is not pretty, but the collider is aligned for almost all objects
             //boxCollider.center = new Vector3(0.1f, 0.1f, -0.1f);
-            boxCollider.center = bounds.center;
+            boxCollider.center = centerAveragePoint;
             boxCollider.size = maxPoint - minPoint;
         }
 
-        private System.Tuple<Vector3, Vector3> CreateBoxCollider(Transform meshTransform, Bounds bounds) {
+        private System.Tuple<Vector3, Vector3, Vector3> CreateBoxCollider(Transform meshTransform, Bounds bounds) {
 
             MeshFilter meshFilter = meshTransform.GetComponent<MeshFilter>();            
 
-            if(meshFilter == null) {
-
+            if(meshFilter == null)
+            {
                 //Find new childs
                 foreach(Transform child in meshTransform)
                      return CreateBoxCollider(child, bounds);
 
                 return null;
             }
-            else {
+            else
+            {
 
                 if (bounds.extents == Vector3.zero)
                     bounds = meshFilter.mesh.bounds;
                 bounds.Encapsulate(meshFilter.mesh.bounds);
 
-                return new System.Tuple<Vector3, Vector3>(meshFilter.mesh.bounds.max, meshFilter.mesh.bounds.min);
+                return new System.Tuple<Vector3, Vector3, Vector3>(meshFilter.mesh.bounds.max, meshFilter.mesh.bounds.min, meshFilter.mesh.bounds.center);
             }
         }
 
