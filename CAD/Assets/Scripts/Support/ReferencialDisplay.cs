@@ -1,19 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Assets.Scripts.Actions;
+using CAD.Support;
+using CAD.Utility;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-using System.IO;
-using System.Linq;
+namespace Assets.Scripts.Support {
+    public enum Phase
+    {
 
-using CAD.Utility;
-
-namespace CAD.Support {
-
+        None,
+        AssemblySelection,
+        AssemblyComparision,
+        AssemblyExplosion,
+        AssemblyDecomposition,
+        Done
+    }
     public class ReferencialDisplay : MonoBehaviour {
 
         public static ReferencialDisplay instance;
-        
+
+        public static Phase phase;
+
+        public static List<Phase> phaseHistory;
+
         GameObject sphere;
 
         // placeholder for input
@@ -43,6 +55,12 @@ namespace CAD.Support {
 
         // Use this for initialization
         void Start() {
+
+            phase = Phase.None;
+
+            phaseHistory = new List<Phase>();
+
+            phaseHistory.Add(phase);
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 

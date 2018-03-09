@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System;
-using System.Text;
-using CAD.Actions;
+using Assets.Scripts.Support;
 using CAD.Support;
 using Leap.Unity.Interaction;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows.Speech;
@@ -40,9 +36,9 @@ namespace Assets.Scripts.Actions
             Debug.Log(builder.ToString());
 
             var targetObject = CompareAssemblies.instance.otherAssembly;
-           
-            List<Transform> children = new List<Transform>();
             var gazeSelcetion = GameObject.Find("CenterEyeAnchor").GetComponent<GazeSelection>();
+
+            List<Transform> children = new List<Transform>();
 
             switch (args.text)
             {
@@ -51,16 +47,16 @@ namespace Assets.Scripts.Actions
                 case "Mostra":
                     break;
                 case "Decomponi":
-                    if (gazeSelcetion.phase == Phase.AssemblyExplosion)
+                    if (ReferencialDisplay.phase == Phase.AssemblyExplosion)
                     {
                         DisplaySelectedSubassmbly(targetObject, countAssembly);
                         maximumAssemblyNumber = targetObject.transform.childCount;
                         Debug.Log("Subassembly da iterare " + maximumAssemblyNumber);
-                        gazeSelcetion.phase = Phase.AssemblyDecomposition;
+                        ReferencialDisplay.phase = Phase.AssemblyDecomposition;
                     }
                     break;
                 case "Next":
-                    if (gazeSelcetion.phase == Phase.AssemblyDecomposition)
+                    if (ReferencialDisplay.phase == Phase.AssemblyDecomposition)
                     {
                         if (countAssembly == maximumAssemblyNumber - 1)
                         {
@@ -78,19 +74,19 @@ namespace Assets.Scripts.Actions
                 case "Esplodi":
                     var zPlane = targetObject.gameObject.transform.position.z;
                     originalParts = GetComponent<ObjectExplosion>().CircleExplosion(0.7f, zPlane, CompareAssemblies.instance.otherAssembly);
-                    gazeSelcetion.phase = Phase.AssemblyExplosion;
+                    ReferencialDisplay.phase = Phase.AssemblyExplosion;
                     break;
                 case "Assembla":
-                    if (gazeSelcetion.phase == Phase.AssemblyExplosion ||
-                        gazeSelcetion.phase == Phase.AssemblyDecomposition)
+                    if (ReferencialDisplay.phase == Phase.AssemblyExplosion ||
+                        ReferencialDisplay.phase == Phase.AssemblyDecomposition)
                     {
                         GetComponent<ObjectExplosion>()
                             .ReverseExplosion(CompareAssemblies.instance.otherAssembly, originalParts);
                     }
-                    gazeSelcetion.phase = Phase.AssemblyComparision;
+                    ReferencialDisplay.phase = Phase.AssemblyComparision;
                     break;
                 case "Indietro":
-                    switch (gazeSelcetion.phase)
+                    switch (ReferencialDisplay.phase)
                     {
                         case Phase.None:
                             Debug.Log("None");
@@ -106,21 +102,22 @@ namespace Assets.Scripts.Actions
                         case Phase.AssemblyComparision:
                             Debug.Log("AssemblyComparision");
 
-                            if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 3] == Phase.AssemblySelection)
+                            if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.AssemblySelection)
                             {
                                 Debug.Log("Sono nell'ultima fase IF");
 
                                 gazeSelcetion.ToggleAssemblies(false);
 
+                                
                                 var spheres = ReferencialDisplay.instance.sphereRepresentationList;
                                 //var lastSphereGameObject = gazeSelcetion.oldHit.collider.name;
                                 var lastSphere = spheres.Find(s => s.GetComponent<DisplayAssembly>().assembliesList.Find(obj => obj.name == CompareAssemblies.instance.otherAssembly.name));
                                 var numberOfObjects = lastSphere.GetComponent<DisplayAssembly>().assembliesList;
                                 Debug.Log("Vengo dalla sfera: " + lastSphere.gameObject.name + " che contiene " + numberOfObjects);
                                 lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
-                                gazeSelcetion.phase = Phase.AssemblySelection;
+                                ReferencialDisplay.phase = Phase.AssemblySelection;
                             }
-                            else if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 3] == Phase.None)
+                            else if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.None)
                             {
                                 Debug.Log("Sono nell'ultima fase ELSE");
 
@@ -131,13 +128,13 @@ namespace Assets.Scripts.Actions
                         case Phase.Done:
 
                             var count = 0;
-                            foreach (Phase phase in gazeSelcetion.phaseHistory)
+                            foreach (Phase phase in ReferencialDisplay.phaseHistory)
                             {
                                 Debug.Log(count + " " + phase.ToString());
                                 count++;
                             }
 
-                            if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 3] == Phase.AssemblySelection)
+                            if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.AssemblySelection)
                             {
                                 var spheres = ReferencialDisplay.instance.visibleSphereList;
 
@@ -154,13 +151,13 @@ namespace Assets.Scripts.Actions
                                 var lastSphere = spheres.Find(s => s.GetComponent<DisplayAssembly>().assembliesList.Find(obj => obj.name == CompareAssemblies.instance.otherAssembly.name));
                                 var numberOfObjects = lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
                                 Debug.Log("Vengo dalla sfera: " + lastSphere.gameObject.name);
-                                gazeSelcetion.phase = Phase.AssemblySelection;
+                                ReferencialDisplay.phase = Phase.AssemblySelection;
 
                                 //.DisplayAssemblies();
 
-                                gazeSelcetion.phase = Phase.AssemblySelection;
+                                ReferencialDisplay.phase = Phase.AssemblySelection;
                             }
-                            else if (gazeSelcetion.phaseHistory[gazeSelcetion.phaseHistory.Count - 3] == Phase.None)
+                            else if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.None)
                             {
                                 Debug.Log("Sono nell'ultima fase di DONE -- ELSE");
 
@@ -172,10 +169,10 @@ namespace Assets.Scripts.Actions
                         case Phase.AssemblyDecomposition:
                             zPlane = targetObject.gameObject.transform.position.z;
                             originalParts = GetComponent<ObjectExplosion>().CircleExplosion(0.7f, zPlane, CompareAssemblies.instance.otherAssembly);
-                            gazeSelcetion.phase = Phase.AssemblyExplosion;
+                            ReferencialDisplay.phase = Phase.AssemblyExplosion;
                             break;
                         default:
-                            Debug.Log(gazeSelcetion.phase);
+                            Debug.Log(ReferencialDisplay.phase);
                             break;
                     }
                     break;

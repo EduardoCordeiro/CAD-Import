@@ -1,22 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Support;
+using CAD.Support;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-using CAD.Support;
-
-namespace CAD.Actions {
-
-    public enum Phase {
-
-        None,
-        AssemblySelection,
-        AssemblyComparision,
-        AssemblyExplosion,
-        AssemblyDecomposition,
-        Done
-    }
+namespace Assets.Scripts.Actions {
 
     public class GazeSelection : MonoBehaviour {
 
@@ -45,32 +35,25 @@ namespace CAD.Actions {
         /// </summary>
         public bool DebugDrawRay;
 
-        public Phase phase;
-
-        public List<Phase> phaseHistory;
-
         // Use this for initialization
         void Start() {
 
-            phase = Phase.None;
-            phaseHistory = new List<Phase>();
-            phaseHistory.Add(phase);
         }
 
         // Update is called once per frame
         void Update() {
 
             // Update phase list
-            if (phase != phaseHistory.Last())
+            if (ReferencialDisplay.phase != ReferencialDisplay.phaseHistory.Last())
             {
-                phaseHistory.Add(phase);
+                ReferencialDisplay.phaseHistory.Add(ReferencialDisplay.phase);
             }
 
-            if (phase == Phase.None || phase == Phase.AssemblySelection) {
+            if (ReferencialDisplay.phase == Phase.None || ReferencialDisplay.phase == Phase.AssemblySelection) {
 
                 Gaze();
             }
-            else if(phase == Phase.AssemblyComparision) {
+            else if(ReferencialDisplay.phase == Phase.AssemblyComparision) {
 
                 AssemblyComparision();
             }
@@ -124,9 +107,9 @@ namespace CAD.Actions {
 
                 // If only one assembly was hit, we are ready to compare the two [returned and query]
                 if(numberOfAssemblies == 1)
-                    phase = Phase.AssemblyComparision;
+                    ReferencialDisplay.phase = Phase.AssemblyComparision;
                 else
-                    phase = Phase.AssemblySelection;
+                    ReferencialDisplay.phase = Phase.AssemblySelection;
             }
         }
 
@@ -145,7 +128,7 @@ namespace CAD.Actions {
 
                 // TODO, change the query object, because when we want to compare the 15 to the 15, only 1 object will be shown
 
-                phase = Phase.AssemblyComparision;
+                ReferencialDisplay.phase = Phase.AssemblyComparision;
             }
         }
 
@@ -157,16 +140,16 @@ namespace CAD.Actions {
             // Parse the labels and color the objects and COLOR the Assemblies [not the best method]
             CompareAssemblies.instance.ParseLabels(currentHit.collider.name);
 
-            phase = Phase.Done;
+            ReferencialDisplay.phase = Phase.Done;
         }
 
         IEnumerator GazeConfirmation() {
 
             yield return new WaitForSeconds(2);
 
-            if(phase == Phase.None)
+            if(ReferencialDisplay.phase == Phase.None)
                 SphereCollision();
-            else if(phase == Phase.AssemblySelection)
+            else if(ReferencialDisplay.phase == Phase.AssemblySelection)
                 AssemblyCollision();
         }
 
