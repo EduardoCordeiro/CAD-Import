@@ -47,7 +47,7 @@ namespace Assets.Scripts.Actions
                 case "Mostra":
                     break;
                 case "Decomponi":
-                    if (ReferencialDisplay.phase == Phase.AssemblyExplosion)
+                    //if (ReferencialDisplay.phase == Phase.AssemblyExplosion)
                     {
                         DisplaySelectedSubassmbly(targetObject, countAssembly);
                         maximumAssemblyNumber = targetObject.transform.childCount;
@@ -83,32 +83,26 @@ namespace Assets.Scripts.Actions
                         GetComponent<ObjectExplosion>()
                             .ReverseExplosion(CompareAssemblies.instance.otherAssembly, originalParts);
                     }
-                    ReferencialDisplay.phase = Phase.AssemblyComparision;
+                    ReferencialDisplay.phase = Phase.Done;
+                    Debug.Log("Aggiornarto con " + ReferencialDisplay.phase);
                     break;
                 case "Indietro":
+                    Debug.Log("Comando INDIETRO con fase: " + ReferencialDisplay.phase);
                     switch (ReferencialDisplay.phase)
                     {
                         case Phase.None:
-                            Debug.Log("None");
-
                             SceneManager.LoadScene("MeasureSelection");
                             break;
                         case Phase.AssemblySelection:
-                            Debug.Log("Sono nell'ultima fase AssemblySelection");
-
                             Scene loadLevel = SceneManager.GetActiveScene();
                             SceneManager.LoadScene(loadLevel.name);
                             break;
                         case Phase.AssemblyComparision:
-                            Debug.Log("AssemblyComparision");
-
-                            if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.AssemblySelection)
+                          //  if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.AssemblySelection)
                             {
                                 Debug.Log("Sono nell'ultima fase IF");
 
                                 gazeSelcetion.ToggleAssemblies(false);
-
-                                
                                 var spheres = ReferencialDisplay.instance.sphereRepresentationList;
                                 //var lastSphereGameObject = gazeSelcetion.oldHit.collider.name;
                                 var lastSphere = spheres.Find(s => s.GetComponent<DisplayAssembly>().assembliesList.Find(obj => obj.name == CompareAssemblies.instance.otherAssembly.name));
@@ -117,24 +111,25 @@ namespace Assets.Scripts.Actions
                                 lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
                                 ReferencialDisplay.phase = Phase.AssemblySelection;
                             }
-                            else if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.None)
-                            {
-                                Debug.Log("Sono nell'ultima fase ELSE");
+                            //else if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.None)
+                            //{
+                            //    Debug.Log("Sono nell'ultima fase ELSE");
 
-                                Scene loadPreviousLevel = SceneManager.GetActiveScene();
-                                SceneManager.LoadScene(loadPreviousLevel.name);
-                            }
+                            //    Scene loadPreviousLevel = SceneManager.GetActiveScene();
+                            //    SceneManager.LoadScene(loadPreviousLevel.name);
+                            //}
                             break;
                         case Phase.Done:
+                            Debug.Log("Sono nella fase DONE");
 
-                            var count = 0;
-                            foreach (Phase phase in ReferencialDisplay.phaseHistory)
-                            {
-                                Debug.Log(count + " " + phase.ToString());
-                                count++;
-                            }
+                            //var count = 0;
+                            //foreach (Phase phase in ReferencialDisplay.phaseHistory)
+                            //{
+                            //    Debug.Log(count + " " + phase.ToString());
+                            //    count++;
+                            //}
 
-                            if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.AssemblySelection)
+                            //if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.AssemblySelection)
                             {
                                 var spheres = ReferencialDisplay.instance.visibleSphereList;
 
@@ -157,13 +152,17 @@ namespace Assets.Scripts.Actions
 
                                 ReferencialDisplay.phase = Phase.AssemblySelection;
                             }
-                            else if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.None)
-                            {
-                                Debug.Log("Sono nell'ultima fase di DONE -- ELSE");
+                            //else if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.None)
+                            //{
+                            //    Debug.Log("Sono nell'ultima fase di DONE -- ELSE IF");
 
-                                Scene loadPreviousLevel = SceneManager.GetActiveScene();
-                                SceneManager.LoadScene(loadPreviousLevel.name);
-                            }
+                            //    Scene loadPreviousLevel = SceneManager.GetActiveScene();
+                            //    SceneManager.LoadScene(loadPreviousLevel.name);
+                            //}
+                            //else
+                            //{
+                            //    Debug.Log("Sono nell'ultima fase di DONE -- ELSE");
+                            //}
                             break;
                         
                         case Phase.AssemblyDecomposition:
@@ -213,7 +212,7 @@ namespace Assets.Scripts.Actions
             interactionBehaviour.graspedMovementType = InteractionBehaviour.GraspedMovementType.Inherit;
             interactionBehaviour.graspHoldWarpingEnabled__curIgnored = false;
 
-            interactionBehaviour.OnGraspEnd = () => GameObject.Find(targetObject.name).GetComponent<GestureInteraction>().StopGrasp(targetObject);
+            //interactionBehaviour.OnGraspEnd = () => GameObject.Find(targetObject.name).GetComponent<GestureInteraction>().StopGrasp(targetObject);
             //System.Action  =
             //  GameObject.Find("Assemblies").GetComponent<GestureInteraction>().StopGrasp;
 

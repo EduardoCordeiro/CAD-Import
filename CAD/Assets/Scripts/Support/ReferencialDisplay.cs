@@ -31,7 +31,6 @@ namespace Assets.Scripts.Support {
         // placeholder for input
         public List<GameObject> sphereRepresentationList;
 
-
         // placeholder to be visualized
         public List<GameObject> visibleSphereList;
 
@@ -78,16 +77,16 @@ namespace Assets.Scripts.Support {
             // Read the data from json for each assembly
             CollectAssemblyData();
 
-            // Dummy sphere for Debug
-            if(DisplayReferencial) {
-                
-                // Add some fake spheres to hightlight the referencial
-                CreateGameObject(sphere, new Vector3(1.0f, 0.5f, 0.0f), Color.red);
+            //// Dummy sphere for Debug
+            //if(DisplayReferencial) {
 
-                CreateGameObject(sphere, new Vector3(0.0f, 1.5f, 0.0f), Color.green);
+            //    // Add some fake spheres to hightlight the referencial
+            //    CreateGameObject(sphere, new Vector3(1.0f, 0.5f, 0.0f), Color.red);
 
-                CreateGameObject(sphere, new Vector3(0.0f, 0.5f, 1.0f), Color.blue);
-            }
+            //    CreateGameObject(sphere, new Vector3(0.0f, 1.5f, 0.0f), Color.green);
+
+            //    CreateGameObject(sphere, new Vector3(0.0f, 0.5f, 1.0f), Color.blue);
+            //}
 
             // Calculate the distances between the assemblies
             CalculateDistancesTable();
@@ -141,15 +140,12 @@ namespace Assets.Scripts.Support {
                 {
                     case MeasureInformation.MeasureType.Global:
                         sortedCaracteristics = caracteristics.OrderByDescending(o => o.globalMeasure).ToList();
-                        print("Ordino globale");
                         break;
                     case MeasureInformation.MeasureType.Partial:
                         sortedCaracteristics = caracteristics.OrderByDescending(o => o.partialMeasure).ToList();
-                        print("Ordino parziale");
                         break;
                     case MeasureInformation.MeasureType.Local:
                         sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
-                        print("Ordino local");
                         break;
                 }
 
@@ -163,12 +159,14 @@ namespace Assets.Scripts.Support {
                 List<Caracteristic> v = caracteristicsList[this.transform.GetChild(i).gameObject];
 
                 // Instanciate the sphere
-                CreateGameObject(sphere,
-                    new Vector3(highestLocalMeasure.mushape,
-                        highestLocalMeasure.muPos + heightOffset,
-                        highestLocalMeasure.mujoint),
-                    objectName,
-                    new List<GameObject>() {this.transform.GetChild(i).gameObject});
+
+              CreateGameObject(sphere,
+                        new Vector3(highestLocalMeasure.mushape,
+                            highestLocalMeasure.muPos + heightOffset,
+                            highestLocalMeasure.mujoint),
+                        objectName,
+                        new List<GameObject>() { this.transform.GetChild(i).gameObject });
+
             }
         }
 
@@ -234,53 +232,73 @@ namespace Assets.Scripts.Support {
 
             Transform assembliesTranform = GameObject.Find("Assemblies").transform;
 
+            Debug.Log("Numero distanze: " + distanceIssues.Count);
             foreach(KeyValuePair<GameObject, List<GameObject>> issues in distanceIssues) {
+                Debug.Log("Issues " + issues.Key.gameObject.name + " con problemi " + issues.Value.Count);
 
-                if(issues.Value.Count == 0)
-                    continue;
+                //if (issues.Value.Count == 0)
+                //    continue;
 
-                Vector3 minPoint = issues.Key.transform.position;
-                Vector3 maxPoint = issues.Key.transform.position;
-
-                List<GameObject> assembliesList = new List<GameObject>();
-
-                foreach(GameObject issue in issues.Value) {
-
-                    Vector3 pos = issue.transform.position;
-
-                    if(pos.x < minPoint.x)
-                        minPoint.x = pos.x;
-                    if(pos.x > maxPoint.x)
-                        maxPoint.x = pos.x;
-
-                    if(pos.y < minPoint.y)
-                        minPoint.y = pos.y;
-                    if(pos.y > maxPoint.y)
-                        maxPoint.y = pos.y;
-
-                    if(pos.z < minPoint.z)
-                        minPoint.z = pos.z;
-                    if(pos.z > maxPoint.z)
-                        maxPoint.z = pos.z;
-
-                    centroid = minPoint + 0.5f * (maxPoint - minPoint);
-
-                    // Set the sphere as false, as we are not intersecting it
-                    issue.SetActive(false);
-                    
-                    // Get the Actual assembly, and not the sphere
-                    assembliesList.Add(assembliesTranform.Find(issue.name).gameObject);
+                if (issues.Value.Count == 0)
+                {
+                    Debug.Log("Rendo visibile " + issues.Key.gameObject.name);
+                    var associatedAssembly = assembliesTranform.Find(issues.Key.name);
+                    associatedAssembly.position = issues.Key.transform.position;
+                    associatedAssembly.gameObject.SetActive(true);
+                    Debug.Log("Spengo la sfera " + issues.Key.name);
+                    issues.Key.SetActive(false);
                 }
 
-                // Set the sphere as false, as we are not intersecting it
-                issues.Key.SetActive(false);
+                else
+                {
+                    Debug.Log("Analizzo molteplicità di " + issues.Key.gameObject.name);
+                    Vector3 minPoint = issues.Key.transform.position;
+                    Vector3 maxPoint = issues.Key.transform.position;
 
-                // Get the Actual assembly, and not the sphere, for the object we are comparing to
-                assembliesList.Add(assembliesTranform.Find(issues.Key.name).gameObject);
+                    List<GameObject> assembliesList = new List<GameObject>();
 
-                // using centroid as the new position
-                var newSpere = CreateGameObject(sphere, centroid, assembliesList);
-                visibleSphereList.Add(newSpere);
+                    foreach (GameObject issue in issues.Value)
+                    {
+
+                        Vector3 pos = issue.transform.position;
+
+                        if (pos.x < minPoint.x)
+                            minPoint.x = pos.x;
+                        if (pos.x > maxPoint.x)
+                            maxPoint.x = pos.x;
+
+                        if (pos.y < minPoint.y)
+                            minPoint.y = pos.y;
+                        if (pos.y > maxPoint.y)
+                            maxPoint.y = pos.y;
+
+                        if (pos.z < minPoint.z)
+                            minPoint.z = pos.z;
+                        if (pos.z > maxPoint.z)
+                            maxPoint.z = pos.z;
+
+                        centroid = minPoint + 0.5f * (maxPoint - minPoint);
+
+                        // Set the sphere as false, as we are not intersecting it
+                        issue.SetActive(false);
+
+                        // Get the Actual assembly, and not the sphere
+                        assembliesList.Add(assembliesTranform.Find(issue.name).gameObject);
+                    }
+
+                    // Set the sphere as false, as we are not intersecting it
+                    issues.Key.SetActive(false);
+
+                    // Get the Actual assembly, and not the sphere, for the object we are comparing to
+                    assembliesList.Add(assembliesTranform.Find(issues.Key.name).gameObject);
+
+                    // using centroid as the new position
+                    var newSpere = CreateGameObject(sphere, centroid, assembliesList);
+                    visibleSphereList.Add(newSpere);
+                    newSpere.SetActive(true);
+                    Debug.Log("Creo sfera magenta " + newSpere.gameObject.name + " rapp numero modelli " + assembliesList.Count);
+                }
+
             }
         }
 
@@ -322,7 +340,6 @@ namespace Assets.Scripts.Support {
             placeholder.tag = "Assemblies";
 
             sphereRepresentationList.Add(placeholder);
-
             return placeholder;
         }
 
