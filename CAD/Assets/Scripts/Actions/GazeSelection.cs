@@ -97,11 +97,12 @@ namespace Assets.Scripts.Actions {
 
             if(currentHit.collider == oldHit.collider && hittingObject) {
 
+                // Disable the Assembly and the Spheres
+                ToggleAssemblies(false);
+                ToggleSpheres(false);
+
                 // Call the DispayAssembly Script
                 int numberOfAssemblies = currentHit.collider.GetComponent<DisplayAssembly>().DisplayAssemblies(currentHit.point);
-
-                // Disable the Spheres
-                ToggleSpheres(false);
                     
                 queryAssembly.SetActive(true);
 

@@ -74,6 +74,15 @@ namespace Assets.Scripts.Actions
                 case "Esplodi":
                     var zPlane = targetObject.gameObject.transform.position.z;
                     originalParts = GetComponent<ObjectExplosion>().CircleExplosion(0.7f, zPlane, CompareAssemblies.instance.otherAssembly);
+
+                    foreach (Transform partTransform in targetObject.transform)
+                    {
+                        var part = partTransform.gameObject;
+                        CreateBoxColliderOfPart(part);
+                        SetInteractionBehaviorForGrasping(targetObject, ref part);
+                        SetRigidBobyForGrasping(part);
+                    }
+
                     ReferencialDisplay.phase = Phase.AssemblyExplosion;
                     break;
                 case "Assembla":
@@ -178,48 +187,59 @@ namespace Assets.Scripts.Actions
             }
         }
 
-        private void DisplaySelectedSubassmbly(GameObject targetObject, int countAssembly)
+        public void DisplaySelectedSubassmbly(GameObject targetObject, int countAssembly)
         {
             foreach (Transform child in targetObject.transform)
             {
                 child.gameObject.SetActive(false);
             }
-
-            // creea il bounding box per il grasp con il leap motion
-            // ATTENZIONE: non è centrato correttamente sull'oggetto!
-
-            Debug.Log("Mostrare" + targetObject.transform.GetChild(countAssembly).name);
             var visibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
             visibleSubAss.SetActive(true);
-            var boxCollider = visibleSubAss.AddComponent<BoxCollider>();
-            Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
-            bounds.center = Vector3.zero;
 
-            if (bounds.extents == Vector3.zero)
-                bounds = visibleSubAss.GetComponent<MeshFilter>().mesh.bounds;
-            
-            bounds.Encapsulate(visibleSubAss.GetComponent<MeshFilter>().mesh.bounds);
+            CreateBoxColliderOfPart(visibleSubAss);
+            SetInteractionBehaviorForGrasping(targetObject, ref visibleSubAss);
+            SetRigidBobyForGrasping(visibleSubAss);
+        }
 
-            boxCollider.center = bounds.center;
-            boxCollider.size = bounds.size;
+        private static void SetRigidBobyForGrasping(GameObject visibleSubAss)
+        {
+            var rigidBody = visibleSubAss.GetComponent<Rigidbody>();
+            if (rigidBody == null)
+                rigidBody = visibleSubAss.AddComponent<Rigidbody>();
 
-            // Add the leap motion script by code
+            rigidBody.useGravity = false;
+            rigidBody.isKinematic = true;
+            rigidBody.velocity = Vector3.zero;
+            rigidBody.angularVelocity = Vector3.zero;
+        }
+
+        private static void SetInteractionBehaviorForGrasping(GameObject targetObject, ref GameObject visibleSubAss)
+        {
             var interactionBehaviour = visibleSubAss.AddComponent<InteractionBehaviour>();
             interactionBehaviour.ignoreContact = true;
             interactionBehaviour.moveObjectWhenGrasped = true;
             interactionBehaviour.graspedMovementType = InteractionBehaviour.GraspedMovementType.Inherit;
             interactionBehaviour.graspHoldWarpingEnabled__curIgnored = false;
 
-            //interactionBehaviour.OnGraspEnd = () => GameObject.Find(targetObject.name).GetComponent<GestureInteraction>().StopGrasp(targetObject);
-            //System.Action  =
-            //  GameObject.Find("Assemblies").GetComponent<GestureInteraction>().StopGrasp;
+            //interactionBehaviour.OnGraspEnd =
+            //    () => { GameObject.Find(targetObject.name).GetComponent<GestureInteraction>().StopGrasp(targetObject); };
 
+            interactionBehaviour.ignoreGrasping = false;
+        }
 
-            // Rigidbody
-            var rigidBody = visibleSubAss.GetComponent<Rigidbody>();
-            rigidBody.useGravity = false;
-            rigidBody.velocity = Vector3.zero;
-            rigidBody.angularVelocity = Vector3.zero;
+        private static void CreateBoxColliderOfPart(GameObject visibleSubAss)
+        {
+            var boxCollider = visibleSubAss.AddComponent<BoxCollider>();
+            Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+            bounds.center = Vector3.zero;
+
+            if (bounds.extents == Vector3.zero)
+                bounds = visibleSubAss.GetComponent<MeshFilter>().mesh.bounds;
+
+            bounds.Encapsulate(visibleSubAss.GetComponent<MeshFilter>().mesh.bounds);
+
+            boxCollider.center = bounds.center;
+            boxCollider.size = bounds.size;
         }
 
         public void KatiaStopObject(GameObject gameObject)

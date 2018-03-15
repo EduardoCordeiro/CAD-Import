@@ -232,26 +232,19 @@ namespace Assets.Scripts.Support {
 
             Transform assembliesTranform = GameObject.Find("Assemblies").transform;
 
-            Debug.Log("Numero distanze: " + distanceIssues.Count);
             foreach(KeyValuePair<GameObject, List<GameObject>> issues in distanceIssues) {
-                Debug.Log("Issues " + issues.Key.gameObject.name + " con problemi " + issues.Value.Count);
-
-                //if (issues.Value.Count == 0)
-                //    continue;
 
                 if (issues.Value.Count == 0)
                 {
-                    Debug.Log("Rendo visibile " + issues.Key.gameObject.name);
                     var associatedAssembly = assembliesTranform.Find(issues.Key.name);
                     associatedAssembly.position = issues.Key.transform.position;
                     associatedAssembly.gameObject.SetActive(true);
-                    Debug.Log("Spengo la sfera " + issues.Key.name);
                     issues.Key.SetActive(false);
+                    Debug.Log("Rendo visibile " + issues.Key.gameObject.name + " in " + associatedAssembly.position.x + " " + associatedAssembly.position.y + " " + associatedAssembly.position.z);
                 }
 
                 else
                 {
-                    Debug.Log("Analizzo molteplicità di " + issues.Key.gameObject.name);
                     Vector3 minPoint = issues.Key.transform.position;
                     Vector3 maxPoint = issues.Key.transform.position;
 
@@ -296,7 +289,8 @@ namespace Assets.Scripts.Support {
                     var newSpere = CreateGameObject(sphere, centroid, assembliesList);
                     visibleSphereList.Add(newSpere);
                     newSpere.SetActive(true);
-                    Debug.Log("Creo sfera magenta " + newSpere.gameObject.name + " rapp numero modelli " + assembliesList.Count);
+                    Debug.Log("Creo sfera magenta " + newSpere.gameObject.name + " rapp numero modelli " + assembliesList.Count + " in " + newSpere.transform.position.x + " " + newSpere.transform.position.y + " " + newSpere.transform.position.z);
+
                 }
 
             }
