@@ -19,6 +19,7 @@ namespace Assets.Scripts.Support
 
         public static void ChangeRenderMode(ref Material standardShaderMaterial, BlendMode blendMode)
         {
+           
             switch (blendMode)
             {
                 case BlendMode.Opaque:

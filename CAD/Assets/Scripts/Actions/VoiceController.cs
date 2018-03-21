@@ -35,23 +35,23 @@ namespace Assets.Scripts.Actions
 
         private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.AppendFormat("{0} ({1}){2}", args.text, args.confidence, Environment.NewLine);
-            builder.AppendFormat("\tTimestamp: {0}{1}", args.phraseStartTime, Environment.NewLine);
-            builder.AppendFormat("\tDuration: {0} seconds{1}", args.phraseDuration.TotalSeconds, Environment.NewLine);
-            Debug.Log(builder.ToString());
+            //StringBuilder builder = new StringBuilder();
+            //builder.AppendFormat("{0} ({1}){2}", args.text, args.confidence, Environment.NewLine);
+            //builder.AppendFormat("\tTimestamp: {0}{1}", args.phraseStartTime, Environment.NewLine);
+            //builder.AppendFormat("\tDuration: {0} seconds{1}", args.phraseDuration.TotalSeconds, Environment.NewLine);
+            //Debug.Log(builder.ToString());
 
             var targetObject = CompareAssemblies.instance.otherAssembly;
+            var selectedSubComponent = new GameObject();
+            selectedSubComponent = targetObject;
+            //var visibleSubAss = new GameObject();
+
             var gazeSelcetion = GameObject.Find("CenterEyeAnchor").GetComponent<GazeSelection>();
 
             List<Transform> children = new List<Transform>();
 
             switch (args.text)
             {
-                case "Nascondi":
-                    break;
-                case "Mostra":
-                    break;
                 case "Decomponi":
                     if (ReferencialDisplay.phase == Phase.AssemblyColorMatching)
                     {
@@ -81,6 +81,11 @@ namespace Assets.Scripts.Actions
                 case "Avanti":
                     if (ReferencialDisplay.phase == Phase.AssemblyDecomposition)
                     {
+
+                        var oldVisibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
+                        var interactionBehaviour = oldVisibleSubAss.GetComponent<InteractionBehaviour>();
+                        interactionBehaviour.enabled = false;
+
                         if (countAssembly == maximumAssemblyNumber - 1)
                         {
                             countAssembly = 0;
@@ -89,7 +94,6 @@ namespace Assets.Scripts.Actions
                         {
                             countAssembly++;
                         }
-                        Debug.Log(countAssembly);
                         DisplaySelectedSubassmbly(targetObject, countAssembly);
                         var visibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
                         var part = visibleSubAss.gameObject;
@@ -133,21 +137,28 @@ namespace Assets.Scripts.Actions
                         GetComponent<ObjectExplosion>()
                             .ReverseExplosion(CompareAssemblies.instance.otherAssembly, originalPositionParts, originalRotationParts);
 
-                        foreach (Transform child in targetObject.transform)
+                        var visibleChildList = GetAllChildren(targetObject);
+                        foreach (Transform child in visibleChildList)
                         {
-
+                            if (child.childCount == 0)
+                            {
                                 var material = child.gameObject.GetComponent<Renderer>().material;
                                 StandardShaderUtils.ChangeRenderMode(ref material, StandardShaderUtils.BlendMode.Opaque);
                                 child.gameObject.GetComponent<Renderer>().material = material;
                                 Debug.Log(string.Format("Trasparenza di {0}", child.name));
-
-                                //child.gameObject.SetActive(false);
+                            }
+                            //child.gameObject.SetActive(false);
                         }
                     }
 
                     ReferencialDisplay.phase = Phase.AssemblyColorMatching;
-                    Debug.Log("Aggiornarto con " + ReferencialDisplay.phase);
                     break;
+                //case "Seleziona":
+                //    if (ReferencialDisplay.phase == Phase.AssemblyDecomposition)
+                //    {
+                //        selectedSubComponent = visibleSubAss;
+                //    }
+                //    break;
                 case "Indietro":
                     Debug.Log("Comando INDIETRO con fase: " + ReferencialDisplay.phase);
                     switch (ReferencialDisplay.phase)
@@ -202,9 +213,31 @@ namespace Assets.Scripts.Actions
                             }
                             break;
                         case Phase.AssemblyDecomposition:
-                            //zPlane = targetObject.gameObject.transform.position.z;
-                            //originalPositionParts = GetComponent<ObjectExplosion>().CircleExplosion(0.7f, zPlane, CompareAssemblies.instance.otherAssembly);
-                            //ReferencialDisplay.phase = Phase.AssemblyExplosion;
+
+                                var oldVisibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
+                                var interactionBehaviour = oldVisibleSubAss.GetComponent<InteractionBehaviour>();
+                                interactionBehaviour.enabled = false;
+
+                                if (countAssembly == maximumAssemblyNumber - 1)
+                                {
+                                    countAssembly = 0;
+                                }
+                                else
+                                {
+                                    countAssembly--;
+                                }
+                                DisplaySelectedSubassmbly(targetObject, countAssembly);
+                                var visibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
+                                var part = visibleSubAss.gameObject;
+                                if (part.transform.childCount == 0)
+                                {
+                                    AllowPartGrasping(targetObject, part);
+                                }
+                                else
+                                {
+                                    AllowComponentGrasping(targetObject, part);
+                                }
+                            
                             break;
                         default:
                             Debug.Log(ReferencialDisplay.phase);
@@ -215,39 +248,84 @@ namespace Assets.Scripts.Actions
         }
 
         public void DisplaySelectedSubassmbly(GameObject targetObject, int countAssembly)
-        {
-            
+        {   
             var visibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
+            var visibleChildList = GetAllChildren(visibleSubAss);
 
-            foreach (Transform child in targetObject.transform)
+
+            var childList = new List<Transform>();
+            //childList.Add(targetObject.transform);
+            foreach (Transform firstLevel in targetObject.transform)
             {
-                if (child.gameObject != visibleSubAss)
+                childList.Add(firstLevel);
+            }
+            while (childList.Any())
+            {
+                var child = childList.First();
+                childList.RemoveAt(0);
+
+                if (child.childCount == 0)
                 {
-                    var material = child.gameObject.GetComponent<Renderer>().material;
-                    var originalColor = material.color;
-                    var newColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0.3f);
-                    var color = child.gameObject.GetComponent<Renderer>().material.color = newColor;
-                    Debug.Log(string.Format("{0}: {1}, {2}, {3}, A: {4}", child.name, color.r, color.g, color.b, color.a));
-
-                    StandardShaderUtils.ChangeRenderMode(ref material, StandardShaderUtils.BlendMode.Fade);
-                    child.gameObject.GetComponent<Renderer>().material = material;
-                    Debug.Log(string.Format("Trasparenza di {0}", child.name));
-
-                    //child.gameObject.SetActive(false);
+                    if (!visibleChildList.Contains(child.gameObject.transform))
+                    {
+                        var material = child.gameObject.GetComponent<Renderer>().material;
+                        var originalColor = material.color;
+                        var newColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0.3f);
+                        var color = child.gameObject.GetComponent<Renderer>().material.color = newColor;
+                        StandardShaderUtils.ChangeRenderMode(ref material, StandardShaderUtils.BlendMode.Fade);
+                        child.gameObject.GetComponent<Renderer>().material = material;
+                        //child.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(true);
+                        var material = child.gameObject.GetComponent<Renderer>().material;
+                        var originalColor = material.color;
+                        var newColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1.0f);
+                        var color = child.gameObject.GetComponent<Renderer>().material.color = newColor;
+                        StandardShaderUtils.ChangeRenderMode(ref material, StandardShaderUtils.BlendMode.Opaque);
+                        child.gameObject.GetComponent<Renderer>().material = material;
+                    }
                 }
                 else
                 {
-                    child.gameObject.SetActive(true);
-                    var material = child.gameObject.GetComponent<Renderer>().material;
-                    var originalColor = material.color;
-                    var newColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1.0f);
-                    var color = child.gameObject.GetComponent<Renderer>().material.color = newColor;
-                    StandardShaderUtils.ChangeRenderMode(ref material, StandardShaderUtils.BlendMode.Opaque);
-                    child.gameObject.GetComponent<Renderer>().material = material;
-
-                    Debug.Log(string.Format("Evidenzio {0}", child.name));
+                    foreach (Transform subChild in child)
+                    {
+                        childList.Add(subChild);
+                    }
                 }
             }
+        }
+
+        private static List<Transform> GetAllChildren(GameObject visibleSubAss)
+        {
+            var visibleChildList = new List<Transform>();
+
+            if (visibleSubAss.transform.childCount == 0)
+            {
+                visibleChildList.Add(visibleSubAss.transform);
+            }
+            else
+            {
+                visibleChildList.AddRange(FindChildren(visibleSubAss.gameObject));
+            }
+            return visibleChildList;
+        }
+
+        private static List<Transform> FindChildren(GameObject visibleSubAss)
+        {
+            var visibleChildList = new List<Transform>();
+
+            foreach (Transform firstLevel in visibleSubAss.transform)
+            {
+                visibleChildList.Add(firstLevel);
+                if (firstLevel.childCount != 0)
+                {
+                    visibleChildList.AddRange(FindChildren(firstLevel.gameObject));
+                }
+                
+            }
+            return visibleChildList;
         }
 
         private static void AllowPartGrasping(GameObject targetObject, GameObject visibleSubAss)

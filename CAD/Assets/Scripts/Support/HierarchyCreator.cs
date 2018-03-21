@@ -93,7 +93,6 @@ namespace CAD.Support {
                 if (bounds.extents == Vector3.zero)
                     bounds = meshFilter.mesh.bounds;
                 bounds.Encapsulate(meshFilter.mesh.bounds);
-                Debug.Log("BB singolo di " + meshFilter.gameObject.name);
                 return new System.Tuple<Vector3, Vector3, Vector3>(meshFilter.mesh.bounds.max, meshFilter.mesh.bounds.min, meshFilter.mesh.bounds.center);
             }
             return null;

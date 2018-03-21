@@ -33,8 +33,6 @@ namespace CAD.Support {
 
             this.transform.position = newPosition;
 
-            print("Number of assemblies to display: " + assembliesList.Count);
-
             Vector3 offset = new Vector3(0.5f, 0.0f, 0.0f);
 
             foreach(GameObject assembly in assembliesList) {
@@ -59,8 +57,6 @@ namespace CAD.Support {
             Vector3 newPosition = playerPosition + transform.TransformDirection(Vector3.forward) * 0.7f;
 
             this.transform.position = newPosition;
-
-            print("Number of assemblies to display: " + assembliesList.Count);
 
             Vector3 offset = new Vector3(0.5f, 0.0f, 0.0f);
 

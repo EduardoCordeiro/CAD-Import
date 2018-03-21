@@ -12,7 +12,10 @@ namespace Assets.Scripts.Support
     {
         public static void CreateBoxColliderOfComponent(GameObject visibleSubAss)
         {
-            BoxCollider boxCollider = visibleSubAss.gameObject.AddComponent<BoxCollider>();
+            BoxCollider boxCollider = visibleSubAss.gameObject.GetComponent<BoxCollider>();
+            if(boxCollider == null)
+                boxCollider = visibleSubAss.gameObject.AddComponent<BoxCollider>();
+
             Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
             bounds.center = Vector3.zero;
 
@@ -25,7 +28,6 @@ namespace Assets.Scripts.Support
             foreach (Transform firstLevel in visibleSubAss.transform)
             {
                 childList.Add(firstLevel);
-                Debug.Log(firstLevel.name);
             }
             while (childList.Any())
             {
@@ -74,7 +76,10 @@ namespace Assets.Scripts.Support
 
         public static void SetInteractionBehaviorForGrasping(GameObject targetObject, ref GameObject visibleSubAss)
         {
-            var interactionBehaviour = visibleSubAss.AddComponent<InteractionBehaviour>();
+            var interactionBehaviour = visibleSubAss.GetComponent<InteractionBehaviour>();
+            if(interactionBehaviour == null)
+                interactionBehaviour = visibleSubAss.AddComponent<InteractionBehaviour>();
+            interactionBehaviour.enabled = true;
             interactionBehaviour.ignoreContact = true;
             interactionBehaviour.moveObjectWhenGrasped = true;
             interactionBehaviour.graspedMovementType = InteractionBehaviour.GraspedMovementType.Inherit;
@@ -88,7 +93,10 @@ namespace Assets.Scripts.Support
 
         public static void CreateBoxColliderOfPart(GameObject visibleSubAss)
         {
-            var boxCollider = visibleSubAss.AddComponent<BoxCollider>();
+            var boxCollider = visibleSubAss.GetComponent<BoxCollider>();
+            if(boxCollider == null)
+                boxCollider = visibleSubAss.AddComponent<BoxCollider>();
+
             Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
             bounds.center = Vector3.zero;
 

@@ -238,7 +238,6 @@ namespace Assets.Scripts.Support {
                     associatedAssembly.position = issues.Key.transform.position;
                     associatedAssembly.gameObject.SetActive(true);
                     issues.Key.SetActive(false);
-                    Debug.Log("Rendo visibile " + issues.Key.gameObject.name + " in " + associatedAssembly.position.x + " " + associatedAssembly.position.y + " " + associatedAssembly.position.z);
                 }
 
                 else
@@ -287,8 +286,6 @@ namespace Assets.Scripts.Support {
                     var newSpere = CreateGameObject(sphere, centroid, assembliesList);
                     visibleSphereList.Add(newSpere);
                     newSpere.SetActive(true);
-                    Debug.Log("Creo sfera magenta " + newSpere.gameObject.name + " rapp numero modelli " + assembliesList.Count + " in " + newSpere.transform.position.x + " " + newSpere.transform.position.y + " " + newSpere.transform.position.z);
-
                 }
 
             }
