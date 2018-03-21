@@ -97,17 +97,18 @@ namespace Assets.Scripts.Support {
         /// <param name="radius"></param>
         /// <param name="partList"></param>
         /// <param name="zPlane"></param>
-        public List<Vector3> CircleExplosion(float radius, float zPlane, GameObject entireAssembly) {
+        public void CircleExplosion(float radius, float zPlane, GameObject entireAssembly, ref List<Vector3> positionPartsBeforeTranformation, ref List<Quaternion> rotationPartsBeforeTranformation) {
+
+            positionPartsBeforeTranformation = new List<Vector3>();
+            rotationPartsBeforeTranformation = new List<Quaternion>();
 
             Vector3 center = entireAssembly.transform.position;
-            var partsBeforeTranformation = new List<Vector3>();
-
             int numberOfParts = entireAssembly.transform.childCount;
             int counter = 0;
 
             foreach(Transform part in entireAssembly.transform) {
-
-                partsBeforeTranformation.Add(part.position);
+                positionPartsBeforeTranformation.Add(part.position);
+                rotationPartsBeforeTranformation.Add(part.rotation);
 
                 float angle = 2 * Mathf.PI * counter / numberOfParts;
 
@@ -119,17 +120,17 @@ namespace Assets.Scripts.Support {
                 Debug.Log("Piano frontale " + zPlane);
                 counter++;
             }
-            return partsBeforeTranformation;
         }
 
-        public void ReverseExplosion(GameObject entireAssembly, List<Vector3> partsBeforeTranformation) {
+        public void ReverseExplosion(GameObject entireAssembly, List<Vector3> partsPositionBeforeTranformation, List<Quaternion> partsRotationBeforeTranformation) {
 
             int counter = 0;
-            foreach (Transform part in entireAssembly.transform)
-            {   
+            for (int i = 0; i < entireAssembly.transform.childCount; i++)
+            {
+                var part = entireAssembly.transform.GetChild(i);
                 part.gameObject.SetActive(true);
-                part.transform.position = partsBeforeTranformation[counter];
-                counter++;
+                part.transform.position = partsPositionBeforeTranformation[i];
+                part.transform.rotation = partsRotationBeforeTranformation[i];
             }
         }
     }

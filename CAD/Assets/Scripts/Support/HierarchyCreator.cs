@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace CAD.Support {
 
@@ -25,6 +26,7 @@ namespace CAD.Support {
         private void CalculateBoudingBox() {
             
             BoxCollider boxCollider = this.gameObject.AddComponent<BoxCollider>();
+            Debug.Log("Calcolo bbox di " + gameObject.name);
 
             Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
             bounds.center = Vector3.zero;
@@ -32,20 +34,39 @@ namespace CAD.Support {
             Vector3 maxPoint = Vector3.negativeInfinity;
             Vector3 minPoint = Vector3.positiveInfinity;
             List<Vector3> centersList = new List<Vector3>();
-                        
-            foreach(Transform child in this.transform) {
 
-                System.Tuple<Vector3, Vector3, Vector3> boxSize = CreateBoxCollider(child, bounds);
+            var childList = new List<Transform>();
 
-                if(boxSize == null)
-                    continue;
+            foreach (Transform firstLevel in this.transform)
+            {
+                childList.Add(firstLevel);
+                Debug.Log(firstLevel.name);
+            }
+            while (childList.Any())
+            {
+                var currentTransform = childList.First();
+                childList.RemoveAt(0);
 
-                maxPoint = Vector3.Max(boxSize.Item1, maxPoint);
-                minPoint = Vector3.Min(boxSize.Item2, minPoint);
-                centersList.Add(boxSize.Item3);
+                if (currentTransform.childCount == 0)
+                {
+                    System.Tuple<Vector3, Vector3, Vector3> boxSize = CreateBoxCollider(currentTransform, bounds);
+
+                    if (boxSize != null)
+                    {
+                        maxPoint = Vector3.Max(boxSize.Item1, maxPoint);
+                        minPoint = Vector3.Min(boxSize.Item2, minPoint);
+                        centersList.Add(boxSize.Item3);
+                    }
+                }
+                else
+                {
+                    foreach (Transform child in currentTransform)
+                    {
+                        childList.Add(child);
+                    }
+                }
             }
 
-           
             var centerAveragePoint = new Vector3(centersList.Average(x => x.x), centersList.Average(x => x.y), centersList.Average(x => x.z));
 
             // Workaround, this is not pretty, but the collider is aligned for almost all objects
@@ -54,27 +75,28 @@ namespace CAD.Support {
             boxCollider.size = maxPoint - minPoint;
         }
 
-        private System.Tuple<Vector3, Vector3, Vector3> CreateBoxCollider(Transform meshTransform, Bounds bounds) {
+        public static System.Tuple<Vector3, Vector3, Vector3> CreateBoxCollider(Transform meshTransform, Bounds bounds) {
 
-            MeshFilter meshFilter = meshTransform.GetComponent<MeshFilter>();            
+            MeshFilter meshFilter = meshTransform.GetComponent<MeshFilter>();
 
-            if(meshFilter == null)
+            //if(meshFilter == null)
+            //{
+            //    //Find new childs
+            //    foreach(Transform child in meshTransform)
+            //         return CreateBoxCollider(child, bounds);
+
+            //    return null;
+            //}
+            //else
+            if (meshFilter != null)
             {
-                //Find new childs
-                foreach(Transform child in meshTransform)
-                     return CreateBoxCollider(child, bounds);
-
-                return null;
-            }
-            else
-            {
-
                 if (bounds.extents == Vector3.zero)
                     bounds = meshFilter.mesh.bounds;
                 bounds.Encapsulate(meshFilter.mesh.bounds);
-
+                Debug.Log("BB singolo di " + meshFilter.gameObject.name);
                 return new System.Tuple<Vector3, Vector3, Vector3>(meshFilter.mesh.bounds.max, meshFilter.mesh.bounds.min, meshFilter.mesh.bounds.center);
             }
+            return null;
         }
 
         public void CreateHierarchy() {

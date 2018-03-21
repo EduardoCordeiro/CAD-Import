@@ -7,6 +7,8 @@ using Leap.Unity.Interaction;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows.Speech;
+using System.Linq;
+using Collider = Assets.Scripts.Support.Collider;
 
 namespace Assets.Scripts.Actions
 {
@@ -15,11 +17,15 @@ namespace Assets.Scripts.Actions
         [SerializeField]
         private string[] m_Keywords;
 
-        private List<Vector3> originalParts;
+        private List<Vector3> originalPositionParts;
+        private List<Quaternion> originalRotationParts;
+
         private KeywordRecognizer m_Recognizer;
 
         private int countAssembly = 0;
         private int maximumAssemblyNumber = 0;
+        private float _colorA;
+
         void Start()
         {
             m_Recognizer = new KeywordRecognizer(m_Keywords);
@@ -47,15 +53,32 @@ namespace Assets.Scripts.Actions
                 case "Mostra":
                     break;
                 case "Decomponi":
-                    //if (ReferencialDisplay.phase == Phase.AssemblyExplosion)
+                    if (ReferencialDisplay.phase == Phase.AssemblyColorMatching)
                     {
+                        originalPositionParts = new List<Vector3>();
+                        originalRotationParts = new List<Quaternion>();
+                        foreach (Transform part in targetObject.transform)
+                        {
+                            originalPositionParts.Add(part.position);
+                            originalRotationParts.Add(part.rotation);
+                        }
+
                         DisplaySelectedSubassmbly(targetObject, countAssembly);
+                        var visibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
+                        if (visibleSubAss.transform.childCount == 0)
+                        {
+                            AllowPartGrasping(targetObject, visibleSubAss);
+                        }
+                        else
+                        {
+                            AllowComponentGrasping(targetObject, visibleSubAss);
+                        }
                         maximumAssemblyNumber = targetObject.transform.childCount;
                         Debug.Log("Subassembly da iterare " + maximumAssemblyNumber);
                         ReferencialDisplay.phase = Phase.AssemblyDecomposition;
                     }
                     break;
-                case "Next":
+                case "Avanti":
                     if (ReferencialDisplay.phase == Phase.AssemblyDecomposition)
                     {
                         if (countAssembly == maximumAssemblyNumber - 1)
@@ -68,77 +91,77 @@ namespace Assets.Scripts.Actions
                         }
                         Debug.Log(countAssembly);
                         DisplaySelectedSubassmbly(targetObject, countAssembly);
+                        var visibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
+                        var part = visibleSubAss.gameObject;
+                        if (part.transform.childCount == 0)
+                        {
+                            AllowPartGrasping(targetObject, part);
+                        }
+                        else
+                        {
+                            AllowComponentGrasping(targetObject, part);
+                        }
                     }
                     break;
-
                 case "Esplodi":
-                    var zPlane = targetObject.gameObject.transform.position.z;
-                    originalParts = GetComponent<ObjectExplosion>().CircleExplosion(0.7f, zPlane, CompareAssemblies.instance.otherAssembly);
-
-                    foreach (Transform partTransform in targetObject.transform)
+                    if (ReferencialDisplay.phase == Phase.AssemblyColorMatching)
                     {
-                        var part = partTransform.gameObject;
-                        CreateBoxColliderOfPart(part);
-                        SetInteractionBehaviorForGrasping(targetObject, ref part);
-                        SetRigidBobyForGrasping(part);
-                    }
 
-                    ReferencialDisplay.phase = Phase.AssemblyExplosion;
+                        var zPlane = targetObject.gameObject.transform.position.z;
+                        GetComponent<ObjectExplosion>()
+                            .CircleExplosion(0.7f, zPlane, CompareAssemblies.instance.otherAssembly,
+                                ref originalPositionParts, ref originalRotationParts);
+
+                        foreach (Transform partTransform in targetObject.transform)
+                        {
+                            var part = partTransform.gameObject;
+                            if (partTransform.childCount == 0)
+                            {
+                                AllowPartGrasping(targetObject, part);
+                            }
+                            else
+                            {
+                                AllowComponentGrasping(targetObject, part);
+                            }
+                        }
+                        ReferencialDisplay.phase = Phase.AssemblyExplosion;
+                    }
                     break;
                 case "Assembla":
-                    if (ReferencialDisplay.phase == Phase.AssemblyExplosion ||
-                        ReferencialDisplay.phase == Phase.AssemblyDecomposition)
+                    if (ReferencialDisplay.phase == Phase.AssemblyExplosion || ReferencialDisplay.phase == Phase.AssemblyDecomposition)
                     {
                         GetComponent<ObjectExplosion>()
-                            .ReverseExplosion(CompareAssemblies.instance.otherAssembly, originalParts);
+                            .ReverseExplosion(CompareAssemblies.instance.otherAssembly, originalPositionParts, originalRotationParts);
+
+                        foreach (Transform child in targetObject.transform)
+                        {
+
+                                var material = child.gameObject.GetComponent<Renderer>().material;
+                                StandardShaderUtils.ChangeRenderMode(ref material, StandardShaderUtils.BlendMode.Opaque);
+                                child.gameObject.GetComponent<Renderer>().material = material;
+                                Debug.Log(string.Format("Trasparenza di {0}", child.name));
+
+                                //child.gameObject.SetActive(false);
+                        }
                     }
-                    ReferencialDisplay.phase = Phase.Done;
+
+                    ReferencialDisplay.phase = Phase.AssemblyColorMatching;
                     Debug.Log("Aggiornarto con " + ReferencialDisplay.phase);
                     break;
                 case "Indietro":
                     Debug.Log("Comando INDIETRO con fase: " + ReferencialDisplay.phase);
                     switch (ReferencialDisplay.phase)
                     {
-                        case Phase.None:
+                        case Phase.CollectionSelection:
                             SceneManager.LoadScene("MeasureSelection");
                             break;
                         case Phase.AssemblySelection:
                             Scene loadLevel = SceneManager.GetActiveScene();
                             SceneManager.LoadScene(loadLevel.name);
                             break;
-                        case Phase.AssemblyComparision:
-                          //  if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.AssemblySelection)
-                            {
-                                Debug.Log("Sono nell'ultima fase IF");
-
-                                gazeSelcetion.ToggleAssemblies(false);
-                                var spheres = ReferencialDisplay.instance.sphereRepresentationList;
-                                //var lastSphereGameObject = gazeSelcetion.oldHit.collider.name;
-                                var lastSphere = spheres.Find(s => s.GetComponent<DisplayAssembly>().assembliesList.Find(obj => obj.name == CompareAssemblies.instance.otherAssembly.name));
-                                var numberOfObjects = lastSphere.GetComponent<DisplayAssembly>().assembliesList;
-                                Debug.Log("Vengo dalla sfera: " + lastSphere.gameObject.name + " che contiene " + numberOfObjects);
-                                lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
-                                ReferencialDisplay.phase = Phase.AssemblySelection;
-                            }
-                            //else if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.None)
-                            //{
-                            //    Debug.Log("Sono nell'ultima fase ELSE");
-
-                            //    Scene loadPreviousLevel = SceneManager.GetActiveScene();
-                            //    SceneManager.LoadScene(loadPreviousLevel.name);
-                            //}
-                            break;
-                        case Phase.Done:
-                            Debug.Log("Sono nella fase DONE");
-
-                            //var count = 0;
-                            //foreach (Phase phase in ReferencialDisplay.phaseHistory)
-                            //{
-                            //    Debug.Log(count + " " + phase.ToString());
-                            //    count++;
-                            //}
-
-                            //if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.AssemblySelection)
+                          
+                        case Phase.AssemblyColorMatching:
+                            if (ReferencialDisplay.whereAssemblyComparisonComeFrom == Phase.AssemblySelection)
                             {
                                 var spheres = ReferencialDisplay.instance.visibleSphereList;
 
@@ -153,6 +176,11 @@ namespace Assets.Scripts.Actions
 
                                 //var lastSphereGameObject = gazeSelcetion.oldHit.collider.name;
                                 var lastSphere = spheres.Find(s => s.GetComponent<DisplayAssembly>().assembliesList.Find(obj => obj.name == CompareAssemblies.instance.otherAssembly.name));
+
+                                if (gazeSelcetion.queryClone != null)
+                                {
+                                    Destroy(gazeSelcetion.queryClone);
+                                }
                                 var numberOfObjects = lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
                                 Debug.Log("Vengo dalla sfera: " + lastSphere.gameObject.name);
                                 ReferencialDisplay.phase = Phase.AssemblySelection;
@@ -161,23 +189,22 @@ namespace Assets.Scripts.Actions
 
                                 ReferencialDisplay.phase = Phase.AssemblySelection;
                             }
-                            //else if (ReferencialDisplay.phaseHistory[ReferencialDisplay.phaseHistory.Count - 3] == Phase.None)
-                            //{
-                            //    Debug.Log("Sono nell'ultima fase di DONE -- ELSE IF");
+                            else if (ReferencialDisplay.whereAssemblyComparisonComeFrom == Phase.CollectionSelection)
+                            {
+                                Debug.Log("Sono nell'ultima fase di DONE -- ELSE IF");
 
-                            //    Scene loadPreviousLevel = SceneManager.GetActiveScene();
-                            //    SceneManager.LoadScene(loadPreviousLevel.name);
-                            //}
-                            //else
-                            //{
-                            //    Debug.Log("Sono nell'ultima fase di DONE -- ELSE");
-                            //}
+                                Scene loadPreviousLevel = SceneManager.GetActiveScene();
+                                SceneManager.LoadScene(loadPreviousLevel.name);
+                            }
+                            else
+                            {
+                                Debug.Log("Sono nell'ultima fase di DONE -- ELSE");
+                            }
                             break;
-                        
                         case Phase.AssemblyDecomposition:
-                            zPlane = targetObject.gameObject.transform.position.z;
-                            originalParts = GetComponent<ObjectExplosion>().CircleExplosion(0.7f, zPlane, CompareAssemblies.instance.otherAssembly);
-                            ReferencialDisplay.phase = Phase.AssemblyExplosion;
+                            //zPlane = targetObject.gameObject.transform.position.z;
+                            //originalPositionParts = GetComponent<ObjectExplosion>().CircleExplosion(0.7f, zPlane, CompareAssemblies.instance.otherAssembly);
+                            //ReferencialDisplay.phase = Phase.AssemblyExplosion;
                             break;
                         default:
                             Debug.Log(ReferencialDisplay.phase);
@@ -189,57 +216,54 @@ namespace Assets.Scripts.Actions
 
         public void DisplaySelectedSubassmbly(GameObject targetObject, int countAssembly)
         {
+            
+            var visibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
+
             foreach (Transform child in targetObject.transform)
             {
-                child.gameObject.SetActive(false);
+                if (child.gameObject != visibleSubAss)
+                {
+                    var material = child.gameObject.GetComponent<Renderer>().material;
+                    var originalColor = material.color;
+                    var newColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0.3f);
+                    var color = child.gameObject.GetComponent<Renderer>().material.color = newColor;
+                    Debug.Log(string.Format("{0}: {1}, {2}, {3}, A: {4}", child.name, color.r, color.g, color.b, color.a));
+
+                    StandardShaderUtils.ChangeRenderMode(ref material, StandardShaderUtils.BlendMode.Fade);
+                    child.gameObject.GetComponent<Renderer>().material = material;
+                    Debug.Log(string.Format("Trasparenza di {0}", child.name));
+
+                    //child.gameObject.SetActive(false);
+                }
+                else
+                {
+                    child.gameObject.SetActive(true);
+                    var material = child.gameObject.GetComponent<Renderer>().material;
+                    var originalColor = material.color;
+                    var newColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1.0f);
+                    var color = child.gameObject.GetComponent<Renderer>().material.color = newColor;
+                    StandardShaderUtils.ChangeRenderMode(ref material, StandardShaderUtils.BlendMode.Opaque);
+                    child.gameObject.GetComponent<Renderer>().material = material;
+
+                    Debug.Log(string.Format("Evidenzio {0}", child.name));
+                }
             }
-            var visibleSubAss = targetObject.transform.GetChild(countAssembly).gameObject;
-            visibleSubAss.SetActive(true);
-
-            CreateBoxColliderOfPart(visibleSubAss);
-            SetInteractionBehaviorForGrasping(targetObject, ref visibleSubAss);
-            SetRigidBobyForGrasping(visibleSubAss);
         }
 
-        private static void SetRigidBobyForGrasping(GameObject visibleSubAss)
+        private static void AllowPartGrasping(GameObject targetObject, GameObject visibleSubAss)
         {
-            var rigidBody = visibleSubAss.GetComponent<Rigidbody>();
-            if (rigidBody == null)
-                rigidBody = visibleSubAss.AddComponent<Rigidbody>();
-
-            rigidBody.useGravity = false;
-            rigidBody.isKinematic = true;
-            rigidBody.velocity = Vector3.zero;
-            rigidBody.angularVelocity = Vector3.zero;
+            targetObject.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+            Collider.CreateBoxColliderOfPart(visibleSubAss);
+            Collider.SetInteractionBehaviorForGrasping(targetObject, ref visibleSubAss);
+            Collider.SetRigidBobyForGrasping(visibleSubAss);
         }
 
-        private static void SetInteractionBehaviorForGrasping(GameObject targetObject, ref GameObject visibleSubAss)
+        private static void AllowComponentGrasping(GameObject targetObject, GameObject visibleSubAss)
         {
-            var interactionBehaviour = visibleSubAss.AddComponent<InteractionBehaviour>();
-            interactionBehaviour.ignoreContact = true;
-            interactionBehaviour.moveObjectWhenGrasped = true;
-            interactionBehaviour.graspedMovementType = InteractionBehaviour.GraspedMovementType.Inherit;
-            interactionBehaviour.graspHoldWarpingEnabled__curIgnored = false;
-
-            //interactionBehaviour.OnGraspEnd =
-            //    () => { GameObject.Find(targetObject.name).GetComponent<GestureInteraction>().StopGrasp(targetObject); };
-
-            interactionBehaviour.ignoreGrasping = false;
-        }
-
-        private static void CreateBoxColliderOfPart(GameObject visibleSubAss)
-        {
-            var boxCollider = visibleSubAss.AddComponent<BoxCollider>();
-            Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
-            bounds.center = Vector3.zero;
-
-            if (bounds.extents == Vector3.zero)
-                bounds = visibleSubAss.GetComponent<MeshFilter>().mesh.bounds;
-
-            bounds.Encapsulate(visibleSubAss.GetComponent<MeshFilter>().mesh.bounds);
-
-            boxCollider.center = bounds.center;
-            boxCollider.size = bounds.size;
+            targetObject.gameObject.GetComponent<Rigidbody>().detectCollisions = false;
+            Collider.CreateBoxColliderOfComponent(visibleSubAss);
+            Collider.SetInteractionBehaviorForGrasping(targetObject, ref visibleSubAss);
+            Collider.SetRigidBobyForGrasping(visibleSubAss);
         }
 
         public void KatiaStopObject(GameObject gameObject)

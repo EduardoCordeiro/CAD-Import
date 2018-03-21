@@ -31,6 +31,12 @@ namespace Assets.Scripts.Actions {
         public GameObject queryAssembly;
 
         /// <summary>
+        /// Clone of the Query Object. Right now its flange-15
+        /// It is necessary to compare the query model with itself
+        /// </summary>
+        public GameObject queryClone;
+
+        /// <summary>
         /// Draw the Gaze ray
         /// </summary>
         public bool DebugDrawRay;
@@ -43,13 +49,7 @@ namespace Assets.Scripts.Actions {
         // Update is called once per frame
         void Update() {
 
-            // Update phase list
-            if (ReferencialDisplay.phase != ReferencialDisplay.phaseHistory.Last())
-            {
-                ReferencialDisplay.phaseHistory.Add(ReferencialDisplay.phase);
-            }
-
-            if (ReferencialDisplay.phase == Phase.None || ReferencialDisplay.phase == Phase.AssemblySelection) {
+           if (ReferencialDisplay.phase == Phase.CollectionSelection || ReferencialDisplay.phase == Phase.AssemblySelection) {
 
                 Gaze();
             }
@@ -95,22 +95,27 @@ namespace Assets.Scripts.Actions {
         /// </summary>
         public void SphereCollision() {
 
-            if(currentHit.collider == oldHit.collider && hittingObject) {
+            if (currentHit.collider == oldHit.collider && hittingObject)
+            {
 
                 // Disable the Assembly and the Spheres
                 ToggleAssemblies(false);
                 ToggleSpheres(false);
 
                 // Call the DispayAssembly Script
-                int numberOfAssemblies = currentHit.collider.GetComponent<DisplayAssembly>().DisplayAssemblies(currentHit.point);
-                    
-                queryAssembly.SetActive(true);
+                var assembliesToDispay = currentHit.collider.GetComponent<DisplayAssembly>();
 
                 // If only one assembly was hit, we are ready to compare the two [returned and query]
-                if(numberOfAssemblies == 1)
+                if (assembliesToDispay == null)
+                {
                     ReferencialDisplay.phase = Phase.AssemblyComparision;
+                    AssemblyCollision();
+                }
                 else
+                {
+                    int numberOfAssemblies = currentHit.collider.GetComponent<DisplayAssembly>().DisplayAssemblies();
                     ReferencialDisplay.phase = Phase.AssemblySelection;
+                }
             }
         }
 
@@ -138,20 +143,35 @@ namespace Assets.Scripts.Actions {
             // Display the query assembly next to the one we want. With an offset in X for now
             queryAssembly.transform.position = currentHit.collider.transform.position + new Vector3(-0.5f, 0.0f, 0.0f);
 
-            // Parse the labels and color the objects and COLOR the Assemblies [not the best method]
-            CompareAssemblies.instance.ParseLabels(currentHit.collider.name);
+            if (currentHit.collider.name == queryAssembly.name)
+            {
+                queryClone =
+                    Instantiate(currentHit.transform.gameObject,
+                        currentHit.collider.transform.position - new Vector3(-0.5f, 0.0f, 0.0f),
+                        currentHit.collider.transform.rotation) as GameObject;
+            }
 
-            ReferencialDisplay.phase = Phase.Done;
+            CompareAssemblies.instance.ParseLabels(currentHit.collider.name);
+            // Parse the labels and color the objects and COLOR the Assemblies [not the best method]
+
+            ReferencialDisplay.phase = Phase.AssemblyColorMatching;
         }
 
         IEnumerator GazeConfirmation() {
 
             yield return new WaitForSeconds(2);
 
-            if(ReferencialDisplay.phase == Phase.None)
+            if (ReferencialDisplay.phase == Phase.CollectionSelection)
+            {
+                ReferencialDisplay.whereAssemblyComparisonComeFrom = Phase.CollectionSelection;
                 SphereCollision();
-            else if(ReferencialDisplay.phase == Phase.AssemblySelection)
+             
+            }
+            else if (ReferencialDisplay.phase == Phase.AssemblySelection)
+            {
+                ReferencialDisplay.whereAssemblyComparisonComeFrom = Phase.AssemblySelection;
                 AssemblyCollision();
+            }
         }
 
         public void ToggleSpheres(bool value) {

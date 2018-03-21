@@ -579,7 +579,7 @@ namespace Leap.Unity.Interaction {
 
     [Tooltip("This object will not receive callbacks from left controllers, right "
            + "controllers, or either hand if this mode is set to anything other than "
-           + "None.")]
+           + "CollectionSelection.")]
     [SerializeField]
     private IgnoreHoverMode _ignoreHoverMode = IgnoreHoverMode.None;
     public IgnoreHoverMode ignoreHoverMode {

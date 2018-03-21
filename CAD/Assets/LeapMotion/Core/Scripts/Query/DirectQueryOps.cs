@@ -184,7 +184,7 @@ namespace Leap.Unity.Query {
     }
 
     /// <summary>
-    /// Returns Some value that represents the first value in the sequence, or None
+    /// Returns Some value that represents the first value in the sequence, or CollectionSelection
     /// if there is no such value.
     /// </summary>
     public Maybe<QueryType> FirstOrNone() {
@@ -200,7 +200,7 @@ namespace Leap.Unity.Query {
 
     /// <summary>
     /// Returns the Some value representing the first value that satisfies the predicate,
-    /// or None if there is no such value.
+    /// or CollectionSelection if there is no such value.
     /// </summary>
     public Maybe<QueryType> FirstOrNone(Func<QueryType, bool> predicate) {
       return Where(predicate).FirstOrNone();
@@ -373,7 +373,7 @@ namespace Leap.Unity.Query {
     /// <summary>
     /// Returns Some single value that is present in the entire sequence.  If there is more
     /// than one value in the sequence or there are no values at all, this method will return
-    /// None.
+    /// CollectionSelection.
     /// </summary>
     public Maybe<QueryType> UniformOrNone() {
       var op = _op;

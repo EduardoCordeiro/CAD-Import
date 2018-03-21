@@ -1,0 +1,2515 @@
+fileFormatVersion: 2
+guid: 34ba7801228058845a615d744309838a
+timeCreated: 1521209401
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: _03050905_Senkschraube_DIN_7991_M6x22
+    100002: _03050905_Senkschraube_DIN_7991_M6x22 1
+    100004: _03050905_Senkschraube_DIN_7991_M6x22 10
+    100006: _03050905_Senkschraube_DIN_7991_M6x22 11
+    100008: _03050905_Senkschraube_DIN_7991_M6x22 12
+    100010: _03050905_Senkschraube_DIN_7991_M6x22 13
+    100012: _03050905_Senkschraube_DIN_7991_M6x22 14
+    100014: _03050905_Senkschraube_DIN_7991_M6x22 15
+    100016: _03050905_Senkschraube_DIN_7991_M6x22 16
+    100018: _03050905_Senkschraube_DIN_7991_M6x22 17
+    100020: _03050905_Senkschraube_DIN_7991_M6x22 18
+    100022: _03050905_Senkschraube_DIN_7991_M6x22 19
+    100024: _03050905_Senkschraube_DIN_7991_M6x22 2
+    100026: _03050905_Senkschraube_DIN_7991_M6x22 20
+    100028: _03050905_Senkschraube_DIN_7991_M6x22 21
+    100030: _03050905_Senkschraube_DIN_7991_M6x22 22
+    100032: _03050905_Senkschraube_DIN_7991_M6x22 23
+    100034: _03050905_Senkschraube_DIN_7991_M6x22 24
+    100036: _03050905_Senkschraube_DIN_7991_M6x22 25
+    100038: _03050905_Senkschraube_DIN_7991_M6x22 26
+    100040: _03050905_Senkschraube_DIN_7991_M6x22 27
+    100042: _03050905_Senkschraube_DIN_7991_M6x22 28
+    100044: _03050905_Senkschraube_DIN_7991_M6x22 29
+    100046: _03050905_Senkschraube_DIN_7991_M6x22 3
+    100048: _03050905_Senkschraube_DIN_7991_M6x22 30
+    100050: _03050905_Senkschraube_DIN_7991_M6x22 31
+    100052: _03050905_Senkschraube_DIN_7991_M6x22 32
+    100054: _03050905_Senkschraube_DIN_7991_M6x22 33
+    100056: _03050905_Senkschraube_DIN_7991_M6x22 34
+    100058: _03050905_Senkschraube_DIN_7991_M6x22 35
+    100060: _03050905_Senkschraube_DIN_7991_M6x22 36
+    100062: _03050905_Senkschraube_DIN_7991_M6x22 37
+    100064: _03050905_Senkschraube_DIN_7991_M6x22 38
+    100066: _03050905_Senkschraube_DIN_7991_M6x22 39
+    100068: _03050905_Senkschraube_DIN_7991_M6x22 4
+    100070: _03050905_Senkschraube_DIN_7991_M6x22 40
+    100072: _03050905_Senkschraube_DIN_7991_M6x22 41
+    100074: _03050905_Senkschraube_DIN_7991_M6x22 42
+    100076: _03050905_Senkschraube_DIN_7991_M6x22 43
+    100078: _03050905_Senkschraube_DIN_7991_M6x22 44
+    100080: _03050905_Senkschraube_DIN_7991_M6x22 45
+    100082: _03050905_Senkschraube_DIN_7991_M6x22 46
+    100084: _03050905_Senkschraube_DIN_7991_M6x22 47
+    100086: _03050905_Senkschraube_DIN_7991_M6x22 48
+    100088: _03050905_Senkschraube_DIN_7991_M6x22 49
+    100090: _03050905_Senkschraube_DIN_7991_M6x22 5
+    100092: _03050905_Senkschraube_DIN_7991_M6x22 50
+    100094: _03050905_Senkschraube_DIN_7991_M6x22 51
+    100096: _03050905_Senkschraube_DIN_7991_M6x22 52
+    100098: _03050905_Senkschraube_DIN_7991_M6x22 53
+    100100: _03050905_Senkschraube_DIN_7991_M6x22 54
+    100102: _03050905_Senkschraube_DIN_7991_M6x22 55
+    100104: _03050905_Senkschraube_DIN_7991_M6x22 6
+    100106: _03050905_Senkschraube_DIN_7991_M6x22 7
+    100108: _03050905_Senkschraube_DIN_7991_M6x22 8
+    100110: _03050905_Senkschraube_DIN_7991_M6x22 9
+    100112: _2D_lady01
+    100114: _63.625_Frame_1
+    100116: _63.625_Frame_1 1
+    100118: _63.625_Frame_1 10
+    100120: _63.625_Frame_1 11
+    100122: _63.625_Frame_1 12
+    100124: _63.625_Frame_1 13
+    100126: _63.625_Frame_1 14
+    100128: _63.625_Frame_1 15
+    100130: _63.625_Frame_1 2
+    100132: _63.625_Frame_1 3
+    100134: _63.625_Frame_1 4
+    100136: _63.625_Frame_1 5
+    100138: _63.625_Frame_1 6
+    100140: _63.625_Frame_1 7
+    100142: _63.625_Frame_1 8
+    100144: _63.625_Frame_1 9
+    100146: CPM1
+    100148: CPM1 1
+    100150: CPM1 10
+    100152: CPM1 11
+    100154: CPM1 12
+    100156: CPM1 13
+    100158: CPM1 14
+    100160: CPM1 15
+    100162: CPM1 16
+    100164: CPM1 17
+    100166: CPM1 18
+    100168: CPM1 19
+    100170: CPM1 2
+    100172: CPM1 20
+    100174: CPM1 21
+    100176: CPM1 22
+    100178: CPM1 23
+    100180: CPM1 24
+    100182: CPM1 25
+    100184: CPM1 26
+    100186: CPM1 27
+    100188: CPM1 28
+    100190: CPM1 29
+    100192: CPM1 3
+    100194: CPM1 30
+    100196: CPM1 31
+    100198: CPM1 32
+    100200: CPM1 33
+    100202: CPM1 34
+    100204: CPM1 35
+    100206: CPM1 36
+    100208: CPM1 37
+    100210: CPM1 38
+    100212: CPM1 39
+    100214: CPM1 4
+    100216: CPM1 40
+    100218: CPM1 41
+    100220: CPM1 42
+    100222: CPM1 43
+    100224: CPM1 44
+    100226: CPM1 45
+    100228: CPM1 46
+    100230: CPM1 47
+    100232: CPM1 48
+    100234: CPM1 49
+    100236: CPM1 5
+    100238: CPM1 50
+    100240: CPM1 51
+    100242: CPM1 52
+    100244: CPM1 53
+    100246: CPM1 54
+    100248: CPM1 55
+    100250: CPM1 6
+    100252: CPM1 7
+    100254: CPM1 8
+    100256: CPM1 9
+    100258: group_0
+    100260: group_1
+    100262: group_10
+    100264: group_11
+    100266: group_11 1
+    100268: group_11 2
+    100270: group_11 3
+    100272: group_12
+    100274: group_12 1
+    100276: group_12 2
+    100278: group_12 3
+    100280: group_13
+    100282: group_13 1
+    100284: group_13 2
+    100286: group_13 3
+    100288: group_14
+    100290: group_14 1
+    100292: group_14 2
+    100294: group_14 3
+    100296: group_15
+    100298: group_15 1
+    100300: group_15 2
+    100302: group_15 3
+    100304: group_16
+    100306: group_16 1
+    100308: group_16 2
+    100310: group_16 3
+    100312: group_17
+    100314: group_17 1
+    100316: group_17 10
+    100318: group_17 11
+    100320: group_17 12
+    100322: group_17 13
+    100324: group_17 14
+    100326: group_17 15
+    100328: group_17 2
+    100330: group_17 3
+    100332: group_17 4
+    100334: group_17 5
+    100336: group_17 6
+    100338: group_17 7
+    100340: group_17 8
+    100342: group_17 9
+    100344: group_18
+    100346: group_18 1
+    100348: group_18 10
+    100350: group_18 11
+    100352: group_18 12
+    100354: group_18 13
+    100356: group_18 14
+    100358: group_18 15
+    100360: group_18 2
+    100362: group_18 3
+    100364: group_18 4
+    100366: group_18 5
+    100368: group_18 6
+    100370: group_18 7
+    100372: group_18 8
+    100374: group_18 9
+    100376: group_19
+    100378: group_19 1
+    100380: group_19 10
+    100382: group_19 11
+    100384: group_19 12
+    100386: group_19 13
+    100388: group_19 14
+    100390: group_19 15
+    100392: group_19 2
+    100394: group_19 3
+    100396: group_19 4
+    100398: group_19 5
+    100400: group_19 6
+    100402: group_19 7
+    100404: group_19 8
+    100406: group_19 9
+    100408: group_2
+    100410: group_2 1
+    100412: group_20
+    100414: group_20 1
+    100416: group_20 10
+    100418: group_20 11
+    100420: group_20 2
+    100422: group_20 3
+    100424: group_20 4
+    100426: group_20 5
+    100428: group_20 6
+    100430: group_20 7
+    100432: group_20 8
+    100434: group_20 9
+    100436: Group_21
+    100438: group_21
+    100440: Group_21 1
+    100442: group_21 1
+    100444: Group_21 10
+    100446: group_21 10
+    100448: Group_21 11
+    100450: group_21 11
+    100452: Group_21 12
+    100454: Group_21 13
+    100456: Group_21 14
+    100458: Group_21 15
+    100460: Group_21 2
+    100462: group_21 2
+    100464: Group_21 3
+    100466: group_21 3
+    100468: Group_21 4
+    100470: group_21 4
+    100472: Group_21 5
+    100474: group_21 5
+    100476: Group_21 6
+    100478: group_21 6
+    100480: Group_21 7
+    100482: group_21 7
+    100484: Group_21 8
+    100486: group_21 8
+    100488: Group_21 9
+    100490: group_21 9
+    100492: group_22
+    100494: group_23
+    100496: group_24
+    100498: group_25
+    100500: group_26
+    100502: group_27
+    100504: group_28
+    100506: Group_295
+    100508: Group_295 1
+    100510: Group_295 10
+    100512: Group_295 11
+    100514: Group_295 2
+    100516: Group_295 3
+    100518: Group_295 4
+    100520: Group_295 5
+    100522: Group_295 6
+    100524: Group_295 7
+    100526: Group_295 8
+    100528: Group_295 9
+    100530: group_3
+    100532: group_3 1
+    100534: Group_358
+    100536: Group_358 1
+    100538: Group_358 2
+    100540: Group_358 3
+    100542: Group_358 4
+    100544: Group_369
+    100546: Group_369 1
+    100548: Group_370
+    100550: Group_370 1
+    100552: Group_370 2
+    100554: Group_370 3
+    100556: group_4
+    100558: group_4 1
+    100560: group_5
+    100562: group_5 1
+    100564: group_6
+    100566: group_6 1
+    100568: group_7
+    100570: group_7 1
+    100572: group_8
+    100574: group_8 1
+    100576: Group_89
+    100578: group_9
+    100580: Hex_socket_countersunk_1
+    100582: Hex_socket_countersunk_1 1
+    100584: Hex_socket_countersunk_1 10
+    100586: Hex_socket_countersunk_1 11
+    100588: Hex_socket_countersunk_1 12
+    100590: Hex_socket_countersunk_1 13
+    100592: Hex_socket_countersunk_1 14
+    100594: Hex_socket_countersunk_1 15
+    100596: Hex_socket_countersunk_1 16
+    100598: Hex_socket_countersunk_1 17
+    100600: Hex_socket_countersunk_1 18
+    100602: Hex_socket_countersunk_1 19
+    100604: Hex_socket_countersunk_1 2
+    100606: Hex_socket_countersunk_1 20
+    100608: Hex_socket_countersunk_1 21
+    100610: Hex_socket_countersunk_1 22
+    100612: Hex_socket_countersunk_1 23
+    100614: Hex_socket_countersunk_1 24
+    100616: Hex_socket_countersunk_1 25
+    100618: Hex_socket_countersunk_1 26
+    100620: Hex_socket_countersunk_1 27
+    100622: Hex_socket_countersunk_1 28
+    100624: Hex_socket_countersunk_1 29
+    100626: Hex_socket_countersunk_1 3
+    100628: Hex_socket_countersunk_1 30
+    100630: Hex_socket_countersunk_1 31
+    100632: Hex_socket_countersunk_1 32
+    100634: Hex_socket_countersunk_1 33
+    100636: Hex_socket_countersunk_1 34
+    100638: Hex_socket_countersunk_1 35
+    100640: Hex_socket_countersunk_1 36
+    100642: Hex_socket_countersunk_1 37
+    100644: Hex_socket_countersunk_1 38
+    100646: Hex_socket_countersunk_1 39
+    100648: Hex_socket_countersunk_1 4
+    100650: Hex_socket_countersunk_1 40
+    100652: Hex_socket_countersunk_1 41
+    100654: Hex_socket_countersunk_1 42
+    100656: Hex_socket_countersunk_1 43
+    100658: Hex_socket_countersunk_1 44
+    100660: Hex_socket_countersunk_1 45
+    100662: Hex_socket_countersunk_1 46
+    100664: Hex_socket_countersunk_1 47
+    100666: Hex_socket_countersunk_1 48
+    100668: Hex_socket_countersunk_1 49
+    100670: Hex_socket_countersunk_1 5
+    100672: Hex_socket_countersunk_1 50
+    100674: Hex_socket_countersunk_1 51
+    100676: Hex_socket_countersunk_1 52
+    100678: Hex_socket_countersunk_1 53
+    100680: Hex_socket_countersunk_1 54
+    100682: Hex_socket_countersunk_1 55
+    100684: Hex_socket_countersunk_1 6
+    100686: Hex_socket_countersunk_1 7
+    100688: Hex_socket_countersunk_1 8
+    100690: Hex_socket_countersunk_1 9
+    100692: ID1014
+    100694: ID1022
+    100696: ID110
+    100698: ID116
+    100700: ID122
+    100702: ID145
+    100704: ID153
+    100706: ID172
+    100708: ID180
+    100710: ID197
+    100712: ID20
+    100714: ID205
+    100716: ID222
+    100718: ID230
+    100720: ID247
+    100722: ID255
+    100724: ID26
+    100726: ID272
+    100728: ID280
+    100730: ID318
+    100732: ID318 1
+    100734: ID318 10
+    100736: ID318 11
+    100738: ID318 12
+    100740: ID318 13
+    100742: ID318 14
+    100744: ID318 15
+    100746: ID318 16
+    100748: ID318 17
+    100750: ID318 18
+    100752: ID318 19
+    100754: ID318 2
+    100756: ID318 20
+    100758: ID318 21
+    100760: ID318 22
+    100762: ID318 23
+    100764: ID318 24
+    100766: ID318 25
+    100768: ID318 26
+    100770: ID318 27
+    100772: ID318 28
+    100774: ID318 29
+    100776: ID318 3
+    100778: ID318 30
+    100780: ID318 31
+    100782: ID318 32
+    100784: ID318 33
+    100786: ID318 34
+    100788: ID318 35
+    100790: ID318 36
+    100792: ID318 37
+    100794: ID318 38
+    100796: ID318 39
+    100798: ID318 4
+    100800: ID318 40
+    100802: ID318 41
+    100804: ID318 42
+    100806: ID318 43
+    100808: ID318 5
+    100810: ID318 6
+    100812: ID318 7
+    100814: ID318 8
+    100816: ID318 9
+    100818: ID335
+    100820: ID335 1
+    100822: ID335 10
+    100824: ID335 11
+    100826: ID335 12
+    100828: ID335 13
+    100830: ID335 14
+    100832: ID335 15
+    100834: ID335 2
+    100836: ID335 3
+    100838: ID335 4
+    100840: ID335 5
+    100842: ID335 6
+    100844: ID335 7
+    100846: ID335 8
+    100848: ID335 9
+    100850: ID341
+    100852: ID341 1
+    100854: ID341 10
+    100856: ID341 11
+    100858: ID341 12
+    100860: ID341 13
+    100862: ID341 14
+    100864: ID341 15
+    100866: ID341 2
+    100868: ID341 3
+    100870: ID341 4
+    100872: ID341 5
+    100874: ID341 6
+    100876: ID341 7
+    100878: ID341 8
+    100880: ID341 9
+    100882: ID369
+    100884: ID369 1
+    100886: ID369 10
+    100888: ID369 11
+    100890: ID369 2
+    100892: ID369 3
+    100894: ID369 4
+    100896: ID369 5
+    100898: ID369 6
+    100900: ID369 7
+    100902: ID369 8
+    100904: ID369 9
+    100906: ID386
+    100908: ID386 1
+    100910: ID386 10
+    100912: ID386 11
+    100914: ID386 2
+    100916: ID386 3
+    100918: ID386 4
+    100920: ID386 5
+    100922: ID386 6
+    100924: ID386 7
+    100926: ID386 8
+    100928: ID386 9
+    100930: ID392
+    100932: ID392 1
+    100934: ID392 10
+    100936: ID392 11
+    100938: ID392 2
+    100940: ID392 3
+    100942: ID392 4
+    100944: ID392 5
+    100946: ID392 6
+    100948: ID392 7
+    100950: ID392 8
+    100952: ID392 9
+    100954: ID398
+    100956: ID398 1
+    100958: ID398 10
+    100960: ID398 11
+    100962: ID398 2
+    100964: ID398 3
+    100966: ID398 4
+    100968: ID398 5
+    100970: ID398 6
+    100972: ID398 7
+    100974: ID398 8
+    100976: ID398 9
+    100978: ID404
+    100980: ID404 1
+    100982: ID404 10
+    100984: ID404 11
+    100986: ID404 2
+    100988: ID404 3
+    100990: ID404 4
+    100992: ID404 5
+    100994: ID404 6
+    100996: ID404 7
+    100998: ID404 8
+    101000: ID404 9
+    101002: ID431
+    101004: ID431 1
+    101006: ID437
+    101008: ID437 1
+    101010: ID459
+    101012: ID459 1
+    101014: ID465
+    101016: ID465 1
+    101018: ID479
+    101020: ID479 1
+    101022: ID485
+    101024: ID485 1
+    101026: ID502
+    101028: ID508
+    101030: ID52
+    101032: ID521
+    101034: ID527
+    101036: ID533
+    101038: ID539
+    101040: ID568
+    101042: ID576
+    101044: ID58
+    101046: ID593
+    101048: ID601
+    101050: ID618
+    101052: ID626
+    101054: ID64
+    101056: ID643
+    101058: ID651
+    101060: ID668
+    101062: ID676
+    101064: ID693
+    101066: ID701
+    101068: ID728
+    101070: ID736
+    101072: ID753
+    101074: ID761
+    101076: ID778
+    101078: ID786
+    101080: ID803
+    101082: ID811
+    101084: ID828
+    101086: ID836
+    101088: ID84
+    101090: ID853
+    101092: ID861
+    101094: ID889
+    101096: ID897
+    101098: ID90
+    101100: ID914
+    101102: ID922
+    101104: ID939
+    101106: ID947
+    101108: ID964
+    101110: ID972
+    101112: ID989
+    101114: ID997
+    101116: instance_0
+    101118: instance_1
+    101120: instance_10
+    101122: instance_11
+    101124: instance_12
+    101126: instance_13
+    101128: instance_14
+    101130: instance_15
+    101132: instance_16
+    101134: instance_17
+    101136: instance_18
+    101138: instance_19
+    101140: instance_2
+    101142: instance_2 1
+    101144: instance_2 10
+    101146: instance_2 11
+    101148: instance_2 12
+    101150: instance_2 13
+    101152: instance_2 14
+    101154: instance_2 15
+    101156: instance_2 16
+    101158: instance_2 17
+    101160: instance_2 18
+    101162: instance_2 19
+    101164: instance_2 2
+    101166: instance_2 20
+    101168: instance_2 21
+    101170: instance_2 22
+    101172: instance_2 23
+    101174: instance_2 24
+    101176: instance_2 25
+    101178: instance_2 26
+    101180: instance_2 27
+    101182: instance_2 28
+    101184: instance_2 29
+    101186: instance_2 3
+    101188: instance_2 30
+    101190: instance_2 31
+    101192: instance_2 4
+    101194: instance_2 5
+    101196: instance_2 6
+    101198: instance_2 7
+    101200: instance_2 8
+    101202: instance_2 9
+    101204: instance_20
+    101206: instance_21
+    101208: instance_22
+    101210: instance_23
+    101212: instance_24
+    101214: instance_25
+    101216: instance_26
+    101218: instance_27
+    101220: instance_28
+    101222: instance_29
+    101224: instance_3
+    101226: instance_3 1
+    101228: instance_3 10
+    101230: instance_3 11
+    101232: instance_3 12
+    101234: instance_3 13
+    101236: instance_3 14
+    101238: instance_3 15
+    101240: instance_3 16
+    101242: instance_3 17
+    101244: instance_3 18
+    101246: instance_3 19
+    101248: instance_3 2
+    101250: instance_3 20
+    101252: instance_3 21
+    101254: instance_3 22
+    101256: instance_3 23
+    101258: instance_3 24
+    101260: instance_3 25
+    101262: instance_3 26
+    101264: instance_3 27
+    101266: instance_3 28
+    101268: instance_3 29
+    101270: instance_3 3
+    101272: instance_3 30
+    101274: instance_3 31
+    101276: instance_3 4
+    101278: instance_3 5
+    101280: instance_3 6
+    101282: instance_3 7
+    101284: instance_3 8
+    101286: instance_3 9
+    101288: instance_30
+    101290: instance_31
+    101292: instance_32
+    101294: instance_33
+    101296: instance_34
+    101298: instance_35
+    101300: instance_36
+    101302: instance_37
+    101304: instance_38
+    101306: instance_39
+    101308: instance_4
+    101310: instance_4 1
+    101312: instance_4 10
+    101314: instance_4 11
+    101316: instance_4 12
+    101318: instance_4 13
+    101320: instance_4 14
+    101322: instance_4 15
+    101324: instance_4 2
+    101326: instance_4 3
+    101328: instance_4 4
+    101330: instance_4 5
+    101332: instance_4 6
+    101334: instance_4 7
+    101336: instance_4 8
+    101338: instance_4 9
+    101340: instance_40
+    101342: instance_41
+    101344: instance_42
+    101346: instance_43
+    101348: instance_44
+    101350: instance_45
+    101352: instance_46
+    101354: instance_47
+    101356: instance_48
+    101358: instance_49
+    101360: instance_5
+    101362: instance_6
+    101364: instance_6 1
+    101366: instance_6 10
+    101368: instance_6 11
+    101370: instance_6 12
+    101372: instance_6 13
+    101374: instance_6 14
+    101376: instance_6 15
+    101378: instance_6 16
+    101380: instance_6 17
+    101382: instance_6 18
+    101384: instance_6 19
+    101386: instance_6 2
+    101388: instance_6 20
+    101390: instance_6 21
+    101392: instance_6 22
+    101394: instance_6 23
+    101396: instance_6 3
+    101398: instance_6 4
+    101400: instance_6 5
+    101402: instance_6 6
+    101404: instance_6 7
+    101406: instance_6 8
+    101408: instance_6 9
+    101410: instance_7
+    101412: instance_7 1
+    101414: instance_7 10
+    101416: instance_7 11
+    101418: instance_7 12
+    101420: instance_7 13
+    101422: instance_7 14
+    101424: instance_7 15
+    101426: instance_7 16
+    101428: instance_7 17
+    101430: instance_7 18
+    101432: instance_7 19
+    101434: instance_7 2
+    101436: instance_7 20
+    101438: instance_7 21
+    101440: instance_7 22
+    101442: instance_7 23
+    101444: instance_7 3
+    101446: instance_7 4
+    101448: instance_7 5
+    101450: instance_7 6
+    101452: instance_7 7
+    101454: instance_7 8
+    101456: instance_7 9
+    101458: instance_8
+    101460: instance_8 1
+    101462: instance_8 10
+    101464: instance_8 11
+    101466: instance_8 2
+    101468: instance_8 3
+    101470: instance_8 4
+    101472: instance_8 5
+    101474: instance_8 6
+    101476: instance_8 7
+    101478: instance_8 8
+    101480: instance_8 9
+    101482: instance_9
+    101484: //RootNode
+    101486: PH1036.dxf
+    101488: PH1036.dxf 1
+    101490: PH1036.dxf 10
+    101492: PH1036.dxf 11
+    101494: PH1036.dxf 2
+    101496: PH1036.dxf 3
+    101498: PH1036.dxf 4
+    101500: PH1036.dxf 5
+    101502: PH1036.dxf 6
+    101504: PH1036.dxf 7
+    101506: PH1036.dxf 8
+    101508: PH1036.dxf 9
+    101510: skp_camera_Last_Saved_SketchUp_View
+    101512: SW6875-1_25
+    101514: SW6875-1_4
+    101516: SW6875-1_5
+    101518: SW6875-1_6
+    101520: TR1220-75
+    400000: _03050905_Senkschraube_DIN_7991_M6x22
+    400002: _03050905_Senkschraube_DIN_7991_M6x22 1
+    400004: _03050905_Senkschraube_DIN_7991_M6x22 10
+    400006: _03050905_Senkschraube_DIN_7991_M6x22 11
+    400008: _03050905_Senkschraube_DIN_7991_M6x22 12
+    400010: _03050905_Senkschraube_DIN_7991_M6x22 13
+    400012: _03050905_Senkschraube_DIN_7991_M6x22 14
+    400014: _03050905_Senkschraube_DIN_7991_M6x22 15
+    400016: _03050905_Senkschraube_DIN_7991_M6x22 16
+    400018: _03050905_Senkschraube_DIN_7991_M6x22 17
+    400020: _03050905_Senkschraube_DIN_7991_M6x22 18
+    400022: _03050905_Senkschraube_DIN_7991_M6x22 19
+    400024: _03050905_Senkschraube_DIN_7991_M6x22 2
+    400026: _03050905_Senkschraube_DIN_7991_M6x22 20
+    400028: _03050905_Senkschraube_DIN_7991_M6x22 21
+    400030: _03050905_Senkschraube_DIN_7991_M6x22 22
+    400032: _03050905_Senkschraube_DIN_7991_M6x22 23
+    400034: _03050905_Senkschraube_DIN_7991_M6x22 24
+    400036: _03050905_Senkschraube_DIN_7991_M6x22 25
+    400038: _03050905_Senkschraube_DIN_7991_M6x22 26
+    400040: _03050905_Senkschraube_DIN_7991_M6x22 27
+    400042: _03050905_Senkschraube_DIN_7991_M6x22 28
+    400044: _03050905_Senkschraube_DIN_7991_M6x22 29
+    400046: _03050905_Senkschraube_DIN_7991_M6x22 3
+    400048: _03050905_Senkschraube_DIN_7991_M6x22 30
+    400050: _03050905_Senkschraube_DIN_7991_M6x22 31
+    400052: _03050905_Senkschraube_DIN_7991_M6x22 32
+    400054: _03050905_Senkschraube_DIN_7991_M6x22 33
+    400056: _03050905_Senkschraube_DIN_7991_M6x22 34
+    400058: _03050905_Senkschraube_DIN_7991_M6x22 35
+    400060: _03050905_Senkschraube_DIN_7991_M6x22 36
+    400062: _03050905_Senkschraube_DIN_7991_M6x22 37
+    400064: _03050905_Senkschraube_DIN_7991_M6x22 38
+    400066: _03050905_Senkschraube_DIN_7991_M6x22 39
+    400068: _03050905_Senkschraube_DIN_7991_M6x22 4
+    400070: _03050905_Senkschraube_DIN_7991_M6x22 40
+    400072: _03050905_Senkschraube_DIN_7991_M6x22 41
+    400074: _03050905_Senkschraube_DIN_7991_M6x22 42
+    400076: _03050905_Senkschraube_DIN_7991_M6x22 43
+    400078: _03050905_Senkschraube_DIN_7991_M6x22 44
+    400080: _03050905_Senkschraube_DIN_7991_M6x22 45
+    400082: _03050905_Senkschraube_DIN_7991_M6x22 46
+    400084: _03050905_Senkschraube_DIN_7991_M6x22 47
+    400086: _03050905_Senkschraube_DIN_7991_M6x22 48
+    400088: _03050905_Senkschraube_DIN_7991_M6x22 49
+    400090: _03050905_Senkschraube_DIN_7991_M6x22 5
+    400092: _03050905_Senkschraube_DIN_7991_M6x22 50
+    400094: _03050905_Senkschraube_DIN_7991_M6x22 51
+    400096: _03050905_Senkschraube_DIN_7991_M6x22 52
+    400098: _03050905_Senkschraube_DIN_7991_M6x22 53
+    400100: _03050905_Senkschraube_DIN_7991_M6x22 54
+    400102: _03050905_Senkschraube_DIN_7991_M6x22 55
+    400104: _03050905_Senkschraube_DIN_7991_M6x22 6
+    400106: _03050905_Senkschraube_DIN_7991_M6x22 7
+    400108: _03050905_Senkschraube_DIN_7991_M6x22 8
+    400110: _03050905_Senkschraube_DIN_7991_M6x22 9
+    400112: _2D_lady01
+    400114: _63.625_Frame_1
+    400116: _63.625_Frame_1 1
+    400118: _63.625_Frame_1 10
+    400120: _63.625_Frame_1 11
+    400122: _63.625_Frame_1 12
+    400124: _63.625_Frame_1 13
+    400126: _63.625_Frame_1 14
+    400128: _63.625_Frame_1 15
+    400130: _63.625_Frame_1 2
+    400132: _63.625_Frame_1 3
+    400134: _63.625_Frame_1 4
+    400136: _63.625_Frame_1 5
+    400138: _63.625_Frame_1 6
+    400140: _63.625_Frame_1 7
+    400142: _63.625_Frame_1 8
+    400144: _63.625_Frame_1 9
+    400146: CPM1
+    400148: CPM1 1
+    400150: CPM1 10
+    400152: CPM1 11
+    400154: CPM1 12
+    400156: CPM1 13
+    400158: CPM1 14
+    400160: CPM1 15
+    400162: CPM1 16
+    400164: CPM1 17
+    400166: CPM1 18
+    400168: CPM1 19
+    400170: CPM1 2
+    400172: CPM1 20
+    400174: CPM1 21
+    400176: CPM1 22
+    400178: CPM1 23
+    400180: CPM1 24
+    400182: CPM1 25
+    400184: CPM1 26
+    400186: CPM1 27
+    400188: CPM1 28
+    400190: CPM1 29
+    400192: CPM1 3
+    400194: CPM1 30
+    400196: CPM1 31
+    400198: CPM1 32
+    400200: CPM1 33
+    400202: CPM1 34
+    400204: CPM1 35
+    400206: CPM1 36
+    400208: CPM1 37
+    400210: CPM1 38
+    400212: CPM1 39
+    400214: CPM1 4
+    400216: CPM1 40
+    400218: CPM1 41
+    400220: CPM1 42
+    400222: CPM1 43
+    400224: CPM1 44
+    400226: CPM1 45
+    400228: CPM1 46
+    400230: CPM1 47
+    400232: CPM1 48
+    400234: CPM1 49
+    400236: CPM1 5
+    400238: CPM1 50
+    400240: CPM1 51
+    400242: CPM1 52
+    400244: CPM1 53
+    400246: CPM1 54
+    400248: CPM1 55
+    400250: CPM1 6
+    400252: CPM1 7
+    400254: CPM1 8
+    400256: CPM1 9
+    400258: group_0
+    400260: group_1
+    400262: group_10
+    400264: group_11
+    400266: group_11 1
+    400268: group_11 2
+    400270: group_11 3
+    400272: group_12
+    400274: group_12 1
+    400276: group_12 2
+    400278: group_12 3
+    400280: group_13
+    400282: group_13 1
+    400284: group_13 2
+    400286: group_13 3
+    400288: group_14
+    400290: group_14 1
+    400292: group_14 2
+    400294: group_14 3
+    400296: group_15
+    400298: group_15 1
+    400300: group_15 2
+    400302: group_15 3
+    400304: group_16
+    400306: group_16 1
+    400308: group_16 2
+    400310: group_16 3
+    400312: group_17
+    400314: group_17 1
+    400316: group_17 10
+    400318: group_17 11
+    400320: group_17 12
+    400322: group_17 13
+    400324: group_17 14
+    400326: group_17 15
+    400328: group_17 2
+    400330: group_17 3
+    400332: group_17 4
+    400334: group_17 5
+    400336: group_17 6
+    400338: group_17 7
+    400340: group_17 8
+    400342: group_17 9
+    400344: group_18
+    400346: group_18 1
+    400348: group_18 10
+    400350: group_18 11
+    400352: group_18 12
+    400354: group_18 13
+    400356: group_18 14
+    400358: group_18 15
+    400360: group_18 2
+    400362: group_18 3
+    400364: group_18 4
+    400366: group_18 5
+    400368: group_18 6
+    400370: group_18 7
+    400372: group_18 8
+    400374: group_18 9
+    400376: group_19
+    400378: group_19 1
+    400380: group_19 10
+    400382: group_19 11
+    400384: group_19 12
+    400386: group_19 13
+    400388: group_19 14
+    400390: group_19 15
+    400392: group_19 2
+    400394: group_19 3
+    400396: group_19 4
+    400398: group_19 5
+    400400: group_19 6
+    400402: group_19 7
+    400404: group_19 8
+    400406: group_19 9
+    400408: group_2
+    400410: group_2 1
+    400412: group_20
+    400414: group_20 1
+    400416: group_20 10
+    400418: group_20 11
+    400420: group_20 2
+    400422: group_20 3
+    400424: group_20 4
+    400426: group_20 5
+    400428: group_20 6
+    400430: group_20 7
+    400432: group_20 8
+    400434: group_20 9
+    400436: Group_21
+    400438: group_21
+    400440: Group_21 1
+    400442: group_21 1
+    400444: Group_21 10
+    400446: group_21 10
+    400448: Group_21 11
+    400450: group_21 11
+    400452: Group_21 12
+    400454: Group_21 13
+    400456: Group_21 14
+    400458: Group_21 15
+    400460: Group_21 2
+    400462: group_21 2
+    400464: Group_21 3
+    400466: group_21 3
+    400468: Group_21 4
+    400470: group_21 4
+    400472: Group_21 5
+    400474: group_21 5
+    400476: Group_21 6
+    400478: group_21 6
+    400480: Group_21 7
+    400482: group_21 7
+    400484: Group_21 8
+    400486: group_21 8
+    400488: Group_21 9
+    400490: group_21 9
+    400492: group_22
+    400494: group_23
+    400496: group_24
+    400498: group_25
+    400500: group_26
+    400502: group_27
+    400504: group_28
+    400506: Group_295
+    400508: Group_295 1
+    400510: Group_295 10
+    400512: Group_295 11
+    400514: Group_295 2
+    400516: Group_295 3
+    400518: Group_295 4
+    400520: Group_295 5
+    400522: Group_295 6
+    400524: Group_295 7
+    400526: Group_295 8
+    400528: Group_295 9
+    400530: group_3
+    400532: group_3 1
+    400534: Group_358
+    400536: Group_358 1
+    400538: Group_358 2
+    400540: Group_358 3
+    400542: Group_358 4
+    400544: Group_369
+    400546: Group_369 1
+    400548: Group_370
+    400550: Group_370 1
+    400552: Group_370 2
+    400554: Group_370 3
+    400556: group_4
+    400558: group_4 1
+    400560: group_5
+    400562: group_5 1
+    400564: group_6
+    400566: group_6 1
+    400568: group_7
+    400570: group_7 1
+    400572: group_8
+    400574: group_8 1
+    400576: Group_89
+    400578: group_9
+    400580: Hex_socket_countersunk_1
+    400582: Hex_socket_countersunk_1 1
+    400584: Hex_socket_countersunk_1 10
+    400586: Hex_socket_countersunk_1 11
+    400588: Hex_socket_countersunk_1 12
+    400590: Hex_socket_countersunk_1 13
+    400592: Hex_socket_countersunk_1 14
+    400594: Hex_socket_countersunk_1 15
+    400596: Hex_socket_countersunk_1 16
+    400598: Hex_socket_countersunk_1 17
+    400600: Hex_socket_countersunk_1 18
+    400602: Hex_socket_countersunk_1 19
+    400604: Hex_socket_countersunk_1 2
+    400606: Hex_socket_countersunk_1 20
+    400608: Hex_socket_countersunk_1 21
+    400610: Hex_socket_countersunk_1 22
+    400612: Hex_socket_countersunk_1 23
+    400614: Hex_socket_countersunk_1 24
+    400616: Hex_socket_countersunk_1 25
+    400618: Hex_socket_countersunk_1 26
+    400620: Hex_socket_countersunk_1 27
+    400622: Hex_socket_countersunk_1 28
+    400624: Hex_socket_countersunk_1 29
+    400626: Hex_socket_countersunk_1 3
+    400628: Hex_socket_countersunk_1 30
+    400630: Hex_socket_countersunk_1 31
+    400632: Hex_socket_countersunk_1 32
+    400634: Hex_socket_countersunk_1 33
+    400636: Hex_socket_countersunk_1 34
+    400638: Hex_socket_countersunk_1 35
+    400640: Hex_socket_countersunk_1 36
+    400642: Hex_socket_countersunk_1 37
+    400644: Hex_socket_countersunk_1 38
+    400646: Hex_socket_countersunk_1 39
+    400648: Hex_socket_countersunk_1 4
+    400650: Hex_socket_countersunk_1 40
+    400652: Hex_socket_countersunk_1 41
+    400654: Hex_socket_countersunk_1 42
+    400656: Hex_socket_countersunk_1 43
+    400658: Hex_socket_countersunk_1 44
+    400660: Hex_socket_countersunk_1 45
+    400662: Hex_socket_countersunk_1 46
+    400664: Hex_socket_countersunk_1 47
+    400666: Hex_socket_countersunk_1 48
+    400668: Hex_socket_countersunk_1 49
+    400670: Hex_socket_countersunk_1 5
+    400672: Hex_socket_countersunk_1 50
+    400674: Hex_socket_countersunk_1 51
+    400676: Hex_socket_countersunk_1 52
+    400678: Hex_socket_countersunk_1 53
+    400680: Hex_socket_countersunk_1 54
+    400682: Hex_socket_countersunk_1 55
+    400684: Hex_socket_countersunk_1 6
+    400686: Hex_socket_countersunk_1 7
+    400688: Hex_socket_countersunk_1 8
+    400690: Hex_socket_countersunk_1 9
+    400692: ID1014
+    400694: ID1022
+    400696: ID110
+    400698: ID116
+    400700: ID122
+    400702: ID145
+    400704: ID153
+    400706: ID172
+    400708: ID180
+    400710: ID197
+    400712: ID20
+    400714: ID205
+    400716: ID222
+    400718: ID230
+    400720: ID247
+    400722: ID255
+    400724: ID26
+    400726: ID272
+    400728: ID280
+    400730: ID318
+    400732: ID318 1
+    400734: ID318 10
+    400736: ID318 11
+    400738: ID318 12
+    400740: ID318 13
+    400742: ID318 14
+    400744: ID318 15
+    400746: ID318 16
+    400748: ID318 17
+    400750: ID318 18
+    400752: ID318 19
+    400754: ID318 2
+    400756: ID318 20
+    400758: ID318 21
+    400760: ID318 22
+    400762: ID318 23
+    400764: ID318 24
+    400766: ID318 25
+    400768: ID318 26
+    400770: ID318 27
+    400772: ID318 28
+    400774: ID318 29
+    400776: ID318 3
+    400778: ID318 30
+    400780: ID318 31
+    400782: ID318 32
+    400784: ID318 33
+    400786: ID318 34
+    400788: ID318 35
+    400790: ID318 36
+    400792: ID318 37
+    400794: ID318 38
+    400796: ID318 39
+    400798: ID318 4
+    400800: ID318 40
+    400802: ID318 41
+    400804: ID318 42
+    400806: ID318 43
+    400808: ID318 5
+    400810: ID318 6
+    400812: ID318 7
+    400814: ID318 8
+    400816: ID318 9
+    400818: ID335
+    400820: ID335 1
+    400822: ID335 10
+    400824: ID335 11
+    400826: ID335 12
+    400828: ID335 13
+    400830: ID335 14
+    400832: ID335 15
+    400834: ID335 2
+    400836: ID335 3
+    400838: ID335 4
+    400840: ID335 5
+    400842: ID335 6
+    400844: ID335 7
+    400846: ID335 8
+    400848: ID335 9
+    400850: ID341
+    400852: ID341 1
+    400854: ID341 10
+    400856: ID341 11
+    400858: ID341 12
+    400860: ID341 13
+    400862: ID341 14
+    400864: ID341 15
+    400866: ID341 2
+    400868: ID341 3
+    400870: ID341 4
+    400872: ID341 5
+    400874: ID341 6
+    400876: ID341 7
+    400878: ID341 8
+    400880: ID341 9
+    400882: ID369
+    400884: ID369 1
+    400886: ID369 10
+    400888: ID369 11
+    400890: ID369 2
+    400892: ID369 3
+    400894: ID369 4
+    400896: ID369 5
+    400898: ID369 6
+    400900: ID369 7
+    400902: ID369 8
+    400904: ID369 9
+    400906: ID386
+    400908: ID386 1
+    400910: ID386 10
+    400912: ID386 11
+    400914: ID386 2
+    400916: ID386 3
+    400918: ID386 4
+    400920: ID386 5
+    400922: ID386 6
+    400924: ID386 7
+    400926: ID386 8
+    400928: ID386 9
+    400930: ID392
+    400932: ID392 1
+    400934: ID392 10
+    400936: ID392 11
+    400938: ID392 2
+    400940: ID392 3
+    400942: ID392 4
+    400944: ID392 5
+    400946: ID392 6
+    400948: ID392 7
+    400950: ID392 8
+    400952: ID392 9
+    400954: ID398
+    400956: ID398 1
+    400958: ID398 10
+    400960: ID398 11
+    400962: ID398 2
+    400964: ID398 3
+    400966: ID398 4
+    400968: ID398 5
+    400970: ID398 6
+    400972: ID398 7
+    400974: ID398 8
+    400976: ID398 9
+    400978: ID404
+    400980: ID404 1
+    400982: ID404 10
+    400984: ID404 11
+    400986: ID404 2
+    400988: ID404 3
+    400990: ID404 4
+    400992: ID404 5
+    400994: ID404 6
+    400996: ID404 7
+    400998: ID404 8
+    401000: ID404 9
+    401002: ID431
+    401004: ID431 1
+    401006: ID437
+    401008: ID437 1
+    401010: ID459
+    401012: ID459 1
+    401014: ID465
+    401016: ID465 1
+    401018: ID479
+    401020: ID479 1
+    401022: ID485
+    401024: ID485 1
+    401026: ID502
+    401028: ID508
+    401030: ID52
+    401032: ID521
+    401034: ID527
+    401036: ID533
+    401038: ID539
+    401040: ID568
+    401042: ID576
+    401044: ID58
+    401046: ID593
+    401048: ID601
+    401050: ID618
+    401052: ID626
+    401054: ID64
+    401056: ID643
+    401058: ID651
+    401060: ID668
+    401062: ID676
+    401064: ID693
+    401066: ID701
+    401068: ID728
+    401070: ID736
+    401072: ID753
+    401074: ID761
+    401076: ID778
+    401078: ID786
+    401080: ID803
+    401082: ID811
+    401084: ID828
+    401086: ID836
+    401088: ID84
+    401090: ID853
+    401092: ID861
+    401094: ID889
+    401096: ID897
+    401098: ID90
+    401100: ID914
+    401102: ID922
+    401104: ID939
+    401106: ID947
+    401108: ID964
+    401110: ID972
+    401112: ID989
+    401114: ID997
+    401116: instance_0
+    401118: instance_1
+    401120: instance_10
+    401122: instance_11
+    401124: instance_12
+    401126: instance_13
+    401128: instance_14
+    401130: instance_15
+    401132: instance_16
+    401134: instance_17
+    401136: instance_18
+    401138: instance_19
+    401140: instance_2
+    401142: instance_2 1
+    401144: instance_2 10
+    401146: instance_2 11
+    401148: instance_2 12
+    401150: instance_2 13
+    401152: instance_2 14
+    401154: instance_2 15
+    401156: instance_2 16
+    401158: instance_2 17
+    401160: instance_2 18
+    401162: instance_2 19
+    401164: instance_2 2
+    401166: instance_2 20
+    401168: instance_2 21
+    401170: instance_2 22
+    401172: instance_2 23
+    401174: instance_2 24
+    401176: instance_2 25
+    401178: instance_2 26
+    401180: instance_2 27
+    401182: instance_2 28
+    401184: instance_2 29
+    401186: instance_2 3
+    401188: instance_2 30
+    401190: instance_2 31
+    401192: instance_2 4
+    401194: instance_2 5
+    401196: instance_2 6
+    401198: instance_2 7
+    401200: instance_2 8
+    401202: instance_2 9
+    401204: instance_20
+    401206: instance_21
+    401208: instance_22
+    401210: instance_23
+    401212: instance_24
+    401214: instance_25
+    401216: instance_26
+    401218: instance_27
+    401220: instance_28
+    401222: instance_29
+    401224: instance_3
+    401226: instance_3 1
+    401228: instance_3 10
+    401230: instance_3 11
+    401232: instance_3 12
+    401234: instance_3 13
+    401236: instance_3 14
+    401238: instance_3 15
+    401240: instance_3 16
+    401242: instance_3 17
+    401244: instance_3 18
+    401246: instance_3 19
+    401248: instance_3 2
+    401250: instance_3 20
+    401252: instance_3 21
+    401254: instance_3 22
+    401256: instance_3 23
+    401258: instance_3 24
+    401260: instance_3 25
+    401262: instance_3 26
+    401264: instance_3 27
+    401266: instance_3 28
+    401268: instance_3 29
+    401270: instance_3 3
+    401272: instance_3 30
+    401274: instance_3 31
+    401276: instance_3 4
+    401278: instance_3 5
+    401280: instance_3 6
+    401282: instance_3 7
+    401284: instance_3 8
+    401286: instance_3 9
+    401288: instance_30
+    401290: instance_31
+    401292: instance_32
+    401294: instance_33
+    401296: instance_34
+    401298: instance_35
+    401300: instance_36
+    401302: instance_37
+    401304: instance_38
+    401306: instance_39
+    401308: instance_4
+    401310: instance_4 1
+    401312: instance_4 10
+    401314: instance_4 11
+    401316: instance_4 12
+    401318: instance_4 13
+    401320: instance_4 14
+    401322: instance_4 15
+    401324: instance_4 2
+    401326: instance_4 3
+    401328: instance_4 4
+    401330: instance_4 5
+    401332: instance_4 6
+    401334: instance_4 7
+    401336: instance_4 8
+    401338: instance_4 9
+    401340: instance_40
+    401342: instance_41
+    401344: instance_42
+    401346: instance_43
+    401348: instance_44
+    401350: instance_45
+    401352: instance_46
+    401354: instance_47
+    401356: instance_48
+    401358: instance_49
+    401360: instance_5
+    401362: instance_6
+    401364: instance_6 1
+    401366: instance_6 10
+    401368: instance_6 11
+    401370: instance_6 12
+    401372: instance_6 13
+    401374: instance_6 14
+    401376: instance_6 15
+    401378: instance_6 16
+    401380: instance_6 17
+    401382: instance_6 18
+    401384: instance_6 19
+    401386: instance_6 2
+    401388: instance_6 20
+    401390: instance_6 21
+    401392: instance_6 22
+    401394: instance_6 23
+    401396: instance_6 3
+    401398: instance_6 4
+    401400: instance_6 5
+    401402: instance_6 6
+    401404: instance_6 7
+    401406: instance_6 8
+    401408: instance_6 9
+    401410: instance_7
+    401412: instance_7 1
+    401414: instance_7 10
+    401416: instance_7 11
+    401418: instance_7 12
+    401420: instance_7 13
+    401422: instance_7 14
+    401424: instance_7 15
+    401426: instance_7 16
+    401428: instance_7 17
+    401430: instance_7 18
+    401432: instance_7 19
+    401434: instance_7 2
+    401436: instance_7 20
+    401438: instance_7 21
+    401440: instance_7 22
+    401442: instance_7 23
+    401444: instance_7 3
+    401446: instance_7 4
+    401448: instance_7 5
+    401450: instance_7 6
+    401452: instance_7 7
+    401454: instance_7 8
+    401456: instance_7 9
+    401458: instance_8
+    401460: instance_8 1
+    401462: instance_8 10
+    401464: instance_8 11
+    401466: instance_8 2
+    401468: instance_8 3
+    401470: instance_8 4
+    401472: instance_8 5
+    401474: instance_8 6
+    401476: instance_8 7
+    401478: instance_8 8
+    401480: instance_8 9
+    401482: instance_9
+    401484: //RootNode
+    401486: PH1036.dxf
+    401488: PH1036.dxf 1
+    401490: PH1036.dxf 10
+    401492: PH1036.dxf 11
+    401494: PH1036.dxf 2
+    401496: PH1036.dxf 3
+    401498: PH1036.dxf 4
+    401500: PH1036.dxf 5
+    401502: PH1036.dxf 6
+    401504: PH1036.dxf 7
+    401506: PH1036.dxf 8
+    401508: PH1036.dxf 9
+    401510: skp_camera_Last_Saved_SketchUp_View
+    401512: SW6875-1_25
+    401514: SW6875-1_4
+    401516: SW6875-1_5
+    401518: SW6875-1_6
+    401520: TR1220-75
+    2000000: skp_camera_Last_Saved_SketchUp_View
+    2100000: __0131_Silver_1
+    2100002: __Metal_Aluminum_Anodized_2
+    2100004: __Metal_Aluminum_Anodized_12
+    2100006: __Color_000_1
+    2100008: _0131_Silver
+    2100010: __Metal_Aluminum_Anodized_1
+    2100012: __Translucent_Resin_Crush_Gray_3
+    2100014: material
+    2100016: MyFrontMaterial1
+    2100018: __Metal_Aluminum_Anodized_14
+    2100020: __Metal_Aluminum_Anodized_5
+    2100022: Red-DVI-MovingPeople-Business
+    2300000: _03050905_Senkschraube_DIN_7991_M6x22
+    2300002: _03050905_Senkschraube_DIN_7991_M6x22 1
+    2300004: _03050905_Senkschraube_DIN_7991_M6x22 10
+    2300006: _03050905_Senkschraube_DIN_7991_M6x22 11
+    2300008: _03050905_Senkschraube_DIN_7991_M6x22 12
+    2300010: _03050905_Senkschraube_DIN_7991_M6x22 13
+    2300012: _03050905_Senkschraube_DIN_7991_M6x22 14
+    2300014: _03050905_Senkschraube_DIN_7991_M6x22 15
+    2300016: _03050905_Senkschraube_DIN_7991_M6x22 16
+    2300018: _03050905_Senkschraube_DIN_7991_M6x22 17
+    2300020: _03050905_Senkschraube_DIN_7991_M6x22 18
+    2300022: _03050905_Senkschraube_DIN_7991_M6x22 19
+    2300024: _03050905_Senkschraube_DIN_7991_M6x22 2
+    2300026: _03050905_Senkschraube_DIN_7991_M6x22 20
+    2300028: _03050905_Senkschraube_DIN_7991_M6x22 21
+    2300030: _03050905_Senkschraube_DIN_7991_M6x22 22
+    2300032: _03050905_Senkschraube_DIN_7991_M6x22 23
+    2300034: _03050905_Senkschraube_DIN_7991_M6x22 24
+    2300036: _03050905_Senkschraube_DIN_7991_M6x22 25
+    2300038: _03050905_Senkschraube_DIN_7991_M6x22 26
+    2300040: _03050905_Senkschraube_DIN_7991_M6x22 27
+    2300042: _03050905_Senkschraube_DIN_7991_M6x22 28
+    2300044: _03050905_Senkschraube_DIN_7991_M6x22 29
+    2300046: _03050905_Senkschraube_DIN_7991_M6x22 3
+    2300048: _03050905_Senkschraube_DIN_7991_M6x22 30
+    2300050: _03050905_Senkschraube_DIN_7991_M6x22 31
+    2300052: _03050905_Senkschraube_DIN_7991_M6x22 32
+    2300054: _03050905_Senkschraube_DIN_7991_M6x22 33
+    2300056: _03050905_Senkschraube_DIN_7991_M6x22 34
+    2300058: _03050905_Senkschraube_DIN_7991_M6x22 35
+    2300060: _03050905_Senkschraube_DIN_7991_M6x22 36
+    2300062: _03050905_Senkschraube_DIN_7991_M6x22 37
+    2300064: _03050905_Senkschraube_DIN_7991_M6x22 38
+    2300066: _03050905_Senkschraube_DIN_7991_M6x22 39
+    2300068: _03050905_Senkschraube_DIN_7991_M6x22 4
+    2300070: _03050905_Senkschraube_DIN_7991_M6x22 40
+    2300072: _03050905_Senkschraube_DIN_7991_M6x22 41
+    2300074: _03050905_Senkschraube_DIN_7991_M6x22 42
+    2300076: _03050905_Senkschraube_DIN_7991_M6x22 43
+    2300078: _03050905_Senkschraube_DIN_7991_M6x22 44
+    2300080: _03050905_Senkschraube_DIN_7991_M6x22 45
+    2300082: _03050905_Senkschraube_DIN_7991_M6x22 46
+    2300084: _03050905_Senkschraube_DIN_7991_M6x22 47
+    2300086: _03050905_Senkschraube_DIN_7991_M6x22 48
+    2300088: _03050905_Senkschraube_DIN_7991_M6x22 49
+    2300090: _03050905_Senkschraube_DIN_7991_M6x22 5
+    2300092: _03050905_Senkschraube_DIN_7991_M6x22 50
+    2300094: _03050905_Senkschraube_DIN_7991_M6x22 51
+    2300096: _03050905_Senkschraube_DIN_7991_M6x22 52
+    2300098: _03050905_Senkschraube_DIN_7991_M6x22 53
+    2300100: _03050905_Senkschraube_DIN_7991_M6x22 54
+    2300102: _03050905_Senkschraube_DIN_7991_M6x22 55
+    2300104: _03050905_Senkschraube_DIN_7991_M6x22 6
+    2300106: _03050905_Senkschraube_DIN_7991_M6x22 7
+    2300108: _03050905_Senkschraube_DIN_7991_M6x22 8
+    2300110: _03050905_Senkschraube_DIN_7991_M6x22 9
+    2300112: _2D_lady01
+    2300114: CPM1
+    2300116: CPM1 1
+    2300118: CPM1 10
+    2300120: CPM1 11
+    2300122: CPM1 12
+    2300124: CPM1 13
+    2300126: CPM1 14
+    2300128: CPM1 15
+    2300130: CPM1 16
+    2300132: CPM1 17
+    2300134: CPM1 18
+    2300136: CPM1 19
+    2300138: CPM1 2
+    2300140: CPM1 20
+    2300142: CPM1 21
+    2300144: CPM1 22
+    2300146: CPM1 23
+    2300148: CPM1 24
+    2300150: CPM1 25
+    2300152: CPM1 26
+    2300154: CPM1 27
+    2300156: CPM1 28
+    2300158: CPM1 29
+    2300160: CPM1 3
+    2300162: CPM1 30
+    2300164: CPM1 31
+    2300166: CPM1 32
+    2300168: CPM1 33
+    2300170: CPM1 34
+    2300172: CPM1 35
+    2300174: CPM1 36
+    2300176: CPM1 37
+    2300178: CPM1 38
+    2300180: CPM1 39
+    2300182: CPM1 4
+    2300184: CPM1 40
+    2300186: CPM1 41
+    2300188: CPM1 42
+    2300190: CPM1 43
+    2300192: CPM1 44
+    2300194: CPM1 45
+    2300196: CPM1 46
+    2300198: CPM1 47
+    2300200: CPM1 48
+    2300202: CPM1 49
+    2300204: CPM1 5
+    2300206: CPM1 50
+    2300208: CPM1 51
+    2300210: CPM1 52
+    2300212: CPM1 53
+    2300214: CPM1 54
+    2300216: CPM1 55
+    2300218: CPM1 6
+    2300220: CPM1 7
+    2300222: CPM1 8
+    2300224: CPM1 9
+    2300226: group_11
+    2300228: group_11 1
+    2300230: group_11 2
+    2300232: group_11 3
+    2300234: group_12
+    2300236: group_12 1
+    2300238: group_12 2
+    2300240: group_12 3
+    2300242: group_13
+    2300244: group_13 1
+    2300246: group_13 2
+    2300248: group_13 3
+    2300250: group_14
+    2300252: group_14 1
+    2300254: group_14 2
+    2300256: group_14 3
+    2300258: group_15
+    2300260: group_15 1
+    2300262: group_15 2
+    2300264: group_15 3
+    2300266: group_16
+    2300268: group_16 1
+    2300270: group_16 2
+    2300272: group_16 3
+    2300274: Group_21
+    2300276: Group_21 1
+    2300278: Group_21 10
+    2300280: Group_21 11
+    2300282: Group_21 12
+    2300284: Group_21 13
+    2300286: Group_21 14
+    2300288: Group_21 15
+    2300290: Group_21 2
+    2300292: Group_21 3
+    2300294: Group_21 4
+    2300296: Group_21 5
+    2300298: Group_21 6
+    2300300: Group_21 7
+    2300302: Group_21 8
+    2300304: Group_21 9
+    2300306: group_22
+    2300308: group_23
+    2300310: group_24
+    2300312: Group_358
+    2300314: Group_358 1
+    2300316: Group_358 2
+    2300318: Group_358 3
+    2300320: Group_358 4
+    2300322: Group_369
+    2300324: Group_369 1
+    2300326: Group_370
+    2300328: Group_370 1
+    2300330: Group_370 2
+    2300332: Group_370 3
+    2300334: group_6
+    2300336: group_6 1
+    2300338: group_7
+    2300340: group_7 1
+    2300342: group_8
+    2300344: group_8 1
+    2300346: ID1014
+    2300348: ID1022
+    2300350: ID110
+    2300352: ID116
+    2300354: ID122
+    2300356: ID145
+    2300358: ID153
+    2300360: ID172
+    2300362: ID180
+    2300364: ID197
+    2300366: ID20
+    2300368: ID205
+    2300370: ID222
+    2300372: ID230
+    2300374: ID247
+    2300376: ID255
+    2300378: ID26
+    2300380: ID272
+    2300382: ID280
+    2300384: ID318
+    2300386: ID318 1
+    2300388: ID318 10
+    2300390: ID318 11
+    2300392: ID318 12
+    2300394: ID318 13
+    2300396: ID318 14
+    2300398: ID318 15
+    2300400: ID318 16
+    2300402: ID318 17
+    2300404: ID318 18
+    2300406: ID318 19
+    2300408: ID318 2
+    2300410: ID318 20
+    2300412: ID318 21
+    2300414: ID318 22
+    2300416: ID318 23
+    2300418: ID318 24
+    2300420: ID318 25
+    2300422: ID318 26
+    2300424: ID318 27
+    2300426: ID318 28
+    2300428: ID318 29
+    2300430: ID318 3
+    2300432: ID318 30
+    2300434: ID318 31
+    2300436: ID318 32
+    2300438: ID318 33
+    2300440: ID318 34
+    2300442: ID318 35
+    2300444: ID318 36
+    2300446: ID318 37
+    2300448: ID318 38
+    2300450: ID318 39
+    2300452: ID318 4
+    2300454: ID318 40
+    2300456: ID318 41
+    2300458: ID318 42
+    2300460: ID318 43
+    2300462: ID318 5
+    2300464: ID318 6
+    2300466: ID318 7
+    2300468: ID318 8
+    2300470: ID318 9
+    2300472: ID335
+    2300474: ID335 1
+    2300476: ID335 10
+    2300478: ID335 11
+    2300480: ID335 12
+    2300482: ID335 13
+    2300484: ID335 14
+    2300486: ID335 15
+    2300488: ID335 2
+    2300490: ID335 3
+    2300492: ID335 4
+    2300494: ID335 5
+    2300496: ID335 6
+    2300498: ID335 7
+    2300500: ID335 8
+    2300502: ID335 9
+    2300504: ID341
+    2300506: ID341 1
+    2300508: ID341 10
+    2300510: ID341 11
+    2300512: ID341 12
+    2300514: ID341 13
+    2300516: ID341 14
+    2300518: ID341 15
+    2300520: ID341 2
+    2300522: ID341 3
+    2300524: ID341 4
+    2300526: ID341 5
+    2300528: ID341 6
+    2300530: ID341 7
+    2300532: ID341 8
+    2300534: ID341 9
+    2300536: ID369
+    2300538: ID369 1
+    2300540: ID369 10
+    2300542: ID369 11
+    2300544: ID369 2
+    2300546: ID369 3
+    2300548: ID369 4
+    2300550: ID369 5
+    2300552: ID369 6
+    2300554: ID369 7
+    2300556: ID369 8
+    2300558: ID369 9
+    2300560: ID386
+    2300562: ID386 1
+    2300564: ID386 10
+    2300566: ID386 11
+    2300568: ID386 2
+    2300570: ID386 3
+    2300572: ID386 4
+    2300574: ID386 5
+    2300576: ID386 6
+    2300578: ID386 7
+    2300580: ID386 8
+    2300582: ID386 9
+    2300584: ID392
+    2300586: ID392 1
+    2300588: ID392 10
+    2300590: ID392 11
+    2300592: ID392 2
+    2300594: ID392 3
+    2300596: ID392 4
+    2300598: ID392 5
+    2300600: ID392 6
+    2300602: ID392 7
+    2300604: ID392 8
+    2300606: ID392 9
+    2300608: ID398
+    2300610: ID398 1
+    2300612: ID398 10
+    2300614: ID398 11
+    2300616: ID398 2
+    2300618: ID398 3
+    2300620: ID398 4
+    2300622: ID398 5
+    2300624: ID398 6
+    2300626: ID398 7
+    2300628: ID398 8
+    2300630: ID398 9
+    2300632: ID431
+    2300634: ID431 1
+    2300636: ID437
+    2300638: ID437 1
+    2300640: ID459
+    2300642: ID459 1
+    2300644: ID465
+    2300646: ID465 1
+    2300648: ID479
+    2300650: ID479 1
+    2300652: ID485
+    2300654: ID485 1
+    2300656: ID502
+    2300658: ID508
+    2300660: ID52
+    2300662: ID521
+    2300664: ID527
+    2300666: ID533
+    2300668: ID539
+    2300670: ID568
+    2300672: ID576
+    2300674: ID58
+    2300676: ID593
+    2300678: ID601
+    2300680: ID618
+    2300682: ID626
+    2300684: ID64
+    2300686: ID643
+    2300688: ID651
+    2300690: ID668
+    2300692: ID676
+    2300694: ID693
+    2300696: ID701
+    2300698: ID728
+    2300700: ID736
+    2300702: ID753
+    2300704: ID761
+    2300706: ID778
+    2300708: ID786
+    2300710: ID803
+    2300712: ID811
+    2300714: ID828
+    2300716: ID836
+    2300718: ID84
+    2300720: ID853
+    2300722: ID861
+    2300724: ID889
+    2300726: ID897
+    2300728: ID90
+    2300730: ID914
+    2300732: ID922
+    2300734: ID939
+    2300736: ID947
+    2300738: ID964
+    2300740: ID972
+    2300742: ID989
+    2300744: ID997
+    2300746: PH1036.dxf
+    2300748: PH1036.dxf 1
+    2300750: PH1036.dxf 10
+    2300752: PH1036.dxf 11
+    2300754: PH1036.dxf 2
+    2300756: PH1036.dxf 3
+    2300758: PH1036.dxf 4
+    2300760: PH1036.dxf 5
+    2300762: PH1036.dxf 6
+    2300764: PH1036.dxf 7
+    2300766: PH1036.dxf 8
+    2300768: PH1036.dxf 9
+    3300000: _03050905_Senkschraube_DIN_7991_M6x22
+    3300002: _03050905_Senkschraube_DIN_7991_M6x22 1
+    3300004: _03050905_Senkschraube_DIN_7991_M6x22 10
+    3300006: _03050905_Senkschraube_DIN_7991_M6x22 11
+    3300008: _03050905_Senkschraube_DIN_7991_M6x22 12
+    3300010: _03050905_Senkschraube_DIN_7991_M6x22 13
+    3300012: _03050905_Senkschraube_DIN_7991_M6x22 14
+    3300014: _03050905_Senkschraube_DIN_7991_M6x22 15
+    3300016: _03050905_Senkschraube_DIN_7991_M6x22 16
+    3300018: _03050905_Senkschraube_DIN_7991_M6x22 17
+    3300020: _03050905_Senkschraube_DIN_7991_M6x22 18
+    3300022: _03050905_Senkschraube_DIN_7991_M6x22 19
+    3300024: _03050905_Senkschraube_DIN_7991_M6x22 2
+    3300026: _03050905_Senkschraube_DIN_7991_M6x22 20
+    3300028: _03050905_Senkschraube_DIN_7991_M6x22 21
+    3300030: _03050905_Senkschraube_DIN_7991_M6x22 22
+    3300032: _03050905_Senkschraube_DIN_7991_M6x22 23
+    3300034: _03050905_Senkschraube_DIN_7991_M6x22 24
+    3300036: _03050905_Senkschraube_DIN_7991_M6x22 25
+    3300038: _03050905_Senkschraube_DIN_7991_M6x22 26
+    3300040: _03050905_Senkschraube_DIN_7991_M6x22 27
+    3300042: _03050905_Senkschraube_DIN_7991_M6x22 28
+    3300044: _03050905_Senkschraube_DIN_7991_M6x22 29
+    3300046: _03050905_Senkschraube_DIN_7991_M6x22 3
+    3300048: _03050905_Senkschraube_DIN_7991_M6x22 30
+    3300050: _03050905_Senkschraube_DIN_7991_M6x22 31
+    3300052: _03050905_Senkschraube_DIN_7991_M6x22 32
+    3300054: _03050905_Senkschraube_DIN_7991_M6x22 33
+    3300056: _03050905_Senkschraube_DIN_7991_M6x22 34
+    3300058: _03050905_Senkschraube_DIN_7991_M6x22 35
+    3300060: _03050905_Senkschraube_DIN_7991_M6x22 36
+    3300062: _03050905_Senkschraube_DIN_7991_M6x22 37
+    3300064: _03050905_Senkschraube_DIN_7991_M6x22 38
+    3300066: _03050905_Senkschraube_DIN_7991_M6x22 39
+    3300068: _03050905_Senkschraube_DIN_7991_M6x22 4
+    3300070: _03050905_Senkschraube_DIN_7991_M6x22 40
+    3300072: _03050905_Senkschraube_DIN_7991_M6x22 41
+    3300074: _03050905_Senkschraube_DIN_7991_M6x22 42
+    3300076: _03050905_Senkschraube_DIN_7991_M6x22 43
+    3300078: _03050905_Senkschraube_DIN_7991_M6x22 44
+    3300080: _03050905_Senkschraube_DIN_7991_M6x22 45
+    3300082: _03050905_Senkschraube_DIN_7991_M6x22 46
+    3300084: _03050905_Senkschraube_DIN_7991_M6x22 47
+    3300086: _03050905_Senkschraube_DIN_7991_M6x22 48
+    3300088: _03050905_Senkschraube_DIN_7991_M6x22 49
+    3300090: _03050905_Senkschraube_DIN_7991_M6x22 5
+    3300092: _03050905_Senkschraube_DIN_7991_M6x22 50
+    3300094: _03050905_Senkschraube_DIN_7991_M6x22 51
+    3300096: _03050905_Senkschraube_DIN_7991_M6x22 52
+    3300098: _03050905_Senkschraube_DIN_7991_M6x22 53
+    3300100: _03050905_Senkschraube_DIN_7991_M6x22 54
+    3300102: _03050905_Senkschraube_DIN_7991_M6x22 55
+    3300104: _03050905_Senkschraube_DIN_7991_M6x22 6
+    3300106: _03050905_Senkschraube_DIN_7991_M6x22 7
+    3300108: _03050905_Senkschraube_DIN_7991_M6x22 8
+    3300110: _03050905_Senkschraube_DIN_7991_M6x22 9
+    3300112: _2D_lady01
+    3300114: CPM1
+    3300116: CPM1 1
+    3300118: CPM1 10
+    3300120: CPM1 11
+    3300122: CPM1 12
+    3300124: CPM1 13
+    3300126: CPM1 14
+    3300128: CPM1 15
+    3300130: CPM1 16
+    3300132: CPM1 17
+    3300134: CPM1 18
+    3300136: CPM1 19
+    3300138: CPM1 2
+    3300140: CPM1 20
+    3300142: CPM1 21
+    3300144: CPM1 22
+    3300146: CPM1 23
+    3300148: CPM1 24
+    3300150: CPM1 25
+    3300152: CPM1 26
+    3300154: CPM1 27
+    3300156: CPM1 28
+    3300158: CPM1 29
+    3300160: CPM1 3
+    3300162: CPM1 30
+    3300164: CPM1 31
+    3300166: CPM1 32
+    3300168: CPM1 33
+    3300170: CPM1 34
+    3300172: CPM1 35
+    3300174: CPM1 36
+    3300176: CPM1 37
+    3300178: CPM1 38
+    3300180: CPM1 39
+    3300182: CPM1 4
+    3300184: CPM1 40
+    3300186: CPM1 41
+    3300188: CPM1 42
+    3300190: CPM1 43
+    3300192: CPM1 44
+    3300194: CPM1 45
+    3300196: CPM1 46
+    3300198: CPM1 47
+    3300200: CPM1 48
+    3300202: CPM1 49
+    3300204: CPM1 5
+    3300206: CPM1 50
+    3300208: CPM1 51
+    3300210: CPM1 52
+    3300212: CPM1 53
+    3300214: CPM1 54
+    3300216: CPM1 55
+    3300218: CPM1 6
+    3300220: CPM1 7
+    3300222: CPM1 8
+    3300224: CPM1 9
+    3300226: group_11
+    3300228: group_11 1
+    3300230: group_11 2
+    3300232: group_11 3
+    3300234: group_12
+    3300236: group_12 1
+    3300238: group_12 2
+    3300240: group_12 3
+    3300242: group_13
+    3300244: group_13 1
+    3300246: group_13 2
+    3300248: group_13 3
+    3300250: group_14
+    3300252: group_14 1
+    3300254: group_14 2
+    3300256: group_14 3
+    3300258: group_15
+    3300260: group_15 1
+    3300262: group_15 2
+    3300264: group_15 3
+    3300266: group_16
+    3300268: group_16 1
+    3300270: group_16 2
+    3300272: group_16 3
+    3300274: Group_21
+    3300276: Group_21 1
+    3300278: Group_21 10
+    3300280: Group_21 11
+    3300282: Group_21 12
+    3300284: Group_21 13
+    3300286: Group_21 14
+    3300288: Group_21 15
+    3300290: Group_21 2
+    3300292: Group_21 3
+    3300294: Group_21 4
+    3300296: Group_21 5
+    3300298: Group_21 6
+    3300300: Group_21 7
+    3300302: Group_21 8
+    3300304: Group_21 9
+    3300306: group_22
+    3300308: group_23
+    3300310: group_24
+    3300312: Group_358
+    3300314: Group_358 1
+    3300316: Group_358 2
+    3300318: Group_358 3
+    3300320: Group_358 4
+    3300322: Group_369
+    3300324: Group_369 1
+    3300326: Group_370
+    3300328: Group_370 1
+    3300330: Group_370 2
+    3300332: Group_370 3
+    3300334: group_6
+    3300336: group_6 1
+    3300338: group_7
+    3300340: group_7 1
+    3300342: group_8
+    3300344: group_8 1
+    3300346: ID1014
+    3300348: ID1022
+    3300350: ID110
+    3300352: ID116
+    3300354: ID122
+    3300356: ID145
+    3300358: ID153
+    3300360: ID172
+    3300362: ID180
+    3300364: ID197
+    3300366: ID20
+    3300368: ID205
+    3300370: ID222
+    3300372: ID230
+    3300374: ID247
+    3300376: ID255
+    3300378: ID26
+    3300380: ID272
+    3300382: ID280
+    3300384: ID318
+    3300386: ID318 1
+    3300388: ID318 10
+    3300390: ID318 11
+    3300392: ID318 12
+    3300394: ID318 13
+    3300396: ID318 14
+    3300398: ID318 15
+    3300400: ID318 16
+    3300402: ID318 17
+    3300404: ID318 18
+    3300406: ID318 19
+    3300408: ID318 2
+    3300410: ID318 20
+    3300412: ID318 21
+    3300414: ID318 22
+    3300416: ID318 23
+    3300418: ID318 24
+    3300420: ID318 25
+    3300422: ID318 26
+    3300424: ID318 27
+    3300426: ID318 28
+    3300428: ID318 29
+    3300430: ID318 3
+    3300432: ID318 30
+    3300434: ID318 31
+    3300436: ID318 32
+    3300438: ID318 33
+    3300440: ID318 34
+    3300442: ID318 35
+    3300444: ID318 36
+    3300446: ID318 37
+    3300448: ID318 38
+    3300450: ID318 39
+    3300452: ID318 4
+    3300454: ID318 40
+    3300456: ID318 41
+    3300458: ID318 42
+    3300460: ID318 43
+    3300462: ID318 5
+    3300464: ID318 6
+    3300466: ID318 7
+    3300468: ID318 8
+    3300470: ID318 9
+    3300472: ID335
+    3300474: ID335 1
+    3300476: ID335 10
+    3300478: ID335 11
+    3300480: ID335 12
+    3300482: ID335 13
+    3300484: ID335 14
+    3300486: ID335 15
+    3300488: ID335 2
+    3300490: ID335 3
+    3300492: ID335 4
+    3300494: ID335 5
+    3300496: ID335 6
+    3300498: ID335 7
+    3300500: ID335 8
+    3300502: ID335 9
+    3300504: ID341
+    3300506: ID341 1
+    3300508: ID341 10
+    3300510: ID341 11
+    3300512: ID341 12
+    3300514: ID341 13
+    3300516: ID341 14
+    3300518: ID341 15
+    3300520: ID341 2
+    3300522: ID341 3
+    3300524: ID341 4
+    3300526: ID341 5
+    3300528: ID341 6
+    3300530: ID341 7
+    3300532: ID341 8
+    3300534: ID341 9
+    3300536: ID369
+    3300538: ID369 1
+    3300540: ID369 10
+    3300542: ID369 11
+    3300544: ID369 2
+    3300546: ID369 3
+    3300548: ID369 4
+    3300550: ID369 5
+    3300552: ID369 6
+    3300554: ID369 7
+    3300556: ID369 8
+    3300558: ID369 9
+    3300560: ID386
+    3300562: ID386 1
+    3300564: ID386 10
+    3300566: ID386 11
+    3300568: ID386 2
+    3300570: ID386 3
+    3300572: ID386 4
+    3300574: ID386 5
+    3300576: ID386 6
+    3300578: ID386 7
+    3300580: ID386 8
+    3300582: ID386 9
+    3300584: ID392
+    3300586: ID392 1
+    3300588: ID392 10
+    3300590: ID392 11
+    3300592: ID392 2
+    3300594: ID392 3
+    3300596: ID392 4
+    3300598: ID392 5
+    3300600: ID392 6
+    3300602: ID392 7
+    3300604: ID392 8
+    3300606: ID392 9
+    3300608: ID398
+    3300610: ID398 1
+    3300612: ID398 10
+    3300614: ID398 11
+    3300616: ID398 2
+    3300618: ID398 3
+    3300620: ID398 4
+    3300622: ID398 5
+    3300624: ID398 6
+    3300626: ID398 7
+    3300628: ID398 8
+    3300630: ID398 9
+    3300632: ID431
+    3300634: ID431 1
+    3300636: ID437
+    3300638: ID437 1
+    3300640: ID459
+    3300642: ID459 1
+    3300644: ID465
+    3300646: ID465 1
+    3300648: ID479
+    3300650: ID479 1
+    3300652: ID485
+    3300654: ID485 1
+    3300656: ID502
+    3300658: ID508
+    3300660: ID52
+    3300662: ID521
+    3300664: ID527
+    3300666: ID533
+    3300668: ID539
+    3300670: ID568
+    3300672: ID576
+    3300674: ID58
+    3300676: ID593
+    3300678: ID601
+    3300680: ID618
+    3300682: ID626
+    3300684: ID64
+    3300686: ID643
+    3300688: ID651
+    3300690: ID668
+    3300692: ID676
+    3300694: ID693
+    3300696: ID701
+    3300698: ID728
+    3300700: ID736
+    3300702: ID753
+    3300704: ID761
+    3300706: ID778
+    3300708: ID786
+    3300710: ID803
+    3300712: ID811
+    3300714: ID828
+    3300716: ID836
+    3300718: ID84
+    3300720: ID853
+    3300722: ID861
+    3300724: ID889
+    3300726: ID897
+    3300728: ID90
+    3300730: ID914
+    3300732: ID922
+    3300734: ID939
+    3300736: ID947
+    3300738: ID964
+    3300740: ID972
+    3300742: ID989
+    3300744: ID997
+    3300746: PH1036.dxf
+    3300748: PH1036.dxf 1
+    3300750: PH1036.dxf 10
+    3300752: PH1036.dxf 11
+    3300754: PH1036.dxf 2
+    3300756: PH1036.dxf 3
+    3300758: PH1036.dxf 4
+    3300760: PH1036.dxf 5
+    3300762: PH1036.dxf 6
+    3300764: PH1036.dxf 7
+    3300766: PH1036.dxf 8
+    3300768: PH1036.dxf 9
+    4300000: group_6
+    4300002: ID20
+    4300004: ID26
+    4300006: group_7
+    4300008: group_8
+    4300010: ID52
+    4300012: ID58
+    4300014: ID64
+    4300016: group_6
+    4300018: ID84
+    4300020: ID90
+    4300022: group_7
+    4300024: group_8
+    4300026: ID110
+    4300028: ID116
+    4300030: ID122
+    4300032: group_11
+    4300034: ID145
+    4300036: ID153
+    4300038: group_12
+    4300040: ID172
+    4300042: ID180
+    4300044: group_13
+    4300046: ID197
+    4300048: ID205
+    4300050: group_14
+    4300052: ID222
+    4300054: ID230
+    4300056: group_15
+    4300058: ID247
+    4300060: ID255
+    4300062: group_16
+    4300064: ID272
+    4300066: ID280
+    4300068: _03050905_Senkschraube_DIN_7991_M6x22
+    4300070: CPM1
+    4300072: ID318
+    4300074: Group_21
+    4300076: ID335
+    4300078: ID341
+    4300080: _03050905_Senkschraube_DIN_7991_M6x22
+    4300082: CPM1
+    4300084: ID369
+    4300086: PH1036.dxf
+    4300088: ID386
+    4300090: ID392
+    4300092: ID398
+    4300094: Group_358
+    4300096: Group_370
+    4300098: ID431
+    4300100: ID437
+    4300102: Group_358
+    4300104: Group_370
+    4300106: ID459
+    4300108: ID465
+    4300110: Group_369
+    4300112: ID479
+    4300114: ID485
+    4300116: group_22
+    4300118: ID502
+    4300120: ID508
+    4300122: group_23
+    4300124: ID521
+    4300126: ID527
+    4300128: ID533
+    4300130: ID539
+    4300132: group_24
+    4300134: group_11
+    4300136: ID568
+    4300138: ID576
+    4300140: group_12
+    4300142: ID593
+    4300144: ID601
+    4300146: group_13
+    4300148: ID618
+    4300150: ID626
+    4300152: group_14
+    4300154: ID643
+    4300156: ID651
+    4300158: group_15
+    4300160: ID668
+    4300162: ID676
+    4300164: group_16
+    4300166: ID693
+    4300168: ID701
+    4300170: group_11
+    4300172: ID728
+    4300174: ID736
+    4300176: group_12
+    4300178: ID753
+    4300180: ID761
+    4300182: group_13
+    4300184: ID778
+    4300186: ID786
+    4300188: group_14
+    4300190: ID803
+    4300192: ID811
+    4300194: group_15
+    4300196: ID828
+    4300198: ID836
+    4300200: group_16
+    4300202: ID853
+    4300204: ID861
+    4300206: group_11
+    4300208: ID889
+    4300210: ID897
+    4300212: group_12
+    4300214: ID914
+    4300216: ID922
+    4300218: group_13
+    4300220: ID939
+    4300222: ID947
+    4300224: group_14
+    4300226: ID964
+    4300228: ID972
+    4300230: group_15
+    4300232: ID989
+    4300234: ID997
+    4300236: group_16
+    4300238: ID1014
+    4300240: ID1022
+    4300242: _2D_lady01
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -87,7 +87,7 @@ namespace Leap.Unity {
     /// <summary>
     /// Constructs a Maybe given a value. If the value is not null, this maybe will have
     /// a value. If the value is null, this maybe will have no value. For value types,
-    /// the Maybe struct will always have a value. (Use Maybe.None to refer to "no value.")
+    /// the Maybe struct will always have a value. (Use Maybe.CollectionSelection to refer to "no value.")
     /// </summary>
     public Maybe(T t) {
       if (Type<T>.isValueType) {

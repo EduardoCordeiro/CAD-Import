@@ -197,7 +197,7 @@ public class CADImporterWizard : ScriptableWizard {
         }
     }
 
-    // Done Button
+    // AssemblyColorMatching Button
     void OnWizardCreate() {
         
         hierarchyCreator.CreateHierarchy();

@@ -27,7 +27,7 @@ namespace Leap.Unity.GraphicalRenderer {
 
     #region INSPECTOR FIELDS
 
-    [Tooltip("What type of graphic motion should be supported by this renderer?  Currently there are only two modes, None, and Translation.")]
+    [Tooltip("What type of graphic motion should be supported by this renderer?  Currently there are only two modes, CollectionSelection, and Translation.")]
     [EditTimeOnly]
     [SerializeField]
     private MotionType _motionType = MotionType.Translation;

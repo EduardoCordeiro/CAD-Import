@@ -1,0 +1,1022 @@
+fileFormatVersion: 2
+guid: eff85a919b1c9844c992a3c3d47ee2da
+timeCreated: 1521208052
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Chris
+    100002: ID101
+    100004: ID126
+    100006: ID126 1
+    100008: ID126 10
+    100010: ID126 11
+    100012: ID126 12
+    100014: ID126 13
+    100016: ID126 14
+    100018: ID126 15
+    100020: ID126 16
+    100022: ID126 17
+    100024: ID126 18
+    100026: ID126 19
+    100028: ID126 2
+    100030: ID126 20
+    100032: ID126 21
+    100034: ID126 22
+    100036: ID126 23
+    100038: ID126 24
+    100040: ID126 25
+    100042: ID126 26
+    100044: ID126 27
+    100046: ID126 28
+    100048: ID126 29
+    100050: ID126 3
+    100052: ID126 30
+    100054: ID126 31
+    100056: ID126 32
+    100058: ID126 33
+    100060: ID126 34
+    100062: ID126 35
+    100064: ID126 36
+    100066: ID126 37
+    100068: ID126 38
+    100070: ID126 39
+    100072: ID126 4
+    100074: ID126 40
+    100076: ID126 41
+    100078: ID126 42
+    100080: ID126 43
+    100082: ID126 44
+    100084: ID126 45
+    100086: ID126 46
+    100088: ID126 47
+    100090: ID126 48
+    100092: ID126 49
+    100094: ID126 5
+    100096: ID126 50
+    100098: ID126 51
+    100100: ID126 52
+    100102: ID126 53
+    100104: ID126 54
+    100106: ID126 55
+    100108: ID126 56
+    100110: ID126 57
+    100112: ID126 58
+    100114: ID126 59
+    100116: ID126 6
+    100118: ID126 60
+    100120: ID126 61
+    100122: ID126 62
+    100124: ID126 63
+    100126: ID126 64
+    100128: ID126 65
+    100130: ID126 66
+    100132: ID126 67
+    100134: ID126 68
+    100136: ID126 69
+    100138: ID126 7
+    100140: ID126 70
+    100142: ID126 71
+    100144: ID126 72
+    100146: ID126 73
+    100148: ID126 74
+    100150: ID126 75
+    100152: ID126 76
+    100154: ID126 77
+    100156: ID126 78
+    100158: ID126 79
+    100160: ID126 8
+    100162: ID126 80
+    100164: ID126 81
+    100166: ID126 82
+    100168: ID126 83
+    100170: ID126 84
+    100172: ID126 85
+    100174: ID126 86
+    100176: ID126 87
+    100178: ID126 88
+    100180: ID126 89
+    100182: ID126 9
+    100184: ID126 90
+    100186: ID126 91
+    100188: ID126 92
+    100190: ID126 93
+    100192: ID126 94
+    100194: ID126 95
+    100196: ID126 96
+    100198: ID126 97
+    100200: ID126 98
+    100202: ID126 99
+    100204: ID13
+    100206: ID19
+    100208: ID27
+    100210: ID33
+    100212: ID41
+    100214: ID49
+    100216: ID55
+    100218: ID61
+    100220: ID69
+    100222: ID75
+    100224: ID81
+    100226: ID87
+    100228: ID93
+    100230: instance_0
+    100232: instance_1
+    100234: instance_10
+    100236: instance_11
+    100238: instance_12
+    100240: instance_2
+    100242: instance_3
+    100244: instance_4
+    100246: instance_5
+    100248: instance_6
+    100250: instance_7
+    100252: instance_8
+    100254: instance_9
+    100256: //RootNode
+    100258: skp_camera_Last_Saved_SketchUp_View
+    100260: Tile
+    100262: Tile 1
+    100264: Tile 10
+    100266: Tile 11
+    100268: Tile 12
+    100270: Tile 13
+    100272: Tile 14
+    100274: Tile 15
+    100276: Tile 16
+    100278: Tile 17
+    100280: Tile 18
+    100282: Tile 19
+    100284: Tile 2
+    100286: Tile 20
+    100288: Tile 21
+    100290: Tile 22
+    100292: Tile 23
+    100294: Tile 24
+    100296: Tile 25
+    100298: Tile 26
+    100300: Tile 27
+    100302: Tile 28
+    100304: Tile 29
+    100306: Tile 3
+    100308: Tile 30
+    100310: Tile 31
+    100312: Tile 32
+    100314: Tile 33
+    100316: Tile 34
+    100318: Tile 35
+    100320: Tile 36
+    100322: Tile 37
+    100324: Tile 38
+    100326: Tile 39
+    100328: Tile 4
+    100330: Tile 40
+    100332: Tile 41
+    100334: Tile 42
+    100336: Tile 43
+    100338: Tile 44
+    100340: Tile 45
+    100342: Tile 46
+    100344: Tile 47
+    100346: Tile 48
+    100348: Tile 49
+    100350: Tile 5
+    100352: Tile 50
+    100354: Tile 51
+    100356: Tile 52
+    100358: Tile 53
+    100360: Tile 54
+    100362: Tile 55
+    100364: Tile 56
+    100366: Tile 57
+    100368: Tile 58
+    100370: Tile 59
+    100372: Tile 6
+    100374: Tile 60
+    100376: Tile 61
+    100378: Tile 62
+    100380: Tile 63
+    100382: Tile 64
+    100384: Tile 65
+    100386: Tile 66
+    100388: Tile 67
+    100390: Tile 68
+    100392: Tile 69
+    100394: Tile 7
+    100396: Tile 70
+    100398: Tile 71
+    100400: Tile 72
+    100402: Tile 73
+    100404: Tile 74
+    100406: Tile 75
+    100408: Tile 76
+    100410: Tile 77
+    100412: Tile 78
+    100414: Tile 79
+    100416: Tile 8
+    100418: Tile 80
+    100420: Tile 81
+    100422: Tile 82
+    100424: Tile 83
+    100426: Tile 84
+    100428: Tile 85
+    100430: Tile 86
+    100432: Tile 87
+    100434: Tile 88
+    100436: Tile 89
+    100438: Tile 9
+    100440: Tile 90
+    100442: Tile 91
+    100444: Tile 92
+    100446: Tile 93
+    100448: Tile 94
+    100450: Tile 95
+    100452: Tile 96
+    100454: Tile 97
+    100456: Tile 98
+    100458: Tile 99
+    100460: Tile_Array_Set1
+    100462: Tile_Array_Set1_1
+    100464: Tile_Array_Set1_2
+    100466: Tile_Array_Set1_3
+    100468: Tile_Array_Set1_4
+    100470: Tile_Array_Set1_5
+    100472: Tile_Array_Set1_6
+    100474: Tile_Array_Set1_7
+    100476: Tile_Array_Set1_8
+    100478: Tile_Array_Set1_9
+    100480: Tile_Array_Set1_copy_001
+    100482: Tile_Array_Set1_copy_002
+    100484: Tile_Array_Set1_copy_003
+    100486: Tile_Array_Set1_copy_004
+    100488: Tile_Array_Set1_copy_005
+    100490: Tile_Array_Set1_copy_006
+    100492: Tile_Array_Set1_copy_007
+    100494: Tile_Array_Set1_copy_008
+    100496: Tile_Array_Set1_copy_009
+    100498: Tile_Array_Set2
+    100500: Tile_copy_001
+    100502: Tile_copy_001 1
+    100504: Tile_copy_001 2
+    100506: Tile_copy_001 3
+    100508: Tile_copy_001 4
+    100510: Tile_copy_001 5
+    100512: Tile_copy_001 6
+    100514: Tile_copy_001 7
+    100516: Tile_copy_001 8
+    100518: Tile_copy_001 9
+    100520: Tile_copy_002
+    100522: Tile_copy_002 1
+    100524: Tile_copy_002 2
+    100526: Tile_copy_002 3
+    100528: Tile_copy_002 4
+    100530: Tile_copy_002 5
+    100532: Tile_copy_002 6
+    100534: Tile_copy_002 7
+    100536: Tile_copy_002 8
+    100538: Tile_copy_002 9
+    100540: Tile_copy_003
+    100542: Tile_copy_003 1
+    100544: Tile_copy_003 2
+    100546: Tile_copy_003 3
+    100548: Tile_copy_003 4
+    100550: Tile_copy_003 5
+    100552: Tile_copy_003 6
+    100554: Tile_copy_003 7
+    100556: Tile_copy_003 8
+    100558: Tile_copy_003 9
+    100560: Tile_copy_004
+    100562: Tile_copy_004 1
+    100564: Tile_copy_004 2
+    100566: Tile_copy_004 3
+    100568: Tile_copy_004 4
+    100570: Tile_copy_004 5
+    100572: Tile_copy_004 6
+    100574: Tile_copy_004 7
+    100576: Tile_copy_004 8
+    100578: Tile_copy_004 9
+    100580: Tile_copy_005
+    100582: Tile_copy_005 1
+    100584: Tile_copy_005 2
+    100586: Tile_copy_005 3
+    100588: Tile_copy_005 4
+    100590: Tile_copy_005 5
+    100592: Tile_copy_005 6
+    100594: Tile_copy_005 7
+    100596: Tile_copy_005 8
+    100598: Tile_copy_005 9
+    100600: Tile_copy_006
+    100602: Tile_copy_006 1
+    100604: Tile_copy_006 2
+    100606: Tile_copy_006 3
+    100608: Tile_copy_006 4
+    100610: Tile_copy_006 5
+    100612: Tile_copy_006 6
+    100614: Tile_copy_006 7
+    100616: Tile_copy_006 8
+    100618: Tile_copy_006 9
+    100620: Tile_copy_007
+    100622: Tile_copy_007 1
+    100624: Tile_copy_007 2
+    100626: Tile_copy_007 3
+    100628: Tile_copy_007 4
+    100630: Tile_copy_007 5
+    100632: Tile_copy_007 6
+    100634: Tile_copy_007 7
+    100636: Tile_copy_007 8
+    100638: Tile_copy_007 9
+    100640: Tile_copy_008
+    100642: Tile_copy_008 1
+    100644: Tile_copy_008 2
+    100646: Tile_copy_008 3
+    100648: Tile_copy_008 4
+    100650: Tile_copy_008 5
+    100652: Tile_copy_008 6
+    100654: Tile_copy_008 7
+    100656: Tile_copy_008 8
+    100658: Tile_copy_008 9
+    100660: Tile_copy_009
+    100662: Tile_copy_009 1
+    100664: Tile_copy_009 2
+    100666: Tile_copy_009 3
+    100668: Tile_copy_009 4
+    100670: Tile_copy_009 5
+    100672: Tile_copy_009 6
+    100674: Tile_copy_009 7
+    100676: Tile_copy_009 8
+    100678: Tile_copy_009 9
+    400000: Chris
+    400002: ID101
+    400004: ID126
+    400006: ID126 1
+    400008: ID126 10
+    400010: ID126 11
+    400012: ID126 12
+    400014: ID126 13
+    400016: ID126 14
+    400018: ID126 15
+    400020: ID126 16
+    400022: ID126 17
+    400024: ID126 18
+    400026: ID126 19
+    400028: ID126 2
+    400030: ID126 20
+    400032: ID126 21
+    400034: ID126 22
+    400036: ID126 23
+    400038: ID126 24
+    400040: ID126 25
+    400042: ID126 26
+    400044: ID126 27
+    400046: ID126 28
+    400048: ID126 29
+    400050: ID126 3
+    400052: ID126 30
+    400054: ID126 31
+    400056: ID126 32
+    400058: ID126 33
+    400060: ID126 34
+    400062: ID126 35
+    400064: ID126 36
+    400066: ID126 37
+    400068: ID126 38
+    400070: ID126 39
+    400072: ID126 4
+    400074: ID126 40
+    400076: ID126 41
+    400078: ID126 42
+    400080: ID126 43
+    400082: ID126 44
+    400084: ID126 45
+    400086: ID126 46
+    400088: ID126 47
+    400090: ID126 48
+    400092: ID126 49
+    400094: ID126 5
+    400096: ID126 50
+    400098: ID126 51
+    400100: ID126 52
+    400102: ID126 53
+    400104: ID126 54
+    400106: ID126 55
+    400108: ID126 56
+    400110: ID126 57
+    400112: ID126 58
+    400114: ID126 59
+    400116: ID126 6
+    400118: ID126 60
+    400120: ID126 61
+    400122: ID126 62
+    400124: ID126 63
+    400126: ID126 64
+    400128: ID126 65
+    400130: ID126 66
+    400132: ID126 67
+    400134: ID126 68
+    400136: ID126 69
+    400138: ID126 7
+    400140: ID126 70
+    400142: ID126 71
+    400144: ID126 72
+    400146: ID126 73
+    400148: ID126 74
+    400150: ID126 75
+    400152: ID126 76
+    400154: ID126 77
+    400156: ID126 78
+    400158: ID126 79
+    400160: ID126 8
+    400162: ID126 80
+    400164: ID126 81
+    400166: ID126 82
+    400168: ID126 83
+    400170: ID126 84
+    400172: ID126 85
+    400174: ID126 86
+    400176: ID126 87
+    400178: ID126 88
+    400180: ID126 89
+    400182: ID126 9
+    400184: ID126 90
+    400186: ID126 91
+    400188: ID126 92
+    400190: ID126 93
+    400192: ID126 94
+    400194: ID126 95
+    400196: ID126 96
+    400198: ID126 97
+    400200: ID126 98
+    400202: ID126 99
+    400204: ID13
+    400206: ID19
+    400208: ID27
+    400210: ID33
+    400212: ID41
+    400214: ID49
+    400216: ID55
+    400218: ID61
+    400220: ID69
+    400222: ID75
+    400224: ID81
+    400226: ID87
+    400228: ID93
+    400230: instance_0
+    400232: instance_1
+    400234: instance_10
+    400236: instance_11
+    400238: instance_12
+    400240: instance_2
+    400242: instance_3
+    400244: instance_4
+    400246: instance_5
+    400248: instance_6
+    400250: instance_7
+    400252: instance_8
+    400254: instance_9
+    400256: //RootNode
+    400258: skp_camera_Last_Saved_SketchUp_View
+    400260: Tile
+    400262: Tile 1
+    400264: Tile 10
+    400266: Tile 11
+    400268: Tile 12
+    400270: Tile 13
+    400272: Tile 14
+    400274: Tile 15
+    400276: Tile 16
+    400278: Tile 17
+    400280: Tile 18
+    400282: Tile 19
+    400284: Tile 2
+    400286: Tile 20
+    400288: Tile 21
+    400290: Tile 22
+    400292: Tile 23
+    400294: Tile 24
+    400296: Tile 25
+    400298: Tile 26
+    400300: Tile 27
+    400302: Tile 28
+    400304: Tile 29
+    400306: Tile 3
+    400308: Tile 30
+    400310: Tile 31
+    400312: Tile 32
+    400314: Tile 33
+    400316: Tile 34
+    400318: Tile 35
+    400320: Tile 36
+    400322: Tile 37
+    400324: Tile 38
+    400326: Tile 39
+    400328: Tile 4
+    400330: Tile 40
+    400332: Tile 41
+    400334: Tile 42
+    400336: Tile 43
+    400338: Tile 44
+    400340: Tile 45
+    400342: Tile 46
+    400344: Tile 47
+    400346: Tile 48
+    400348: Tile 49
+    400350: Tile 5
+    400352: Tile 50
+    400354: Tile 51
+    400356: Tile 52
+    400358: Tile 53
+    400360: Tile 54
+    400362: Tile 55
+    400364: Tile 56
+    400366: Tile 57
+    400368: Tile 58
+    400370: Tile 59
+    400372: Tile 6
+    400374: Tile 60
+    400376: Tile 61
+    400378: Tile 62
+    400380: Tile 63
+    400382: Tile 64
+    400384: Tile 65
+    400386: Tile 66
+    400388: Tile 67
+    400390: Tile 68
+    400392: Tile 69
+    400394: Tile 7
+    400396: Tile 70
+    400398: Tile 71
+    400400: Tile 72
+    400402: Tile 73
+    400404: Tile 74
+    400406: Tile 75
+    400408: Tile 76
+    400410: Tile 77
+    400412: Tile 78
+    400414: Tile 79
+    400416: Tile 8
+    400418: Tile 80
+    400420: Tile 81
+    400422: Tile 82
+    400424: Tile 83
+    400426: Tile 84
+    400428: Tile 85
+    400430: Tile 86
+    400432: Tile 87
+    400434: Tile 88
+    400436: Tile 89
+    400438: Tile 9
+    400440: Tile 90
+    400442: Tile 91
+    400444: Tile 92
+    400446: Tile 93
+    400448: Tile 94
+    400450: Tile 95
+    400452: Tile 96
+    400454: Tile 97
+    400456: Tile 98
+    400458: Tile 99
+    400460: Tile_Array_Set1
+    400462: Tile_Array_Set1_1
+    400464: Tile_Array_Set1_2
+    400466: Tile_Array_Set1_3
+    400468: Tile_Array_Set1_4
+    400470: Tile_Array_Set1_5
+    400472: Tile_Array_Set1_6
+    400474: Tile_Array_Set1_7
+    400476: Tile_Array_Set1_8
+    400478: Tile_Array_Set1_9
+    400480: Tile_Array_Set1_copy_001
+    400482: Tile_Array_Set1_copy_002
+    400484: Tile_Array_Set1_copy_003
+    400486: Tile_Array_Set1_copy_004
+    400488: Tile_Array_Set1_copy_005
+    400490: Tile_Array_Set1_copy_006
+    400492: Tile_Array_Set1_copy_007
+    400494: Tile_Array_Set1_copy_008
+    400496: Tile_Array_Set1_copy_009
+    400498: Tile_Array_Set2
+    400500: Tile_copy_001
+    400502: Tile_copy_001 1
+    400504: Tile_copy_001 2
+    400506: Tile_copy_001 3
+    400508: Tile_copy_001 4
+    400510: Tile_copy_001 5
+    400512: Tile_copy_001 6
+    400514: Tile_copy_001 7
+    400516: Tile_copy_001 8
+    400518: Tile_copy_001 9
+    400520: Tile_copy_002
+    400522: Tile_copy_002 1
+    400524: Tile_copy_002 2
+    400526: Tile_copy_002 3
+    400528: Tile_copy_002 4
+    400530: Tile_copy_002 5
+    400532: Tile_copy_002 6
+    400534: Tile_copy_002 7
+    400536: Tile_copy_002 8
+    400538: Tile_copy_002 9
+    400540: Tile_copy_003
+    400542: Tile_copy_003 1
+    400544: Tile_copy_003 2
+    400546: Tile_copy_003 3
+    400548: Tile_copy_003 4
+    400550: Tile_copy_003 5
+    400552: Tile_copy_003 6
+    400554: Tile_copy_003 7
+    400556: Tile_copy_003 8
+    400558: Tile_copy_003 9
+    400560: Tile_copy_004
+    400562: Tile_copy_004 1
+    400564: Tile_copy_004 2
+    400566: Tile_copy_004 3
+    400568: Tile_copy_004 4
+    400570: Tile_copy_004 5
+    400572: Tile_copy_004 6
+    400574: Tile_copy_004 7
+    400576: Tile_copy_004 8
+    400578: Tile_copy_004 9
+    400580: Tile_copy_005
+    400582: Tile_copy_005 1
+    400584: Tile_copy_005 2
+    400586: Tile_copy_005 3
+    400588: Tile_copy_005 4
+    400590: Tile_copy_005 5
+    400592: Tile_copy_005 6
+    400594: Tile_copy_005 7
+    400596: Tile_copy_005 8
+    400598: Tile_copy_005 9
+    400600: Tile_copy_006
+    400602: Tile_copy_006 1
+    400604: Tile_copy_006 2
+    400606: Tile_copy_006 3
+    400608: Tile_copy_006 4
+    400610: Tile_copy_006 5
+    400612: Tile_copy_006 6
+    400614: Tile_copy_006 7
+    400616: Tile_copy_006 8
+    400618: Tile_copy_006 9
+    400620: Tile_copy_007
+    400622: Tile_copy_007 1
+    400624: Tile_copy_007 2
+    400626: Tile_copy_007 3
+    400628: Tile_copy_007 4
+    400630: Tile_copy_007 5
+    400632: Tile_copy_007 6
+    400634: Tile_copy_007 7
+    400636: Tile_copy_007 8
+    400638: Tile_copy_007 9
+    400640: Tile_copy_008
+    400642: Tile_copy_008 1
+    400644: Tile_copy_008 2
+    400646: Tile_copy_008 3
+    400648: Tile_copy_008 4
+    400650: Tile_copy_008 5
+    400652: Tile_copy_008 6
+    400654: Tile_copy_008 7
+    400656: Tile_copy_008 8
+    400658: Tile_copy_008 9
+    400660: Tile_copy_009
+    400662: Tile_copy_009 1
+    400664: Tile_copy_009 2
+    400666: Tile_copy_009 3
+    400668: Tile_copy_009 4
+    400670: Tile_copy_009 5
+    400672: Tile_copy_009 6
+    400674: Tile_copy_009 7
+    400676: Tile_copy_009 8
+    400678: Tile_copy_009 9
+    2000000: skp_camera_Last_Saved_SketchUp_View
+    2100000: Chris_Shirt
+    2100002: Chris_Shoe
+    2100004: Chris_Skin
+    2100006: Chris_Shoe_Sole
+    2100008: Chris_Hair
+    2100010: Chris_Pants
+    2100012: Paving_1
+    2300000: Chris
+    2300002: ID101
+    2300004: ID13
+    2300006: ID19
+    2300008: ID27
+    2300010: ID33
+    2300012: ID41
+    2300014: ID49
+    2300016: ID55
+    2300018: ID61
+    2300020: ID69
+    2300022: ID75
+    2300024: ID81
+    2300026: ID87
+    2300028: ID93
+    2300030: Tile
+    2300032: Tile 1
+    2300034: Tile 10
+    2300036: Tile 11
+    2300038: Tile 12
+    2300040: Tile 13
+    2300042: Tile 14
+    2300044: Tile 15
+    2300046: Tile 16
+    2300048: Tile 17
+    2300050: Tile 18
+    2300052: Tile 19
+    2300054: Tile 2
+    2300056: Tile 20
+    2300058: Tile 21
+    2300060: Tile 22
+    2300062: Tile 23
+    2300064: Tile 24
+    2300066: Tile 25
+    2300068: Tile 26
+    2300070: Tile 27
+    2300072: Tile 28
+    2300074: Tile 29
+    2300076: Tile 3
+    2300078: Tile 30
+    2300080: Tile 31
+    2300082: Tile 32
+    2300084: Tile 33
+    2300086: Tile 34
+    2300088: Tile 35
+    2300090: Tile 36
+    2300092: Tile 37
+    2300094: Tile 38
+    2300096: Tile 39
+    2300098: Tile 4
+    2300100: Tile 40
+    2300102: Tile 41
+    2300104: Tile 42
+    2300106: Tile 43
+    2300108: Tile 44
+    2300110: Tile 45
+    2300112: Tile 46
+    2300114: Tile 47
+    2300116: Tile 48
+    2300118: Tile 49
+    2300120: Tile 5
+    2300122: Tile 50
+    2300124: Tile 51
+    2300126: Tile 52
+    2300128: Tile 53
+    2300130: Tile 54
+    2300132: Tile 55
+    2300134: Tile 56
+    2300136: Tile 57
+    2300138: Tile 58
+    2300140: Tile 59
+    2300142: Tile 6
+    2300144: Tile 60
+    2300146: Tile 61
+    2300148: Tile 62
+    2300150: Tile 63
+    2300152: Tile 64
+    2300154: Tile 65
+    2300156: Tile 66
+    2300158: Tile 67
+    2300160: Tile 68
+    2300162: Tile 69
+    2300164: Tile 7
+    2300166: Tile 70
+    2300168: Tile 71
+    2300170: Tile 72
+    2300172: Tile 73
+    2300174: Tile 74
+    2300176: Tile 75
+    2300178: Tile 76
+    2300180: Tile 77
+    2300182: Tile 78
+    2300184: Tile 79
+    2300186: Tile 8
+    2300188: Tile 80
+    2300190: Tile 81
+    2300192: Tile 82
+    2300194: Tile 83
+    2300196: Tile 84
+    2300198: Tile 85
+    2300200: Tile 86
+    2300202: Tile 87
+    2300204: Tile 88
+    2300206: Tile 89
+    2300208: Tile 9
+    2300210: Tile 90
+    2300212: Tile 91
+    2300214: Tile 92
+    2300216: Tile 93
+    2300218: Tile 94
+    2300220: Tile 95
+    2300222: Tile 96
+    2300224: Tile 97
+    2300226: Tile 98
+    2300228: Tile 99
+    3300000: Chris
+    3300002: ID101
+    3300004: ID13
+    3300006: ID19
+    3300008: ID27
+    3300010: ID33
+    3300012: ID41
+    3300014: ID49
+    3300016: ID55
+    3300018: ID61
+    3300020: ID69
+    3300022: ID75
+    3300024: ID81
+    3300026: ID87
+    3300028: ID93
+    3300030: Tile
+    3300032: Tile 1
+    3300034: Tile 10
+    3300036: Tile 11
+    3300038: Tile 12
+    3300040: Tile 13
+    3300042: Tile 14
+    3300044: Tile 15
+    3300046: Tile 16
+    3300048: Tile 17
+    3300050: Tile 18
+    3300052: Tile 19
+    3300054: Tile 2
+    3300056: Tile 20
+    3300058: Tile 21
+    3300060: Tile 22
+    3300062: Tile 23
+    3300064: Tile 24
+    3300066: Tile 25
+    3300068: Tile 26
+    3300070: Tile 27
+    3300072: Tile 28
+    3300074: Tile 29
+    3300076: Tile 3
+    3300078: Tile 30
+    3300080: Tile 31
+    3300082: Tile 32
+    3300084: Tile 33
+    3300086: Tile 34
+    3300088: Tile 35
+    3300090: Tile 36
+    3300092: Tile 37
+    3300094: Tile 38
+    3300096: Tile 39
+    3300098: Tile 4
+    3300100: Tile 40
+    3300102: Tile 41
+    3300104: Tile 42
+    3300106: Tile 43
+    3300108: Tile 44
+    3300110: Tile 45
+    3300112: Tile 46
+    3300114: Tile 47
+    3300116: Tile 48
+    3300118: Tile 49
+    3300120: Tile 5
+    3300122: Tile 50
+    3300124: Tile 51
+    3300126: Tile 52
+    3300128: Tile 53
+    3300130: Tile 54
+    3300132: Tile 55
+    3300134: Tile 56
+    3300136: Tile 57
+    3300138: Tile 58
+    3300140: Tile 59
+    3300142: Tile 6
+    3300144: Tile 60
+    3300146: Tile 61
+    3300148: Tile 62
+    3300150: Tile 63
+    3300152: Tile 64
+    3300154: Tile 65
+    3300156: Tile 66
+    3300158: Tile 67
+    3300160: Tile 68
+    3300162: Tile 69
+    3300164: Tile 7
+    3300166: Tile 70
+    3300168: Tile 71
+    3300170: Tile 72
+    3300172: Tile 73
+    3300174: Tile 74
+    3300176: Tile 75
+    3300178: Tile 76
+    3300180: Tile 77
+    3300182: Tile 78
+    3300184: Tile 79
+    3300186: Tile 8
+    3300188: Tile 80
+    3300190: Tile 81
+    3300192: Tile 82
+    3300194: Tile 83
+    3300196: Tile 84
+    3300198: Tile 85
+    3300200: Tile 86
+    3300202: Tile 87
+    3300204: Tile 88
+    3300206: Tile 89
+    3300208: Tile 9
+    3300210: Tile 90
+    3300212: Tile 91
+    3300214: Tile 92
+    3300216: Tile 93
+    3300218: Tile 94
+    3300220: Tile 95
+    3300222: Tile 96
+    3300224: Tile 97
+    3300226: Tile 98
+    3300228: Tile 99
+    4300000: Chris
+    4300002: ID13
+    4300004: ID19
+    4300006: ID27
+    4300008: ID33
+    4300010: ID41
+    4300012: ID49
+    4300014: ID55
+    4300016: ID61
+    4300018: ID69
+    4300020: ID75
+    4300022: ID81
+    4300024: ID87
+    4300026: ID93
+    4300028: ID101
+    4300030: Tile
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

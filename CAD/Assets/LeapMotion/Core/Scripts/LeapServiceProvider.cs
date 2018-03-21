@@ -50,7 +50,7 @@ namespace Leap.Unity {
     protected FrameOptimizationMode _frameOptimization = FrameOptimizationMode.None;
 
     [Tooltip("The mode to use when extrapolating physics.\n" +
-             " None - No extrapolation is used at all.\n" +
+             " CollectionSelection - No extrapolation is used at all.\n" +
              " Auto - Extrapolation is chosen based on the fixed timestep.\n" +
              " Manual - Extrapolation time is chosen manually by the user.")]
     [SerializeField]

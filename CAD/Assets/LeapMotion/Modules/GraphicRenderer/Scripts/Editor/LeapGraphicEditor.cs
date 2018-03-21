@@ -79,7 +79,7 @@ public abstract class LeapGraphicEditorBase<T> : CustomEditorBase<T> where T : L
         if (!targets.Query().All(g => g.attachedGroup == mainGroup)) {
           buttonText = "-";
         } else if (mainGroup == null) {
-          buttonText = "None";
+          buttonText = "CollectionSelection";
           GUI.color = Color.yellow;
         } else {
           buttonText = mainGroup.name;
@@ -91,7 +91,7 @@ public abstract class LeapGraphicEditorBase<T> : CustomEditorBase<T> where T : L
 
         if (GUILayout.Button(buttonText, EditorStyles.miniButton, GUILayout.Width(60))) {
           GenericMenu groupMenu = new GenericMenu();
-          groupMenu.AddItem(new GUIContent("None"), false, () => {
+          groupMenu.AddItem(new GUIContent("CollectionSelection"), false, () => {
             foreach (var graphic in targets) {
               serializedObject.ApplyModifiedProperties();
               graphic.TryDetach();

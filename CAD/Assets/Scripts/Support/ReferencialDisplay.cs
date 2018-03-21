@@ -11,12 +11,12 @@ namespace Assets.Scripts.Support {
     public enum Phase
     {
 
-        None,
+        CollectionSelection,
         AssemblySelection,
         AssemblyComparision,
         AssemblyExplosion,
         AssemblyDecomposition,
-        Done
+        AssemblyColorMatching
     }
     public class ReferencialDisplay : MonoBehaviour {
 
@@ -24,7 +24,9 @@ namespace Assets.Scripts.Support {
 
         public static Phase phase;
 
-        public static List<Phase> phaseHistory;
+        public static Phase whereAssemblyComparisonComeFrom;
+
+        //public static List<Phase> phaseHistory;
 
         GameObject sphere;
 
@@ -55,11 +57,7 @@ namespace Assets.Scripts.Support {
         // Use this for initialization
         void Start() {
 
-            phase = Phase.None;
-
-            phaseHistory = new List<Phase>();
-
-            phaseHistory.Add(phase);
+            phase = Phase.CollectionSelection;
 
             sphere = Resources.Load<GameObject>("Prefabs/Sphere");
 
