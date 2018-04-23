@@ -13,7 +13,7 @@ namespace Assets.Scripts.Actions {
         /// <summary>
         /// HitInfo property gives access to information at the object being gazed at, if any.
         /// </summary>
-        public RaycastHit currentHit { get; private set; }
+        public static RaycastHit currentHit { get; private set; }
 
         /// <summary>
         /// Hit from previous frame
@@ -97,17 +97,17 @@ namespace Assets.Scripts.Actions {
 
             if (currentHit.collider == oldHit.collider && hittingObject)
             {
-
+                Debug.Log("Sphere collision: " + currentHit.transform.position);
                 // Disable the Assembly and the Spheres
                 ToggleAssemblies(false);
                 ToggleSpheres(false);
 
                 // Call the DispayAssembly Script
                 var assembliesToDispay = currentHit.collider.GetComponent<DisplayAssembly>();
-
                 // If only one assembly was hit, we are ready to compare the two [returned and query]
                 if (assembliesToDispay == null)
                 {
+                    Debug.Log("Posizione colpita: " + currentHit.collider.transform.position);
                     ReferencialDisplay.phase = Phase.AssemblyComparision;
                     AssemblyCollision();
                 }
@@ -127,9 +127,9 @@ namespace Assets.Scripts.Actions {
             if(currentHit.collider == oldHit.collider && hittingObject) {
 
                 ToggleAssemblies(false);
-
                 // Re-enable the assemblie we want
                 currentHit.collider.gameObject.SetActive(true);
+                Debug.Log("Sfera colpita " + currentHit.transform.position);
                 queryAssembly.SetActive(true);
 
                 // TODO, change the query object, because when we want to compare the 15 to the 15, only 1 object will be shown
@@ -142,7 +142,6 @@ namespace Assets.Scripts.Actions {
 
             // Display the query assembly next to the one we want. With an offset in X for now
             queryAssembly.transform.position = currentHit.collider.transform.position + new Vector3(-0.5f, 0.0f, 0.0f);
-
             if (currentHit.collider.name == queryAssembly.name)
             {
                 queryClone =
@@ -153,7 +152,6 @@ namespace Assets.Scripts.Actions {
 
             CompareAssemblies.instance.ParseLabels(currentHit.collider.name);
             // Parse the labels and color the objects and COLOR the Assemblies [not the best method]
-
             ReferencialDisplay.phase = Phase.AssemblyColorMatching;
         }
 
@@ -191,11 +189,10 @@ namespace Assets.Scripts.Actions {
         public void ToggleAssemblies(bool value) {
 
             Transform assemblies = FindObjectOfType<CompareAssemblies>().transform;
-
+            Debug.Log("Mostro assemblati " + value.ToString());
             foreach(Transform child in assemblies) {
 
                 if(child.GetComponent<HierarchyCreator>() != null) {
-
                     // Only Display the comparison object and the query
                     // Can be change to setActive(false) all and setActive(true) those two
                     if(value)

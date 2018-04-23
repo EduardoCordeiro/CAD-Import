@@ -26,8 +26,6 @@ namespace CAD.Support {
         private void CalculateBoudingBox() {
             
             BoxCollider boxCollider = this.gameObject.AddComponent<BoxCollider>();
-            Debug.Log("Calcolo bbox di " + gameObject.name);
-
             Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
             bounds.center = Vector3.zero;
             
@@ -40,7 +38,6 @@ namespace CAD.Support {
             foreach (Transform firstLevel in this.transform)
             {
                 childList.Add(firstLevel);
-                Debug.Log(firstLevel.name);
             }
             while (childList.Any())
             {

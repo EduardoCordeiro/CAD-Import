@@ -47,7 +47,7 @@ namespace Assets.Scripts.Support {
         public bool DisplayReferencial;
 
         // Using an offset in Y to account for the height of the user
-        private float heightOffset = 0.5f;
+        public static float heightOffset = 1.5f;
 
         private void Awake() {
 
@@ -157,7 +157,6 @@ namespace Assets.Scripts.Support {
                 List<Caracteristic> v = caracteristicsList[this.transform.GetChild(i).gameObject];
 
                 // Instanciate the sphere
-
               CreateGameObject(sphere,
                         new Vector3(highestLocalMeasure.mushape,
                             highestLocalMeasure.muPos + heightOffset,
@@ -282,12 +281,11 @@ namespace Assets.Scripts.Support {
                     // Get the Actual assembly, and not the sphere, for the object we are comparing to
                     assembliesList.Add(assembliesTranform.Find(issues.Key.name).gameObject);
 
-                    // using centroid as the new position
+                    // Using centroid as the new position
                     var newSpere = CreateGameObject(sphere, centroid, assembliesList);
                     visibleSphereList.Add(newSpere);
                     newSpere.SetActive(true);
                 }
-
             }
         }
 

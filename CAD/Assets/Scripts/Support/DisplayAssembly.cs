@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Actions;
 using UnityEngine;
 
 namespace CAD.Support {
@@ -51,10 +52,10 @@ namespace CAD.Support {
         {
 
             // Player
-            Vector3 playerPosition = new Vector3(0.0f, 1.0f, 0.0f);
-
+            //Vector3 playerPosition = new Vector3(0.0f, 1.5f, 0.0f);
+            Vector3 playerPosition = GazeSelection.currentHit.transform.position;
             // This assembly
-            Vector3 newPosition = playerPosition + transform.TransformDirection(Vector3.forward) * 0.7f;
+            Vector3 newPosition = playerPosition - new Vector3(1.0f, 0.0f, 0.0f); //+ transform.TransformDirection(Vector3.forward) * 0.7f;
 
             this.transform.position = newPosition;
 

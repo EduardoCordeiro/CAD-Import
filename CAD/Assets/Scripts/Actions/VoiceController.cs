@@ -149,9 +149,10 @@ namespace Assets.Scripts.Actions
                             }
                             //child.gameObject.SetActive(false);
                         }
+                        countAssembly = 0;
+                        ReferencialDisplay.phase = Phase.AssemblyColorMatching;
                     }
 
-                    ReferencialDisplay.phase = Phase.AssemblyColorMatching;
                     break;
                 //case "Seleziona":
                 //    if (ReferencialDisplay.phase == Phase.AssemblyDecomposition)
@@ -195,10 +196,7 @@ namespace Assets.Scripts.Actions
                                 var numberOfObjects = lastSphere.GetComponent<DisplayAssembly>().DisplayAssemblies();
                                 Debug.Log("Vengo dalla sfera: " + lastSphere.gameObject.name);
                                 ReferencialDisplay.phase = Phase.AssemblySelection;
-
-                                //.DisplayAssemblies();
-
-                                ReferencialDisplay.phase = Phase.AssemblySelection;
+                                
                             }
                             else if (ReferencialDisplay.whereAssemblyComparisonComeFrom == Phase.CollectionSelection)
                             {
@@ -218,9 +216,9 @@ namespace Assets.Scripts.Actions
                                 var interactionBehaviour = oldVisibleSubAss.GetComponent<InteractionBehaviour>();
                                 interactionBehaviour.enabled = false;
 
-                                if (countAssembly == maximumAssemblyNumber - 1)
+                                if (countAssembly == 0)
                                 {
-                                    countAssembly = 0;
+                                    countAssembly = maximumAssemblyNumber;
                                 }
                                 else
                                 {
@@ -254,7 +252,7 @@ namespace Assets.Scripts.Actions
 
 
             var childList = new List<Transform>();
-            //childList.Add(targetObject.transform);
+            childList.Add(targetObject.transform);
             foreach (Transform firstLevel in targetObject.transform)
             {
                 childList.Add(firstLevel);
