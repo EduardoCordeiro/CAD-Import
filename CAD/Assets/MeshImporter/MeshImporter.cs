@@ -7,6 +7,7 @@ using System.Linq;
 using CAD.Support;
 using MonoRAILProxy;
 using UnityEditor;
+using Collider = Assets.Scripts.Support.Collider;
 
 namespace Assets
 {
@@ -75,6 +76,18 @@ namespace Assets
                 }
                 HierarchyCreator newAssemblyHierarchy = newAssembly.AddComponent<HierarchyCreator>();
                 newAssemblyHierarchy.CreateHierarchy();
+
+                Vector3 maxPoint;
+                Vector3 minPoint;
+                Vector3 centerAveragePoint;
+                Collider.ComputeBoundingBox(newAssembly, out maxPoint, out minPoint, out centerAveragePoint);
+                Debug.Log("Centro " + centerAveragePoint.x + " " + -centerAveragePoint.y + " " + -centerAveragePoint.z);
+                Vector3 m2mm = new Vector3((float)0.001, (float)0.001, (float)0.001);
+                //newAssembly.transform.position.Scale(m2mm);
+                newAssembly.transform.localScale = m2mm;
+                newAssembly.transform.position = new Vector3(-centerAveragePoint.x * m2mm.x, -centerAveragePoint.y * m2mm.y, -centerAveragePoint.z * m2mm.z);
+                Debug.Log("Modello aggiornato");
+
             }
         }
 
