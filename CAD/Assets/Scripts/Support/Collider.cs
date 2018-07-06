@@ -16,11 +16,25 @@ namespace Assets.Scripts.Support
             if(boxCollider == null)
                 boxCollider = visibleSubAss.gameObject.AddComponent<BoxCollider>();
 
+            Vector3 maxPoint;
+            Vector3 minPoint;
+            Vector3 centerAveragePoint;
+            ComputeBoundingBox(visibleSubAss, out maxPoint, out minPoint, out centerAveragePoint);
+
+            // Workaround, this is not pretty, but the collider is aligned for almost all objects
+            //boxCollider.center = new Vector3(0.1f, 0.1f, -0.1f);
+            boxCollider.center = centerAveragePoint;
+            boxCollider.size = maxPoint - minPoint;
+        }
+
+        public static void ComputeBoundingBox(GameObject visibleSubAss, out Vector3 maxPoint, out Vector3 minPoint,
+            out Vector3 centerAveragePoint)
+        {
             Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
             bounds.center = Vector3.zero;
 
-            Vector3 maxPoint = Vector3.negativeInfinity;
-            Vector3 minPoint = Vector3.positiveInfinity;
+            maxPoint = Vector3.negativeInfinity;
+            minPoint = Vector3.positiveInfinity;
             List<Vector3> centersList = new List<Vector3>();
 
             var childList = new List<Transform>();
@@ -36,7 +50,8 @@ namespace Assets.Scripts.Support
 
                 if (currentTransform.childCount == 0)
                 {
-                    System.Tuple<Vector3, Vector3, Vector3> boxSize = HierarchyCreator.CreateBoxCollider(currentTransform, bounds);
+                    System.Tuple<Vector3, Vector3, Vector3> boxSize = HierarchyCreator.CreateBoxCollider(currentTransform,
+                        bounds);
 
                     if (boxSize != null)
                     {
@@ -54,12 +69,8 @@ namespace Assets.Scripts.Support
                 }
             }
 
-            var centerAveragePoint = new Vector3(centersList.Average(x => x.x), centersList.Average(x => x.y), centersList.Average(x => x.z));
-
-            // Workaround, this is not pretty, but the collider is aligned for almost all objects
-            //boxCollider.center = new Vector3(0.1f, 0.1f, -0.1f);
-            boxCollider.center = centerAveragePoint;
-            boxCollider.size = maxPoint - minPoint;
+            centerAveragePoint = new Vector3(centersList.Average(x => x.x), centersList.Average(x => x.y),
+                centersList.Average(x => x.z));
         }
 
         public static void SetRigidBobyForGrasping(GameObject visibleSubAss)

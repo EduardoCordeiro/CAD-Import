@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System.IO;
+using System.Linq;
+using CAD.Support;
 using MonoRAILProxy;
 using UnityEditor;
 
@@ -14,7 +17,7 @@ namespace Assets
         static private CADManager cadManager = new CADManager();
 
         private OBJImporter importer;
-        private string[] filePaths;
+        private string[] meshesPath;
         private int selectionGridInteger;
         private MeshFilter meshFilter;
         private GameObject gameObject;
@@ -22,8 +25,6 @@ namespace Assets
         MeshImporter()
         {
         }
-
-
 
         [MenuItem("Assets/Mesh Importer by Katia")]
         static void OpenWizard()
@@ -34,29 +35,47 @@ namespace Assets
 
         void OnWizardOtherButton()
         {
-            importer = new OBJImporter();
-            filePaths = Directory.GetFiles(importAssetPath);
-
-            foreach (var file in filePaths)
+            //importer = new OBJImporter();
+            foreach (var modelDirectory in Directory.GetDirectories(importAssetPath))
             {
-                Debug.Log(file);
+                var assemblyName = modelDirectory.Split('\\').Last();
+                var newAssembly = new GameObject(assemblyName);
+                newAssembly = GameObject.Find(assemblyName);
+                
+                meshesPath = Directory.GetFiles(modelDirectory + "\\STLforX3D");
 
-                var holderMesh = new Mesh();
-                var newMesh = new OBJImporter();
-                holderMesh = newMesh.ImportFile(file);
-                Debug.Log("Mesh importata");
+                foreach (var mesh in meshesPath)
+                {
 
+                    var meshName = Path.GetFileNameWithoutExtension(mesh);
+                    var resourceToLoad = string.Format("AssemblyDataset\\{0}\\{1}", assemblyName, meshName);
 
-                MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
-                MeshFilter filter = gameObject.AddComponent<MeshFilter>();
-               
-                filter.mesh = holderMesh;
+                    //var holderMesh = new Mesh();
+                    //var newMesh = new OBJImporter();
+                    //holderMesh = newMesh.ImportFile(file);
+                    var holderMesh = Resources.Load<Mesh>(resourceToLoad);
 
-                Debug.Log("Mesh creata");
+                    if (holderMesh == null)
+                        Debug.Log("Mesh nulla per " + meshName);
 
+                    var newPart = new GameObject(meshName);
+
+                    GameObject primitive = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                    primitive.active = false;
+                    Material diffuse = primitive.GetComponent<MeshRenderer>().sharedMaterial;
+                    DestroyImmediate(primitive);
+
+                    MeshRenderer renderer = newPart.AddComponent<MeshRenderer>();
+                    renderer.sharedMaterial = diffuse;
+
+                    MeshFilter filter = newPart.AddComponent<MeshFilter>();
+                    filter.mesh = holderMesh;
+                    newPart.transform.parent = newAssembly.transform;
+
+                }
+                HierarchyCreator newAssemblyHierarchy = newAssembly.AddComponent<HierarchyCreator>();
+                newAssemblyHierarchy.CreateHierarchy();
             }
-
-
         }
 
    

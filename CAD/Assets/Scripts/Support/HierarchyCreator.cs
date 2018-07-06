@@ -8,9 +8,18 @@ using System.Runtime.CompilerServices;
 
 namespace CAD.Support {
 
-    public class HierarchyCreator : MonoBehaviour { 
-
+    public class HierarchyCreator : MonoBehaviour
+    {
+        public struct partHierarchy
+        {
+            public List<string> hierarchy;
+            public GameObject part;
+        }
         // Use this for initialization
+        public HierarchyCreator()
+        {
+        }
+
         void Awake() {
 
             CalculateBoudingBox();
@@ -128,6 +137,7 @@ namespace CAD.Support {
                         DestroyImmediate(transform.GetChild(j).gameObject);
         }
 
+
         /// <summary>
         /// Create the object hierarchy
         /// </summary>
@@ -138,33 +148,75 @@ namespace CAD.Support {
             foreach(Transform child in this.transform)
                 children.Add(child);
 
-            foreach(Transform c in children) {
 
-                List<string> name = c.name.Split(' ').ToList();
+            var partsWithHierarchyList = new List<partHierarchy>();
+            foreach (Transform c in children)
+            {
+                List<string> name = c.name.Split('.').ToList();
 
-                GameObject currentObject = c.gameObject;
+                //GameObject currentObject = c.gameObject;
+                Debug.Log("Current GO " + c.name);
 
                 c.name = name.Last();
-
                 name.Remove(name.Last());
+                var partHier = new partHierarchy
+                {
+                    part = c.gameObject,
+                    hierarchy = name
+                };
+                partsWithHierarchyList.Add(partHier);
+            }
 
-                while(name.Count > 0) { 
+            foreach (partHierarchy currentPartHierarchy in partsWithHierarchyList)
+            {
 
-                    GameObject parent = GameObject.Find(name.Last());
-                    
-                    if(parent == null) {
+                var currentChild = currentPartHierarchy.part;
+                var currentParent = this.gameObject;
 
-                        parent = new GameObject(name.Last());
-                        parent.transform.parent = this.transform;
+                var name = currentPartHierarchy.hierarchy;
+
+                var concatName = this.name;
+
+                while (name.Any())
+                {
+                    var currentName = name.First();
+
+                    concatName += "/" + currentName;
+
+                    var parentToSeek = concatName;
+                    GameObject parent = GameObject.Find(parentToSeek);
+                    Debug.Log("Find for " + parentToSeek);
+
+                    if (parent == null)
+                    {
+                        Debug.Log("NON TROVATO e creo " + currentName);
+
+                        parent = new GameObject(currentName);
+                        
+                        parent.transform.parent = currentParent.transform;
+
+                        //parent.transform.parent = currentChild.transform;
+                        //currentObject = parent;
+
                     }
 
-                    currentObject.transform.parent = parent.transform;
+                    //Debug.Log("current object è " + currentObject.transform.name + " ottiene come figlio di " +
+                    //            parent.transform.name);
 
-                    currentObject = parent;
+                    
+                    //currentChild.transform.parent = parent.transform;
 
-                    name.Remove(name.Last());
+
+                    currentParent = parent;
+
+                    Debug.Log("Aggiorno il figlio: " + currentChild.name);
+                    name.Remove(currentName);
                 }
+                currentChild.transform.parent = currentParent.transform;
+
             }
+
+
         }
     }
 }
