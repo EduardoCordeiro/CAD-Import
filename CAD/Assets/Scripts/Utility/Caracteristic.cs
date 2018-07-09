@@ -21,4 +21,31 @@
 
         public float globalMeasure;
     }
+
+    public class ModelsRetrievedData
+    {
+
+        public Clique clique;
+        public Measure measure;
+    }
+
+    public class Clique
+    {
+    }
+
+    public class Measure
+    {
+
+        public float shapeMeasure;
+
+        public float jointMeasure;
+
+        public float positionMeasure;
+
+        public float localMeasure;
+
+        public float partialMeasure;
+
+        public float globalMeasure;
+    }
 }

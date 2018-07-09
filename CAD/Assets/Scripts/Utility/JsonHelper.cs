@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace CAD.Utility {
 
@@ -36,6 +37,14 @@ namespace CAD.Utility {
         public static string FixJson(string json) {
 
             return json = "{\"Items\":" + json + "}";
+        }
+
+
+        public static string FixJsonMeasure(string json)
+        {
+            var Start = json.IndexOf("\"Measure\":");
+            var End = json.Length - 1;
+            return json = "{\"Items\":[" + json.Substring(Start+10, End-Start-10 -2) + "]}";
         }
     }
 }

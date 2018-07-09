@@ -77,21 +77,28 @@ namespace Assets
                 HierarchyCreator newAssemblyHierarchy = newAssembly.AddComponent<HierarchyCreator>();
                 newAssemblyHierarchy.CreateHierarchy();
 
-                Vector3 maxPoint;
-                Vector3 minPoint;
-                Vector3 centerAveragePoint;
-                Collider.ComputeBoundingBox(newAssembly, out maxPoint, out minPoint, out centerAveragePoint);
-                Debug.Log("Centro " + centerAveragePoint.x + " " + -centerAveragePoint.y + " " + -centerAveragePoint.z);
-                Vector3 m2mm = new Vector3((float)0.001, (float)0.001, (float)0.001);
-                //newAssembly.transform.position.Scale(m2mm);
-                newAssembly.transform.localScale = m2mm;
-                newAssembly.transform.position = new Vector3(-centerAveragePoint.x * m2mm.x, -centerAveragePoint.y * m2mm.y, -centerAveragePoint.z * m2mm.z);
-                Debug.Log("Modello aggiornato");
+                CenteringInBoundingBox(newAssembly);
+
 
             }
         }
 
-   
+        private static void CenteringInBoundingBox(GameObject newAssembly)
+        {
+            Vector3 maxPoint;
+            Vector3 minPoint;
+            Vector3 centerAveragePoint;
+            Collider.ComputeBoundingBox(newAssembly, out maxPoint, out minPoint, out centerAveragePoint);
+            Debug.Log("Centro " + -centerAveragePoint.x + " " + -centerAveragePoint.y + " " + -centerAveragePoint.z);
+            Vector3 m2mm = new Vector3((float) 0.001, (float) 0.001, (float) 0.001);
+            //newAssembly.transform.position.Scale(m2mm);
+            newAssembly.transform.localScale = m2mm;
+            newAssembly.transform.position = new Vector3(-centerAveragePoint.x * m2mm.x, -centerAveragePoint.y * m2mm.y,
+                -centerAveragePoint.z * m2mm.z);
+            Debug.Log("Modello aggiornato");
+        }
+
+
         protected override bool DrawWizardGUI()
         {
 

@@ -97,9 +97,9 @@ namespace CAD.Support {
             if (meshFilter != null)
             {
                 if (bounds.extents == Vector3.zero)
-                    bounds = meshFilter.mesh.bounds;
-                bounds.Encapsulate(meshFilter.mesh.bounds);
-                return new System.Tuple<Vector3, Vector3, Vector3>(meshFilter.mesh.bounds.max, meshFilter.mesh.bounds.min, meshFilter.mesh.bounds.center);
+                    bounds = meshFilter.sharedMesh.bounds;
+                bounds.Encapsulate(meshFilter.sharedMesh.bounds);
+                return new System.Tuple<Vector3, Vector3, Vector3>(meshFilter.sharedMesh.bounds.max, meshFilter.sharedMesh.bounds.min, meshFilter.sharedMesh.bounds.center);
             }
             return null;
         }
@@ -155,7 +155,6 @@ namespace CAD.Support {
                 List<string> name = c.name.Split('.').ToList();
 
                 //GameObject currentObject = c.gameObject;
-                Debug.Log("Current GO " + c.name);
 
                 c.name = name.Last();
                 name.Remove(name.Last());
@@ -185,31 +184,15 @@ namespace CAD.Support {
 
                     var parentToSeek = concatName;
                     GameObject parent = GameObject.Find(parentToSeek);
-                    Debug.Log("Find for " + parentToSeek);
 
                     if (parent == null)
                     {
-                        Debug.Log("NON TROVATO e creo " + currentName);
-
                         parent = new GameObject(currentName);
-                        
                         parent.transform.parent = currentParent.transform;
-
-                        //parent.transform.parent = currentChild.transform;
-                        //currentObject = parent;
 
                     }
 
-                    //Debug.Log("current object è " + currentObject.transform.name + " ottiene come figlio di " +
-                    //            parent.transform.name);
-
-                    
-                    //currentChild.transform.parent = parent.transform;
-
-
                     currentParent = parent;
-
-                    Debug.Log("Aggiorno il figlio: " + currentChild.name);
                     name.Remove(currentName);
                 }
                 currentChild.transform.parent = currentParent.transform;

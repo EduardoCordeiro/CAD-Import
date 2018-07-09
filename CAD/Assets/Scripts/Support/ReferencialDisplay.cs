@@ -124,46 +124,66 @@ namespace Assets.Scripts.Support {
                 // JSON parsing
                 StreamReader sr =
                     new StreamReader(Application.dataPath + "/Resources/Caracteristic Files/" + objectName + ".json");
-
+                Debug.Log(Application.dataPath + "/Resources/Caracteristic Files/" + objectName + ".json");
                 string jsonString = sr.ReadToEnd();
-                jsonString = JsonHelper.FixJson(jsonString);
+                Debug.Log(jsonString);
 
+                
+                //Debug.Log(jsonString);
                 // Deserialize Json file
-                Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
-
-                // Order the List
-                List<Caracteristic> sortedCaracteristics = new List<Caracteristic>();
-
-                switch (MeasureInformation.measureType)
+                if (jsonString.Contains("ID"))
                 {
-                    case MeasureInformation.MeasureType.Global:
-                        sortedCaracteristics = caracteristics.OrderByDescending(o => o.globalMeasure).ToList();
-                        break;
-                    case MeasureInformation.MeasureType.Partial:
-                        sortedCaracteristics = caracteristics.OrderByDescending(o => o.partialMeasure).ToList();
-                        break;
-                    case MeasureInformation.MeasureType.Local:
-                        sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
-                        break;
-                }
+                    jsonString = JsonHelper.FixJson(jsonString);
+                    Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
 
-                // add this list to a dictionary of lists to store all the data
-                //caracteristicsList = new KeyValuePair<GameObject, List<Caracteristic>>(this.transform.GetChild(i).gameObject, sortedCaracteristics);
-                caracteristicsList.Add(this.transform.GetChild(i).gameObject, sortedCaracteristics);
+                    // Order the List
+                    List<Caracteristic> sortedCaracteristics = new List<Caracteristic>();
 
-                // Save the highest local measure
-                Caracteristic highestLocalMeasure = sortedCaracteristics[0];
+                    switch (MeasureInformation.measureType)
+                    {
+                        case MeasureInformation.MeasureType.Global:
+                            sortedCaracteristics = caracteristics.OrderByDescending(o => o.globalMeasure).ToList();
+                            break;
+                        case MeasureInformation.MeasureType.Partial:
+                            sortedCaracteristics = caracteristics.OrderByDescending(o => o.partialMeasure).ToList();
+                            break;
+                        case MeasureInformation.MeasureType.Local:
+                            sortedCaracteristics = caracteristics.OrderByDescending(o => o.localMeasure).ToList();
+                            break;
+                    }
 
-                List<Caracteristic> v = caracteristicsList[this.transform.GetChild(i).gameObject];
+                    // add this list to a dictionary of lists to store all the data
+                    //caracteristicsList = new KeyValuePair<GameObject, List<Caracteristic>>(this.transform.GetChild(i).gameObject, sortedCaracteristics);
+                    caracteristicsList.Add(this.transform.GetChild(i).gameObject, sortedCaracteristics);
 
-                // Instanciate the sphere
-              CreateGameObject(sphere,
+                    // Save the highest local measure
+                    Caracteristic highestLocalMeasure = sortedCaracteristics[0];
+
+                    List<Caracteristic> v = caracteristicsList[this.transform.GetChild(i).gameObject];
+
+                    // Instanciate the sphere
+                    CreateGameObject(sphere,
                         new Vector3(highestLocalMeasure.mushape,
                             highestLocalMeasure.muPos + heightOffset,
                             highestLocalMeasure.mujoint),
                         objectName,
-                        new List<GameObject>() { this.transform.GetChild(i).gameObject });
+                        new List<GameObject>() {this.transform.GetChild(i).gameObject});
+                }
+                else
+                {
+                    jsonString = JsonHelper.FixJsonMeasure(jsonString);
+                    Debug.Log(jsonString);
+                    Measure[] modelsRetrievedData = JsonHelper.FromJson<Measure>(jsonString);
+                    if (modelsRetrievedData != null)
+                    {
+                        Debug.Log(modelsRetrievedData);
 
+                    }
+                    else
+                    {
+                        Debug.Log("Vuoto");
+                    }
+                }
             }
         }
 
