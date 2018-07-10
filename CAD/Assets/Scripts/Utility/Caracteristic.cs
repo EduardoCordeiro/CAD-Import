@@ -33,6 +33,7 @@
     {
     }
 
+    [System.Serializable]
     public class Measure
     {
 

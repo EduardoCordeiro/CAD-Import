@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace CAD.Utility {
@@ -10,6 +11,14 @@ namespace CAD.Utility {
             Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
 
             return wrapper.Items;
+        }
+
+        public static T ElementFromJson<T>(string json)
+        {
+
+            Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
+
+            return wrapper.Items.First();
         }
 
         public static string ToJson<T>(T[] array) {
@@ -44,7 +53,8 @@ namespace CAD.Utility {
         {
             var Start = json.IndexOf("\"Measure\":");
             var End = json.Length - 1;
-            return json = "{\"Items\":[" + json.Substring(Start+10, End-Start-10 -2) + "]}";
+
+            return json = "{\"Items\":[" + json.Substring(Start + 10, End - Start - 10 - 2) + "]}";
         }
     }
 }

@@ -114,6 +114,7 @@ namespace Assets.Scripts.Actions {
                 else
                 {
                     int numberOfAssemblies = currentHit.collider.GetComponent<DisplayAssembly>().DisplayAssemblies();
+                    Debug.Log("Numero di assemblati da mostrare " + numberOfAssemblies);
                     ReferencialDisplay.phase = Phase.AssemblySelection;
                 }
             }
@@ -129,7 +130,7 @@ namespace Assets.Scripts.Actions {
                 ToggleAssemblies(false);
                 // Re-enable the assemblie we want
                 currentHit.collider.gameObject.SetActive(true);
-                Debug.Log("Sfera colpita " + currentHit.transform.position);
+                //Debug.Log("Sfera colpita " + currentHit.transform.position);
                 queryAssembly.SetActive(true);
 
                 // TODO, change the query object, because when we want to compare the 15 to the 15, only 1 object will be shown

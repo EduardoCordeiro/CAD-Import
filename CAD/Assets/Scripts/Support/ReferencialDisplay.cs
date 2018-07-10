@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Scripts.Actions;
@@ -124,16 +125,14 @@ namespace Assets.Scripts.Support {
                 // JSON parsing
                 StreamReader sr =
                     new StreamReader(Application.dataPath + "/Resources/Caracteristic Files/" + objectName + ".json");
-                Debug.Log(Application.dataPath + "/Resources/Caracteristic Files/" + objectName + ".json");
-                string jsonString = sr.ReadToEnd();
-                Debug.Log(jsonString);
 
+                string jsonString = sr.ReadToEnd();
                 
-                //Debug.Log(jsonString);
                 // Deserialize Json file
                 if (jsonString.Contains("ID"))
                 {
                     jsonString = JsonHelper.FixJson(jsonString);
+
                     Caracteristic[] caracteristics = JsonHelper.FromJson<Caracteristic>(jsonString);
 
                     // Order the List
@@ -168,21 +167,21 @@ namespace Assets.Scripts.Support {
                             highestLocalMeasure.mujoint),
                         objectName,
                         new List<GameObject>() {this.transform.GetChild(i).gameObject});
+                    Debug.Log(String.Format("Position: {0}, {1}, {2}", highestLocalMeasure.mushape, highestLocalMeasure.muPos + heightOffset, highestLocalMeasure.mujoint));
+
                 }
                 else
                 {
                     jsonString = JsonHelper.FixJsonMeasure(jsonString);
-                    Debug.Log(jsonString);
-                    Measure[] modelsRetrievedData = JsonHelper.FromJson<Measure>(jsonString);
-                    if (modelsRetrievedData != null)
-                    {
-                        Debug.Log(modelsRetrievedData);
+                    Measure measure = JsonHelper.ElementFromJson<Measure>(jsonString);
 
-                    }
-                    else
-                    {
-                        Debug.Log("Vuoto");
-                    }
+                    // Instanciate the sphere
+                    CreateGameObject(sphere,
+                        new Vector3(measure.shapeMeasure, measure.positionMeasure + heightOffset, measure.jointMeasure),
+                        objectName,
+                        new List<GameObject>() { this.transform.GetChild(i).gameObject });
+
+                    Debug.Log(String.Format("Position: {0}, {1}, {2}", measure.shapeMeasure, measure.positionMeasure + heightOffset, measure.jointMeasure));
                 }
             }
         }

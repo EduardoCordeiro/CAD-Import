@@ -64,16 +64,17 @@ namespace CAD.Support {
             Color greyColor = new Color(0.8f, 0.8f, 0.8f, 1.0f);
             foreach (GameObject assembly in assembliesList)
             {
+                Debug.Log("Assemblato in lista da mostrare " + assembly.name);
                 assembly.SetActive(true);
 
-                assembly.transform.position = newPosition + offset;
+                assembly.transform.position += newPosition + offset;
 
                 newPosition += offset;
 
-                foreach (Renderer variableName in assembly.transform.GetComponentsInChildren<Renderer>())
-                {
-                    variableName.material.color = greyColor;
-                }
+                //foreach (Renderer variableName in assembly.transform.GetComponentsInChildren<Renderer>())
+                //{
+                //    variableName.material.color = greyColor;
+                //}
                 
             }
 
